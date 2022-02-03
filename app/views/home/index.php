@@ -1,3 +1,8 @@
-<h1>Index view!</h1>
-<a href="/article">View the articles page</a><br>
-<a href="/api/article">View the articles API endpoint</a>
+<?php
+require __DIR__ . '/../components/head.php';
+require __DIR__ . '/../components/nav.php';
+?>
+<p class="test">
+    Test
+</p>
+</body>

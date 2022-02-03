@@ -1,9 +1,107 @@
-body {
+* {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
-.test {
-    color: blue;
+body {
+    overflow: hidden;
+}
+
+/* ## cms nav-bar ## */
+.cms-container {
+    display: flex;
+    min-width: 1600px;
+    max-width: 2560px;
+    margin: 0 auto;
+    font-family: 'Nunito', sans-serif;
+}
+
+.nav-cms {
+    min-width: 12%;
+    height: 900px;
+    background-color: #151523;
+    padding: 0 10px 0 10px;
+    height: 100vh;
+}
+
+.user-logo {
+    width: 50px;
+    height: 50px;
+    background-color: #CAC9DC;
+    border-radius: 50%;
+    margin: 20px auto 10px;
+}
+
+.logged-username, .role {
+    color: #CAC9DC;
+    text-align: center;
+    font-weight: bold;
+}
+
+.cms-side-container {
+    width: 88%;
+    height: 900px;
+}
+
+.cms-header {
+    height: 75px;
+    background-color: #148582;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cms-logout-link {
+    text-decoration: none;
+    color: #151523;
+    font-weight: bold; 
+    font-size: 1.5rem;
+    margin: 0 0 0 10px;
+}
+
+.header-searchbar {
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 2px;
+    margin: 0 10px 0 0;
+    padding: 0 0 0 5px;
+}
+
+.cms-main {
+    height: 825px;
+    background-color: white;
+}
+
+.cms-nav-ul {
+    list-style-type: none;
+    margin: 50px 0 0 0;
+}
+
+#no-pointer {
+    cursor: default;
+}
+
+.cms-nav-item, .cms-nav-item-dance a, .cms-nav-item-jazz a, .cms-nav-item-culinary a {
+    color: #CAC9DC;
+    text-decoration: none;
+    font-size: 1.7rem;
+}
+
+.cms-dropdown-content {
+    display: none;
+}
+
+.cms-dropdown-content a{
+    display: block;
+    padding-left: 10px;
+    font-size: 1.5rem;
+}
+
+.cms-nav-item-dance:hover .cms-dropdown-content, .cms-nav-item-jazz:hover .cms-dropdown-content, .cms-nav-item-culinary:hover .cms-dropdown-content {
+    display: block;
+}
+
+.cms-nav-item-dance:hover #no-pointer, .cms-nav-item-jazz:hover #no-pointer, .cms-nav-item-culinary:hover #no-pointer {
+    font-weight: bold;
 }

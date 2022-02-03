@@ -1,8 +1,6 @@
 <?php
 require __DIR__ . '/../components/head.php';
-require __DIR__ . '/../components/nav.php';
+require __DIR__ . '/../components/nav-website.php';
 ?>
-<p class="test">
-    Test
-</p>
+<h1>Home</h1>
 </body>

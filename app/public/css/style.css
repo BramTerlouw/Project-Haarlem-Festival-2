@@ -110,3 +110,7 @@ body {
 .cms-nav-item-dance:hover #no-pointer, .cms-nav-item-jazz:hover #no-pointer, .cms-nav-item-culinary:hover #no-pointer {
     font-weight: bold;
 }
+
+.cms-logout-link img {
+    height: 30px;
+}

@@ -53,8 +53,9 @@
     <div class="cms-side-container">
         <div class="cms-header">
             <a class="cms-logout-link" href="/">
-                <- Logout</a>
-                    <input class="header-searchbar" type="text" placeholder="Search...">
+                <img src="/icons/cms-logout.png" alt="logout button">
+            </a>
+            <input class="header-searchbar" type="text" placeholder="Search...">
         </div>
         <div class="cms-main">
 

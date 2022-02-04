@@ -28,6 +28,8 @@ body {
     margin: 0 auto;
 }
 
+
+/* ## section navbar personal info ## */
 .user-logo {
     width: 50px;
     height: 50px;
@@ -35,9 +37,6 @@ body {
     border-radius: 50%;
     margin: 20px auto 10px;
 }
-
-
-/* ## section navbar personal info ## */
 .cms-dashboard-personal {
     width: 50%;
     display: flex;
@@ -45,18 +44,15 @@ body {
     margin: 0 auto;
     justify-content: center;
 }
-
 .cms-dashboard-personal span {
     width: 100%;
     text-align: center;
 }
-
 .cms-dashboard-personal img{
     width: 20px;
     height: 20px;
     margin: 0 0 0 10px;
 }
-
 .logged-username, .cms-dashboard-personal a {
     color: var(--main-lightblue);
     font-weight: bold;
@@ -72,60 +68,43 @@ body {
     padding: 0 10px 0 10px;
     height: 100vh;
 }
-
-.cms-main h1 {
-    margin: 20px 0 0 20px;
-}
-.cms-container .cms-main {
-    background-color: var(--white);
-}
-
-.cms-side-container {
-    width: 86%;
-    height: 900px;
-}
-
-.cms-icon {
+.cms-nav-icon {
     width: 20px;
     height: 20px;
 }
-
 .cms-nav-ul {
     list-style-type: none;
     margin: 50px 0 0 0;
 }
-
 #no-pointer {
     cursor: default;
 }
-
 .cms-nav-item a, .cms-nav-item-dance a, .cms-nav-item-jazz a, .cms-nav-item-culinary a {
     color: var(--main-lightblue);
     text-decoration: none;
     font-size: 1.7rem;
 }
-
 .cms-dropdown-content {
     display: none;
 }
-
 .cms-dropdown-content a{
     display: block;
     padding-left: 10px;
     font-size: 1.5rem;
 }
 
+
+/* ## nav hover effects ## */
 .cms-nav-item-dance:hover .cms-dropdown-content, .cms-nav-item-jazz:hover .cms-dropdown-content, .cms-nav-item-culinary:hover .cms-dropdown-content {
     display: block;
 }
-
 .cms-nav-item-dance:hover #no-pointer, .cms-nav-item-jazz:hover #no-pointer, .cms-nav-item-culinary:hover #no-pointer {
     font-weight: bold;
 }
-
 .cms-nav-item-dance:hover img, .cms-nav-item-jazz:hover img, .cms-nav-item-culinary:hover img {
     transform: rotate(180deg);
 }
+
 
 /* ## header of cms */
 .cms-header {
@@ -135,7 +114,6 @@ body {
     align-items: center;
     justify-content: space-between;
 }
-
 .cms-logout-link {
     text-decoration: none;
     color: var(--main-blue);
@@ -143,7 +121,6 @@ body {
     font-size: 1.5rem;
     margin: 0 0 0 10px;
 }
-
 .header-searchbar {
     border: none;
     font-size: 1.5rem;
@@ -151,10 +128,26 @@ body {
     margin: 0 10px 0 0;
     padding: 0 0 0 5px;
 }
-
 .cms-logout-link img {
     height: 30px;
 }
+
+
+/* ## container for everything besides nav */
+.cms-side-container {
+    width: 86%;
+    height: 900px;
+}
+
+
+/* ## main section of page */
+.cms-main h1 {
+    margin: 20px 0 0 20px;
+}
+.cms-container .cms-main {
+    background-color: var(--white);
+}
+
 
 
 
@@ -169,46 +162,47 @@ body {
     max-width: 2560px;
     background-color: var(--main-green);
 }
-
 .login-title {
     text-align: center;
     color: var(--main-blue);
     margin: 20px 0 0 0;
 }
 
+
+/* ## login form and items */
 .login-form {
     width: 15%;
     margin: 100px auto;
 }
-
 .login-form-item {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
 }
-
 .login-form-item label {
     width: 100%;
     font-weight: bold;
     font-size: 1.2rem;
     margin: 15px 0 0;
 }
-
 .login-form-item input {
     width: 100%;
     font-size: 1.2rem;
 }
 
+
+/* ## password forgotten section of form */
 .password-forgotten {
     text-align: right;
 }
-
 .password-forgotten a {
     font-weight: lighter;
     text-decoration: none;
     color: var(--main-blue);
 }
 
+
+/* ## Login button */
 .login-form button {
     float: right;
     font-size: 1rem;
@@ -236,7 +230,6 @@ body {
     grid-template-rows: auto auto auto auto auto;
     grid-gap: 10px 10px;
 }
-
 .personal-info-form h1 {
     margin: 20px 0 0 0;
 
@@ -261,12 +254,10 @@ body {
 
     background-color: var(--form-input-bg);
 }
-
 .form-item label {
     width: 100%;
     color: var(--form-input-border);
 }
-
 .form-item input {
     width: 100%;
     
@@ -277,7 +268,6 @@ body {
     color: var(--main-blue);
     background-color: var(--form-input-bg);
 }
-
 .form-item img {
     width: 23px;
     height: 23px;
@@ -289,13 +279,17 @@ body {
     pointer-events: none;
 }
 
+
+/* ## radio button section of personal info form */
 .form-item-radiobtn {
     width: 350px;
     grid-row-start: 4;
     grid-row-end: 6;
 }
 
-.secure input {
+
+/* ## special class for fields with no permissions */
+.secure input { 
     pointer-events: none;
     color: var(--form-input-border);
 }
@@ -310,7 +304,6 @@ body {
     display: flex;
     text-align: center;
 }
-
 .personal-info-btns-container a {
     width: 45%;
     height: 50px;
@@ -327,12 +320,10 @@ body {
 
     color: var(--main-blue);
 }
-
 .personal-info-btns-container a img, .personal-info-btns-container button img{
     width: 17px;
     height: 17px;
 }
-
 .personal-info-btns-container button {
  width: 45%;
  height: 50px;

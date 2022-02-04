@@ -110,6 +110,9 @@ body {
     font-weight: bold;
 }
 
+.cms-nav-item-dance:hover img, .cms-nav-item-jazz:hover img, .cms-nav-item-culinary:hover img {
+    transform: rotate(180deg);
+}
 
 /* ## header of cms */
 .cms-header {

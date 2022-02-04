@@ -7,7 +7,7 @@
         <!-- Personal info in nav -->
         <div class="cms-dashboard-personal">
             <span class="logged-username">Bram Terlouw</span>
-            <a href="#">Volunteer</a>
+            <a href="/user/personal">Volunteer</a>
             <a href="/user/personal"><img src="/icons/cms-edit.png" alt="edit user"></a>
         </div>
 

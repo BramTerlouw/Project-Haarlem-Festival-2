@@ -26,9 +26,7 @@ body {
 }
 
 
-
-
-
+/* ## section navbar personal info ## */
 .cms-dashboard-personal {
     width: 50%;
     display: flex;
@@ -55,9 +53,7 @@ body {
 }
 
 
-
-
-
+/* ## cms navbar */
 .nav-cms {
     min-width: 14%;
     height: 900px;
@@ -74,30 +70,6 @@ body {
 .cms-side-container {
     width: 86%;
     height: 900px;
-}
-
-.cms-header {
-    height: 75px;
-    background-color: #148582;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.cms-logout-link {
-    text-decoration: none;
-    color: #151523;
-    font-weight: bold; 
-    font-size: 1.5rem;
-    margin: 0 0 0 10px;
-}
-
-.header-searchbar {
-    border: none;
-    font-size: 1.5rem;
-    border-radius: 2px;
-    margin: 0 10px 0 0;
-    padding: 0 0 0 5px;
 }
 
 .cms-main {
@@ -136,6 +108,32 @@ body {
 
 .cms-nav-item-dance:hover #no-pointer, .cms-nav-item-jazz:hover #no-pointer, .cms-nav-item-culinary:hover #no-pointer {
     font-weight: bold;
+}
+
+
+/* ## header of cms */
+.cms-header {
+    height: 75px;
+    background-color: #148582;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cms-logout-link {
+    text-decoration: none;
+    color: #151523;
+    font-weight: bold; 
+    font-size: 1.5rem;
+    margin: 0 0 0 10px;
+}
+
+.header-searchbar {
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 2px;
+    margin: 0 10px 0 0;
+    padding: 0 0 0 5px;
 }
 
 .cms-logout-link img {

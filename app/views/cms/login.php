@@ -5,7 +5,7 @@ require __DIR__ . '/../components/head.php';
 <div class="login-header">
 </div>
 <main>
-    <h1>Content management system Haarlem Festival</h1>
+    <h1 class="login-title">Content management system Haarlem Festival</h1>
     <form class="login-form" action="/cms/" method="post">
         <div class="login-form-item">
             <label for="">Username</label>

@@ -1,3 +1,14 @@
+:root {
+    --main-blue: #151523;
+    --main-green: #148582;
+    --main-lightblue: #CAC9DC;
+
+    --form-input-bg: #F9F8FF;
+    --form-input-border: #909090;
+
+    --white: #FFFFFF;
+  }
+
 * {
     margin: 0px;
     padding: 0px;
@@ -20,7 +31,7 @@ body {
 .user-logo {
     width: 50px;
     height: 50px;
-    background-color: #CAC9DC;
+    background-color: var(--main-lightblue);
     border-radius: 50%;
     margin: 20px auto 10px;
 }
@@ -47,7 +58,7 @@ body {
 }
 
 .logged-username, .cms-dashboard-personal a {
-    color: #CAC9DC;
+    color: var(--main-lightblue);
     font-weight: bold;
     text-decoration: none;
 }
@@ -57,14 +68,16 @@ body {
 .nav-cms {
     min-width: 14%;
     height: 900px;
-    background-color: #151523;
+    background-color: var(--main-blue);
     padding: 0 10px 0 10px;
     height: 100vh;
 }
 
-.cms-icon {
-    width: 20px;
-    height: 20px;
+.cms-main h1 {
+    margin: 20px 0 0 20px;
+}
+.cms-container .cms-main {
+    background-color: var(--white);
 }
 
 .cms-side-container {
@@ -72,9 +85,9 @@ body {
     height: 900px;
 }
 
-.cms-main {
-    height: 825px;
-    background-color: white;
+.cms-icon {
+    width: 20px;
+    height: 20px;
 }
 
 .cms-nav-ul {
@@ -87,7 +100,7 @@ body {
 }
 
 .cms-nav-item a, .cms-nav-item-dance a, .cms-nav-item-jazz a, .cms-nav-item-culinary a {
-    color: #CAC9DC;
+    color: var(--main-lightblue);
     text-decoration: none;
     font-size: 1.7rem;
 }
@@ -117,7 +130,7 @@ body {
 /* ## header of cms */
 .cms-header {
     height: 75px;
-    background-color: #148582;
+    background-color: var(--main-green);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -125,7 +138,7 @@ body {
 
 .cms-logout-link {
     text-decoration: none;
-    color: #151523;
+    color: var(--main-blue);
     font-weight: bold; 
     font-size: 1.5rem;
     margin: 0 0 0 10px;
@@ -144,17 +157,22 @@ body {
 }
 
 
+
+
+
+
+
 /* ## login screen */
 .login-header {
     margin: 0 auto;
     height: 75px;
     max-width: 2560px;
-    background-color: #148582;
+    background-color: var(--main-green);
 }
 
-main h1 {
+.login-title {
     text-align: center;
-    color: #151523;
+    color: var(--main-blue);
     margin: 20px 0 0 0;
 }
 
@@ -188,7 +206,7 @@ main h1 {
 .password-forgotten a {
     font-weight: lighter;
     text-decoration: none;
-    color: #151523;
+    color: var(--main-blue);
 }
 
 .login-form button {
@@ -197,8 +215,135 @@ main h1 {
     font-weight: bold;
     margin: 20px 0 0 0;
     padding: 3px 15px;
-    background-color: white;
-    border: 2px solid #151523;
+    background-color: var(--white);
+    border: 2px solid var(--main-blue);
     border-radius: 5px;
     cursor: pointer;
+}
+
+
+
+
+
+
+/* ## form personal info ## */
+.personal-info-form {
+    width: 40%;
+    margin: 0px 0px 0 20px;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto auto;
+    grid-gap: 10px 10px;
+}
+
+.personal-info-form h1 {
+    margin: 20px 0 0 0;
+
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    color: var(--main-blue);
+}
+
+
+/* ## individual form items */
+.form-item {
+    width: 350px;
+    padding: 2px 3px;
+
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    
+    border: 1px solid var(--form-input-border);
+    border-radius: 2px;
+
+    background-color: var(--form-input-bg);
+}
+
+.form-item label {
+    width: 100%;
+    color: var(--form-input-border);
+}
+
+.form-item input {
+    width: 100%;
+    
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    
+    color: var(--main-blue);
+    background-color: var(--form-input-bg);
+}
+
+.form-item img {
+    width: 23px;
+    height: 23px;
+
+    position: absolute;
+    top: 25px;
+    left: 92%;
+
+    pointer-events: none;
+}
+
+.form-item-radiobtn {
+    width: 350px;
+    grid-row-start: 4;
+    grid-row-end: 6;
+}
+
+.secure input {
+    pointer-events: none;
+    color: var(--form-input-border);
+}
+
+
+/* ## cancel and submit buttons */
+.personal-info-btns-container {
+    width: 350px;
+    margin: 40px 0 0 0;
+    grid-column-start: 1;
+
+    display: flex;
+    text-align: center;
+}
+
+.personal-info-btns-container a {
+    width: 45%;
+    height: 50px;
+    margin: 0 5% 0 0;
+    padding: 10px 0 0 0;
+    grid-column-start: 1;
+
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    
+    border: 2px solid var(--main-blue);
+    border-radius: 5px;
+
+    color: var(--main-blue);
+}
+
+.personal-info-btns-container a img, .personal-info-btns-container button img{
+    width: 17px;
+    height: 17px;
+}
+
+.personal-info-btns-container button {
+ width: 45%;
+ height: 50px;
+ margin: 0 0 0 5%;
+
+ border: 2px solid var(--main-blue);
+ border-radius: 5px;
+
+ font-weight: bold;
+ font-size: 1.2rem;
+
+ background-color: var(--white);
+ cursor: pointer;
 }

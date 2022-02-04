@@ -1,17 +1,17 @@
 <div class="cms-container">
-    <div class="nav-cms">
+    
+    <!-- Nav bar container -->
+    <nav class="nav-cms">
         <div class="user-logo"></div>
 
+        <!-- Personal info in nav -->
         <div class="cms-dashboard-personal">
             <span class="logged-username">Bram Terlouw</span>
             <a href="#">Volunteer</a>
-            <a href="#"><img src="/icons/cms-edit.png" alt="edit user"></a>
+            <a href="/user/personal"><img src="/icons/cms-edit.png" alt="edit user"></a>
         </div>
 
-        
-        
-        
-        
+        <!-- Unordered list of nav -->
         <ul class="cms-nav-ul">
             <li class="cms-nav-item">
                 <img class="cms-icon" src="/icons/cms-home.png" alt="home icon">
@@ -57,8 +57,9 @@
                 <a href="#">Users</a>
             </li>
         </ul>
-    </div>
+    </nav>
 
+    <!-- Container content besides nav -->
     <div class="cms-side-container">
         <div class="cms-header">
             <a class="cms-logout-link" href="/">
@@ -66,8 +67,6 @@
             </a>
             <input class="header-searchbar" type="text" placeholder="Search...">
         </div>
-        <div class="cms-main">
 
-        </div>
-    </div>
-</div>
+    <!-- Container main content -->
+    <main class="cms-main">

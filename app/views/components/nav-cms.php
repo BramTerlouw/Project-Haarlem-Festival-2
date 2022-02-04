@@ -15,7 +15,7 @@
         <ul class="cms-nav-ul">
             <li class="cms-nav-item">
                 <img class="cms-icon" src="/icons/cms-home.png" alt="home icon">
-                <a href="#">Home</a>
+                <a href="/cms">Home</a>
             </li>
 
             <hr>

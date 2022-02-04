@@ -88,7 +88,7 @@ require __DIR__ . '/../components/nav-cms.php';
 
     <!-- custom cancel and submit buttons -->
     <div class="personal-info-btns-container">
-        <a href="#">Cancel
+        <a href="/cms">Cancel
             <img src="/icons/cms-cancel.png" alt="cancel icon">
         </a>
         <button type="submit">Save changes

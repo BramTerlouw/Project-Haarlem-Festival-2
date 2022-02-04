@@ -1,8 +1,17 @@
 <div class="cms-container">
     <div class="nav-cms">
         <div class="user-logo"></div>
-        <p class="logged-username">Bram Terlouw</p>
-        <p class="role">Volunteer</p>
+
+        <div class="cms-dashboard-personal">
+            <span class="logged-username">Bram Terlouw</span>
+            <a href="#">Volunteer</a>
+            <a href="#"><img src="/icons/cms-edit.png" alt="edit user"></a>
+        </div>
+
+        
+        
+        
+        
         <ul class="cms-nav-ul">
             <li class="cms-nav-item">
                 <img class="cms-icon" src="/icons/cms-home.png" alt="home icon">

@@ -17,14 +17,6 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
-.nav-cms {
-    min-width: 14%;
-    height: 900px;
-    background-color: #151523;
-    padding: 0 10px 0 10px;
-    height: 100vh;
-}
-
 .user-logo {
     width: 50px;
     height: 50px;
@@ -33,15 +25,50 @@ body {
     margin: 20px auto 10px;
 }
 
+
+
+
+
+.cms-dashboard-personal {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.cms-dashboard-personal span {
+    width: 100%;
+    text-align: center;
+}
+
+.cms-dashboard-personal img{
+    width: 20px;
+    height: 20px;
+    margin: 0 0 0 10px;
+}
+
+.logged-username, .cms-dashboard-personal a {
+    color: #CAC9DC;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+
+
+
+.nav-cms {
+    min-width: 14%;
+    height: 900px;
+    background-color: #151523;
+    padding: 0 10px 0 10px;
+    height: 100vh;
+}
+
 .cms-icon {
     width: 20px;
     height: 20px;
-}
-
-.logged-username, .role {
-    color: #CAC9DC;
-    text-align: center;
-    font-weight: bold;
 }
 
 .cms-side-container {

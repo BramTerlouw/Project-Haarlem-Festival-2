@@ -144,7 +144,7 @@ body {
 /* ## container for everything besides nav */
 .cms-side-container {
     width: 86%;
-    height: 900px;
+    height: 100vh;
 }
 
 

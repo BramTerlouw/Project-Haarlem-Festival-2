@@ -96,6 +96,5 @@ require __DIR__ . '/../components/nav-cms.php';
         </button>
     </div>
 </form>
-</div>
-</div>
-</div>
+</main> <!-- close main tag from cms nav -->
+</div>  <!-- close div of whole container from cms nav -->

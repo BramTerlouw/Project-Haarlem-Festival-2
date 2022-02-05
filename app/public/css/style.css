@@ -86,10 +86,10 @@ body {
     text-decoration: none;
     font-size: 1.7rem;
 }
-.cms-dropdown-content {
+.cms-nav-dropdown-content {
     display: none;
 }
-.cms-dropdown-content a{
+.cms-nav-dropdown-content a{
     display: block;
     padding-left: 10px;
     font-size: 1.5rem;
@@ -97,7 +97,7 @@ body {
 
 
 /* ## nav hover effects ## */
-.cms-nav-item-dance:hover .cms-dropdown-content, .cms-nav-item-jazz:hover .cms-dropdown-content, .cms-nav-item-culinary:hover .cms-dropdown-content {
+.cms-nav-item-dance:hover .cms-nav-dropdown-content, .cms-nav-item-jazz:hover .cms-nav-dropdown-content, .cms-nav-item-culinary:hover .cms-nav-dropdown-content {
     display: block;
 }
 .cms-nav-item-dance:hover #no-pointer, .cms-nav-item-jazz:hover #no-pointer, .cms-nav-item-culinary:hover #no-pointer {

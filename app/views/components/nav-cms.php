@@ -22,8 +22,8 @@
             <li class="cms-nav-item-dance">
                 <img class="cms-nav-icon" src="/icons/cms-arrow-down.png" alt="home icon">
                 <a id="no-pointer" href="">Dance</a>
-                <div class="cms-dropdown-content">
-                    <a href="#">- Overview</a>
+                <div class="cms-nav-dropdown-content">
+                    <a href="/cms/overview?event=dance">- Overview</a>
                     <a href="#">- Tickets</a>
                 </div>
             </li>
@@ -31,8 +31,8 @@
             <li class="cms-nav-item-jazz">
                 <img class="cms-nav-icon" src="/icons/cms-arrow-down.png" alt="home icon">
                 <a id="no-pointer" href="">Jazz</a>
-                <div class="cms-dropdown-content">
-                    <a href="#">- Overview</a>
+                <div class="cms-nav-dropdown-content">
+                    <a href="/cms/overview?event=jazz">- Overview</a>
                     <a href="#">- Tickets</a>
                 </div>
             </li>
@@ -40,8 +40,8 @@
             <li class="cms-nav-item-culinary">
                 <img class="cms-nav-icon" src="/icons/cms-arrow-down.png" alt="home icon">
                 <a id="no-pointer" href="">Culinary</a>
-                <div class="cms-dropdown-content">
-                    <a href="#">- Restaurants</a>
+                <div class="cms-nav-dropdown-content">
+                    <a href="/cms/overview?event=culinary">- Restaurants</a>
                     <a href="#">- Reservations</a>
                 </div>
             </li>

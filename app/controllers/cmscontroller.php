@@ -9,5 +9,9 @@ class CmsController extends Controller {
     public function login() {
         require __DIR__ . '/../views/cms/login.php';
     }
+
+    public function overview() {
+        require __DIR__ . '/../views/cms/overview.php';
+    }
 }
 ?>

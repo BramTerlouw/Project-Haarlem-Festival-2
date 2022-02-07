@@ -158,7 +158,50 @@ body {
 
 
 
+/* ## cms dashboard graphs */
+.cms-graph-container {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-wrap: wrap;
+}
 
+/* ## container with 2 small graphs */
+.cms-container-small {
+    width: 50%;
+    height: 40%;
+    max-height: 50%;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 10px 0 0 0;
+    padding: 10px;
+}
+.cms-graph-small {
+    width: 50%;
+}
+.cms-container-small h2 {
+    width: 100%;
+}
+
+/* ## other graphs */
+.cms-graph {
+    width: 50%;
+    height: 40%;
+    max-height: 50%;
+
+    margin: 10px 0 0 0;
+    padding: 10px;
+}
+
+
+.border-right {
+    border-right: 1px solid var(--main-blue);
+}
+canvas {
+    max-height: 100%;
+}
 
 
 

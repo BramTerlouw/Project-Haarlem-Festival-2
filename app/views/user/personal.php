@@ -1,6 +1,14 @@
 <?php
 require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/nav-cms.php';
+
+function isSecureClass() {
+    if ($_SESSION['role'] == "Volunteer") echo "secure";
+}
+
+function isSecureIcon() {
+    if ($_SESSION['role'] == "Volunteer") echo "secure"; else echo "edit-form";
+}
 ?>
 
 <!-- Personal information section -->
@@ -49,15 +57,15 @@ require __DIR__ . '/../components/nav-cms.php';
         <label for="gender-other">Other</label><br>
     </div>
 
-    <div class="form-item secure">
+    <div class="form-item <?php isSecureClass()?>">
         <label for="">Supervisor:</label>
         <input type="text" name="" value="<?php echo $model->Supervisor ?>">
-        <img src="/icons/cms-secure.png" alt="edit button">
+        <img src="/icons/cms-<?php isSecureIcon()?>.png" alt="edit button">
     </div>
-    <div class="form-item secure">
+    <div class="form-item <?php isSecureClass()?>">
         <label for="">Role:</label>
         <input type="text" name="" value="<?php echo $model->Role ?>">
-        <img src="/icons/cms-secure.png" alt="edit button">
+        <img src="/icons/cms-<?php isSecureIcon()?>.png" alt="edit button">
     </div>
 
     <!-- Contact information section -->
@@ -72,18 +80,18 @@ require __DIR__ . '/../components/nav-cms.php';
         <input type="text" name="" value="<?php echo $model->PhoneNumber ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
-    <div class="form-item secure">
+    <div class="form-item <?php isSecureClass()?>">
         <label for="">ID:</label>
         <input type="text" name="" value="<?php echo $model->User_ID ?>">
-        <img src="/icons/cms-secure.png" alt="edit button">
+        <img src="/icons/cms-<?php isSecureIcon()?>.png" alt="edit button">
     </div>
 
     <!-- Password recovery section -->
     <h1>Password recovery</h1>
-    <div class="form-item secure">
+    <div class="form-item <?php isSecureClass()?>">
         <label for="">Current password:</label>
         <input type="password" name="" value="<?php echo $model->Password ?>">
-        <img src="/icons/cms-secure.png" alt="edit button">
+        <img src="/icons/cms-<?php isSecureIcon()?>.png" alt="edit button">
     </div>
 
     <!-- custom cancel and submit buttons -->

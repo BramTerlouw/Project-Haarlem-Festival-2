@@ -6,7 +6,7 @@
     <title>Untitled</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 
 <body>
@@ -20,14 +20,15 @@
                             Different kind of events like dance, jazz, culinary and historic 
                             are held in and arround the city of Haarlem, the Netherlands.</p>
                     </div>
-                    <div class="col mx-1 item social">
-                        <h3>Social media</h3>
-                        <a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-tiktok"></i></a>
-                    </div>
                     <div class="col mx-1">
                         <h3>Select language</h3>
                         <a href="#"><span class="flag-icon flag-icon-gbr"></span></a><a href="#"><span class="flag-icon flag-icon-nld"></span></a>
                     </div>
+                    <div class="col mx-1 item social">
+                        <h3>Social media</h3>
+                        <a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-tiktok"></i></a>
+                    </div>
+                    
                     <div class="col mx-1">
                         <h3>Overview</h3>
                         <ul>

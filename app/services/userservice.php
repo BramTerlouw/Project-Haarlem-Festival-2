@@ -2,9 +2,9 @@
 require __DIR__ . '/../repositories/userrepository.php';
 
 class UserService {
-    public function getPersonalInfo() {
+    public function getUser() {
         $repository = new UserRepository();
-        return $repository->getPersonalInfo();
+        return $repository->getUser();
     }
     
 }

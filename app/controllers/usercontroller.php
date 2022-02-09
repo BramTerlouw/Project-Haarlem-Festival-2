@@ -11,7 +11,7 @@ class UserController extends Controller {
     }
     
     public function personal() {
-        $model = $this->userService->getPersonalInfo();
+        $model = $this->userService->getUser();
         require __DIR__ . '/../views/user/personal.php';
     }
 }

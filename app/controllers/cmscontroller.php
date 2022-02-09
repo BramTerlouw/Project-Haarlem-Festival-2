@@ -30,17 +30,17 @@ class CmsController extends Controller {
             // get vars
             $userName = $_POST['inputUsername'];
             $password = $_POST['inputPassword'];
-            $rowCount = $this->cmsService->getUserCredentials($userName, $password);
+            $rowCount = $this->cmsService->getRowCount($userName, $password);
 
             // when user exists, set session var and go to home
             if ($rowCount == 1) {
                 $_SESSION['logginIn'] = true;
                 $_SESSION['userName'] = $userName;
+                $_SESSION['role'] = $this->cmsService->getRole($userName);
                 header('Location: /cms');
             } else { // give error
-                header('location: /cms/login?error=failedtologin');
+                header('location: /cms/login?error=loginfailed');
             }
-
         }
     }
 }

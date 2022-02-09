@@ -8,55 +8,55 @@ require __DIR__ . '/../components/nav-cms.php';
 <form class="personal-info-form" action="" method="post">
     <div class="form-item">
         <label for="">Full name:</label>
-        <input type="text" name="" value="Bram Terlouw">
+        <input type="text" name="" value="<?php echo $model->FullName ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
         <label for="">City:</label>
-        <input type="text" name="" value="Haarlem">
+        <input type="text" name="" value="<?php echo $model->City ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
         <label for="">Username:</label>
-        <input type="text" name="" value="Bram_Vol">
+        <input type="text" name="" value="<?php echo $model->UserName ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
         <label for="">Postcode:</label>
-        <input type="text" name="" value="1825 EF">
+        <input type="text" name="" value="<?php echo $model->PostCode ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
         <label for="">Birthdate:</label>
-        <input type="date" name="" value="18-02-2000">
+        <input type="date" name="" value="<?php echo $model->BirthDate ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
         <label for="">Address:</label>
-        <input type="text" name="" value="Slotenmakerstraat 77">
+        <input type="text" name="" value="<?php echo $model->Address ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
 
     <div class="form-item-radiobtn">
         <h2>Gender</h2>
-        <input type="radio" id="gender-male" name="gender" value="Male">
+        <input type="radio" id="gender-male" name="gender" value="Male" <?php if ($model->Gender == "Male") echo "Checked" ?>>
         <label for="gender-male">Male</label><br>
 
-        <input type="radio" id="gender-female" name="gender" value="Female">
+        <input type="radio" id="gender-female" name="gender" value="Female" <?php if ($model->Gender == "Female") echo "Checked" ?>> <!-- !!!! -->
         <label for="gender-female">Female</label><br>
 
-        <input type="radio" id="gender-other" name="gender" value="Other">
+        <input type="radio" id="gender-other" name="gender" value="Other" <?php if ($model->Gender == "Other") echo "Checked" ?>>
         <label for="gender-other">Other</label><br>
     </div>
 
     <div class="form-item secure">
         <label for="">Supervisor:</label>
-        <input type="text" name="" value="Eef Stavenuiter">
+        <input type="text" name="" value="<?php echo $model->Supervisor ?>">
         <img src="/icons/cms-secure.png" alt="edit button">
     </div>
     <div class="form-item secure">
         <label for="">Role:</label>
-        <input type="text" name="" value="Volunteer">
+        <input type="text" name="" value="<?php echo $model->Role ?>">
         <img src="/icons/cms-secure.png" alt="edit button">
     </div>
 
@@ -64,17 +64,17 @@ require __DIR__ . '/../components/nav-cms.php';
     <h1>Contact information</h1>
     <div class="form-item">
         <label for="">Email address:</label>
-        <input type="email" name="" value="bram@test.com">
+        <input type="email" name="" value="<?php echo $model->Email ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
         <label for="">Phone number:</label>
-        <input type="text" name="" value="06 23876534">
+        <input type="text" name="" value="<?php echo $model->PhoneNumber ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item secure">
         <label for="">ID:</label>
-        <input type="text" name="" value="001">
+        <input type="text" name="" value="<?php echo $model->User_ID ?>">
         <img src="/icons/cms-secure.png" alt="edit button">
     </div>
 
@@ -82,7 +82,7 @@ require __DIR__ . '/../components/nav-cms.php';
     <h1>Password recovery</h1>
     <div class="form-item secure">
         <label for="">Current password:</label>
-        <input type="password" name="" value="wachtwoord">
+        <input type="password" name="" value="<?php echo $model->Password ?>">
         <img src="/icons/cms-secure.png" alt="edit button">
     </div>
 

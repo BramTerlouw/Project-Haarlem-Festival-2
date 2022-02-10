@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="eng">
-<head>
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haarlm Festival</title>
-    <link rel="stylesheet" href="/public/css/footer.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-</head>
-<body>
-  <footer class="footer">
+<footer class="footer">
   	 <div class="container">
   	 	<div class="row">
   	 		<div class="footer-col">
@@ -18,7 +8,11 @@
                     in and arround the city of Haarlem, the Netherlands.</p>
   	 		</div>
   	 		<div class="footer-col">
-  	 			<h4>Select langauge</h4>
+  	 			<h4>Select language</h4>
+				<div class="flag-links">
+				   	<a href="#"><f class="flag-icon flag-icon-nl"></f></a>
+  	 				<a href="#"><f class="flag-icon flag-icon-gb"></f></a>
+				</div>
   	 		</div>
                <div class="footer-col">
   	 			<h4>Socials</h4>
@@ -51,5 +45,3 @@
   	 </div>
   </footer>
 </body>
-
-</html>

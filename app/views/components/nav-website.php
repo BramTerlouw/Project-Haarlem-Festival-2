@@ -12,10 +12,18 @@
     </ul>
 
     <ul class="nav-list-right">
-        <a href="#"><li class="nav-item-b">Contact</a></li>
+        <li class="nav-item-b"><a href="#">Contact</a></li>
         <div class="icons-nav">
-        <li class="fa fa-shopping-cart"><a href="#"></a></li>
-        <li class="fas fa-user-circle"><a href="/cms/login"></a></li>
+        <li>
+            <a href="#">
+                <span class="fa fa-shopping-cart"></span>
+            </a>
+        </li>
+        <li>
+            <a href="/cms/login">
+                <span class="fas fa-user-circle"></span>
+            </a>
+        </li>
         </div>
     </ul>
 </nav>

@@ -395,3 +395,94 @@ canvas {
  background-color: var(--white);
  cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.overview-container-info {
+    width: 100%;
+    height: 40vh;
+    border: 1px solid black;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.overview-container-table {
+    width: 100%;
+    height: 53vh;
+}
+
+
+
+.overview-header {
+    width: 100%;
+}
+
+.overview-info {
+    width: calc(60% - 20px);
+    height: 80%;
+    margin: 0 0 0 20px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+
+.overview-image {
+    border-left: 1px solid black;
+    width: calc(40% - 20px);
+    height: 80%;
+    margin: 0 20px 0 0;
+}
+
+
+
+.overview-btn-container {
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+}
+
+.overview-btn-container ul li {
+    display: inline-block;
+
+    margin: 0 0 0 20px;
+    text-align: center;
+
+    border: 1px solid var(--main-blue);
+    border-radius: 5px;
+}
+
+.overview-btn-container ul li a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 0 10px;
+}
+
+.overview-btn-container ul li a:hover {
+    background-color: var(--main-green);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+
+
+
+.table {
+    border-top: 1px solid black;
+}

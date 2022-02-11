@@ -8,66 +8,85 @@ $event = $_GET['event'];
 ?>
 
 <section class="overview-container-info">
-    
+
     <h1 class="overview-header"><?php echo ucfirst($event) ?> Event</h1>
     <div class="overview-info">
-    <div class="form-item">
-        <label for="">Event name:</label>
-        <input type="text" name="" value="test">
-        <img src="/icons/cms-edit-form.png" alt="edit button">
+        <div class="form-item">
+            <label for="">Event name:</label>
+            <input type="text" name="" value="test">
+            <img src="/icons/cms-edit-form.png" alt="edit button">
+        </div>
+        <div class="form-item-dropdwn">
+            <label for="genres">Genre</label>
+            <select name="genres" id="genres">
+                <option value="Jazz">Jazz</option>
+                <option value="Dance">Dance</option>
+                <option value="Calm">Calm</option>
+                <option value="Hard">Hard</option>
+            </select>
+        </div>
+        <div class="form-item">
+            <label for="">Description:</label>
+            <input type="text" name="" value="test">
+            <img src="/icons/cms-edit-form.png" alt="edit button">
+        </div>
+        <div class="form-item">
+            <label for="">Date:</label>
+            <input type="text" name="" value="test">
+            <img src="/icons/cms-edit-form.png" alt="edit button">
+        </div>
+        <div class="form-item">
+            <label for="">Location(s):</label>
+            <input type="text" name="" value="test">
+            <img src="/icons/cms-edit-form.png" alt="edit button">
+        </div>
+        <div class="form-item">
+            <label for="">Location(s):</label>
+            <input type="text" name="" value="test">
+            <img src="/icons/cms-edit-form.png" alt="edit button">
+        </div>
+        <div class="form-item">
+            <label for="">Location(s):</label>
+            <input type="text" name="" value="test">
+            <img src="/icons/cms-edit-form.png" alt="edit button">
+        </div>
+        <div class="form-item">
+            <label for="">Location(s):</label>
+            <input type="text" name="" value="test">
+            <img src="/icons/cms-edit-form.png" alt="edit button">
+        </div>
     </div>
-    <div class="form-item">
-        <label for="">Genre:</label>
-        <input type="text" name="" value="test">
-        <img src="/icons/cms-edit-form.png" alt="edit button">
-    </div>
-    <div class="form-item">
-        <label for="">Description:</label>
-        <input type="text" name="" value="test">
-        <img src="/icons/cms-edit-form.png" alt="edit button">
-    </div>
-    <div class="form-item">
-        <label for="">Date:</label>
-        <input type="text" name="" value="test">
-        <img src="/icons/cms-edit-form.png" alt="edit button">
-    </div>
-    <div class="form-item">
-        <label for="">Location(s):</label>
-        <input type="text" name="" value="test">
-        <img src="/icons/cms-edit-form.png" alt="edit button">
-    </div>
-    <div class="form-item">
-        <label for="">Location(s):</label>
-        <input type="text" name="" value="test">
-        <img src="/icons/cms-edit-form.png" alt="edit button">
-    </div>
-    <div class="form-item">
-        <label for="">Location(s):</label>
-        <input type="text" name="" value="test">
-        <img src="/icons/cms-edit-form.png" alt="edit button">
-    </div>
-    <div class="form-item">
-        <label for="">Location(s):</label>
-        <input type="text" name="" value="test">
-        <img src="/icons/cms-edit-form.png" alt="edit button">
-    </div>
-    </div>
-    
+
     <div class="overview-image">
-        
+
     </div>
 
 </section>
 
 <section class="overview-container-table">
-    
+
     <div class="overview-btn-container">
-        
-        <ul>
+
+        <ul class="overview-btns-left">
             <li><a href="#">Thursday</a></li>
             <li><a href="">Friday</a></li>
             <li><a href="">Saturday</a></li>
             <li><a href="">Sunday</a></li>
+        </ul>
+
+        <ul class="overview-btns-right">
+            <li>
+                <a href="">
+                    Add item
+                    <img src="/icons/add-item.png" alt="add item">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    Delete items
+                    <img src="/icons/delete-item.png" alt="delete item">
+                </a>
+            </li>
         </ul>
 
     </div>
@@ -77,4 +96,4 @@ $event = $_GET['event'];
 
 </section>
 </main> <!-- close main tag from cms nav -->
-</div>  <!-- close div of whole container from cms nav -->
+</div> <!-- close div of whole container from cms nav -->

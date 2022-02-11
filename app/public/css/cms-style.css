@@ -408,7 +408,7 @@ canvas {
 
 
 
-
+/* ## event overview page */
 .overview-container-info {
     width: 100%;
     height: 40vh;
@@ -437,7 +437,7 @@ canvas {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-
+    justify-content: space-between;
 }
 
 .overview-image {
@@ -457,32 +457,81 @@ canvas {
     align-items: center;
 }
 
-.overview-btn-container ul li {
+.overview-btns-left {
+    flex-grow: 1;
+}
+
+.overview-btns-left li {
     display: inline-block;
 
     margin: 0 0 0 20px;
     text-align: center;
+}
 
+.overview-btns-left li a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 0 10px;
     border: 1px solid var(--main-blue);
     border-radius: 5px;
 }
 
-.overview-btn-container ul li a {
-    text-decoration: none;
-    font-size: 1.5rem;
-    padding: 0 10px;
-}
-
-.overview-btn-container ul li a:hover {
+.overview-btns-left li a:hover {
     background-color: var(--main-green);
+    border: var(--main-green);
     color: white;
     font-weight: bold;
-    border-radius: 5px;
 }
 
+
+
+
+.overview-btns-right li {
+    display: inline-block;
+}
+
+.overview-btns-right li a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin: 0 20px 0 0;
+}
+
+.overview-btns-right li a img {
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+}
 
 
 
 .table {
     border-top: 1px solid black;
+}
+
+
+
+.form-item-dropdwn {
+    width: 350px;
+    padding: 2px 3px;
+
+    background-color: var(--form-input-bg);
+
+    border: 1px solid var(--form-input-border);
+    border-radius: 2px;
+}
+
+.form-item-dropdwn label {
+    margin: 0 0 0 2px;
+}
+
+.form-item-dropdwn select {
+    width: 100%;
+
+    border: none;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    color: var(--main-blue);
+    background-color: var(--form-input-bg);
 }

@@ -11,30 +11,45 @@ $event = $_GET['event'];
 
     <h1 class="overview-header"><?php echo ucfirst($event) ?> Event</h1>
     <div class="overview-info">
-        <div class="form-item">
+        
+    <div class="form-item">
             <label for="">Event name:</label>
+            
+            <!-- <input type="text" name="" value="<?php echo ucfirst($model->Name) ?> event"> -->
             <input type="text" name="" value="Jazz event">
+            
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
+        
         <div class="form-item-dropdwn">
             <label for="genres">Genre</label>
             <select name="genres" id="genres">
-                <option value="Jazz">Jazz</option>
-                <option value="Dance">Dance</option>
-                <option value="Calm">Calm</option>
-                <option value="Hard">Hard</option>
+                <option value="Swing and calm">Swing and calm</option>
+                <option value="Rave and hard">Rave and hard</option>
+                <option value="Food">Food</option>
             </select>
         </div>
+        
         <div class="form-item">
             <label for="">Description:</label>
-            <textarea name="" rows="6">Haarlem Jazz is an important music event for the city of Haarlem. During the Haarlem Festival, we want to recreate part of this festival.</textarea>
+            
+            <!-- <textarea name="" rows="6"><?php echo $model->Description ?></textarea> -->
+            <textarea name="" rows="6"></textarea>
+
         </div>
+        
         <div class="form-item lower-form-img">
             <label for="">Date:</label>
-            <input type="text" name="" value="28 July 2022">
-            <input type="text" name="" value="31 July 2022">
+            
+            <!-- <input type="text" name="" value="<?php echo $model->StartDate ?>">
+            <input type="text" name="" value="<?php echo $model->EndDate ?>"> -->
+
+            <input type="text" name="" value="2022-07-27">
+            <input type="text" name="" value="2022-07-31">
+
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
+        
         <div class="form-item lower-form-img">
             <label for="">Location(s):</label>
             <p><strong>Patronaat:</strong> Main hall, Second Hall, Third Hall</p>

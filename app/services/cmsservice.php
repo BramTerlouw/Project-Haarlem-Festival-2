@@ -12,4 +12,9 @@ class CmsService {
         $repository = new CmsRepository();
         return $repository->getRole($userName);
     }
+
+    public function getEvent($name) {
+        $repository = new CmsRepository();
+        return $repository->getEvent($name);
+    }
 }

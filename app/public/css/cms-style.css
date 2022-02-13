@@ -29,6 +29,7 @@
     min-width: 1600px;
     max-width: 2560px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 

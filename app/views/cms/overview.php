@@ -69,6 +69,8 @@ $event = $_GET['event'];
     </div>
 
     <div class="overview-image">
+        <div class="placeholder-image"></div>
+        <button>Upload image(s)</button>
     </div>
 </section>
 

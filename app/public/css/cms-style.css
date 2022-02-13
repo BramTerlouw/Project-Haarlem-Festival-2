@@ -430,6 +430,7 @@ canvas {
 
 
 
+
 .overview-header {
     width: 100%;
 }
@@ -450,6 +451,18 @@ canvas {
     width: calc(40% - 20px);
     height: 80%;
     margin: 0 20px 0 0;
+}
+
+.placeholder-image {
+    width: 80%;
+    height: 50%;
+
+    margin: 0 0 0 10%;
+    background-color: lightgray;
+}
+
+.overview-image button {
+    margin: 0 0 0 10%;
 }
 
 
@@ -566,7 +579,6 @@ canvas {
 .table-wrapper {
     height: 100%;
     overflow-y: auto;
-    position: relative;
 }
 
 table {

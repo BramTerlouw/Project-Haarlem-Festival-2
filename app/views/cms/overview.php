@@ -4,18 +4,18 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
 ?>
 
 <?php
-$event = $_GET['event'];
+$uriEvent = $_GET['event'];
 ?>
 
 <section class="overview-container-info">
 
-    <h1 class="overview-header"><?php echo ucfirst($event) ?> Event</h1>
+    <h1 class="overview-header"><?php echo ucfirst($uriEvent) ?> Event</h1>
     <div class="overview-info">
         
     <div class="form-item">
             <label for="">Event name:</label>
             
-            <input type="text" name="" value="<?php echo ucfirst($model->Name) ?> event">
+            <input type="text" name="" value="<?php echo ucfirst($event->Name) ?> event">
             
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
@@ -24,23 +24,26 @@ $event = $_GET['event'];
         <div class="form-item">
             <label for="">Description:</label>
             
-            <textarea name="" rows="6"><?php echo $model->Description ?></textarea>
+            <textarea name="" rows="6"><?php echo $event->Description ?></textarea>
             
         </div>
         
         <div class="form-item lower-form-img">
             <label for="">Date:</label>
             
-            <input type="text" name="" value="<?php echo $model->StartDate ?>">
-            <input type="text" name="" value="<?php echo $model->EndDate ?>">
+            <input type="text" name="" value="<?php echo $event->StartDate ?>">
+            <input type="text" name="" value="<?php echo $event->EndDate ?>">
 
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         
         <div class="form-item lower-form-img">
             <label for="">Location(s):</label>
-            <p><strong>Patronaat:</strong> Main hall, Second Hall, Third Hall</p>
-            <p><strong>Grote markt:</strong> N.v.t.</p>
+            
+            <?php foreach ($locArr as $location) { ?>
+            <p><strong>$<?php echo $location ?></strong></p>
+            <?php } ?>
+            
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
     </div>
@@ -88,7 +91,7 @@ $event = $_GET['event'];
                 <th>Price</th>
                 <th>Edit</th>
             </tr>
-            <?php foreach ($modelList as $item) {?>
+            <?php foreach ($itemArr as $item) {?>
                 <tr>
                     <td><input type="checkbox" name="" id=""></td>
                     <td><?php echo $item->Name ?></td>

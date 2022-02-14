@@ -334,7 +334,7 @@ canvas {
     height: 23px;
 
     position: absolute;
-    top: 25px;
+    bottom: 5px;
     left: 92%;
 
     pointer-events: none;
@@ -572,7 +572,7 @@ canvas {
 
 
 .lower-form-img img {
-    top: 60%;
+    bottom: 5px;
 }
 
 

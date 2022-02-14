@@ -75,4 +75,20 @@ class CmsRepository extends Repository
             echo $e;
         }
     }
+
+    public function getEventLocations($locationArr) {
+        try {
+            $questionmarks = str_repeat("?,", count($locationArr)-1) . "?";
+            $sqlquery = "SELECT Name FROM Location WHERE Location_ID IN ($questionmarks)";
+            
+            $stmt = $this->connection->prepare($sqlquery);
+            $stmt->execute($locationArr);
+            
+            $stmt->setFetchMode(PDO::FETCH_COLUMN, 0);
+            return $stmt->fetchAll();
+
+        } catch(PDOException $e) {
+            echo $e;
+        }
+    }
 }

@@ -22,4 +22,9 @@ class CmsService {
         $repository = new CmsRepository();
         return $repository->getEventItems($id);
     }
+
+    public function getEventLocations($locationArr) {
+        $repository = new CmsRepository();
+        return $repository->getEventLocations($locationArr);
+    }
 }

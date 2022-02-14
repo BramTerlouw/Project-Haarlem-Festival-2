@@ -19,12 +19,20 @@ class CmsController extends Controller {
     }
 
     public function overview() {
-        $model = $this->cmsService->getEvent($_GET['event']);
-        $modelList = $this->cmsService->getEventItems($model->Event_ID);
+        // get event and list of event items
+        $event = $this->cmsService->getEvent($_GET['event']);
+        $itemArr = $this->cmsService->getEventItems($event->Event_ID);
+
+        // get list of all locations used
+        $locationIDs = [];
+        foreach ($itemArr as $item) { array_push($locationIDs, $item->Location_ID); }
+        $locArr = $this->cmsService->getEventLocations($locationIDs);
+
         require __DIR__ . '/../views/cms/overview.php';
     }
 
     public function loginValidation() {
+        
         // check for POST var
         if (isset($_POST['submit'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST

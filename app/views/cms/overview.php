@@ -21,24 +21,6 @@ $event = $_GET['event'];
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         
-        <div class="form-item-dropdwn">
-            <label for="genres">Genre</label>
-            <select name="genres" id="genres">
-                <!-- <option value="Swing and calm" 
-                <?php if ($model->Genre == "Swing and calm") echo "Selected"?>>Swing and calm</option>
-                
-                <option value="Rave and hard" 
-                <?php if ($model->Genre == "Rave and hard") echo "Selected"?>>Rave and hard</option>
-                
-                <option value="Food" 
-                <?php if ($model->Genre == "Food") echo "Selected"?>>Food</option> -->
-
-                <option value="Swing and calm">Swing and calm</option>
-                <option value="Rave and hard">Rave and hard</option>
-                <option value="Food">Food</option>
-
-            </select>
-        </div>
         
         <div class="form-item">
             <label for="">Description:</label>

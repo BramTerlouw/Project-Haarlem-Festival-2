@@ -7,6 +7,9 @@
     --form-input-border: #909090;
 
     --white: #FFFFFF;
+    --black: #000000;
+
+    --table-accent: #B4C5E4;
   }
 
 * {
@@ -16,9 +19,9 @@
     font-family: 'Nunito', sans-serif;
 }
 
-body {
-    /* overflow: hidden; */
-}
+/* body {
+    overflow: hidden;
+} */
 
 /* ## cms nav-bar ## */
 .cms-container {
@@ -26,6 +29,7 @@ body {
     min-width: 1600px;
     max-width: 2560px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 
@@ -408,11 +412,12 @@ canvas {
 
 
 
-
+/* ## event overview page */
 .overview-container-info {
     width: 100%;
     height: 40vh;
-    border: 1px solid black;
+
+    margin: 0 0 10vh 0;
 
     display: flex;
     flex-wrap: wrap;
@@ -420,8 +425,10 @@ canvas {
 
 .overview-container-table {
     width: 100%;
-    height: 53vh;
+    height: 43vh;
+    background-color: var(--form-input-bg);
 }
+
 
 
 
@@ -437,14 +444,26 @@ canvas {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-
+    justify-content: space-between;
 }
 
 .overview-image {
-    border-left: 1px solid black;
+    border-left: 1px solid var(--black);
     width: calc(40% - 20px);
     height: 80%;
     margin: 0 20px 0 0;
+}
+
+.placeholder-image {
+    width: 80%;
+    height: 50%;
+
+    margin: 0 0 0 10%;
+    background-color: lightgray;
+}
+
+.overview-image button {
+    margin: 0 0 0 10%;
 }
 
 
@@ -455,34 +474,144 @@ canvas {
 
     display: flex;
     align-items: center;
+    background-color: var(--white);
+    border-top: 2px solid var(--main-lightblue);
 }
 
-.overview-btn-container ul li {
+.overview-btns-left {
+    flex-grow: 1;
+}
+
+.overview-btns-left li {
     display: inline-block;
 
     margin: 0 0 0 20px;
     text-align: center;
+}
 
+.overview-btns-left li a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 0 10px;
     border: 1px solid var(--main-blue);
     border-radius: 5px;
 }
 
-.overview-btn-container ul li a {
+.overview-btns-left li a:hover {
+    background-color: var(--main-green);
+    color: var(--white);
+    font-weight: bold;
+}
+
+.btns-left-active {
+    background-color: var(--main-green);
+    color: var(--white);
+    font-weight: bold;
+    border: var(--main-green);
+}
+
+
+
+
+.overview-btns-right li {
+    display: inline-block;
+}
+
+.overview-btns-right li a {
     text-decoration: none;
     font-size: 1.5rem;
-    padding: 0 10px;
+    margin: 0 20px 0 0;
 }
 
-.overview-btn-container ul li a:hover {
-    background-color: var(--main-green);
-    color: white;
+.overview-btns-right li a img {
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+}
+
+
+
+.form-item-dropdwn {
+    width: 350px;
+    padding: 2px 3px;
+
+    background-color: var(--form-input-bg);
+
+    border: 1px solid var(--form-input-border);
+    border-radius: 2px;
+}
+
+.form-item-dropdwn label {
+    margin: 0 0 0 2px;
+}
+
+.form-item-dropdwn select {
+    width: 100%;
+
+    border: none;
+
+    font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 5px;
+
+    color: var(--main-blue);
+    background-color: var(--form-input-bg);
+}
+
+.form-item textarea {
+    width: 100%;
+    
+    overflow-y: scroll;
+    resize: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--main-blue);
+
+    border: none;
+    background-color: var(--form-input-bg);
+}
+
+
+.lower-form-img img {
+    top: 60%;
 }
 
 
 
+.table-wrapper {
+    height: 100%;
+    overflow-y: auto;
+}
 
-.table {
-    border-top: 1px solid black;
+table {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--form-input-bg);
+    border-top: 2px solid var(--main-lightblue);
+    border-bottom: 2px solid var(--main-lightblue);
+    border-collapse: collapse;
+    text-align: left;
+    overflow: auto;
+}
+
+tr:nth-child(even) {
+    background-color: var(--table-accent);
+  }
+
+th {
+    position: sticky; 
+    top: 0;
+    padding: 15px 0 15px 5px;
+    font-size: 1.3rem;
+}
+
+td {
+    padding: 5px 0 5px 5px;
+    font-style: italic;
+}
+
+table img {
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
 }

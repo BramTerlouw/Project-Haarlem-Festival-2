@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . '/repository.php';
+require __DIR__ . '/../models/event.php';
 
 class CmsRepository extends Repository
 {
@@ -37,6 +38,36 @@ class CmsRepository extends Repository
             return $stmt->fetchColumn();
 
         } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getEvent($name) {
+        try {
+            $sqlquery = "SELECT * FROM Event WHERE Name=:name";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':name', $name);
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'event');
+            return $stmt->fetch();
+
+        } catch (PDOException$e) {
+            echo $e;
+        }
+    }
+
+    public function getEventItems($id) {
+        try {
+            $sqlquery = "SELECT * FROM Event_Item WHERE Event_ID=:eventID";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam('eventID', $id);
+            // to do ....
+
+
+        } catch(PDOException $e) {
             echo $e;
         }
     }

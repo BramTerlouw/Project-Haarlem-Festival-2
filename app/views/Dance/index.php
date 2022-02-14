@@ -3,8 +3,9 @@ require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/nav-website.php';
 ?>
 
-<div class = "Banner-dance">
-<h1 class="dance-title">Dance</h1>
+<div class="Banner-dance">
+    
+<h1 class="dance-title">Haarlem Dance Event</h1>
 
 <h2 class="dance-undertitle">Experience the Dutch way of partying</h2>
 
@@ -14,7 +15,7 @@ require __DIR__ . '/../components/nav-website.php';
     performing on multiple stages spread over the beautyfull city of Haarlem, North-Holland.
 </p>
 
-<div class ="navbuttons">   
+<div class ="navbuttons-dance">   
 <button class="button-performers"type="button">Performers</button>
 <button class="button-tickets"type="button">Program & Tickets</button>
 <button class="button-venues"type="button">Venues</button>

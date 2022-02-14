@@ -444,7 +444,10 @@ canvas {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-between;
+}
+
+.overview-info div {
+    margin: 0 0 10px 0;
 }
 
 .overview-image {

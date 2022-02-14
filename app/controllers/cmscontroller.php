@@ -20,6 +20,7 @@ class CmsController extends Controller {
 
     public function overview() {
         $model = $this->cmsService->getEvent($_GET['event']);
+        $modelList = $this->cmsService->getEventItems($model->Event_ID);
         require __DIR__ . '/../views/cms/overview.php';
     }
 

@@ -15,8 +15,7 @@ $event = $_GET['event'];
     <div class="form-item">
             <label for="">Event name:</label>
             
-            <!-- <input type="text" name="" value="<?php echo ucfirst($model->Name) ?> event"> -->
-            <input type="text" name="" value="Jazz event">
+            <input type="text" name="" value="<?php echo ucfirst($model->Name) ?> event">
             
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
@@ -25,19 +24,15 @@ $event = $_GET['event'];
         <div class="form-item">
             <label for="">Description:</label>
             
-            <!-- <textarea name="" rows="6"><?php echo $model->Description ?></textarea> -->
-            <textarea name="" rows="6"></textarea>
-
+            <textarea name="" rows="6"><?php echo $model->Description ?></textarea>
+            
         </div>
         
         <div class="form-item lower-form-img">
             <label for="">Date:</label>
             
-            <!-- <input type="text" name="" value="<?php echo $model->StartDate ?>">
-            <input type="text" name="" value="<?php echo $model->EndDate ?>"> -->
-
-            <input type="text" name="" value="2022-07-27">
-            <input type="text" name="" value="2022-07-31">
+            <input type="text" name="" value="<?php echo $model->StartDate ?>">
+            <input type="text" name="" value="<?php echo $model->EndDate ?>">
 
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
@@ -94,33 +89,17 @@ $event = $_GET['event'];
                 <th>Price</th>
                 <th>Edit</th>
             </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>Gumbo Kings</td>
-                <td>18:00 - 19:00</td>
-                <td>Patronaat</td>
-                <td>Main Hall</td>
-                <td>15.00 ,-</td>
-                <td><a href=""><img src="/icons/cms-table-edit.png" alt=""></a></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>Evolve</td>
-                <td>19:30 - 20:30</td>
-                <td>Patronaat</td>
-                <td>Main Hall</td>
-                <td>15.00 ,-</td>
-                <td><a href=""><img src="/icons/cms-table-edit.png" alt=""></a></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>Njtam Rosie</td>
-                <td>21:00 - 22:00</td>
-                <td>Patronaat</td>
-                <td>Main Hall</td>
-                <td>15.00 ,-</td>
-                <td><a href=""><img src="/icons/cms-table-edit.png" alt=""></a></td>
-            </tr>
+            <?php foreach ($modelList as $item) {?>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td><?php echo $item->Name ?></td>
+                    <td><?php echo $item->Start_Time ?> - <?php echo $item->End_Time ?></td>
+                    <td><?php echo $item->Location_ID ?></td>
+                    <td><?php echo $item->Location_ID ?></td>
+                    <td><?php echo $item->Ticket_Price ?> ,-</td>
+                    <td><a href=""><img src="/icons/cms-table-edit.png" alt=""></a></td>
+                </tr>
+            <?php } ?>
         </table>
         </div>
 </section>

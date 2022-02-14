@@ -17,4 +17,9 @@ class CmsService {
         $repository = new CmsRepository();
         return $repository->getEvent($name);
     }
+
+    public function getEventItems($id) {
+        $repository = new CmsRepository();
+        return $repository->getEventItems($id);
+    }
 }

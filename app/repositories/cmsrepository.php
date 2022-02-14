@@ -2,6 +2,7 @@
 
 require __DIR__ . '/repository.php';
 require __DIR__ . '/../models/event.php';
+require __DIR__ . '/../models/Event_item.php';
 
 class CmsRepository extends Repository
 {
@@ -64,7 +65,10 @@ class CmsRepository extends Repository
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->bindParam('eventID', $id);
-            // to do ....
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'event_item');
+            return $stmt->fetchAll();
 
 
         } catch(PDOException $e) {

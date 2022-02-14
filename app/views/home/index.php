@@ -1,11 +1,11 @@
 <?php
 require __DIR__ . '/../components/head.php';
-require __DIR__ . '/../components/nav-homepage.php';
+require __DIR__ . '/../components/navigation/nav-homepage.php';
 ?>
 <body>
     <header>
         <div class="banner-container">
-            <img id="banner-picture" src="/pictures/HomePageBanner.png" alt="Haarlem Festival"/>
+            <img id="banner-picture" src="/images/banner/HomePageBanner.png" alt="Haarlem Festival"/>
             <div class="banner-text">
                 <h1>Haarlem Festival</h1>
             </div>
@@ -20,11 +20,11 @@ require __DIR__ . '/../components/nav-homepage.php';
                 With its ancient buildings, cobbled streets and winding waterways, the medieval city of Haarlem is one of the most photogenic destinations in the Netherlands. 
                 </p>
             </div>
-            <img src="/pictures/tower.png" alt="Stadhuis haarlem">
+            <img src="/images/homepage/tower.png" alt="Stadhuis haarlem">
         </article>
 
         <article class="article-flex">
-            <img class="article-picture"src="/pictures/collage.png" alt="Event collage">
+            <img class="article-picture"src="/images/homepage/collage.png" alt="Event collage">
             <div id="events" class="article-text-flex">
                 <H1>Events</H1>
                 <p>

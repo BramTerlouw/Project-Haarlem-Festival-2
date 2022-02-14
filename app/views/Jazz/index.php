@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../components/head.php';
-require __DIR__ . '/../components/nav-website.php';
+require __DIR__ . '/../components/navigation/nav-website.php';
 ?>
 
 <div class="Banner-jazz">

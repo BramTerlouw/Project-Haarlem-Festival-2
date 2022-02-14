@@ -85,7 +85,6 @@ $event = $_GET['event'];
                 <th>Activity name</th>
                 <th>Time</th>
                 <th>Location</th>
-                <th>Hall</th>
                 <th>Price</th>
                 <th>Edit</th>
             </tr>
@@ -94,7 +93,6 @@ $event = $_GET['event'];
                     <td><input type="checkbox" name="" id=""></td>
                     <td><?php echo $item->Name ?></td>
                     <td><?php echo $item->Start_Time ?> - <?php echo $item->End_Time ?></td>
-                    <td><?php echo $item->Location_ID ?></td>
                     <td><?php echo $item->Location_ID ?></td>
                     <td><?php echo $item->Ticket_Price ?> ,-</td>
                     <td><a href=""><img src="/icons/cms-table-edit.png" alt=""></a></td>

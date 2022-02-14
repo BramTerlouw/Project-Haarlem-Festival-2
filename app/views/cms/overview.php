@@ -40,9 +40,12 @@ $uriEvent = $_GET['event'];
         <div class="form-item lower-form-img">
             <label for="">Location(s):</label>
             
-            <?php foreach ($locArr as $location) { ?>
-            <p><strong>$<?php echo $location ?></strong></p>
-            <?php } ?>
+            <?php 
+            if (isset($locArr)) {
+                foreach ($locArr as $location) { ?>
+                <p><strong>$<?php echo $location ?></strong></p>
+                <?php }
+            } ?>
             
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>

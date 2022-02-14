@@ -26,8 +26,9 @@ class CmsController extends Controller {
         // get list of all locations used
         $locationIDs = [];
         foreach ($itemArr as $item) { array_push($locationIDs, $item->Location_ID); }
+        if (sizeof($locationIDs) > 0) {
         $locArr = $this->cmsService->getEventLocations($locationIDs);
-
+        }
         require __DIR__ . '/../views/cms/overview.php';
     }
 

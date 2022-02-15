@@ -590,7 +590,7 @@ canvas {
     overflow-y: auto;
 }
 
-table {
+.event-item-table {
     width: 100%;
     font-size: 1.2rem;
     font-weight: bold;
@@ -602,23 +602,23 @@ table {
     overflow: auto;
 }
 
-tr:nth-child(even) {
+.event-item-table tr:nth-child(even) {
     background-color: var(--table-accent);
   }
 
-th {
+  .event-item-table th {
     position: sticky; 
     top: 0;
     padding: 15px 0 15px 5px;
     font-size: 1.3rem;
 }
 
-td {
+.event-item-table td {
     padding: 5px 0 5px 5px;
     font-style: italic;
 }
 
-table img {
+.event-item-table img {
     width: 35px;
     height: 35px;
     border-radius: 3px;

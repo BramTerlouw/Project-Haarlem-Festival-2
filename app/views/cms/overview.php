@@ -85,7 +85,7 @@ $uriEvent = $_GET['event'];
 
     </div>
     <div class="table-wrapper">
-        <table>
+        <table class="event-item-table">
             <tr>
                 <th></th>
                 <th>Activity name</th>

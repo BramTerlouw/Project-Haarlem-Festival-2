@@ -31,9 +31,11 @@ require __DIR__ . '/../components/navigation/nav-website.php';
                 </tr>
             </tbody>
         </table>
-        <span class="cart-total">
-            Total: 70,00
-        </span>
+        <div class="cart-total">
+            <span class="cart-total">
+                Total: 70,00
+            </span>
+        </div>
     </div>
 
     <!-- buttons beneath cart -->

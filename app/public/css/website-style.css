@@ -413,7 +413,8 @@ article p{
 
 .cart {
 	width: 70%;
-	height: 50%;
+	height: auto;
+	min-height: 30vh;
 	
 	margin: 5% auto 0 auto;
 	padding: 10px;
@@ -513,7 +514,7 @@ font-weight: lighter;
 }
 .cart span {
 	margin: 10px 0;
-	float: right;
+	/* float: right; */
 
 	font-size: 1.2rem;
 	font-weight: bold;

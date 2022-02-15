@@ -8,6 +8,32 @@ require __DIR__ . '/../components/navigation/nav-website.php';
     <!-- cart -->
     <div class="cart">
         <h1 class="cart-header">Your shopping cart:</h1>
+        <table class="cart-table">
+            <thead class="cart-thead">
+                <tr>
+                    <th>Activity name</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Price</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody class="cart-tbody">
+                <tr>
+                    <td>All-access Jazz</td>
+                    <td>Patronaat</td>
+                    <td>29 July</td>
+                    <td>18:00-19:00</td>
+                    <td>35,00 X</td>
+                    <td><input type="number" name="" id="" value="2"></td>
+                    <td>70</td>
+                </tr>
+            </tbody>
+        </table>
+        <span class="cart-total">
+            Total: 70,00
+        </span>
     </div>
 
     <!-- buttons beneath cart -->

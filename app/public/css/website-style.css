@@ -411,12 +411,6 @@ article p{
 	overflow-x: hidden;
 }
 
-.cart-container h2 {
-	width: 45vw;
-	margin: 0 auto;
-	color: white;
-}
-
 .cart {
 	width: 70%;
 	height: 50%;
@@ -433,6 +427,9 @@ article p{
 	font-weight: bold;
 }
 
+
+
+/* ## cart buttons beneath cart */
 .cart-bottom-container {
 	width: 70%;
 	height: 100px;
@@ -458,14 +455,24 @@ article p{
 	font-weight: bold;
 }
 
+
+/* ## cart slider section */
+.cart-container h2 {
+	width: 45vw;
+	margin: 0 auto;
+	color: white;
+}
+
 .cart-recommended-container {
 	width: 50vw;
 	margin: 0 auto;
+	
 	display: flex;
 }
 
 .cart-recommended-container button {
 	margin: 0 5px;
+
 	font-size: 2.5rem;
 	font-weight: bold;
 
@@ -490,4 +497,26 @@ article p{
 	color: white;
 	background-color: #151523;
 	
- }
+}
+
+
+.cart-table {
+	background-color: #151523;
+	color: white;
+}
+.cart-table input {
+	width: 15%;
+	font-size: 1.2rem;
+}
+.cart-tbody {
+font-weight: lighter;
+}
+.cart span {
+	margin: 10px 0;
+	float: right;
+
+	font-size: 1.2rem;
+	font-weight: bold;
+
+	color: white;
+}

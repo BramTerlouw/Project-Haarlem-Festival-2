@@ -43,7 +43,7 @@ $uriEvent = $_GET['event'];
             <?php 
             if (isset($locArr)) {
                 foreach ($locArr as $location) { ?>
-                <p><strong>$<?php echo $location ?></strong></p>
+                <strong><?php echo $location ?></strong>
                 <?php }
             } ?>
             

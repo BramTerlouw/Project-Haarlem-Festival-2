@@ -32,6 +32,11 @@ class CmsController extends Controller {
         require __DIR__ . '/../views/cms/overview.php';
     }
 
+    public function eventItem() {
+        // $event_Item = $this->cmsService->getEventItem($_GET['id']);
+        require __DIR__ . '/../views/cms/EventItem.php';
+    }
+
     public function loginValidation() {
         
         // check for POST var

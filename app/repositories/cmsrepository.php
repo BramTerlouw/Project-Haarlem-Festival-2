@@ -91,4 +91,18 @@ class CmsRepository extends Repository
             echo $e;
         }
     }
+
+    public function getEVentItem($id) {
+        // try {
+        //     $sqlquery = "SELECT * FROM Event_Item WHERE Event_Item_ID=:id";
+        //     $stmt = $this->connection->prepare($sqlquery);
+
+        //     $stmt->bindParam('id', $id);
+
+        //     $stmt->setFetchMode(PDO::FETCH_CLASS, 'event_item');
+        //     return $stmt->fetchAll();
+        // } catch (PDOException $e) {
+        //     echo $e;
+        // }
+    }
 }

@@ -29,6 +29,15 @@ require __DIR__ . '/../components/navigation/nav-website.php';
                     <td><input type="number" name="" id="" value="2"></td>
                     <td>70</td>
                 </tr>
+                <tr>
+                    <td>All-access Jazz</td>
+                    <td>Patronaat</td>
+                    <td>29 July</td>
+                    <td>18:00-19:00</td>
+                    <td>35,00 X</td>
+                    <td><input type="number" name="" id="" value="2"></td>
+                    <td>70</td>
+                </tr>
             </tbody>
         </table>
         <div class="cart-total">
@@ -41,7 +50,7 @@ require __DIR__ . '/../components/navigation/nav-website.php';
     <!-- buttons beneath cart -->
     <div class="cart-bottom-container">
         <div>
-            <a class="cart-bottom-btn" href="#">Back</a>
+            <a class="cart-bottom-btn" href="/">Back</a>
         </div>
         <div>
             <a class="cart-bottom-btn" href="#">Share</a>

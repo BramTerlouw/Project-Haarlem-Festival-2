@@ -101,7 +101,7 @@ $uriEvent = $_GET['event'];
                     <td><?php echo $item->Start_Time ?> - <?php echo $item->End_Time ?></td>
                     <td><?php echo $item->Location_ID ?></td>
                     <td><?php echo $item->Ticket_Price ?> ,-</td>
-                    <td><a href=""><img src="/icons/cms-table-edit.png" alt=""></a></td>
+                    <td><a href="/cms/eventItem?id=<?php echo $item->EventItem_ID?>"><img src="/icons/cms-table-edit.png" alt=""></a></td>
                 </tr>
             <?php } ?>
         </table>

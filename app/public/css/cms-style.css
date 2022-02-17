@@ -315,7 +315,7 @@ canvas {
 
     background-color: var(--form-input-bg);
 }
-.form-item label {
+.form-item label , .form-item-dropdwn label {
     width: 100%;
     color: var(--form-input-border);
 }
@@ -338,6 +338,10 @@ canvas {
     left: 92%;
 
     pointer-events: none;
+}
+
+.form-item p {
+    width: 100%;
 }
 
 
@@ -622,4 +626,46 @@ canvas {
     width: 35px;
     height: 35px;
     border-radius: 3px;
+}
+
+
+
+
+.eventItem-info-container {
+    width: 100%;
+    min-height: 40vh; /* mag later weg */
+    border: 1px solid green;
+
+    padding: 0 1vw;
+
+    display: flex;
+}
+
+.eventItem-info {
+    width: 60%;
+    max-height: 40vh;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.eventItem-info h1 {
+    width: 100%;
+    margin: 5px;
+}
+
+.eventItem-picture {
+    width: 40%;
+    height: 100px;
+    border: 1px solid red;
+}
+
+
+
+.eventItem-progam-container {
+    width: 100%;
+    min-height: 40vh; /* mag later weg */
+    background-color: var(--main-green);
 }

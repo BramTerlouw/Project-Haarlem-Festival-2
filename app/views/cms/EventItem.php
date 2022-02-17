@@ -3,12 +3,9 @@ require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/navigation/nav-cms.php';
 ?>
 
-<?php echo $_GET['id']; ?>
-
+<h1>Program item information:</h1>
 <section class="eventItem-info-container">
     <div class="eventItem-info">
-        
-        <h1>Program item information:</h1>
         
         <div class="form-item">
             <label for="">Name activity:</label>
@@ -42,17 +39,83 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
         <div class="form-item">
             <label for="">Description:</label>
             
-            <textarea name="" rows="6">this is a Description</textarea>
-            
+            <textarea class="test" name="" rows="6">this is a Description</textarea>
         </div>
         
     </div>
     <div class="eventItem-picture"></div>
 </section>
 
-<!-- <section class="eventItem-progam-container">
+<section class="eventItem-progam-container">
+    <div class="eventItem-program-datetimepicker">
+        <h1>Date & time information:</h1>
+        <div class="form-item-dropdwn">
+            <label for="">Date:</label>
 
-</section> -->
+            <select name="" id="">
+                <option value="">Kaas</option>
+                <option value="">Kees</option>
+            </select>
+        </div>
+        <div class="form-item-dropdwn">
+            <label for="">Timeslot:</label>
+
+            <select name="" id="">
+                <option value="">Kaas</option>
+                <option value="">Kees</option>
+            </select>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Activity name</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Fox & the Mayors</td>
+                <td>18:00 - 19:00</td>
+                <td>Patronaat</td>
+                <td>15,00 ,-</td>
+            </tr>
+            <tr>
+                <td>Fox & the Mayors</td>
+                <td>18:00 - 19:00</td>
+                <td>Patronaat</td>
+                <td>15,00 ,-</td>
+            </tr>
+            <tr>
+                <td>Fox & the Mayors</td>
+                <td>18:00 - 19:00</td>
+                <td>Patronaat</td>
+                <td>15,00 ,-</td>
+            </tr>
+            <tr>
+                <td>Fox & the Mayors</td>
+                <td>18:00 - 19:00</td>
+                <td>Patronaat</td>
+                <td>15,00 ,-</td>
+            </tr>
+            <tr>
+                <td>Fox & the Mayors</td>
+                <td>18:00 - 19:00</td>
+                <td>Patronaat</td>
+                <td>15,00 ,-</td>
+            </tr>
+            <tr>
+                <td>Fox & the Mayors</td>
+                <td>18:00 - 19:00</td>
+                <td>Patronaat</td>
+                <td>15,00 ,-</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
 
 </main> <!-- close main tag from cms nav -->

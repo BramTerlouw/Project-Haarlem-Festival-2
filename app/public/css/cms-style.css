@@ -9,7 +9,7 @@
     --white: #FFFFFF;
     --black: #000000;
 
-    --table-accent: #B4C5E4;
+    --table-accent: #CCD3E6;
   }
 
 * {
@@ -633,33 +633,34 @@ canvas {
 
 .eventItem-info-container {
     width: 100%;
-    min-height: 40vh; /* mag later weg */
-    border: 1px solid green;
-
     padding: 0 1vw;
 
     display: flex;
+
+    /* border: 1px solid green; */
 }
 
 .eventItem-info {
     width: 60%;
-    max-height: 40vh;
-    border: 1px solid black;
+    max-height: 35vh;
 
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+
+}
+
+.eventItem-info div {
+    margin: 0 0 10px 0;
 }
 
 .eventItem-info h1 {
-    width: 100%;
     margin: 5px;
 }
 
 .eventItem-picture {
     width: 40%;
-    height: 100px;
-    border: 1px solid red;
+    min-height: 35vh;
 }
 
 
@@ -667,5 +668,51 @@ canvas {
 .eventItem-progam-container {
     width: 100%;
     min-height: 40vh; /* mag later weg */
+    flex-grow: 1;
+}
+
+.eventItem-program-datetimepicker {
+    width: 100%;
+    padding: 0 0 0 20px;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.eventItem-program-datetimepicker h1 {
+    width: 100%;
+    margin: 0px;
+}
+
+.eventItem-progam-container table {
+    width: 60%;
+    margin: 20px 0 0 20px;
+    border-collapse: collapse;
+
+    background-color: var(--form-input-bg);
+    border: 2px solid var(--main-lightblue);
+
+    text-align: left;
+    font-weight: bold;
+}
+
+.eventItem-progam-container th {
+    padding: 15px 0 15px 5px;
+    font-size: 1.3rem;
+    border-bottom: 2px solid var(--main-lightblue);
+}
+
+.eventItem-progam-container td {
+    padding: 5px 0 5px 5px;
+    font-size: 1.2rem;
+}
+
+.eventItem-progam-container tbody tr:nth-child(odd) {
+    background-color: var(--table-accent);
+  }
+
+.eventItem-progam-container tbody tr:hover {
     background-color: var(--main-green);
+    font-weight: bold;
 }

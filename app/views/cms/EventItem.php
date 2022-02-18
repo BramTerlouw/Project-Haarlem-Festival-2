@@ -6,7 +6,6 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
 <h1>Program item information:</h1>
 <section class="eventItem-info-container">
     <div class="eventItem-info">
-        
         <div class="form-item">
             <label for="">Name activity:</label>
 

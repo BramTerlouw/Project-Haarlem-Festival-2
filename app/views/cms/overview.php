@@ -11,45 +11,46 @@ $uriEvent = $_GET['event'];
 
     <h1 class="overview-header"><?php echo ucfirst($uriEvent) ?> Event</h1>
     <div class="overview-info">
-        
-    <div class="form-item">
-            <label for="">Event name:</label>
-            
-            <input type="text" name="" value="<?php echo ucfirst($event->Name) ?> event">
-            
-            <img src="/icons/cms-edit-form.png" alt="edit button">
-        </div>
-        
-        
-        <div class="form-item">
-            <label for="">Description:</label>
-            
-            <textarea name="" rows="6"><?php echo $event->Description ?></textarea>
-            
-        </div>
-        
-        <div class="form-item lower-form-img">
-            <label for="">Date:</label>
-            
-            <input type="text" name="" value="<?php echo $event->StartDate ?>">
-            <input type="text" name="" value="<?php echo $event->EndDate ?>">
+        <form action="">
+            <div class="form-item">
+                <label for="">Event name:</label>
 
-            <img src="/icons/cms-edit-form.png" alt="edit button">
-        </div>
-        
-        <div class="form-item lower-form-img">
-            <label for="">Location(s):</label>
-            
-            <?php 
-            if (isset($locArr)) {
-                foreach ($locArr as $location) { ?>
-                <strong><?php echo $location ?></strong>
+                <input type="text" name="" value="<?php echo ucfirst($event->Name) ?> event">
+
+                <img src="/icons/cms-edit-form.png" alt="edit button">
+            </div>
+
+
+            <div class="form-item">
+                <label for="">Description:</label>
+
+                <textarea name="" rows="6"><?php echo $event->Description ?></textarea>
+
+            </div>
+
+            <div class="form-item">
+                <label for="">Date:</label>
+
+                <input type="text" name="" value="<?php echo $event->StartDate ?>">
+                <input type="text" name="" value="<?php echo $event->EndDate ?>">
+
+                <img src="/icons/cms-edit-form.png" alt="edit button">
+            </div>
+
+            <div class="form-item">
+                <label for="">Location(s):</label>
+
+                <?php
+                if (isset($locArr)) {
+                    foreach ($locArr as $location) { ?>
+                        <strong><?php echo $location ?></strong>
                 <?php }
-            } ?>
-            
-            <img src="/icons/cms-edit-form.png" alt="edit button">
-        </div>
+                } ?>
+
+                <a href="/cms/locations"><img class="clickable" src="/icons/cms-edit-form.png" alt="edit button"></a>
+            </div>
     </div>
+    </form>
 
     <div class="overview-image">
         <div class="placeholder-image"></div>
@@ -94,18 +95,18 @@ $uriEvent = $_GET['event'];
                 <th>Price</th>
                 <th>Edit</th>
             </tr>
-            <?php foreach ($itemArr as $item) {?>
+            <?php foreach ($itemArr as $item) { ?>
                 <tr>
                     <td><input type="checkbox" name="" id=""></td>
                     <td><?php echo $item->Name ?></td>
                     <td><?php echo $item->Start_Time ?> - <?php echo $item->End_Time ?></td>
                     <td><?php echo $item->Location_ID ?></td>
                     <td><?php echo $item->Ticket_Price ?> ,-</td>
-                    <td><a href="/cms/eventItem?id=<?php echo $item->EventItem_ID?>"><img src="/icons/cms-table-edit.png" alt=""></a></td>
+                    <td><a href="/cms/eventItem?id=<?php echo $item->EventItem_ID ?>"><img src="/icons/cms-table-edit.png" alt=""></a></td>
                 </tr>
             <?php } ?>
         </table>
-        </div>
+    </div>
 </section>
 </main> <!-- close main tag from cms nav -->
 </div> <!-- close div of whole container from cms nav -->

@@ -345,6 +345,8 @@ canvas {
 }
 
 
+
+
 /* ## radio button section of personal info form */
 .form-item-radiobtn {
     width: 350px;
@@ -438,6 +440,10 @@ canvas {
 
 .overview-header {
     width: 100%;
+}
+
+.form-item .clickable {
+    pointer-events: all;
 }
 
 .overview-info {
@@ -578,11 +584,6 @@ canvas {
     background-color: var(--form-input-bg);
 }
 
-
-.lower-form-img img {
-    bottom: 5px;
-}
-
 .lower-form-img strong {
     width: 100%;
 }
@@ -636,8 +637,6 @@ canvas {
     padding: 0 1vw;
 
     display: flex;
-
-    /* border: 1px solid green; */
 }
 
 .eventItem-info {
@@ -715,4 +714,40 @@ canvas {
 .eventItem-progam-container tbody tr:hover {
     background-color: var(--main-green);
     font-weight: bold;
+}
+
+
+
+
+/* ## locations cms */
+
+.locations-container {
+    width: 80%;
+    height: 80vh;
+    margin: 10px 0 0 20px;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    overflow-y: scroll;
+}
+
+.location-item {
+    width: 20%;
+    height: 30%;
+    border: 1px solid blue;
+    margin: 20px 2.5%;
+    padding: 10px;
+}
+
+.location-img {
+    width: 100%;
+    height: 50%;
+    background-color: lightgray;
+}
+
+.location-form {
+
 }

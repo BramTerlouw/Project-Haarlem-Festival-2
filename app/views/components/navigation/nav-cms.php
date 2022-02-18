@@ -24,7 +24,7 @@
                 <a id="no-pointer" href="">Dance</a>
                 <div class="cms-nav-dropdown-content">
                     <a href="/cms/overview?event=dance">- Overview</a>
-                    <a href="#">- Tickets</a>
+                    <a href="/cms/tickets?event=dance">- Tickets</a>
                 </div>
             </li>
 
@@ -33,7 +33,7 @@
                 <a id="no-pointer" href="">Jazz</a>
                 <div class="cms-nav-dropdown-content">
                     <a href="/cms/overview?event=jazz">- Overview</a>
-                    <a href="#">- Tickets</a>
+                    <a href="/cms/tickets?event=jazz">- Tickets</a>
                 </div>
             </li>
 
@@ -49,12 +49,12 @@
 
             <li class="cms-nav-item">
                 <img class="cms-nav-icon" src="/icons/cms-new-archive.png" alt="home icon">
-                <a href="#">New / Archive</a>
+                <a href="/cms/orders">Orders</a>
             </li>
             
             <li class="cms-nav-item">
                 <img class="cms-nav-icon" src="/icons/cms-users.png" alt="home icon">
-                <a href="#">Users</a>
+                <a href="/user/index">Users</a>
             </li>
         </ul>
     </nav>

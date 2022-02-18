@@ -18,6 +18,23 @@ class CmsController extends Controller {
         require __DIR__ . '/../views/cms/login.php';
     }
 
+    public function eventItem() {
+        // $event_Item = $this->cmsService->getEventItem($_GET['id']);
+        require __DIR__ . '/../views/cms/EventItem.php';
+    }
+
+    public function locations() {
+        require __DIR__ . '/../views/cms/location.php';
+    }
+
+    public function orders() {
+        require __DIR__ . '/../views/cms/order.php';
+    }
+
+    public function tickets() {
+        require __DIR__ . '/../views/cms/ticket.php';
+    }
+
     public function overview() {
         // get event and list of event items
         $event = $this->cmsService->getEvent($_GET['event']);
@@ -30,11 +47,6 @@ class CmsController extends Controller {
         $locArr = $this->cmsService->getEventLocations($locationIDs);
         }
         require __DIR__ . '/../views/cms/overview.php';
-    }
-
-    public function eventItem() {
-        // $event_Item = $this->cmsService->getEventItem($_GET['id']);
-        require __DIR__ . '/../views/cms/EventItem.php';
     }
 
     public function loginValidation() {

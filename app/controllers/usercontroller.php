@@ -14,5 +14,9 @@ class UserController extends Controller {
         $model = $this->userService->getUser();
         require __DIR__ . '/../views/user/personal.php';
     }
+
+    public function index() {
+        require __DIR__ . '/../views/user/index.php';
+    }
 }
 ?>

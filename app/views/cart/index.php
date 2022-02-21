@@ -38,6 +38,15 @@ require __DIR__ . '/../components/navigation/nav-website.php';
                     <td><input type="number" name="" id="" value="2"></td>
                     <td>70</td>
                 </tr>
+                <tr>
+                    <td>Reservation</td>
+                    <td>Spektakel</td>
+                    <td>29 July</td>
+                    <td>20:00</td>
+                    <td>120,00</td>
+                    <td><button>Edit</button></td>
+                    <td>120</td>
+                </tr>
             </tbody>
         </table>
         <div class="cart-total">

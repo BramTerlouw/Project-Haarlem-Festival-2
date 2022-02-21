@@ -725,19 +725,18 @@ canvas {
     width: 80%;
     height: 80vh;
     margin: 10px 0 0 20px;
-    border: 1px solid black;
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .location-item {
     width: 20%;
     height: 30%;
-    border: 1px solid blue;
+    border: 1px solid var(--main-blue);
     margin: 20px 2.5%;
     padding: 10px;
 }
@@ -749,5 +748,11 @@ canvas {
 }
 
 .location-form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0 0 0;
+}
 
+.location-form label, .location-form input {
+    width: 50%;
 }

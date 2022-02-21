@@ -9,102 +9,64 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
     <div class="location-item">
         <div class="location-img"></div>
         <div class="location-form">
-            <label for=""></label>
+            <label for="">Name: </label>
             <input type="text">
-            <label for=""></label>
+            <label for="">Address: </label>
             <input type="text">
         </div>
+        <button>Edit</button>
     </div>
     <div class="location-item">
         <div class="location-img"></div>
         <div class="location-form">
+            <label for="">Name: </label>
+            <input type="text">
+            <label for="">Address: </label>
+            <input type="text">
+        </div>
+        <button>Edit</button>
+    </div>
+    <div class="location-item">
+        <div class="location-img"></div>
+        <div class="location-form">
+            <label for="">Name: </label>
+            <input type="text">
+            <label for="">Address: </label>
+            <input type="text">
+        </div>
+        <button>Edit</button>
+    </div>
+    <div class="location-item">
+        <div class="location-img"></div>
+        <div class="location-form">
+            <label for="">Name: </label>
+            <input type="text">
+            <label for="">Address: </label>
+            <input type="text">
+        </div>
+        <button>Edit</button>
+    </div>
+    <div class="location-item">
+        <div class="location-img"></div>
+        <div class="location-form">
+            <label for="">Name: </label>
+            <input type="text">
+            <label for="">Address: </label>
+            <input type="text">
+        </div>
+        <button>Edit</button>
+    </div>
+    <div class="location-item">
+        <div class="location-img"></div>
+        <div class="location-form">
+            <label for="">Name: </label>
+            <input type="text">
+            <label for="">Address: </label>
+            <input type="text">
+        </div>
+        <button>Edit</button>
+    </div>
 
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-            
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-
-        </div>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-            
-        </div>
-    </div>
 </section>
 
 </main> <!-- close main tag from cms nav -->

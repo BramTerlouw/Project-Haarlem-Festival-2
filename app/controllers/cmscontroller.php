@@ -19,7 +19,9 @@ class CmsController extends Controller {
     }
 
     public function eventItem() {
-        // $event_Item = $this->cmsService->getEventItem($_GET['id']);
+        $item = $this->cmsService->getEventItem($_GET['id']);
+        $locations = $this->cmsService->getLocations();
+        $itemPerformers = $this->cmsService->getPerformers($_GET['id']);
         require __DIR__ . '/../views/cms/EventItem.php';
     }
 
@@ -42,7 +44,7 @@ class CmsController extends Controller {
 
         // get list of all locations used
         $locationIDs = [];
-        foreach ($itemArr as $item) { array_push($locationIDs, $item->Location_ID); }
+        foreach ($itemArr as $item) { array_push($locationIDs, $item->Location); }
         if (sizeof($locationIDs) > 0) {
         $locArr = $this->cmsService->getEventLocations($locationIDs);
         }

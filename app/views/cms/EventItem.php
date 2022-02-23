@@ -9,7 +9,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
         <div class="form-item">
             <label for="">Name activity:</label>
 
-            <input type="text" name="" value="event">
+            <input type="text" name="" value="<?php echo $item->Name ?>">
 
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
@@ -19,17 +19,22 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
             <label for="">Location:</label>
 
             <select name="" id="">
-                <option value="">Kaas</option>
-                <option value="">Kees</option>
+                <? foreach ($locations as $loc) {
+                    if ($loc->Name == $item->Location) {?>
+                        <option value="<? echo $loc->Name ?>" selected><? echo $loc->Name ?></option>
+                    <? } else { ?>
+                        <option value="<? echo $loc->Name ?>"><? echo $loc->Name ?></option>
+                    <?}
+                    } ?>
             </select>
         </div>
 
 
         <div class="form-item">
             <label for="">Performers:</label>
-
-            <p><strong>performer 1</strong></p>
-            <p><strong>performer 2</strong></p>
+            <?php foreach ($itemPerformers as $performer) {?>
+                <p><strong><?php echo $performer[1] ?></strong></p>
+            <?php } ?>
 
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
@@ -38,7 +43,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
         <div class="form-item">
             <label for="">Description:</label>
             
-            <textarea class="test" name="" rows="6">this is a Description</textarea>
+            <textarea class="test" name="" rows="6"><?php echo $item->Description ?></textarea>
         </div>
         
     </div>
@@ -52,7 +57,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
             <label for="">Date:</label>
 
             <select name="" id="">
-                <option value="">Kaas</option>
+                <option value=""><? echo $item->Date ?></option>
                 <option value="">Kees</option>
             </select>
         </div>
@@ -60,7 +65,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
             <label for="">Timeslot:</label>
 
             <select name="" id="">
-                <option value="">Kaas</option>
+                <option value="<? echo $item->Start_Time . " - " . $item->End_Time?>"><? echo $item->Start_Time . " - " . $item->End_Time?></option>
                 <option value="">Kees</option>
             </select>
         </div>

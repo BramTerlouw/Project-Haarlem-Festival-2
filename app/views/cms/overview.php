@@ -43,7 +43,7 @@ $uriEvent = $_GET['event'];
                 <?php
                 if (isset($locArr)) {
                     foreach ($locArr as $location) { ?>
-                        <strong><?php echo $location ?></strong>
+                        <p><strong><?php echo $location ?></strong></p>
                 <?php }
                 } ?>
 
@@ -100,7 +100,7 @@ $uriEvent = $_GET['event'];
                     <td><input type="checkbox" name="" id=""></td>
                     <td><?php echo $item->Name ?></td>
                     <td><?php echo $item->Start_Time ?> - <?php echo $item->End_Time ?></td>
-                    <td><?php echo $item->Location_ID ?></td>
+                    <td><?php echo $item->Location ?></td>
                     <td><?php echo $item->Ticket_Price ?> ,-</td>
                     <td><a href="/cms/eventItem?id=<?php echo $item->EventItem_ID ?>"><img src="/icons/cms-table-edit.png" alt=""></a></td>
                 </tr>

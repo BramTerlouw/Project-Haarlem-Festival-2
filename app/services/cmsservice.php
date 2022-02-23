@@ -25,11 +25,19 @@ class CmsService {
         return $this->repository->getEventItems($id);
     }
 
+    public function getLocations() {
+        return $this->repository->getLocations();
+    }
+
     public function getEventLocations($locationArr) {
         return $this->repository->getEventLocations($locationArr);
     }
 
     public function getEventItem($id) {
         return $this->repository->getEVentItem($id);
+    }
+
+    public function getPerformers($id) {
+        Return $this->repository->getPerformers($id);
     }
 }

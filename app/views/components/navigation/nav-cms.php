@@ -41,7 +41,7 @@
                 <img class="cms-nav-icon" src="/icons/cms-arrow-down.png" alt="home icon">
                 <a id="no-pointer" href="">Culinary</a>
                 <div class="cms-nav-dropdown-content">
-                    <a href="/cms/overview?event=culinary">- Restaurants</a>
+                    <a href="#">- Restaurants</a>
                     <a href="#">- Reservations</a>
                 </div>
             </li>

@@ -10,9 +10,15 @@ class UserController extends Controller {
         $this->userService = new UserService;
     }
     
-    public function personal() {
-        $model = $this->userService->getOne();
-        require __DIR__ . '/../views/user/personal.php';
+    public function edit() {
+        $model = NULL;
+        if (isset($_GET['userName'])) {
+            $model = $this->userService->getOne($userName = $_GET['userName']);
+        } else {
+            $model = $this->userService->getOne($userName = $_SESSION['userName']);
+        }
+
+        require __DIR__ . '/../views/user/edit.php';
     }
 
     public function updateOne() {
@@ -44,9 +50,14 @@ class UserController extends Controller {
                 $_SESSION['role'] = $_POST['userRole'];
             }
 
-            header('Location: /user/personal');
+            header('Location: /user/edit?userName=' . $_POST['userName']);
         }
     }
+
+    public function insertOne() {
+        $this->userService->insertOne();
+    }
+
 
     public function index() {
         $users = $this->userService->getAll();

@@ -7,8 +7,8 @@
         <!-- Personal info in nav -->
         <div class="cms-dashboard-personal">
             <span class="logged-username"><?php echo $_SESSION['userName']?></span>
-            <a href="/user/personal"><?php echo $_SESSION['role'] ?></a>
-            <a href="/user/personal"><img src="/icons/cms-edit.png" alt="edit user"></a>
+            <a href="/user/edit"><?php echo $_SESSION['role'] ?></a>
+            <a href="/user/edit"><img src="/icons/cms-edit.png" alt="edit user"></a>
         </div>
 
         <!-- Unordered list of nav -->

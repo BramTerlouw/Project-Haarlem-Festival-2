@@ -8,8 +8,8 @@ class UserService {
     function __construct() {
         $this->repository = new UserRepository();
     }
-    public function getOne() {
-        return $this->repository->getOne();
+    public function getOne($userName) {
+        return $this->repository->getOne($userName);
     }
 
     public function getAll() {
@@ -18,6 +18,10 @@ class UserService {
 
     public function updateOne($userArr) {
         $this->repository->updateOne($userArr);
+    }
+
+    public function insertOne() {
+        $this->repository->insertOne();
     }
     
 }

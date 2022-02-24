@@ -28,7 +28,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
             <td><? echo $user->PhoneNumber ?></td>
             <td><? echo $user->Role ?></td>
             <td><a href="">Delete</a></td>
-            <td><a href="">Edit</a></td>
+            <td><a href="/user/edit?userName=<?echo $user->UserName ?>">Edit</a></td>
         </tr>
         <? } ?>
     </tbody>

@@ -1,45 +1,32 @@
-<?php
-require __DIR__ . '/../components/head.php';
-require __DIR__ . '/../components/navigation/nav-cms.php';
-
-function isSecureClass() {
-    if ($_SESSION['role'] == "Volunteer") echo "secure";
-}
-
-function isSecureIcon() {
-    if ($_SESSION['role'] == "Volunteer") echo "secure"; else echo "edit-form";
-}
-?>
-
 <!-- Personal information section -->
 <h1>Personal information</h1>
 <form class="personal-info-form" action="/user/updateOne" method="post">
-    <div class="form-item">
+    <div class="form-item <?php isSecureClass("false", $model->UserName)?>">
         <label for="userFullName">Full name:</label>
         <input type="text" name="userFullName" value="<?php echo $model->FullName ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
-    <div class="form-item">
+    <div class="form-item <?php isSecureClass("false", $model->UserName)?>">
         <label for="userCity">City:</label>
         <input type="text" name="userCity" value="<?php echo $model->City ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
-    <div class="form-item">
+    <div class="form-item <?php isSecureClass("false", $model->UserName)?>">
         <label for="userName">Username:</label>
         <input type="text" name="userName" value="<?php echo $model->UserName ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
-    <div class="form-item">
+    <div class="form-item <?php isSecureClass("false", $model->UserName)?>">
         <label for="userPostcode">Postcode:</label>
         <input type="text" name="userPostcode" value="<?php echo $model->PostCode ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
-    <div class="form-item">
+    <div class="form-item <?php isSecureClass("false", $model->UserName)?>">
         <label for="userBD">Birthdate:</label>
         <input type="date" name="userBD" value="<?php echo $model->BirthDate ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
-    <div class="form-item">
+    <div class="form-item <?php isSecureClass("false", $model->UserName)?>">
         <label for="userAddress">Address:</label>
         <input type="text" name="userAddress" value="<?php echo $model->Address ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
@@ -57,7 +44,7 @@ function isSecureIcon() {
         <label for="gender-other">Other</label><br>
     </div>
 
-    <div class="form-item <?php isSecureClass()?>">
+    <div class="form-item <?php isSecureClass("true", $model->UserName)?>">
         <label for="userSuperV">Supervisor:</label>
         <input type="text" name="userSuperV" value="<?php echo $model->Supervisor ?>">
         <img src="/icons/cms-<?php isSecureIcon()?>.png" alt="edit button">
@@ -74,12 +61,12 @@ function isSecureIcon() {
 
     <!-- Contact information section -->
     <h1>Contact information</h1>
-    <div class="form-item">
+    <div class="form-item <?php isSecureClass("false", $model->UserName)?>">
         <label for="userEmail">Email address:</label>
         <input type="email" name="userEmail" value="<?php echo $model->Email ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
-    <div class="form-item">
+    <div class="form-item <?php isSecureClass("false", $model->UserName)?>">
         <label for="userPhone">Phone number:</label>
         <input type="text" name="userPhone" value="<?php echo $model->PhoneNumber ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
@@ -92,7 +79,7 @@ function isSecureIcon() {
 
     <!-- Password recovery section -->
     <h1>Password recovery</h1>
-    <div class="form-item <?php isSecureClass()?>">
+    <div class="form-item <?php isSecureClass("true", $model->UserName)?>">
         <label for="userPw">Current password:</label>
         <input type="password" name="userPw" value="<?php echo $model->Password ?>">
         <img src="/icons/cms-<?php isSecureIcon()?>.png" alt="edit button">
@@ -108,5 +95,3 @@ function isSecureIcon() {
         </button>
     </div>
 </form>
-</main> <!-- close main tag from cms nav -->
-</div>  <!-- close div of whole container from cms nav -->

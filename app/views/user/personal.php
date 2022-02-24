@@ -13,35 +13,35 @@ function isSecureIcon() {
 
 <!-- Personal information section -->
 <h1>Personal information</h1>
-<form class="personal-info-form" action="" method="post">
+<form class="personal-info-form" action="/user/updateOne" method="post">
     <div class="form-item">
-        <label for="">Full name:</label>
-        <input type="text" name="" value="<?php echo $model->FullName ?>">
+        <label for="userFullName">Full name:</label>
+        <input type="text" name="userFullName" value="<?php echo $model->FullName ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
-        <label for="">City:</label>
-        <input type="text" name="" value="<?php echo $model->City ?>">
+        <label for="userCity">City:</label>
+        <input type="text" name="userCity" value="<?php echo $model->City ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
-        <label for="">Username:</label>
-        <input type="text" name="" value="<?php echo $model->UserName ?>">
+        <label for="userName">Username:</label>
+        <input type="text" name="userName" value="<?php echo $model->UserName ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
-        <label for="">Postcode:</label>
-        <input type="text" name="" value="<?php echo $model->PostCode ?>">
+        <label for="userPostcode">Postcode:</label>
+        <input type="text" name="userPostcode" value="<?php echo $model->PostCode ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
-        <label for="">Birthdate:</label>
-        <input type="date" name="" value="<?php echo $model->BirthDate ?>">
+        <label for="userBD">Birthdate:</label>
+        <input type="date" name="userBD" value="<?php echo $model->BirthDate ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
-        <label for="">Address:</label>
-        <input type="text" name="" value="<?php echo $model->Address ?>">
+        <label for="userAddress">Address:</label>
+        <input type="text" name="userAddress" value="<?php echo $model->Address ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
 
@@ -58,39 +58,43 @@ function isSecureIcon() {
     </div>
 
     <div class="form-item <?php isSecureClass()?>">
-        <label for="">Supervisor:</label>
-        <input type="text" name="" value="<?php echo $model->Supervisor ?>">
+        <label for="userSuperV">Supervisor:</label>
+        <input type="text" name="userSuperV" value="<?php echo $model->Supervisor ?>">
         <img src="/icons/cms-<?php isSecureIcon()?>.png" alt="edit button">
     </div>
-    <div class="form-item <?php isSecureClass()?>">
-        <label for="">Role:</label>
-        <input type="text" name="" value="<?php echo $model->Role ?>">
-        <img src="/icons/cms-<?php isSecureIcon()?>.png" alt="edit button">
+    
+    <div class="form-item-dropdwn">
+        <label for="userRole">Role:</label>
+        <select name="userRole" <? if ($_SESSION['role'] == "Volunteer") echo "disabled" ?>>
+            <option value="Volunteer" <? if ($_SESSION['role'] == "Volunteer") echo "selected" ?>>Volunteer</option>
+            <option value="Admin" <? if ($_SESSION['role'] == "Admin") echo "selected" ?>>Admin</option>
+            <option value="Superadmin" <? if ($_SESSION['role'] == "Superadmin") echo "selected" ?>>Superadmin</option>
+            </select>
     </div>
 
     <!-- Contact information section -->
     <h1>Contact information</h1>
     <div class="form-item">
-        <label for="">Email address:</label>
-        <input type="email" name="" value="<?php echo $model->Email ?>">
+        <label for="userEmail">Email address:</label>
+        <input type="email" name="userEmail" value="<?php echo $model->Email ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
     <div class="form-item">
-        <label for="">Phone number:</label>
-        <input type="text" name="" value="<?php echo $model->PhoneNumber ?>">
+        <label for="userPhone">Phone number:</label>
+        <input type="text" name="userPhone" value="<?php echo $model->PhoneNumber ?>">
         <img src="/icons/cms-edit-form.png" alt="edit button">
     </div>
-    <div class="form-item <?php isSecureClass()?>">
-        <label for="">ID:</label>
-        <input type="text" name="" value="<?php echo $model->User_ID ?>">
+    <div class="form-item secure">
+        <label for="userID">ID:</label>
+        <input type="text" name="userID" value="<?php echo $model->User_ID ?>">
         <img src="/icons/cms-<?php isSecureIcon()?>.png" alt="edit button">
     </div>
 
     <!-- Password recovery section -->
     <h1>Password recovery</h1>
     <div class="form-item <?php isSecureClass()?>">
-        <label for="">Current password:</label>
-        <input type="password" name="" value="<?php echo $model->Password ?>">
+        <label for="userPw">Current password:</label>
+        <input type="password" name="userPw" value="<?php echo $model->Password ?>">
         <img src="/icons/cms-<?php isSecureIcon()?>.png" alt="edit button">
     </div>
 
@@ -99,7 +103,7 @@ function isSecureIcon() {
         <a href="/cms">Cancel
             <img src="/icons/cms-cancel.png" alt="cancel icon">
         </a>
-        <button type="submit">Save changes
+        <button name="submit" type="submit">Save changes
             <img src="/icons/cms-save.png" alt="cancel icon">
         </button>
     </div>

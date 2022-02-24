@@ -11,11 +11,12 @@ class UserController extends Controller {
     }
     
     public function personal() {
-        $model = $this->userService->getUser();
+        $model = $this->userService->getOne();
         require __DIR__ . '/../views/user/personal.php';
     }
 
     public function index() {
+        $users = $this->userService->getAll();
         require __DIR__ . '/../views/user/index.php';
     }
 }

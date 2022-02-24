@@ -4,7 +4,7 @@ require __DIR__ . '/repository.php';
 require __DIR__ . '/../models/user.php';
 
 class UserRepository extends Repository {
-    public function getUser() {
+    public function getOne() {
         try {
             $sqlquery = "SELECT * FROM User WHERE UserName=:userName";
             $stmt = $this->connection->prepare($sqlquery);
@@ -14,6 +14,22 @@ class UserRepository extends Repository {
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
             return $stmt->fetch();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getAll() {
+        try {
+
+            $sqlquery = "SELECT * FROM User";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
+            return $stmt->fetchAll();
 
         } catch (PDOException $e) {
             echo $e;

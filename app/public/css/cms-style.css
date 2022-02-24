@@ -696,22 +696,24 @@ canvas {
     font-weight: bold;
 }
 
-.eventItem-progam-container th {
+.eventItem-progam-container th, .users-table th {
     padding: 15px 0 15px 5px;
     font-size: 1.3rem;
     border-bottom: 2px solid var(--main-lightblue);
 }
 
-.eventItem-progam-container td {
+.eventItem-progam-container td, .users-table td {
     padding: 5px 0 5px 5px;
     font-size: 1.2rem;
 }
 
-.eventItem-progam-container tbody tr:nth-child(odd) {
+.eventItem-progam-container tbody tr:nth-child(odd),
+.users-table tbody tr:nth-child(odd) {
     background-color: var(--table-accent);
   }
 
-.eventItem-progam-container tbody tr:hover {
+.eventItem-progam-container tbody tr:hover,
+.users-table tbody tr:hover {
     background-color: var(--main-green);
     font-weight: bold;
 }
@@ -755,4 +757,49 @@ canvas {
 
 .location-form label, .location-form input {
     width: 50%;
+}
+
+
+
+
+.users-table-container {
+    width: 95%;
+    max-height: 50vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.users-table {
+    width: 100%;
+    margin: 0 0 0 20px;
+    border-collapse: collapse;
+
+    border: 1px solid var(--main-lightblue);
+    background-color: var(--form-input-bg);
+    text-align: left;
+}
+
+.users-table thead {
+    position: sticky; 
+    top: 0px; 
+    z-index: 100;
+    background-color: var(--form-input-bg);
+}
+
+
+
+
+.users-table-btnContainer {
+    width: 95%;
+    margin: 20px 0 0 20px;
+
+    display: flex;
+}
+
+.users-table-btnContainer a {
+    border: 1px solid var(--main-blue);
+    padding: 5px 7px;
+    margin: 0 2% 0 0;
+
+    text-decoration: none;
 }

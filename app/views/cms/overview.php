@@ -1,6 +1,12 @@
 <?php
 require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/navigation/nav-cms.php';
+
+function converseDate($date)
+{
+    $timestmp = strtotime($date);
+    return date("l", $timestmp);
+}
 ?>
 
 <?php
@@ -11,28 +17,28 @@ $uriEvent = $_GET['event'];
 
     <h1 class="overview-header"><?php echo ucfirst($uriEvent) ?> Event</h1>
     <div class="overview-info">
-        <form action="">
+        <form action="/cms/updateEvent?id=<? echo $event->Event_ID ?>" method="POST">
             <div class="form-item">
-                <label for="">Event name:</label>
+                <label for="eventName">Event name:</label>
 
-                <input type="text" name="" value="<?php echo ucfirst($event->Name) ?> event">
+                <input type="text" name="eventName" value="<?php echo ucfirst($event->Name) ?>">
 
                 <img src="/icons/cms-edit-form.png" alt="edit button">
             </div>
 
 
             <div class="form-item">
-                <label for="">Description:</label>
+                <label for="eventDesc">Description:</label>
 
-                <textarea name="" rows="6"><?php echo $event->Description ?></textarea>
+                <textarea name="eventDesc" rows="6"><?php echo $event->Description ?></textarea>
 
             </div>
 
             <div class="form-item">
-                <label for="">Date:</label>
+                <label>Date:</label>
 
-                <input type="text" name="" value="<?php echo $event->StartDate ?>">
-                <input type="text" name="" value="<?php echo $event->EndDate ?>">
+                <input type="date" name="EventStart" value="<?php echo $event->StartDate ?>">
+                <input type="date" name="eventEnd" value="<?php echo $event->EndDate ?>">
 
                 <img src="/icons/cms-edit-form.png" alt="edit button">
             </div>
@@ -49,6 +55,8 @@ $uriEvent = $_GET['event'];
 
                 <a href="/cms/locations"><img class="clickable" src="/icons/cms-edit-form.png" alt="edit button"></a>
             </div>
+
+            <button name="submit" type="submit">Save</button>
     </div>
     </form>
 
@@ -63,10 +71,26 @@ $uriEvent = $_GET['event'];
     <div class="overview-btn-container">
 
         <ul class="overview-btns-left">
-            <li><a class="btns-left-active" href="#">Thursday</a></li>
-            <li><a href="">Friday</a></li>
-            <li><a href="">Saturday</a></li>
-            <li><a href="">Sunday</a></li>
+            <? for ($i = 0; $i < sizeOf($dateArr); $i++) {
+                // first default on first date when no date was given (initial page load)
+                // when there is a date param and matches an array date, give active class
+                if (!isset($_GET['date']) && $i == 0 || (isset($_GET['date']) && $_GET['date'] == $dateArr[$i][0])) { ?>
+                    <li>
+                        <a class="btns-left-active" href="/cms/overview?event=<? echo $event->Name ?>&date=<? echo $dateArr[$i][0] ?>">
+                            <? echo converseDate($dateArr[$i][0]) ?>
+                        </a>
+                    </li>
+                <? }
+
+                // else display date on normal way
+                else { ?>
+                    <li>
+                        <a href="/cms/overview?event=<? echo $event->Name ?>&date=<? echo $dateArr[$i][0] ?>">
+                            <? echo converseDate($dateArr[$i][0]) ?>
+                        </a>
+                    </li>
+            <? }
+            } ?>
         </ul>
 
         <ul class="overview-btns-right">

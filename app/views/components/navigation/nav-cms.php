@@ -1,12 +1,15 @@
+<?
+$names = $this->getEventNames();
+?>
 <div class="cms-container">
-    
+
     <!-- Nav bar container -->
     <nav class="nav-cms">
         <div class="user-logo"></div>
 
         <!-- Personal info in nav -->
         <div class="cms-dashboard-personal">
-            <span class="logged-username"><?php echo $_SESSION['userName']?></span>
+            <span class="logged-username"><?php echo $_SESSION['userName'] ?></span>
             <a href="/user/edit"><?php echo $_SESSION['role'] ?></a>
             <a href="/user/edit"><img src="/icons/cms-edit.png" alt="edit user"></a>
         </div>
@@ -19,39 +22,24 @@
             </li>
 
             <hr>
-            <li class="cms-nav-item-dance">
-                <img class="cms-nav-icon" src="/icons/cms-arrow-down.png" alt="home icon">
-                <a id="no-pointer" href="">Dance</a>
-                <div class="cms-nav-dropdown-content">
-                    <a href="/cms/overview?event=dance">- Overview</a>
-                    <a href="/cms/tickets?event=dance">- Tickets</a>
-                </div>
-            </li>
-
-            <li class="cms-nav-item-jazz">
-                <img class="cms-nav-icon" src="/icons/cms-arrow-down.png" alt="home icon">
-                <a id="no-pointer" href="">Jazz</a>
-                <div class="cms-nav-dropdown-content">
-                    <a href="/cms/overview?event=jazz">- Overview</a>
-                    <a href="/cms/tickets?event=jazz">- Tickets</a>
-                </div>
-            </li>
-
-            <li class="cms-nav-item-culinary">
-                <img class="cms-nav-icon" src="/icons/cms-arrow-down.png" alt="home icon">
-                <a id="no-pointer" href="">Culinary</a>
-                <div class="cms-nav-dropdown-content">
-                    <a href="#">- Restaurants</a>
-                    <a href="#">- Reservations</a>
-                </div>
-            </li>
+            <? 
+            foreach ($names as $name) { ?>
+                <li class="cms-nav-item navdrpdown">
+                    <img class="cms-nav-icon" src="/icons/cms-arrow-down.png" alt="home icon">
+                    <a id="no-pointer" href=""><? echo ucfirst($name[0]) ?></a>
+                    <div class="cms-nav-dropdown-content">
+                        <a href="/cms/overview?event=<? echo $name[0] ?>">- Overview</a>
+                        <a href="/cms/tickets?event=<? echo $name[0] ?>">- Tickets</a>
+                    </div>
+                </li>
+            <? } ?>
             <hr>
 
             <li class="cms-nav-item">
                 <img class="cms-nav-icon" src="/icons/cms-new-archive.png" alt="home icon">
                 <a href="/cms/orders">Orders</a>
             </li>
-            
+
             <li class="cms-nav-item">
                 <img class="cms-nav-icon" src="/icons/cms-users.png" alt="home icon">
                 <a href="/user/index">Users</a>
@@ -68,5 +56,5 @@
             <input class="header-searchbar" type="text" placeholder="Search...">
         </div>
 
-    <!-- Container main content -->
-    <main class="cms-main">
+        <!-- Container main content -->
+        <main class="cms-main">

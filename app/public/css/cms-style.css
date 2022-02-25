@@ -85,7 +85,7 @@
 #no-pointer {
     cursor: default;
 }
-.cms-nav-item a, .cms-nav-item-dance a, .cms-nav-item-jazz a, .cms-nav-item-culinary a {
+.cms-nav-item a{
     color: var(--main-lightblue);
     text-decoration: none;
     font-size: 1.7rem;
@@ -101,13 +101,13 @@
 
 
 /* ## nav hover effects ## */
-.cms-nav-item-dance:hover .cms-nav-dropdown-content, .cms-nav-item-jazz:hover .cms-nav-dropdown-content, .cms-nav-item-culinary:hover .cms-nav-dropdown-content {
+.navdrpdown:hover .cms-nav-dropdown-content {
     display: block;
 }
-.cms-nav-item-dance:hover #no-pointer, .cms-nav-item-jazz:hover #no-pointer, .cms-nav-item-culinary:hover #no-pointer {
+.navdrpdown:hover #no-pointer {
     font-weight: bold;
 }
-.cms-nav-item-dance:hover img, .cms-nav-item-jazz:hover img, .cms-nav-item-culinary:hover img {
+.navdrpdown:hover img {
     transform: rotate(180deg);
 }
 

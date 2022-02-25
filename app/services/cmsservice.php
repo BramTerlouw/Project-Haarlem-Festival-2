@@ -21,8 +21,8 @@ class CmsService {
         return $this->repository->getEvent($name);
     }
 
-    public function getEventItems($id) {
-        return $this->repository->getEventItems($id);
+    public function getEventItems($id, $date) {
+        return $this->repository->getEventItems($id, $date);
     }
 
     public function getLocations() {
@@ -38,6 +38,18 @@ class CmsService {
     }
 
     public function getPerformers($id) {
-        Return $this->repository->getPerformers($id);
+        return $this->repository->getPerformers($id);
+    }
+
+    public function getDates($id) {
+        return $this->repository->getDates($id);
+    }
+
+    public function updateEvent($id, $eventName, $eventDesc, $eventStart, $eventEnd) {
+        $this->repository->updateEvent($id, $eventName, $eventDesc, $eventStart, $eventEnd);
+    }
+
+    public function getEventNames() {
+        return $this->repository->getEventNames();
     }
 }

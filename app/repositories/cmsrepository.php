@@ -60,7 +60,7 @@ class CmsRepository extends Repository
         }
     }
 
-    public function getEventItems($id) {
+    public function getEventItems($id, $date) {
         try {
             $sqlquery = "SELECT 
                 E.EventItem_ID AS EventItem_ID, 
@@ -76,11 +76,12 @@ class CmsRepository extends Repository
                 E.Event_ID AS Event_ID 
                     FROM Event_Item E 
                     INNER JOIN Location L ON E.Location_ID = L.Location_ID 
-                    WHERE Event_ID=:eventID";
+                    WHERE Event_ID=:eventID AND Date=:date" ;
 
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->bindParam('eventID', $id);
+            $stmt->bindParam('date', $date);
             $stmt->execute();
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'event_item');
@@ -171,6 +172,52 @@ class CmsRepository extends Repository
 
             return $stmt->fetchAll();
 
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getDates($id) {
+        try {
+
+            $sqlquery = "SELECT DISTINCT Date FROM Event_Item WHERE Event_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+
+            $stmt->execute();
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function updateEvent($id, $eventName, $eventDesc, $eventStart, $eventEnd) {
+        try {
+            $sqlquery = "Update Event SET Name=:name, StartDate=:start, EndDate=:end, Description=:desc WHERE Event_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam('id', $id);
+            $stmt->bindParam(':name', $eventName);
+            $stmt->bindParam(':desc', $eventDesc);
+            $stmt->bindParam(':start', $eventStart);
+            $stmt->bindParam(':end', $eventEnd);
+
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getEventNames() {
+        try {
+            $sqlquery = "SELECT Name From Event";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->execute();
+            return $stmt->fetchAll();
         } catch (PDOException $e) {
             echo $e;
         }

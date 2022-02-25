@@ -66,7 +66,14 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
 
             <select name="" id="">
                 <option value="<? echo $item->Start_Time . " - " . $item->End_Time?>"><? echo $item->Start_Time . " - " . $item->End_Time?></option>
-                <option value="">Kees</option>
+                <option value="">15:00:00 - 16:00:00</option>
+                <option value="">16:00:00 - 17:00:00</option>
+                <option value="">18:00:00 - 19:00:00</option>
+                <option value="">19:00:00 - 20:00:00</option>
+                <option value="">20:00:00 - 21:00:00</option>
+                <option value="">18:00:00 - 19:00:00</option>
+                <option value="">19:30:00 - 20:30:00</option>
+                <option value="">21:00:00 - 22:00:00</option>
             </select>
         </div>
     </div>

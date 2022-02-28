@@ -21,6 +21,20 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 <button class="button-venues"type="button">Venues</button>
 </div>
 </div>
+
+<div class = "ticket-overview-dance">
+<?php
+foreach($eventlist as $event){
+    "<table>";
+    echo "<td>".$event["Name"]."</td>";
+    echo "<td>".$event["Start_Time"]."</td>";
+    echo "<td>".$event["Location_ID"]."</td>";
+    echo "<td>".$event["Ticket_Price"]."</td>";
+    "</table>";
+}
+?>
+</div>
+
 <?php
 require __DIR__ . '/../components/footer.php';
 ?>

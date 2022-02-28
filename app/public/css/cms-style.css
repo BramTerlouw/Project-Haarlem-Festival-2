@@ -9,7 +9,7 @@
     --white: #FFFFFF;
     --black: #000000;
 
-    --table-accent: #B4C5E4;
+    --table-accent: #CCD3E6;
   }
 
 * {
@@ -85,7 +85,7 @@
 #no-pointer {
     cursor: default;
 }
-.cms-nav-item a, .cms-nav-item-dance a, .cms-nav-item-jazz a, .cms-nav-item-culinary a {
+.cms-nav-item a{
     color: var(--main-lightblue);
     text-decoration: none;
     font-size: 1.7rem;
@@ -101,13 +101,13 @@
 
 
 /* ## nav hover effects ## */
-.cms-nav-item-dance:hover .cms-nav-dropdown-content, .cms-nav-item-jazz:hover .cms-nav-dropdown-content, .cms-nav-item-culinary:hover .cms-nav-dropdown-content {
+.navdrpdown:hover .cms-nav-dropdown-content {
     display: block;
 }
-.cms-nav-item-dance:hover #no-pointer, .cms-nav-item-jazz:hover #no-pointer, .cms-nav-item-culinary:hover #no-pointer {
+.navdrpdown:hover #no-pointer {
     font-weight: bold;
 }
-.cms-nav-item-dance:hover img, .cms-nav-item-jazz:hover img, .cms-nav-item-culinary:hover img {
+.navdrpdown:hover img {
     transform: rotate(180deg);
 }
 
@@ -315,7 +315,7 @@ canvas {
 
     background-color: var(--form-input-bg);
 }
-.form-item label {
+.form-item label , .form-item-dropdwn label {
     width: 100%;
     color: var(--form-input-border);
 }
@@ -334,11 +334,17 @@ canvas {
     height: 23px;
 
     position: absolute;
-    top: 25px;
+    bottom: 5px;
     left: 92%;
 
     pointer-events: none;
 }
+
+.form-item p {
+    width: 100%;
+}
+
+
 
 
 /* ## radio button section of personal info form */
@@ -415,7 +421,7 @@ canvas {
 /* ## event overview page */
 .overview-container-info {
     width: 100%;
-    height: 40vh;
+    height: 42vh;
 
     margin: 0 0 10vh 0;
 
@@ -436,15 +442,23 @@ canvas {
     width: 100%;
 }
 
+.form-item .clickable {
+    pointer-events: all;
+}
+
 .overview-info {
     width: calc(60% - 20px);
     height: 80%;
     margin: 0 0 0 20px;
+    padding: 0 9% 0 0;
 
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-between;
+}
+
+.overview-info div {
+    margin: 0 0 10px 0;
 }
 
 .overview-image {
@@ -570,9 +584,8 @@ canvas {
     background-color: var(--form-input-bg);
 }
 
-
-.lower-form-img img {
-    top: 60%;
+.lower-form-img strong {
+    width: 100%;
 }
 
 
@@ -582,7 +595,7 @@ canvas {
     overflow-y: auto;
 }
 
-table {
+.event-item-table {
     width: 100%;
     font-size: 1.2rem;
     font-weight: bold;
@@ -594,24 +607,232 @@ table {
     overflow: auto;
 }
 
-tr:nth-child(even) {
+.event-item-table tr:nth-child(even) {
     background-color: var(--table-accent);
   }
 
-th {
+  .event-item-table th {
     position: sticky; 
     top: 0;
     padding: 15px 0 15px 5px;
     font-size: 1.3rem;
 }
 
-td {
+.event-item-table td {
     padding: 5px 0 5px 5px;
     font-style: italic;
 }
 
-table img {
+.event-item-table img {
     width: 35px;
     height: 35px;
     border-radius: 3px;
+}
+
+
+
+
+.eventItem-info-container {
+    width: 100%;
+    padding: 0 1vw;
+
+    display: flex;
+}
+
+.eventItem-info {
+    width: 40%;
+    max-height: 35vh;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+
+.eventItem-info div {
+    margin: 0 0 10px 0;
+}
+
+.eventItem-info h1 {
+    margin: 5px;
+}
+
+.eventItem-picture {
+    width: 40%;
+    min-height: 35vh;
+}
+
+
+
+.eventItem-progam-container {
+    width: 100%;
+    min-height: 40vh; /* mag later weg */
+    flex-grow: 1;
+}
+
+.eventItem-program-datetimepicker {
+    width: 100%;
+    padding: 0 0 0 20px;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.eventItem-program-datetimepicker h1 {
+    width: 100%;
+    margin: 0px;
+}
+
+.eventItem-progam-container table {
+    width: 60%;
+    margin: 20px 0 0 20px;
+    border-collapse: collapse;
+
+    background-color: var(--form-input-bg);
+    border: 2px solid var(--main-lightblue);
+
+    text-align: left;
+    font-weight: bold;
+}
+
+.eventItem-progam-container th, 
+.users-table th,
+.orders-table th {
+    padding: 15px 0 15px 5px;
+    font-size: 1.3rem;
+    border-bottom: 2px solid var(--main-lightblue);
+}
+
+.eventItem-progam-container td, 
+.users-table td,
+.orders-table td {
+    padding: 5px 0 5px 5px;
+    font-size: 1.2rem;
+}
+
+.eventItem-progam-container tbody tr:nth-child(odd),
+.users-table tbody tr:nth-child(odd),
+.orders-table tbody tr:nth-child(odd) {
+    background-color: var(--table-accent);
+  }
+
+.eventItem-progam-container tbody tr:hover,
+.users-table tbody tr:hover,
+.orders-table tbody tr:hover {
+    background-color: var(--main-green);
+    font-weight: bold;
+}
+
+
+
+
+/* ## locations cms */
+
+.locations-container {
+    width: 80%;
+    height: 80vh;
+    margin: 10px 0 0 20px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    overflow-y: auto;
+}
+
+.location-item {
+    width: 20%;
+    height: 30%;
+    border: 1px solid var(--main-blue);
+    margin: 20px 2.5%;
+    padding: 10px;
+}
+
+.location-img {
+    width: 100%;
+    height: 50%;
+    background-color: lightgray;
+}
+
+.location-form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0 0 0;
+}
+
+.location-form label, .location-form input {
+    width: 50%;
+}
+
+
+
+
+.users-table-container {
+    width: 95%;
+    max-height: 50vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.users-table {
+    width: 100%;
+    margin: 0 0 0 20px;
+    border-collapse: collapse;
+
+    border: 1px solid var(--main-lightblue);
+    background-color: var(--form-input-bg);
+    text-align: left;
+}
+
+.users-table thead,
+.orders-table thead {
+    position: sticky; 
+    top: 0px; 
+    z-index: 100;
+    background-color: var(--form-input-bg);
+}
+
+
+
+
+.users-table-btnContainer {
+    width: 95%;
+    margin: 20px 0 0 20px;
+
+    display: flex;
+}
+
+.users-table-btnContainer a {
+    border: 1px solid var(--main-blue);
+    padding: 5px 7px;
+    margin: 0 2% 0 0;
+
+    text-decoration: none;
+}
+
+.users-table-btnContainer a:hover {
+    background-color: var(--main-green);
+    color: var(--white);
+    font-weight: bold;
+}
+
+
+
+
+.orders-table-container {
+    width: 45vw;
+    height: 500px;
+
+    margin: 0 0 0 20px;
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    text-align: left;
+
+    border: 1px solid var(--main-lightblue);
+    background-color: var(--form-input-bg);
 }

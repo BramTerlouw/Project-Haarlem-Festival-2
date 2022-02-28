@@ -5,8 +5,6 @@ class Event {
     public string $Name;
     public string $StartDate;
     public string $EndDate;
-    public string $Genre;
-    public string $Gender;
     public string $Description;
     public string $Type;
     public string $Status;

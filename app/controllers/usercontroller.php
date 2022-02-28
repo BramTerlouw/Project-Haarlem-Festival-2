@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/controller.php';
 require __DIR__ . '/../services/userservice.php';
+// require __DIR__ . '/../services/cmsservice.php';
 
 class UserController extends Controller {
     private $userService;
@@ -19,6 +20,10 @@ class UserController extends Controller {
         }
 
         require __DIR__ . '/../views/user/edit.php';
+    }
+
+    public function add() {
+        require __DIR__ . '/../views/user/add.php';
     }
 
     public function updateOne() {
@@ -55,13 +60,41 @@ class UserController extends Controller {
     }
 
     public function insertOne() {
-        $this->userService->insertOne();
+
+        if (isset($_POST['submit'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+
+            $userArr = array();
+            array_push($userArr, $_POST['userFullName']);
+            array_push($userArr, $_POST['userName']);
+            array_push($userArr, $_POST['userPw']);
+            array_push($userArr, $_POST['userBD']);
+            array_push($userArr, $_POST['gender']);
+            array_push($userArr, $_POST['userAddress']);
+            array_push($userArr, $_POST['userPostcode']);
+            array_push($userArr, $_POST['userCity']);
+            array_push($userArr, $_POST['userRole']);
+            array_push($userArr, $_POST['userSuperV']);
+            array_push($userArr, $_POST['userEmail']);
+            array_push($userArr, $_POST['userPhone']);
+
+            if ($_POST['userPw'] == $_POST['userConfirmPw']) {
+                $this->userService->insertOne($userArr);   
+            }
+        }
     }
 
+    public function deleteOne() {
+        $this->userService->deleteOne($_GET['id']);
+    }
 
     public function index() {
         $users = $this->userService->getAll();
         require __DIR__ . '/../views/user/index.php';
+    }
+
+    public function getEventNames() {
+        return $this->userService->getEventNames();
     }
 }
 ?>

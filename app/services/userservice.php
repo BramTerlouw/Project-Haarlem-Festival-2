@@ -20,8 +20,16 @@ class UserService {
         $this->repository->updateOne($userArr);
     }
 
-    public function insertOne() {
-        $this->repository->insertOne();
+    public function insertOne($userArr) {
+        $this->repository->insertOne($userArr);
+    }
+
+    public function deleteOne($id) {
+        $this->repository->deleteOne($id);
+    }
+
+    public function getEventNames() {
+        return $this->repository->getEventNames();
     }
     
 }

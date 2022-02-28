@@ -421,7 +421,7 @@ canvas {
 /* ## event overview page */
 .overview-container-info {
     width: 100%;
-    height: 40vh;
+    height: 42vh;
 
     margin: 0 0 10vh 0;
 
@@ -640,7 +640,7 @@ canvas {
 }
 
 .eventItem-info {
-    width: 60%;
+    width: 40%;
     max-height: 35vh;
 
     display: flex;

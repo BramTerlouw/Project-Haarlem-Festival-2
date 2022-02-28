@@ -27,7 +27,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
             <td><? echo $user->Email ?></td>
             <td><? echo $user->PhoneNumber ?></td>
             <td><? echo $user->Role ?></td>
-            <td><a href="">Delete</a></td>
+            <td><a href="<? if ($_SESSION['role'] == "Superadmin") echo "/user/deleteOne?id=" . $user->User_ID?>">Delete</a></td>
             <td><a href="/user/edit?userName=<?echo $user->UserName ?>">Edit</a></td>
         </tr>
         <? } ?>
@@ -35,7 +35,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
 </table>
 </div>
 <section class="users-table-btnContainer">
-    <a href="">Add user</a>
+    <a href="/user/add">Add user</a>
     <a href="">Export</a>
 </section>
 

@@ -4,12 +4,12 @@ require __DIR__ . '/repository.php';
 require __DIR__ . '/../models/user.php';
 
 class UserRepository extends Repository {
-    public function getUser() {
+    public function getOne($userName) {
         try {
             $sqlquery = "SELECT * FROM User WHERE UserName=:userName";
             $stmt = $this->connection->prepare($sqlquery);
 
-            $stmt->bindParam(':userName', $_SESSION['userName']);
+            $stmt->bindParam(':userName', $userName);
             $stmt->execute();
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
@@ -20,11 +20,27 @@ class UserRepository extends Repository {
         }
     }
 
-    public function updateUser($userArr) {
+    public function getAll() {
         try {
-            $paramArr = [':fullName', ':userName', ':password', ':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
 
-            $sqlquery = "UPDATE User SET FullName=:fullName, UserName=:userName, Password=:password, BirthDate=:birthDate, Gender=:gender, Address=:address, PostCode=:postcode, City=:city, Role=:role, Supervisor=:supervisor, Email=:email, PhoneNumber=:phoneNumber WHERE User_ID=:id";
+            $sqlquery = "SELECT * FROM User";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function updateOne($userArr) {
+        try {
+            $paramArr = [':id', ':fullName', ':userName', ':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
+
+            $sqlquery = "UPDATE User SET FullName=:fullName, UserName=:userName, BirthDate=:birthDate, Gender=:gender, Address=:address, PostCode=:postcode, City=:city, Role=:role, Supervisor=:supervisor, Email=:email, PhoneNumber=:phoneNumber WHERE User_ID=:id";
             $stmt = $this->connection->prepare($sqlquery);
 
             for ($i=0; $i < sizeof($paramArr); $i++) { 
@@ -32,6 +48,74 @@ class UserRepository extends Repository {
             }
 
             $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function insertOne($userArr) {
+        try {
+            $paramArr = [':fullName', ':userName', ':password',':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
+            
+            $sqlquery = "INSERT INTO User (FullName, UserName, Password, BirthDate, Gender, Address, PostCode, City, Role, Supervisor, Email, PhoneNumber)
+            VALUES (:fullName, :userName, :password, :birthDate, :gender, :address, :postcode, :city, :role, :supervisor, :email, :phoneNumber)";
+
+            $stmt = $this->connection->prepare($sqlquery);
+
+            for ($i=0; $i < sizeof($paramArr); $i++) { 
+                $stmt->bindParam($paramArr[$i], $userArr[$i]);
+            }
+            
+            if ($this->validateEmail($userArr[10])) {
+                $stmt->execute();
+                header('Location: /user');
+            } else {
+                header('Location: /user/add?error=emailExists');
+            }
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    private function validateEmail($email) {
+        $emailList = $this->getAllEmail();
+
+        foreach ($emailList as $em) { if ($em[0] == $email) return false; }
+        return true;
+    }
+
+    private function getAllEmail() {
+        $sqlquery = "SELECT DISTINCT Email FROM User";
+        
+        $stmt = $this->connection->prepare($sqlquery);
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+
+    public function deleteOne($id) {
+        try {
+
+            $sqlquery = "Delete FROM User WHERE User_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            header('Location: /user');
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getEventNames() {
+        try {
+            $sqlquery = "SELECT Name From Event";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->execute();
+            return $stmt->fetchAll();
         } catch (PDOException $e) {
             echo $e;
         }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Gegenereerd op: 23 feb 2022 om 20:49
+-- Gegenereerd op: 28 feb 2022 om 17:56
 -- Serverversie: 10.6.5-MariaDB-1:10.6.5+maria~focal
 -- PHP-versie: 7.4.26
 
@@ -92,7 +92,7 @@ CREATE TABLE `Event` (
 --
 
 INSERT INTO `Event` (`Event_ID`, `Name`, `StartDate`, `EndDate`, `Description`, `Type`, `Status`) VALUES
-(1, 'Jazz', '2022-07-28', '2022-07-31', 'This is the description of Jazz', 'Jazz', 'Active'),
+(1, 'Jazz', '2022-07-28', '2022-07-31', 'This is the description of Jazz kaas', 'Jazz', 'Active'),
 (2, 'Food', '2021-07-28', '2021-07-31', 'This is the description of food.', 'Food', 'Inactive'),
 (3, 'Dance', '2022-07-27', '2022-07-30', 'This is the description of Dance', 'Dance', 'Active');
 
@@ -459,7 +459,7 @@ ALTER TABLE `Session`
 -- AUTO_INCREMENT voor een tabel `User`
 --
 ALTER TABLE `User`
-  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Beperkingen voor geëxporteerde tabellen

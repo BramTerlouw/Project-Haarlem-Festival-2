@@ -1,0 +1,46 @@
+$_SESSION[reservations]=array();
+$_SESSION[tickets]=array();
+
+$_SESSION[reservations][] -> { 'id' => 1, 'amountChild' => 2, 'amountAdult' => 2, 'dateTime' => '29072022,18:00' };
+$_SESSION[tickets][id][amount];
+$total;
+
+
+--------------------------------------
+
+
+foreach ($_SESSION[tickets] as $key => value) {
+	$item = $this->service->getEventItem($key);
+	$total += ($item->price * $value);
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+}
+
+foreach ($_SESSION[reservations] as $key => value) {
+	$item = $this->service->getEventItem($value->id);
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+}
+
+
+
+---------------------------------------
+
+
+
+if (isset($_SESSION[tickets][$id] {
+	$_SESSION[tickets][$id] += $amountOfTickets;
+}
+else {
+	$_SESSION[tickets][$id] = $amountOfTickets;
+}
+
+
+
+---------------------------------------
+
+array_push($_SESSION[reservations], { 'id' => $restaurantID, 'amountChild' => $amountChild, 'amountAdult' => $amountAdult, 'dateTime' => '29072022,18:00'});

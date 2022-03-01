@@ -83,10 +83,10 @@
 
     <!-- Password recovery section -->
     <h1>Password recovery</h1>
-    <div class="form-item <?php isSecureClass(true, $model->UserName, $model->Role)?>">
+    <div class="form-item <?php isSecureClass(false, $model->UserName, $model->Role)?>">
         <label for="userPw">Current password:</label>
         <input type="password" name="userPw" value="<?php echo $model->Password ?>">
-        <img src="/icons/cms-<?php isSecureIcon(true, $model->UserName, $model->Role)?>.png" alt="edit button">
+        <img src="/icons/cms-<?php isSecureIcon(false, $model->UserName, $model->Role)?>.png" alt="edit button">
     </div>
 
     <!-- custom cancel and submit buttons -->

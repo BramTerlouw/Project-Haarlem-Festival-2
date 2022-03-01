@@ -35,6 +35,7 @@ class UserController extends Controller {
             array_push($userArr, $_POST['userID']);
             array_push($userArr, $_POST['userFullName']);
             array_push($userArr, $_POST['userName']);
+            array_push($userArr, $_POST['userPw']);
             array_push($userArr, $_POST['userBD']);
             array_push($userArr, $_POST['gender']);
             array_push($userArr, $_POST['userAddress']);
@@ -44,16 +45,15 @@ class UserController extends Controller {
             if (isset($_POST['userRole'])) // only send when user has permission
                 { array_push($userArr, $_POST['userRole']); }
             else 
-                {array_push($userArr, $_SESSION['role']);}
+                {array_push($userArr, $_SESSION['role']->value);}
 
             array_push($userArr, $_POST['userSuperV']);
             array_push($userArr, $_POST['userEmail']);
             array_push($userArr, $_POST['userPhone']);
 
             $this->userService->updateOne($userArr);
-            if (isset($_POST['userRole'])) { // when user has permission, update role
+            if (isset($_POST['userRole']) && $_POST['userName'] == $_SESSION['userName']) { // when user has permission, update role
                 $this->setPermission($_POST['userRole']);
-                //$_SESSION['role'] = $_POST['userRole'];
             }
 
             header('Location: /user/edit?userName=' . $_POST['userName']);

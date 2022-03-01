@@ -92,9 +92,9 @@ class UserRepository extends Repository {
 
     public function updateOne($userArr) {
         try {
-            $paramArr = [':id', ':fullName', ':userName', ':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
+            $paramArr = [':id', ':fullName', ':userName', ':password',':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
 
-            $sqlquery = "UPDATE User SET FullName=:fullName, UserName=:userName, BirthDate=:birthDate, Gender=:gender, Address=:address, PostCode=:postcode, City=:city, Role=:role, Supervisor=:supervisor, Email=:email, PhoneNumber=:phoneNumber WHERE User_ID=:id";
+            $sqlquery = "UPDATE User SET FullName=:fullName, UserName=:userName, Password=:password,BirthDate=:birthDate, Gender=:gender, Address=:address, PostCode=:postcode, City=:city, Role=:role, Supervisor=:supervisor, Email=:email, PhoneNumber=:phoneNumber WHERE User_ID=:id";
             $stmt = $this->connection->prepare($sqlquery);
 
             for ($i=0; $i < sizeof($paramArr); $i++) { 

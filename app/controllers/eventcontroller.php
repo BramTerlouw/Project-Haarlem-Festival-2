@@ -1,19 +1,19 @@
 <?php
 require __DIR__ . '/controller.php';
-require __DIR__ . '/../services/danceservice.php';
+require __DIR__ . '/../services/eventservice.php';
 
 class EventController extends Controller {
     
-    private $danceService;
+    private $eventService;
 
     function __construct()
     {
-        $this->danceService = new danceservice();
+        $this->eventService = new eventservice();
     }
 
     public function index() {
         $event = $_GET['event'];
-        $eventlist = $this->danceService->getDanceEvents();
+        $eventlist = $this->eventService->getEvents($event);
         require __DIR__ . '/../views/' . $event . '/index.php';
     }
 }

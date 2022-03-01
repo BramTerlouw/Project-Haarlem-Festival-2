@@ -7,12 +7,11 @@ class Event_Item {
     public string $Type;
     public string $Date;
     public string $Start_Time;
-    public string $Location;
+    public string $Location_ID;
     public int $Ticket_Price;
     public string $End_Time;
     public int $Tickets;
     public int $Event_ID;
-
 
     // public function __get($property) {
     //     if (property_exists($this, $property)) {

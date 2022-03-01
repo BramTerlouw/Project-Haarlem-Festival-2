@@ -23,14 +23,29 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 </div>
 
 <div class = "ticket-overview-dance">
+
+<nav class="nav-tickets-dance">
+
+    <ul class="nav-list-left-tickets-dance">
+        <li class="nav-item-tickets-dance">2022</li>
+    </ul>
+
+    <ul class="nav-list-right-tickets-dance">
+        <li class="nav-item-tickets-dance"><a href="#">All-Access</a></li>
+        <li class="nav-item-tickets-dance"><a href="#">FRI. 29 July</a></li>
+        <li class="nav-item-tickets-dance"><a href="#">SAT. 30 July</a></li>
+        <li class="nav-item-tickets-dance"><a href="#">SUN. 31 July</a></li>
+    </ul>
+</nav>
+
 <?php
 foreach($eventlist as $event){
-    "<table>";
+    echo "<table>";
     echo "<td>".$event["Name"]."</td>";
     echo "<td>".$event["Start_Time"]."</td>";
     echo "<td>".$event["Location_ID"]."</td>";
     echo "<td>".$event["Ticket_Price"]."</td>";
-    "</table>";
+    echo"</table>";
 }
 ?>
 </div>

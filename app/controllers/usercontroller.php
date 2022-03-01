@@ -52,7 +52,8 @@ class UserController extends Controller {
 
             $this->userService->updateOne($userArr);
             if (isset($_POST['userRole'])) { // when user has permission, update role
-                $_SESSION['role'] = $_POST['userRole'];
+                $this->setPermission($_POST['userRole']);
+                //$_SESSION['role'] = $_POST['userRole'];
             }
 
             header('Location: /user/edit?userName=' . $_POST['userName']);
@@ -67,7 +68,12 @@ class UserController extends Controller {
             $userArr = array();
             array_push($userArr, $_POST['userFullName']);
             array_push($userArr, $_POST['userName']);
+
+            // $pw = $_POST['userPw'];
+            // $hash = password_hash($pw, PASSWORD_DEFAULT);
+            // array_push($userArr, $hash);
             array_push($userArr, $_POST['userPw']);
+
             array_push($userArr, $_POST['userBD']);
             array_push($userArr, $_POST['gender']);
             array_push($userArr, $_POST['userAddress']);
@@ -96,5 +102,52 @@ class UserController extends Controller {
     public function getEventNames() {
         return $this->userService->getEventNames();
     }
+
+    public function loginValidation() {
+        
+        // check for POST var
+        if (isset($_POST['submit'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+            
+            // get vars
+            $userName = $_POST['inputUsername'];
+            $password = $_POST['inputPassword'];
+            
+            $rowCount = $this->userService->getRowCount($userName, $password);
+
+            // when user exists, set session var and go to home
+            if ($rowCount == 1) {
+                $_SESSION['logginIn'] = true;
+                $_SESSION['userName'] = $userName;
+                $this->setPermission($this->userService->getRole($userName));
+                header('Location: /cms');
+            } else { // give error
+                header('location: /cms/login?error=loginfailed');
+            }
+        }
+    }
+
+    // public function loginValidation() {
+        
+    //     // check for POST var
+    //     if (isset($_POST['submit'])) {
+    //         $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+            
+    //         // get vars
+    //         $userName = $_POST['inputUsername'];
+    //         $password = $_POST['inputPassword'];
+            
+    //         $data = $this->userService->getCredentials($userName);
+
+    //         if (password_verify($password, $data[0][1])) {
+    //             $_SESSION['logginIn'] = true;
+    //             $_SESSION['userName'] = $userName;
+    //             $this->setPermission($this->userService->getRole($userName));
+    //             header('Location: /cms');
+    //         } else { // give error
+    //             header('location: /cms/login?error=loginfailed');
+    //         }
+    //     }
+    // }
 }
 ?>

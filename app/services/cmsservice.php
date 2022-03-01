@@ -9,14 +9,6 @@ class CmsService {
         $this->repository = new CmsRepository();
     }
 
-    public function getRowCount($userName, $password) {
-        return $this->repository->getRowCount($userName, $password);
-    }
-
-    public function getRole($userName) {
-        return $this->repository->getRole($userName);
-    }
-
     public function getEvent($name) {
         return $this->repository->getEvent($name);
     }

@@ -7,4 +7,10 @@ class Controller {
         require __DIR__ . "/../views/$directory/$view.php";
     }
 
+    function setPermission($role) {
+        if ($role == 'Volunteer') { $_SESSION['role'] = Role::Volunteer; } 
+        elseif ($role == 'Admin') { $_SESSION['role'] = Role::Admin; } 
+        else { $_SESSION['role'] = Role::Superadmin; }
+    }
+
 }

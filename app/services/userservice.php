@@ -8,6 +8,19 @@ class UserService {
     function __construct() {
         $this->repository = new UserRepository();
     }
+
+    public function getRowCount($userName, $password) {
+        return $this->repository->getRowCount($userName, $password);
+    }
+
+    // public function getCredentials($userName) {
+    //     return $this->repository->getCredentials($userName);
+    // }
+
+    public function getRole($userName) {
+        return $this->repository->getRole($userName);
+    }
+
     public function getOne($userName) {
         return $this->repository->getOne($userName);
     }

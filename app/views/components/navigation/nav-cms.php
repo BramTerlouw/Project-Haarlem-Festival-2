@@ -10,7 +10,7 @@ $names = $this->getEventNames();
         <!-- Personal info in nav -->
         <div class="cms-dashboard-personal">
             <span class="logged-username"><?php echo $_SESSION['userName'] ?></span>
-            <a href="/user/edit"><?php echo $_SESSION['role'] ?></a>
+            <a href="/user/edit"><?php echo $_SESSION['role']->value ?></a>
             <a href="/user/edit"><img src="/icons/cms-edit.png" alt="edit user"></a>
         </div>
 
@@ -50,7 +50,7 @@ $names = $this->getEventNames();
     <!-- Container content besides nav -->
     <div class="cms-side-container">
         <div class="cms-header">
-            <a class="cms-logout-link" href="/">
+            <a class="cms-logout-link" href="/cms/logout">
                 <img src="/icons/cms-logout.png" alt="logout button">
             </a>
             <input class="header-searchbar" type="text" placeholder="Search...">

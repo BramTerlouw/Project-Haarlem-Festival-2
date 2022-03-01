@@ -1,4 +1,6 @@
 <?php
+require __DIR__ . '/../models/enum/role.php';
+
 session_start();
 require __DIR__ . '/../patternrouter.php';
 

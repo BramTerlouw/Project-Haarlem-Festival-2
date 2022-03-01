@@ -410,14 +410,6 @@ canvas {
 
 
 
-
-
-
-
-
-
-
-
 /* ## event overview page */
 .overview-container-info {
     width: 100%;
@@ -434,9 +426,6 @@ canvas {
     height: 43vh;
     background-color: var(--form-input-bg);
 }
-
-
-
 
 .overview-header {
     width: 100%;
@@ -544,7 +533,7 @@ canvas {
 }
 
 
-
+/* ## form item dropdown */
 .form-item-dropdwn {
     width: 350px;
     padding: 2px 3px;
@@ -589,7 +578,7 @@ canvas {
 }
 
 
-
+/* ## table for event items */
 .table-wrapper {
     height: 100%;
     overflow-y: auto;
@@ -728,7 +717,6 @@ canvas {
 
 
 /* ## locations cms */
-
 .locations-container {
     width: 80%;
     height: 80vh;
@@ -767,7 +755,7 @@ canvas {
 
 
 
-
+/* ## table for users */
 .users-table-container {
     width: 95%;
     max-height: 50vh;
@@ -819,7 +807,7 @@ canvas {
 
 
 
-
+/* ## table for orders */
 .orders-table-container {
     width: 45vw;
     height: 500px;

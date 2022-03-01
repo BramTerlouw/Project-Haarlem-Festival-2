@@ -44,5 +44,12 @@ class UserService {
     public function getEventNames() {
         return $this->repository->getEventNames();
     }
-    
+
+    public function emailExists($email) {
+        return $this->repository->emailExists($email);
+    }
+
+    public function setPassword($email, $password) {
+        $this->repository->setPassword($email, $password);
+    }
 }

@@ -227,23 +227,23 @@ canvas {
 
 
 /* ## login form and items */
-.login-form {
+.login-form, .password-form {
     width: 15%;
     margin: 100px auto;
 }
-.login-form-item {
+.login-form-item, .password-form-item {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
-.login-form-item label {
+.login-form-item label, .password-form label {
     width: 100%;
     margin: 15px 0 0;
 
     font-weight: bold;
     font-size: 1.2rem;
 }
-.login-form-item input {
+.login-form-item input, .password-form input{
     width: 100%;
     font-size: 1.2rem;
 }
@@ -261,7 +261,7 @@ canvas {
 
 
 /* ## Login button */
-.login-form button {
+.login-form button, .password-form button {
     margin: 20px 0 0 0;
     padding: 3px 15px;
     float: right;
@@ -823,4 +823,36 @@ canvas {
 
     border: 1px solid var(--main-lightblue);
     background-color: var(--form-input-bg);
+}
+
+
+
+
+.email-verification-container {
+    width: 20vw;
+    margin: 5vh auto;
+    padding: 15px;
+
+    border: 2px solid var(--main-blue);
+    text-align: center;
+}
+
+.lblEmailForgotten, .inputEmailForgotten {
+    width: 80%;
+    margin: 10px 0 40px 0;
+
+    font-size: 1.3rem;
+}
+
+.buttonEmailForgotten {
+    width: 30%;
+
+    font-size: 1.3rem;
+    font-weight: bold;
+    
+    color: var(--white);
+    background-color: var(--main-green);
+
+    text-decoration: none;
+    border-radius: 3px;
 }

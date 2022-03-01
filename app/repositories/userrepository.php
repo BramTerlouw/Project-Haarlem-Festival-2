@@ -174,4 +174,39 @@ class UserRepository extends Repository {
             echo $e;
         }
     }
+
+    public function emailExists($email) {
+        try {
+
+            $sqlquery = "SELECT COUNT(User_ID) From User WHERE Email=:email";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':email', $email);
+
+            $stmt->execute();
+            $rowCount = $stmt->fetchColumn();
+
+            return $rowCount; // <-- return count
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function setPassword($email, $password) {
+        try {
+
+            $sqlquery = "Update User SET Password=:password WHERE Email=:email";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+
+            $stmt->execute();
+            header('Location: /cms/login');
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }

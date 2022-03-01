@@ -72,6 +72,7 @@ class UserController extends Controller {
             // $pw = $_POST['userPw'];
             // $hash = password_hash($pw, PASSWORD_DEFAULT);
             // array_push($userArr, $hash);
+            // !!!!!! adjust update one for the hash !!!!!!
             array_push($userArr, $_POST['userPw']);
 
             array_push($userArr, $_POST['userBD']);
@@ -149,5 +150,27 @@ class UserController extends Controller {
     //         }
     //     }
     // }
+
+    public function emailVerify() {
+        require __DIR__ . '/../views/user/emailVerification.php';
+    }
+
+    public function restorePassword() {
+        if (isset($_POST['inputMail'])) {
+            if ($this->userService->emailExists($_POST['inputMail']) == 1) {
+                require __DIR__ . '/../views/user/restorePassword.php';
+            } else {
+                header('Location: /user/emailVerify?error=EmailDoesNotExist');
+            }
+        }
+    }
+
+    public function setPassword() {
+        if (isset($_POST['submit'])) {
+            if ($_POST['inputPassword'] == $_POST['inputPassword']) {
+                $this->userService->setPassword($_GET['email'], $_POST['inputPassword']);
+            }
+        }
+    }
 }
 ?>

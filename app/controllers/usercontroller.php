@@ -22,7 +22,14 @@ class UserController extends Controller {
         require __DIR__ . '/../views/user/index.php';
     }
 
-
+    public function search() {
+        if (isset($_POST['submit'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+            $filter = $_POST['searchInput'];
+            $users = $this->userService->getMany($filter);
+            require __DIR__ . '/../views/user/index.php';
+        }
+    }
 
     // edit a user
     public function edit() {

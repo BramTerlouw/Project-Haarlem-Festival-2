@@ -108,6 +108,24 @@ class UserRepository extends Repository {
     }
 
 
+    public function getMany($filter) {
+        try {
+
+            $sqlquery = "SELECT * FROM User WHERE FullName LIKE :pattern OR Email LIKE :pattern";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $pattern = '%' . $filter . '%';
+            $stmt->bindParam(':pattern', $pattern);
+
+            $stmt->execute();
+            
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\User');
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 
 
     // update a user

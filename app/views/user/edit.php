@@ -5,8 +5,8 @@ use Models\Role;
 
 function isSecureClass($secure, $userName, $userRole) {
     if ($secure && $_SESSION['role'] == Role::Volunteer) echo "secure";
-    if ($_SESSION['userName'] != $userName && $_SESSION['role'] == Role::Volunteer) echo "secure";
-    if ($_SESSION['userName'] != $userName && $_SESSION['role'] == Role::Admin && $userRole != Role::Volunteer->value) echo "secure";
+    elseif ($_SESSION['userName'] != $userName && $_SESSION['role'] == Role::Volunteer) echo "secure";
+    elseif ($_SESSION['userName'] != $userName && $_SESSION['role'] == Role::Admin && $userRole != Role::Volunteer->value) echo "secure";
 }
 
 function isSecureIcon($secure, $userName, $userRole) {

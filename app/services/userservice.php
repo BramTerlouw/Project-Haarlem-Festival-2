@@ -37,6 +37,10 @@ class UserService {
     }
 
 
+    public function getMany($filter) {
+        return $this->repository->getMany($filter);
+    }
+
 
     // get all users
     public function getAll() {

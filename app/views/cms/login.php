@@ -16,7 +16,7 @@ require __DIR__ . '/../components/head.php';
             <input type="password" name="inputPassword" value="wachtwoord" required>
         </div>
         <div class="password-forgotten">
-            <a href="/user/emailVerify">Password forgotten?</a>
+            <a href="/user/emailVerification">Password forgotten?</a>
         </div>
         <button name="submit" type="submit">Login</button>
     </form>

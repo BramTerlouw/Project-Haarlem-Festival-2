@@ -155,18 +155,22 @@ class UserController extends Controller {
     //     }
     // }
 
-    public function emailVerify() {
+    public function emailVerification() {
         require __DIR__ . '/../views/user/emailVerification.php';
     }
 
-    public function restorePassword() {
+    public function verifyEmail() {
         if (isset($_POST['inputMail'])) {
             if ($this->userService->emailExists($_POST['inputMail']) == 1) {
-                require __DIR__ . '/../views/user/restorePassword.php';
+                header('Location: /mail/restorePassword?email=' . $_POST['inputMail']);
             } else {
-                header('Location: /user/emailVerify?error=EmailDoesNotExist');
+                header('Location: /user/emailVerification?error=EmailDoesNotExist');
             }
         }
+    }
+
+    public function restorePassword() {
+        require __DIR__ . '/../views/user/restorePassword.php';
     }
 
     public function setPassword() {

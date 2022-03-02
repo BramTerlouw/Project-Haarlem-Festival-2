@@ -6,7 +6,7 @@ require __DIR__ . '/../components/head.php';
 </div>
 <main>
     <h1 class="login-title">Password recovery</h1>
-    <form class="password-form" action="/user/setPassword?email=<? echo $_POST['inputMail'] ?>" method="post">
+    <form class="password-form" action="/user/setPassword?email=<? echo $_GET['mail'] ?>" method="post">
         
         <div class="password-form-item">
             <label for="inputPassword">New password:</label>

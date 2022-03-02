@@ -2,14 +2,9 @@
 namespace Controllers;
 use Controllers\Controller;
 use Services\UserService;
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-// use Models\Role;
-// require __DIR__ . '/controller.php';
-// require __DIR__ . '/../services/userservice.php';
-// require __DIR__ . '/../services/cmsservice.php';
 
 class UserController extends Controller {
     private $userService;
@@ -19,6 +14,17 @@ class UserController extends Controller {
         $this->userService = new UserService;
     }
     
+
+
+    // load index view of users
+    public function index() {
+        $users = $this->userService->getAll();
+        require __DIR__ . '/../views/user/index.php';
+    }
+
+
+
+    // edit a user
     public function edit() {
         $model = NULL;
         if (isset($_GET['userName'])) {
@@ -26,14 +32,19 @@ class UserController extends Controller {
         } else {
             $model = $this->userService->getOne($userName = $_SESSION['userName']);
         }
-
         require __DIR__ . '/../views/user/edit.php';
     }
 
+
+
+    // add a user
     public function add() {
         require __DIR__ . '/../views/user/add.php';
     }
 
+
+
+    // update a user
     public function updateOne() {
 
         if (isset($_POST['submit'])) {
@@ -68,6 +79,9 @@ class UserController extends Controller {
         }
     }
 
+
+
+    // insert a new user
     public function insertOne() {
 
         if (isset($_POST['submit'])) {
@@ -99,19 +113,23 @@ class UserController extends Controller {
         }
     }
 
+
+
+    // delete a user
     public function deleteOne() {
         $this->userService->deleteOne($_GET['id']);
     }
 
-    public function index() {
-        $users = $this->userService->getAll();
-        require __DIR__ . '/../views/user/index.php';
-    }
+    
 
+    // get all event names for nav
     public function getEventNames() {
         return $this->userService->getEventNames();
     }
 
+
+
+    // temporary login validation
     public function loginValidation() {
         
         // check for POST var
@@ -159,17 +177,28 @@ class UserController extends Controller {
     //     }
     // }
 
+
+
+
+    // email verification
     public function emailVerification() {
         require __DIR__ . '/../views/user/emailVerification.php';
     }
 
-    public function verifyEmail()
+
+
+    // request reset pw
+    public function requestReset()
     {
         if (isset($_POST['inputMail'])) {
-            if ($this->userService->emailExists($_POST['inputMail']) == 1) {
+            if (!$this->userService->validateEmail($_POST['inputMail'])) {
                 
                 //Create an instance; passing `true` enables exceptions
                 $mail = new PHPMailer(true);
+
+                $userMail = $_POST['inputMail'];
+                $code = uniqid(true);
+                $this->userService->setResetCode($userMail, $code);
                 
                 try {
                     //Server settings
@@ -183,7 +212,7 @@ class UserController extends Controller {
 
                     //Recipients
                     $mail->setFrom('info-haarlemfestival@gmail.com', 'Haarlem Festival');
-                    $mail->addAddress($_POST['inputMail'], 'Employee');
+                    $mail->addAddress($userMail, 'Employee');
                     $mail->addReplyTo('no-reply@gmail.com', 'Information');
 
                     //Content
@@ -192,7 +221,7 @@ class UserController extends Controller {
                     $mail->Body    =
                         '<h1>Password recovery link:</h1>
                         <p>Press link down below to change password.</p><br>
-                        <a href="localhost/user/restorePassword?email=' . $_POST['inputMail'] . '">Click me</a>';
+                        <a href="localhost/user/restorePassword?code=' . $code . '">Click me</a>';
 
                     $mail->send();
                     header('Location: http://localhost/cms/login');
@@ -207,6 +236,8 @@ class UserController extends Controller {
     }
 
     public function restorePassword() {
+        $code = $_GET['code'];
+        $email = $this->userService->getResetMail($code);
         require __DIR__ . '/../views/user/restorePassword.php';
     }
 

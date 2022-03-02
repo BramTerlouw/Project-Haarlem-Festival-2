@@ -8,11 +8,6 @@ use Models\Location;
 use PDO;
 use PDOException;
 
-// require __DIR__ . '/repository.php';
-// require __DIR__ . '/../models/event.php';
-// require __DIR__ . '/../models/Event_item.php';
-// require __DIR__ . '/../models/location.php';
-
 class CmsRepository extends Repository
 {
 

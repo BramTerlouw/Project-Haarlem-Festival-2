@@ -1,6 +1,5 @@
 <?php
-// require __DIR__ . '/controller.php';
-// require __DIR__ . '/../services/cmsservice.php';
+
 namespace Controllers;
 use Controllers\Controller;
 use Services\CmsService;

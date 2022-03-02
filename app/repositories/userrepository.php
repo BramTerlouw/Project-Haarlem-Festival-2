@@ -1,14 +1,15 @@
 <?php
+
 namespace Repositories;
 use Repositories\Repository;
 use Models\User;
 use PDO;
 use PDOException;
-// require __DIR__ . '/repository.php';
-// require __DIR__ . '/../models/user.php';
+
 
 class UserRepository extends Repository {
 
+    // Temporary login
     public function getRowCount($userName, $password) {
         try {
             $sqlquery = "SELECT Count(User_ID) FROM User WHERE UserName=:username AND Password=:password";
@@ -45,6 +46,10 @@ class UserRepository extends Repository {
     //     }
     // }
 
+
+
+
+    // get the role of logged user for example
     public function getRole($userName) {
         try {
             $sqlquery = "SELECT Role FROM User WHERE UserName=:username";
@@ -62,6 +67,10 @@ class UserRepository extends Repository {
         }
     }
 
+
+
+
+    // get one user
     public function getOne($userName) {
         try {
             $sqlquery = "SELECT * FROM User WHERE UserName=:userName";
@@ -78,6 +87,10 @@ class UserRepository extends Repository {
         }
     }
 
+
+
+
+    // get all users
     public function getAll() {
         try {
 
@@ -94,6 +107,10 @@ class UserRepository extends Repository {
         }
     }
 
+
+
+
+    // update a user
     public function updateOne($userArr) {
         try {
             $paramArr = [':id', ':fullName', ':userName', ':password',':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
@@ -111,6 +128,10 @@ class UserRepository extends Repository {
         }
     }
 
+
+
+
+    // insert a user
     public function insertOne($userArr) {
         try {
             $paramArr = [':fullName', ':userName', ':password',':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
@@ -136,7 +157,7 @@ class UserRepository extends Repository {
         }
     }
 
-    private function validateEmail($email) {
+    public function validateEmail($email) {
         $emailList = $this->getAllEmail();
 
         foreach ($emailList as $em) { if ($em[0] == $email) return false; }
@@ -144,29 +165,40 @@ class UserRepository extends Repository {
     }
 
     private function getAllEmail() {
-        $sqlquery = "SELECT DISTINCT Email FROM User";
-        
-        $stmt = $this->connection->prepare($sqlquery);
-        $stmt->execute();
-        
-        return $stmt->fetchAll();
-    }
-
-    public function deleteOne($id) {
         try {
-
-            $sqlquery = "Delete FROM User WHERE User_ID=:id";
+            $sqlquery = "SELECT DISTINCT Email FROM User";
+        
             $stmt = $this->connection->prepare($sqlquery);
-
-            $stmt->bindParam(':id', $id);
             $stmt->execute();
-            header('Location: /user');
-
+        
+            return $stmt->fetchAll();
         } catch (PDOException $e) {
             echo $e;
         }
     }
 
+
+
+
+    // Delete a user
+    public function deleteOne($id) {
+        try {
+            $sqlquery = "Delete FROM User WHERE User_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            header('Location: /user');
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
+
+
+    // Get all event names for nav
     public function getEventNames() {
         try {
             $sqlquery = "SELECT Name From Event";
@@ -179,19 +211,33 @@ class UserRepository extends Repository {
         }
     }
 
-    public function emailExists($email) {
-        try {
 
-            $sqlquery = "SELECT COUNT(User_ID) From User WHERE Email=:email";
+
+
+    // Reset password
+    public function setResetCode($email, $code) {
+        try {
+            $sqlquery = "INSERT INTO resetPassword (code, email) VALUES (:code, :email)";
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':code', $code);
 
             $stmt->execute();
-            $rowCount = $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 
-            return $rowCount; // <-- return count
+    public function getResetMail($code) {
+        try {
+            $sqlquery = "SELECT email FROM resetPassword WHERE code=:code";
+            $stmt = $this->connection->prepare($sqlquery);
 
+            $stmt->bindParam(':code', $code);
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
         } catch (PDOException $e) {
             echo $e;
         }
@@ -199,7 +245,6 @@ class UserRepository extends Repository {
 
     public function setPassword($email, $password) {
         try {
-
             $sqlquery = "Update User SET Password=:password WHERE Email=:email";
             $stmt = $this->connection->prepare($sqlquery);
 
@@ -208,7 +253,6 @@ class UserRepository extends Repository {
 
             $stmt->execute();
             header('Location: /cms/login');
-
         } catch (PDOException $e) {
             echo $e;
         }

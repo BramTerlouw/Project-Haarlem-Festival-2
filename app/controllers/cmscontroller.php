@@ -18,6 +18,11 @@ class CmsController extends Controller {
         require __DIR__ . '/../views/cms/login.php';
     }
 
+    public function logout() {
+        session_destroy();
+        header('Location: /');
+    }
+
     public function locations() {
         require __DIR__ . '/../views/cms/location.php';
     }
@@ -54,29 +59,6 @@ class CmsController extends Controller {
         $locations = $this->cmsService->getLocations();
         $itemPerformers = $this->cmsService->getPerformers($_GET['id']);
         require __DIR__ . '/../views/cms/EventItem.php';
-    }
-
-    public function loginValidation() {
-        
-        // check for POST var
-        if (isset($_POST['submit'])) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
-            
-            // get vars
-            $userName = $_POST['inputUsername'];
-            $password = $_POST['inputPassword'];
-            $rowCount = $this->cmsService->getRowCount($userName, $password);
-
-            // when user exists, set session var and go to home
-            if ($rowCount == 1) {
-                $_SESSION['logginIn'] = true;
-                $_SESSION['userName'] = $userName;
-                $_SESSION['role'] = $this->cmsService->getRole($userName);
-                header('Location: /cms');
-            } else { // give error
-                header('location: /cms/login?error=loginfailed');
-            }
-        }
     }
 
     public function updateEvent() {

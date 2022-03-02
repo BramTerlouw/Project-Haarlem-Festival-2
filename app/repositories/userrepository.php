@@ -4,6 +4,60 @@ require __DIR__ . '/repository.php';
 require __DIR__ . '/../models/user.php';
 
 class UserRepository extends Repository {
+
+    public function getRowCount($userName, $password) {
+        try {
+            $sqlquery = "SELECT Count(User_ID) FROM User WHERE UserName=:username AND Password=:password";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            // bind params
+            $stmt->bindParam(':username', $userName);
+            $stmt->bindParam(':password', $password);
+
+            // execute and get rowcount
+            $stmt->execute();
+            $rowCount = $stmt->fetchColumn();
+
+            return $rowCount; // <-- return count
+            
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    // public function getCredentials($userName) {
+    //     try {
+            
+    //         $sqlquery = "SELECT UserName, Password FROM User Where UserName=:username";
+    //         $stmt = $this->connection->prepare($sqlquery);
+
+    //         $stmt->bindParam('username', $userName);
+    //         $stmt->execute();
+
+    //         return $stmt->fetchAll();
+            
+    //     } catch (PDOException $e) {
+    //         echo $e;
+    //     }
+    // }
+
+    public function getRole($userName) {
+        try {
+            $sqlquery = "SELECT Role FROM User WHERE UserName=:username";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            // bind params
+            $stmt->bindParam(':username', $userName);
+
+            // execute and get result
+            $stmt->execute();
+            return $stmt->fetchColumn();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
     public function getOne($userName) {
         try {
             $sqlquery = "SELECT * FROM User WHERE UserName=:userName";
@@ -38,9 +92,9 @@ class UserRepository extends Repository {
 
     public function updateOne($userArr) {
         try {
-            $paramArr = [':id', ':fullName', ':userName', ':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
+            $paramArr = [':id', ':fullName', ':userName', ':password',':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
 
-            $sqlquery = "UPDATE User SET FullName=:fullName, UserName=:userName, BirthDate=:birthDate, Gender=:gender, Address=:address, PostCode=:postcode, City=:city, Role=:role, Supervisor=:supervisor, Email=:email, PhoneNumber=:phoneNumber WHERE User_ID=:id";
+            $sqlquery = "UPDATE User SET FullName=:fullName, UserName=:userName, Password=:password,BirthDate=:birthDate, Gender=:gender, Address=:address, PostCode=:postcode, City=:city, Role=:role, Supervisor=:supervisor, Email=:email, PhoneNumber=:phoneNumber WHERE User_ID=:id";
             $stmt = $this->connection->prepare($sqlquery);
 
             for ($i=0; $i < sizeof($paramArr); $i++) { 
@@ -116,6 +170,41 @@ class UserRepository extends Repository {
 
             $stmt->execute();
             return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function emailExists($email) {
+        try {
+
+            $sqlquery = "SELECT COUNT(User_ID) From User WHERE Email=:email";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':email', $email);
+
+            $stmt->execute();
+            $rowCount = $stmt->fetchColumn();
+
+            return $rowCount; // <-- return count
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function setPassword($email, $password) {
+        try {
+
+            $sqlquery = "Update User SET Password=:password WHERE Email=:email";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+
+            $stmt->execute();
+            header('Location: /cms/login');
+
         } catch (PDOException $e) {
             echo $e;
         }

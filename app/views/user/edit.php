@@ -2,20 +2,17 @@
 require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/navigation/nav-cms.php';
 
-function isSecureClass($secure, $userName) {
-    // when it is a secure class, only admins can change it so check on role
-    if ($secure == "true") {
-        if ($_SESSION['role'] == "Volunteer") echo "secure";
-    }
-
-    // when not a secure class, volunteers can change it but only of it is class of own
-    if ($secure == "false") {
-        if ($_SESSION['userName'] != $userName && $_SESSION['role'] == "Volunteer") echo "secure";
-    }
+function isSecureClass($secure, $userName, $userRole) {
+    if ($secure && $_SESSION['role'] == Role::Volunteer) echo "secure";
+    if ($_SESSION['userName'] != $userName && $_SESSION['role'] == Role::Volunteer) echo "secure";
+    if ($_SESSION['userName'] != $userName && $_SESSION['role'] == Role::Admin && $userRole != Role::Volunteer->value) echo "secure";
 }
 
-function isSecureIcon() {
-    if ($_SESSION['role'] == "Volunteer") echo "secure"; else echo "edit-form";
+function isSecureIcon($secure, $userName, $userRole) {
+    if ($secure && $_SESSION['role'] == Role::Volunteer) echo "secure";
+    else if ($_SESSION['userName'] != $userName && $_SESSION['role'] == Role::Volunteer) echo "secure";
+    else if ($_SESSION['userName'] != $userName && $_SESSION['role'] == Role::Admin && $userRole != Role::Volunteer->value) echo "secure";
+    else echo "edit-form";
 }
 
 require __DIR__ . '/../components/userForm.php';

@@ -2,6 +2,10 @@
 namespace Controllers;
 use Controllers\Controller;
 use Services\UserService;
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 // use Models\Role;
 // require __DIR__ . '/controller.php';
 // require __DIR__ . '/../services/userservice.php';
@@ -159,10 +163,43 @@ class UserController extends Controller {
         require __DIR__ . '/../views/user/emailVerification.php';
     }
 
-    public function verifyEmail() {
+    public function verifyEmail()
+    {
         if (isset($_POST['inputMail'])) {
             if ($this->userService->emailExists($_POST['inputMail']) == 1) {
-                header('Location: /mail/restorePassword?email=' . $_POST['inputMail']);
+                
+                //Create an instance; passing `true` enables exceptions
+                $mail = new PHPMailer(true);
+                
+                try {
+                    //Server settings
+                    $mail->isSMTP();
+                    $mail->Host       = 'smtp.gmail.com';
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = 'haarlemfestival2022@gmail.com';
+                    $mail->Password   = 'InhollandisLeuk9!';
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->Port       = 587;
+
+                    //Recipients
+                    $mail->setFrom('info-haarlemfestival@gmail.com', 'Haarlem Festival');
+                    $mail->addAddress($_POST['inputMail'], 'Employee');
+                    $mail->addReplyTo('no-reply@gmail.com', 'Information');
+
+                    //Content
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Password recovery';
+                    $mail->Body    =
+                        '<h1>Password recovery link:</h1>
+                        <p>Press link down below to change password.</p><br>
+                        <a href="localhost/user/restorePassword?email=' . $_POST['inputMail'] . '">Click me</a>';
+
+                    $mail->send();
+                    header('Location: http://localhost/cms/login');
+
+                } catch (Exception $e) {
+                    header('Location: /user/emailVerification?error=' . $mail->ErrorInfo);
+                }
             } else {
                 header('Location: /user/emailVerification?error=EmailDoesNotExist');
             }

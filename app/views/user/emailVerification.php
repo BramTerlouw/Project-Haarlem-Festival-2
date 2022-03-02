@@ -10,7 +10,6 @@ require __DIR__ . '/../components/head.php';
 
         <label class="lblEmailForgotten" for="inputMail">Enter email for verification</label>
         <input class="inputEmailForgotten" type="text" name="inputMail" value="Bram@hotmail.com" required>
-
         <button class="buttonEmailForgotten">Continue</button>
 
     </form>

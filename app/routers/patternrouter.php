@@ -1,6 +1,7 @@
 <?php
 namespace Routers;
-use FFI\Exception;
+use Exception;
+
 
 class PatternRouter
 {
@@ -46,19 +47,21 @@ class PatternRouter
         $methodName = $explodedUri[1];
 
         // load the file with the controller class
-        $filename = __DIR__ . '/controllers/' . $controllerName . '.php';
-        if ($api) {
-            $filename = __DIR__ . '/api/controllers/' . $controllerName . '.php';
-        }
-        if (file_exists($filename)) {
-            require $filename;
-        } else {
-            http_response_code(404);
-            die();
-        }
+        // $filename = __DIR__ . '/controllers/' . $controllerName . '.php';
+        // if ($api) {
+        //     $filename = __DIR__ . '/api/controllers/' . $controllerName . '.php';
+        // }
+        // if (file_exists($filename)) {
+        //     require $filename;
+        // } else {
+        //     http_response_code(404);
+        //     die();
+        // }
+
+
         // dynamically call relevant controller method
         try {
-            $controllerClass = "Controller\\" . $controllerName;
+            $controllerClass = "Controllers\\" . $controllerName;
             $controllerObj = new $controllerClass;
             $controllerObj->{$methodName}();
         } catch (Exception $e) {

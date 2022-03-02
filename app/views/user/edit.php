@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/navigation/nav-cms.php';
+use Models\Role;
 
 function isSecureClass($secure, $userName, $userRole) {
     if ($secure && $_SESSION['role'] == Role::Volunteer) echo "secure";

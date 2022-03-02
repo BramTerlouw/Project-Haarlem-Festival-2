@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/navigation/nav-cms.php';
+use Models\Role;
 ?>
 
 <h1>Users:</h1>

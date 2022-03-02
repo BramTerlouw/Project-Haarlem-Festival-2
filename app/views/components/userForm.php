@@ -1,3 +1,5 @@
+<? use Models\Role; ?>
+
 <!-- Personal information section -->
 <h1>Personal information</h1>
 <form class="personal-info-form" action="/user/updateOne" method="post">

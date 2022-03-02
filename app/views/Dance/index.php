@@ -39,15 +39,14 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 </nav>
 
 <?php
-foreach($eventlist as $event){
-    echo "<table>";
-    echo "<td>".$event["Name"]."</td>";
-    echo "<td>".$event["Start_Time"]."</td>";
-    echo "<td>".$event["Location_ID"]."</td>";
-    echo "<td>".$event["Ticket_Price"]."</td>";
-    echo"</table>";
-}
-?>
+foreach($eventlist as $event){?>
+    <table class = "table-tickets-dance">
+    <td class = "td-item-tickets-dance"><?php echo $event["Name"] ?></td>
+    <td class = "td-item-tickets-dance"><?php echo $event["Start_Time"] ?></td>
+    <td class = "td-item-tickets-dance"><?php echo $event["Location_ID"] ?></td>
+    <td class = "td-item-tickets-dance"><?php echo $event["Ticket_Price"] ?></td>
+    </table><?php
+}?>
 </div>
 
 <?php

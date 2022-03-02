@@ -1,6 +1,9 @@
 <?php
-require __DIR__ . '/controller.php';
-require __DIR__ . '/../services/eventservice.php';
+namespace Controllers;
+use Controllers\Controller;
+use Services\eventservice;
+// require __DIR__ . '/controller.php';
+// require __DIR__ . '/../services/eventservice.php';
 
 class EventController extends Controller {
     

@@ -1,7 +1,11 @@
 <?php
-
-require __DIR__ . '/repository.php';
-require __DIR__ . '/../models/user.php';
+namespace Repositories;
+use Repositories\Repository;
+use Models\User;
+use PDO;
+use PDOException;
+// require __DIR__ . '/repository.php';
+// require __DIR__ . '/../models/user.php';
 
 class UserRepository extends Repository {
 
@@ -66,7 +70,7 @@ class UserRepository extends Repository {
             $stmt->bindParam(':userName', $userName);
             $stmt->execute();
 
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\User');
             return $stmt->fetch();
 
         } catch (PDOException $e) {
@@ -82,7 +86,7 @@ class UserRepository extends Repository {
 
             $stmt->execute();
 
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\User');
             return $stmt->fetchAll();
 
         } catch (PDOException $e) {

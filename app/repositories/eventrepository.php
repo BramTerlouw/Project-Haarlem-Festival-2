@@ -1,7 +1,12 @@
 <?php
 
-require __DIR__ . '/repository.php';
-require __DIR__ . '/../models/event_item.php';
+namespace Repositories;
+use Repositories\Repository;
+use Models\Event_Item;
+use PDO;
+use PDOException;
+// require __DIR__ . '/repository.php';
+// require __DIR__ . '/../models/event_item.php';
 
 class eventrepository extends Repository
 {

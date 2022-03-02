@@ -1,4 +1,8 @@
 <?php
+
+namespace Controllers;
+use Models\Role;
+
 class Controller {
     
     function displayView($model) {        

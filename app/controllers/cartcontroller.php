@@ -1,5 +1,7 @@
 <?php
-require __DIR__ . '/controller.php';
+// require __DIR__ . '/controller.php';
+
+namespace Controllers;
 
 class CartController extends Controller {
     // private $cmsService;

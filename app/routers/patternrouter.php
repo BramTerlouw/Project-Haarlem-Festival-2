@@ -1,4 +1,7 @@
 <?php
+namespace Routers;
+use FFI\Exception;
+
 class PatternRouter
 {
 
@@ -55,7 +58,8 @@ class PatternRouter
         }
         // dynamically call relevant controller method
         try {
-            $controllerObj = new $controllerName;
+            $controllerClass = "Controller\\" . $controllerName;
+            $controllerObj = new $controllerClass;
             $controllerObj->{$methodName}();
         } catch (Exception $e) {
             http_response_code(404);

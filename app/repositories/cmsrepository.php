@@ -1,9 +1,17 @@
 <?php
+namespace Repositories;
+use Repositories\Repository;
+use Models\Event;
+use Models\Event_Item;
+use Models\Location;
 
-require __DIR__ . '/repository.php';
-require __DIR__ . '/../models/event.php';
-require __DIR__ . '/../models/Event_item.php';
-require __DIR__ . '/../models/location.php';
+use PDO;
+use PDOException;
+
+// require __DIR__ . '/repository.php';
+// require __DIR__ . '/../models/event.php';
+// require __DIR__ . '/../models/Event_item.php';
+// require __DIR__ . '/../models/location.php';
 
 class CmsRepository extends Repository
 {
@@ -16,7 +24,7 @@ class CmsRepository extends Repository
             $stmt->bindParam(':name', $name);
             $stmt->execute();
 
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'event');
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Event');
             return $stmt->fetch();
 
         } catch (PDOException$e) {
@@ -48,7 +56,7 @@ class CmsRepository extends Repository
             $stmt->bindParam('date', $date);
             $stmt->execute();
 
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'event_item');
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Event_Item');
             return $stmt->fetchAll();
 
 
@@ -65,7 +73,7 @@ class CmsRepository extends Repository
 
 
             $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'location');
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Location');
 
             return $stmt->fetchAll();
 
@@ -113,7 +121,7 @@ class CmsRepository extends Repository
             $stmt->bindParam(':itemID', $id);
             $stmt->execute();
 
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'event_item');
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Event_Item');
             return $stmt->fetch();
 
         } catch (PDOException $e) {

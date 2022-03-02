@@ -1,5 +1,7 @@
 <?php
-require __DIR__ . '/../repositories/userrepository.php';
+// require __DIR__ . '/../repositories/userrepository.php';
+namespace Services;
+use Repositories\UserRepository;
 
 class UserService {
 

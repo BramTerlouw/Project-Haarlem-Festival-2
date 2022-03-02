@@ -1,5 +1,5 @@
 <?php
-
+namespace Models;
 class Event_Item {
     public int $EventItem_ID;
     public string $Name;

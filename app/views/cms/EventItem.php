@@ -61,24 +61,19 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
                 <option value="">Kees</option>
             </select>
         </div>
-        <div class="form-item-dropdwn">
+        <div class="form-item-short">
             <label for="">Timeslot:</label>
-
-            <select name="" id="">
-                <option value="<? echo $item->Start_Time . " - " . $item->End_Time?>"><? echo $item->Start_Time . " - " . $item->End_Time?></option>
-                <option value="">15:00:00 - 16:00:00</option>
-                <option value="">16:00:00 - 17:00:00</option>
-                <option value="">18:00:00 - 19:00:00</option>
-                <option value="">19:00:00 - 20:00:00</option>
-                <option value="">20:00:00 - 21:00:00</option>
-                <option value="">18:00:00 - 19:00:00</option>
-                <option value="">19:30:00 - 20:30:00</option>
-                <option value="">21:00:00 - 22:00:00</option>
-            </select>
+            <input type="time" name="" id="" value="<? echo $item->Start_Time ?>">
+            
+        </div>
+        <div class="form-item-short">
+            <label for="">Timeslot:</label>
+            <input type="time" name="" id="" value="<? echo $item->End_Time ?>">
+            
         </div>
     </div>
 
-    <table>
+    <!-- <table>
         <thead>
             <tr>
                 <th>Activity name</th>
@@ -125,7 +120,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
                 <td>15,00 ,-</td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
 </section>
 
 

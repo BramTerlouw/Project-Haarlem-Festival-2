@@ -306,11 +306,27 @@ canvas {
 
     background-color: var(--form-input-bg);
 }
-.form-item label , .form-item-dropdwn label {
+.form-item-short {
+    width: 175px;
+    padding: 2px 3px;
+    margin: 10px 0 0 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    
+    border: 1px solid var(--form-input-border);
+    border-radius: 2px;
+
+    background-color: var(--form-input-bg);
+}
+.form-item label, .form-item-dropdwn label,
+.form-item-short label {
     width: 100%;
     color: var(--form-input-border);
 }
-.form-item input {
+.form-item input,
+.form-item-short input {
     width: 100%;
     
     border: none;
@@ -645,13 +661,13 @@ canvas {
 
 
 .eventItem-progam-container {
-    width: 100%;
+    width: 60%;
     min-height: 40vh; /* mag later weg */
     flex-grow: 1;
 }
 
 .eventItem-program-datetimepicker {
-    width: 100%;
+    width: 50%;
     padding: 0 0 0 20px;
     
     display: flex;
@@ -665,7 +681,7 @@ canvas {
 }
 
 .eventItem-progam-container table {
-    width: 60%;
+    width: 100%;
     margin: 20px 0 0 20px;
     border-collapse: collapse;
 

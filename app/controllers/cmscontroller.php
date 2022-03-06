@@ -77,6 +77,22 @@ class CmsController extends Controller {
         }
     }
 
+    public function updateEventItem() {
+        if (isset($_POST['submit'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+
+            $name = $_POST['inputActivityName'];
+            $loc = $_POST['inputActivityLocation'];
+            $desc = $_POST['inputActivityDesc'];
+            $date = $_POST['inputActivityDate'];
+            $start = $_POST['inputActivityStart'];
+            $end= $_POST['inputActivityEnd'];
+
+            $this->cmsService->updateEventItem($_GET['id'], $name, $loc, $desc, $date, $start, $end);
+            header('Location: /cms/eventItem?id=' . $_GET['id']);
+        }
+    }
+
     public function getEventNames() {
         return $this->cmsService->getEventNames();
     }

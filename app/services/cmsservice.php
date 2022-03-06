@@ -44,6 +44,10 @@ class CmsService {
         $this->repository->updateEvent($id, $eventName, $eventDesc, $eventStart, $eventEnd);
     }
 
+    public function updateEventItem($id, $name, $loc, $desc, $date, $start, $end) {
+        $this->repository->updateEventItem($id, $name, $loc, $desc, $date, $start, $end);
+    }
+
     public function getEventNames() {
         return $this->repository->getEventNames();
     }

@@ -2,10 +2,9 @@
 namespace Controllers;
 use Controllers\Controller;
 use Services\UserService;
-// use Models\Role;
-// require __DIR__ . '/controller.php';
-// require __DIR__ . '/../services/userservice.php';
-// require __DIR__ . '/../services/cmsservice.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 class UserController extends Controller {
     private $userService;
@@ -15,6 +14,24 @@ class UserController extends Controller {
         $this->userService = new UserService;
     }
     
+
+
+    // load index view of users
+    public function index() {
+        $users = $this->userService->getAll();
+        require __DIR__ . '/../views/user/index.php';
+    }
+
+    public function search() {
+        if (isset($_POST['submit'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+            $filter = $_POST['searchInput'];
+            $users = $this->userService->getMany($filter);
+            require __DIR__ . '/../views/user/index.php';
+        }
+    }
+
+    // edit a user
     public function edit() {
         $model = NULL;
         if (isset($_GET['userName'])) {
@@ -22,14 +39,19 @@ class UserController extends Controller {
         } else {
             $model = $this->userService->getOne($userName = $_SESSION['userName']);
         }
-
         require __DIR__ . '/../views/user/edit.php';
     }
 
+
+
+    // add a user
     public function add() {
         require __DIR__ . '/../views/user/add.php';
     }
 
+
+
+    // update a user
     public function updateOne() {
 
         if (isset($_POST['submit'])) {
@@ -64,6 +86,9 @@ class UserController extends Controller {
         }
     }
 
+
+
+    // insert a new user
     public function insertOne() {
 
         if (isset($_POST['submit'])) {
@@ -95,19 +120,23 @@ class UserController extends Controller {
         }
     }
 
+
+
+    // delete a user
     public function deleteOne() {
         $this->userService->deleteOne($_GET['id']);
     }
 
-    public function index() {
-        $users = $this->userService->getAll();
-        require __DIR__ . '/../views/user/index.php';
-    }
+    
 
+    // get all event names for nav
     public function getEventNames() {
         return $this->userService->getEventNames();
     }
 
+
+
+    // temporary login validation
     public function loginValidation() {
         
         // check for POST var
@@ -155,18 +184,68 @@ class UserController extends Controller {
     //     }
     // }
 
-    public function emailVerify() {
+
+
+
+    // email verification
+    public function emailVerification() {
         require __DIR__ . '/../views/user/emailVerification.php';
     }
 
-    public function restorePassword() {
+
+
+    // request reset pw
+    public function requestReset()
+    {
         if (isset($_POST['inputMail'])) {
-            if ($this->userService->emailExists($_POST['inputMail']) == 1) {
-                require __DIR__ . '/../views/user/restorePassword.php';
+            if (!$this->userService->validateEmail($_POST['inputMail'])) {
+                
+                //Create an instance; passing `true` enables exceptions
+                $mail = new PHPMailer(true);
+
+                $userMail = $_POST['inputMail'];
+                $code = uniqid(true);
+                $this->userService->setResetCode($userMail, $code);
+                
+                try {
+                    //Server settings
+                    $mail->isSMTP();
+                    $mail->Host       = 'smtp.gmail.com';
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = 'haarlemfestival2022@gmail.com';
+                    $mail->Password   = 'InhollandisLeuk9!';
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->Port       = 587;
+
+                    //Recipients
+                    $mail->setFrom('info-haarlemfestival@gmail.com', 'Haarlem Festival');
+                    $mail->addAddress($userMail, 'Employee');
+                    $mail->addReplyTo('no-reply@gmail.com', 'Information');
+
+                    //Content
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Password recovery';
+                    $mail->Body    =
+                        '<h1>Password recovery link:</h1>
+                        <p>Press link down below to change password.</p><br>
+                        <a href="localhost/user/restorePassword?code=' . $code . '">Click me</a>';
+
+                    $mail->send();
+                    header('Location: http://localhost/cms/login');
+
+                } catch (Exception $e) {
+                    header('Location: /user/emailVerification?error=' . $mail->ErrorInfo);
+                }
             } else {
-                header('Location: /user/emailVerify?error=EmailDoesNotExist');
+                header('Location: /user/emailVerification?error=EmailDoesNotExist');
             }
         }
+    }
+
+    public function restorePassword() {
+        $code = $_GET['code'];
+        $email = $this->userService->getResetMail($code);
+        require __DIR__ . '/../views/user/restorePassword.php';
     }
 
     public function setPassword() {

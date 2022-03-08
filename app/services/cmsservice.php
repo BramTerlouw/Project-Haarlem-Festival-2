@@ -1,7 +1,8 @@
 <?php
+
 namespace Services;
 use Repositories\CmsRepository;
-// require __DIR__ . '/../repositories/cmsrepository.php';
+
 
 class CmsService {
 
@@ -41,6 +42,10 @@ class CmsService {
 
     public function updateEvent($id, $eventName, $eventDesc, $eventStart, $eventEnd) {
         $this->repository->updateEvent($id, $eventName, $eventDesc, $eventStart, $eventEnd);
+    }
+
+    public function updateEventItem($id, $name, $loc, $desc, $date, $start, $end) {
+        $this->repository->updateEventItem($id, $name, $loc, $desc, $date, $start, $end);
     }
 
     public function getEventNames() {

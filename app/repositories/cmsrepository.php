@@ -8,11 +8,6 @@ use Models\Location;
 use PDO;
 use PDOException;
 
-// require __DIR__ . '/repository.php';
-// require __DIR__ . '/../models/event.php';
-// require __DIR__ . '/../models/Event_item.php';
-// require __DIR__ . '/../models/location.php';
-
 class CmsRepository extends Repository
 {
 
@@ -178,6 +173,26 @@ class CmsRepository extends Repository
 
             $stmt->execute();
 
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function updateEventItem($id, $name, $loc, $desc, $date, $start, $end) {
+        try {
+            $sqlquery = "UPDATE Event_Item SET Name=:name, Description=:desc, Date=:date, Start_Time=:start, Location_ID=:loc, End_Time=:end WHERE EventItem_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam('id', $id);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':desc', $desc);
+            $stmt->bindParam(':date', $date);
+            $stmt->bindParam(':start', $start);
+            $stmt->bindParam(':loc', $loc);
+            $stmt->bindParam(':end', $end);
+
+            $stmt->execute();
+            
         } catch (PDOException $e) {
             echo $e;
         }

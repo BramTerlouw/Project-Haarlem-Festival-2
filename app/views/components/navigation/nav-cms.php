@@ -53,7 +53,6 @@ $names = $this->getEventNames();
             <a class="cms-logout-link" href="/cms/logout">
                 <img src="/icons/cms-logout.png" alt="logout button">
             </a>
-            <input class="header-searchbar" type="text" placeholder="Search...">
         </div>
 
         <!-- Container main content -->

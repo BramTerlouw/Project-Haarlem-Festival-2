@@ -5,6 +5,11 @@ use Models\Role;
 ?>
 
 <h1>Users:</h1>
+<form class="users-search-container" action="/user/search" method="POST">
+    <input class="user-searchbar" name="searchInput" type="text" placeholder="Search...">
+    <button name="submit" class="user-search-btn">Search</button>
+    <a href="/user" class="user-reset">X</a>
+</form>
 <div class="users-table-container">
 <table class="users-table">
     <thead>

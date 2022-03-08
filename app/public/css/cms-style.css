@@ -131,15 +131,6 @@
     text-decoration: none;
     color: var(--main-blue);
 }
-.header-searchbar {
-    margin: 0 10px 0 0;
-    padding: 0 0 0 5px;
-
-    border: none;
-    border-radius: 2px;
-
-    font-size: 1.5rem;
-}
 .cms-logout-link img {
     height: 30px;
 }
@@ -315,11 +306,27 @@ canvas {
 
     background-color: var(--form-input-bg);
 }
-.form-item label , .form-item-dropdwn label {
+.form-item-short {
+    width: 175px;
+    padding: 2px 3px;
+    margin: 10px 0 0 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    
+    border: 1px solid var(--form-input-border);
+    border-radius: 2px;
+
+    background-color: var(--form-input-bg);
+}
+.form-item label, .form-item-dropdwn label,
+.form-item-short label {
     width: 100%;
     color: var(--form-input-border);
 }
-.form-item input {
+.form-item input,
+.form-item-short input {
     width: 100%;
     
     border: none;
@@ -654,13 +661,13 @@ canvas {
 
 
 .eventItem-progam-container {
-    width: 100%;
+    width: 60%;
     min-height: 40vh; /* mag later weg */
     flex-grow: 1;
 }
 
 .eventItem-program-datetimepicker {
-    width: 100%;
+    width: 50%;
     padding: 0 0 0 20px;
     
     display: flex;
@@ -674,7 +681,7 @@ canvas {
 }
 
 .eventItem-progam-container table {
-    width: 60%;
+    width: 100%;
     margin: 20px 0 0 20px;
     border-collapse: collapse;
 
@@ -756,6 +763,46 @@ canvas {
 
 
 /* ## table for users */
+.users-search-container {
+    width: 95%;
+    margin: 0 0 10px 0;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-searchbar {
+    padding: 0 0 0 5px;
+
+    border: 1px solid var(--main-lightblue);
+    border-radius: 2px;
+
+    font-size: 1.5rem;
+}
+
+.user-search-btn {
+    padding: 0 5px;
+
+    border: 1px solid var(--main-lightblue);
+    border-radius: 2px;
+
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.user-reset {
+    display: block;
+    padding: 2px 10px;
+    margin: 0 0 0 15px;
+    
+    font-size: 1.3rem;
+    font-weight: bolder;
+
+    border: 1px solid var(--main-lightblue);
+    text-decoration: none;
+    color: var(--main-blue);
+}
+
 .users-table-container {
     width: 95%;
     max-height: 50vh;

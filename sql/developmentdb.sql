@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Gegenereerd op: 28 feb 2022 om 17:56
+-- Gegenereerd op: 09 mrt 2022 om 13:20
 -- Serverversie: 10.6.5-MariaDB-1:10.6.5+maria~focal
 -- PHP-versie: 7.4.26
 
@@ -231,6 +231,25 @@ INSERT INTO `Reservation` (`Reservation_ID`, `Date`, `Time`, `Restaurant_ID`, `A
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `resetPassword`
+--
+
+CREATE TABLE `resetPassword` (
+  `reset_ID` int(11) NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `email` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `resetPassword`
+--
+
+INSERT INTO `resetPassword` (`reset_ID`, `code`, `email`) VALUES
+(5, '1621fb41cf3fbd', 'bramterlouw12@gmail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `Restaurant`
 --
 
@@ -293,8 +312,8 @@ CREATE TABLE `User` (
   `User_ID` int(11) NOT NULL,
   `FullName` varchar(55) NOT NULL,
   `UserName` varchar(55) NOT NULL,
-  `Password` varchar(55) NOT NULL,
-  `BirthDate` datetime NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  `BirthDate` date NOT NULL,
   `Gender` varchar(55) NOT NULL,
   `Address` varchar(55) NOT NULL,
   `PostCode` varchar(55) NOT NULL,
@@ -310,8 +329,9 @@ CREATE TABLE `User` (
 --
 
 INSERT INTO `User` (`User_ID`, `FullName`, `UserName`, `Password`, `BirthDate`, `Gender`, `Address`, `PostCode`, `City`, `Role`, `Supervisor`, `Email`, `PhoneNumber`) VALUES
-(1, 'Bram terlouw', 'Bram_Vol', 'wachtwoord', '2022-02-10 10:28:18', 'Male', 'Zijsingel 2 ', '2013DN Haarlem ', 'Haarlem', 'Volunteer', 'Mark De Haan', 'Bram@hotmail.com', 638087845),
-(2, 'Mark De Haan', 'Mark_Admin', 'wachtwoord', '2022-02-10 10:30:42', 'Male', 'Zijsingel 2 ', '2013DN Haarlem ', 'Haarlem', 'Admin', 'NVT', 'Test@hotmail.com', 638087845);
+(1, 'Bram terlouw', 'Bram_Vol', 'wachtwoord', '2022-02-10', 'Male', 'Zijsingel 2 ', '2013DN Haarlem ', 'Haarlem', 'Volunteer', 'Mark De Haan', 'bramterlouw12@gmail.com', 638087845),
+(2, 'Mark De Haan', 'Mark_Admin', 'wachtwoord', '2022-02-10', 'Male', 'Zijsingel 2 ', '2013DN Haarlem ', 'Haarlem', 'Admin', 'NVT', 'Test@hotmail.com', 638087845),
+(6, 'Gerwin van Dijken', 'Gerwin_Super', 'wachtwoord', '1990-01-01', 'Male', 'test straat', '1388 LS', 'Alkmaar', 'Superadmin', 'De baas', 'test@email', 6929922);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -373,6 +393,12 @@ ALTER TABLE `Reservation`
   ADD KEY `Restaurant_ID` (`Restaurant_ID`);
 
 --
+-- Indexen voor tabel `resetPassword`
+--
+ALTER TABLE `resetPassword`
+  ADD PRIMARY KEY (`reset_ID`);
+
+--
 -- Indexen voor tabel `Restaurant`
 --
 ALTER TABLE `Restaurant`
@@ -423,7 +449,7 @@ ALTER TABLE `Event_Item`
 -- AUTO_INCREMENT voor een tabel `Lineup`
 --
 ALTER TABLE `Lineup`
-  MODIFY `LineUp_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `LineUp_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT voor een tabel `Location`
@@ -444,6 +470,12 @@ ALTER TABLE `Reservation`
   MODIFY `Reservation_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT voor een tabel `resetPassword`
+--
+ALTER TABLE `resetPassword`
+  MODIFY `reset_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT voor een tabel `Restaurant`
 --
 ALTER TABLE `Restaurant`
@@ -459,7 +491,7 @@ ALTER TABLE `Session`
 -- AUTO_INCREMENT voor een tabel `User`
 --
 ALTER TABLE `User`
-  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Beperkingen voor geëxporteerde tabellen

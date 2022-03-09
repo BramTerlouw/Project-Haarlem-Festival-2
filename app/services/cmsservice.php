@@ -91,10 +91,16 @@ class CmsService {
 
 
     // get line up
-    public function getLineUp() {
-        return $this->repository->getLineUp();
+    public function getLineUp($id) {
+        return $this->repository->getLineUp($id);
     }
 
+
+
+    // delete line up item
+    public function deleteLineUp($lineupID) {
+        $this->repository->deleteLineUp($lineupID);
+    }
 
 
     // get event names (nar bar)

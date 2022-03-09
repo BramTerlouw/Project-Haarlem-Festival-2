@@ -125,7 +125,8 @@ class CmsController extends Controller {
                
             // call update functions
             $this->service->updateEventItem($_GET['id'], $name, $loc, $desc, $date, $start, $end);
-            $this->filterPerformerArr($_GET['id'], $eventPerformers);
+            $this->filterDeleteArr($_GET['id'], $eventPerformers);
+            $this->filterUpdaTeArr($_GET['id'], $eventPerformers);
 
             // return to eventitem screen
             header('Location: /cms/eventItem?id=' . $_GET['id']);
@@ -134,24 +135,43 @@ class CmsController extends Controller {
 
 
 
-    // filter array of given performers
-    public function filterPerformerArr($eventID, $performerArr) {
+    // ## filter which new performers update the lineup
+    public function filterUpdateArr($eventID, $performerArr) {
         
         // get line up
-        $lineup = $this->service->getLineUp();
+        $lineup = $this->service->getLineUp($eventID);
         
         // if performer allready in lineup, delete of updatelist
         foreach ($lineup as $item) {
             foreach ($performerArr as $performer) {
-                if ($item->EventItem_ID == $eventID && $item->Artist_ID == $performer)
+                if ($item->Artist_ID == $performer)
                     unset($performerArr[array_search($performer, $performerArr)]);
             }
         }
 
         // call update function
-        $this->updateLineUp($eventID, $performerArr);
+        if (sizeof($performerArr) > 0)
+            $this->updateLineUp($eventID, $performerArr);
     }
 
+
+
+    // ## filter which new performers must be deleten from lineup
+    public function filterDeleteArr($eventID, $performerArr) {
+        
+        // get line up
+        $lineup = $this->service->getLineUp($eventID);
+        
+        foreach ($lineup as $item) {
+            foreach ($performerArr as $performer) {
+                if ($item->Artist_ID == $performer)
+                    unset($lineup[array_search($item, $lineup)]);
+            }
+        }
+
+        if (sizeof($lineup) > 0)
+            $this->deleteLineUp($lineup);
+    }
 
 
     // ## update line up
@@ -161,6 +181,14 @@ class CmsController extends Controller {
         }
     }
 
+
+
+    // ## delete line up item
+    private function deleteLineUp($deleteArr) {
+        foreach ($deleteArr as $item) {
+            $this->service->deleteLineUp($item->LineUp_ID);
+        }
+    }
 
 
     // ## get event names for navbar

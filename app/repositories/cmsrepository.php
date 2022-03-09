@@ -192,11 +192,12 @@ class CmsRepository extends Repository
 
 
     // ## get the lineup
-    public function getLineUp() {
+    public function getLineUp($id) {
         try {
-            $sqlquery = "SELECT LineUp_ID, EventItem_ID, Artist_ID FROM Lineup";
+            $sqlquery = "SELECT LineUp_ID, EventItem_ID, Artist_ID FROM Lineup WHERE EventItem_ID=:id";
             $stmt = $this->connection->prepare($sqlquery);
 
+            $stmt->bindParam(':id', $id);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Lineup');
 
@@ -231,7 +232,7 @@ class CmsRepository extends Repository
 
 
     
-    // ### update QUERIES ###
+    // ### UPDATE QUERIES ###
     // ## update an event
     public function updateEvent($id, $eventName, $eventDesc, $eventStart, $eventEnd) {
         try {
@@ -281,6 +282,32 @@ class CmsRepository extends Repository
 
             $stmt->bindParam(':event', $eventID);
             $stmt->bindParam(':artist', $performerID);
+
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+    
+
+
+
+
+
+
+
+
+
+    
+    // ### DELETE QUERIES ###
+    // ## delete lineup item
+    public function deleteLineUp($lineupID) {
+        try {
+            $sqlquery = "DELETE FROM Lineup WHERE LineUp_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $lineupID);
 
             $stmt->execute();
 

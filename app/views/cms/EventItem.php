@@ -30,7 +30,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
 
         <div class="form-item-dropdwn">
             <label for="inputActivityPerformers">Performers:</label>
-            <select name="inputActivityPerformers[]" id="" multiple>
+            <select name="inputActivityPerformers[]" required multiple>
                 <? foreach ($performers as $performer) {
                     if (in_array($performer, $itemPerformers)) { ?>
                         <option selected value="<? echo $performer->Artist_ID ?>">

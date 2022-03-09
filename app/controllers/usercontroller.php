@@ -7,26 +7,30 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 class UserController extends Controller {
-    private $userService;
-
+    
+    // service var and constructor
+    private $service;
     function __construct()
     {
-        $this->userService = new UserService;
+        $this->service = new UserService;
     }
     
 
 
     // load index view of users
     public function index() {
-        $users = $this->userService->getAll();
+        $users = $this->service->getAll();
         require __DIR__ . '/../views/user/index.php';
     }
 
+
+
+    // load index overview users searched data
     public function search() {
         if (isset($_POST['submit'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
             $filter = $_POST['searchInput'];
-            $users = $this->userService->getMany($filter);
+            $users = $this->service->getMany($filter);
             require __DIR__ . '/../views/user/index.php';
         }
     }
@@ -35,9 +39,9 @@ class UserController extends Controller {
     public function edit() {
         $model = NULL;
         if (isset($_GET['userName'])) {
-            $model = $this->userService->getOne($userName = $_GET['userName']);
+            $model = $this->service->getOne($userName = $_GET['userName']);
         } else {
-            $model = $this->userService->getOne($userName = $_SESSION['userName']);
+            $model = $this->service->getOne($userName = $_SESSION['userName']);
         }
         require __DIR__ . '/../views/user/edit.php';
     }
@@ -54,6 +58,7 @@ class UserController extends Controller {
     // update a user
     public function updateOne() {
 
+        // check for POST var
         if (isset($_POST['submit'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
 
@@ -77,8 +82,9 @@ class UserController extends Controller {
             array_push($userArr, $_POST['userEmail']);
             array_push($userArr, $_POST['userPhone']);
 
-            $this->userService->updateOne($userArr);
-            if (isset($_POST['userRole']) && $_POST['userName'] == $_SESSION['userName']) { // when user has permission, update role
+            $this->service->updateOne($userArr);
+            if (isset($_POST['userRole']) && $_POST['userName'] == $_SESSION['userName']) { 
+                // when user has permission, update role
                 $this->setPermission($_POST['userRole']);
             }
 
@@ -91,6 +97,7 @@ class UserController extends Controller {
     // insert a new user
     public function insertOne() {
 
+        // check for POST var
         if (isset($_POST['submit'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
 
@@ -115,7 +122,7 @@ class UserController extends Controller {
             array_push($userArr, $_POST['userPhone']);
 
             if ($_POST['userPw'] == $_POST['userConfirmPw']) {
-                $this->userService->insertOne($userArr);   
+                $this->service->insertOne($userArr);   
             }
         }
     }
@@ -124,14 +131,14 @@ class UserController extends Controller {
 
     // delete a user
     public function deleteOne() {
-        $this->userService->deleteOne($_GET['id']);
+        $this->service->deleteOne($_GET['id']);
     }
 
     
 
     // get all event names for nav
     public function getEventNames() {
-        return $this->userService->getEventNames();
+        return $this->service->getEventNames();
     }
 
 
@@ -147,13 +154,13 @@ class UserController extends Controller {
             $userName = $_POST['inputUsername'];
             $password = $_POST['inputPassword'];
             
-            $rowCount = $this->userService->getRowCount($userName, $password);
+            $rowCount = $this->service->getRowCount($userName, $password);
 
             // when user exists, set session var and go to home
             if ($rowCount == 1) {
                 $_SESSION['logginIn'] = true;
                 $_SESSION['userName'] = $userName;
-                $this->setPermission($this->userService->getRole($userName));
+                $this->setPermission($this->service->getRole($userName));
                 header('Location: /cms');
             } else { // give error
                 header('location: /cms/login?error=loginfailed');
@@ -171,19 +178,18 @@ class UserController extends Controller {
     //         $userName = $_POST['inputUsername'];
     //         $password = $_POST['inputPassword'];
             
-    //         $data = $this->userService->getCredentials($userName);
+    //         $data = $this->service->getCredentials($userName);
 
     //         if (password_verify($password, $data[0][1])) {
     //             $_SESSION['logginIn'] = true;
     //             $_SESSION['userName'] = $userName;
-    //             $this->setPermission($this->userService->getRole($userName));
+    //             $this->setPermission($this->service->getRole($userName));
     //             header('Location: /cms');
     //         } else { // give error
     //             header('location: /cms/login?error=loginfailed');
     //         }
     //     }
     // }
-
 
 
 
@@ -198,14 +204,14 @@ class UserController extends Controller {
     public function requestReset()
     {
         if (isset($_POST['inputMail'])) {
-            if (!$this->userService->validateEmail($_POST['inputMail'])) {
+            if (!$this->service->validateEmail($_POST['inputMail'])) {
                 
                 //Create an instance; passing `true` enables exceptions
                 $mail = new PHPMailer(true);
 
                 $userMail = $_POST['inputMail'];
                 $code = uniqid(true);
-                $this->userService->setResetCode($userMail, $code);
+                $this->service->setResetCode($userMail, $code);
                 
                 try {
                     //Server settings
@@ -242,16 +248,22 @@ class UserController extends Controller {
         }
     }
 
+
+
+    // ## get restore token and open view
     public function restorePassword() {
         $code = $_GET['code'];
-        $email = $this->userService->getResetMail($code);
+        $email = $this->service->getResetMail($code);
         require __DIR__ . '/../views/user/restorePassword.php';
     }
 
+
+
+    // ## set the new password
     public function setPassword() {
         if (isset($_POST['submit'])) {
             if ($_POST['inputPassword'] == $_POST['inputPassword']) {
-                $this->userService->setPassword($_GET['email'], $_POST['inputPassword']);
+                $this->service->setPassword($_GET['email'], $_POST['inputPassword']);
             }
         }
     }

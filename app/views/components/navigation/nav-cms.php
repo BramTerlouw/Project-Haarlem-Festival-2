@@ -44,6 +44,14 @@ $names = $this->getEventNames();
                 <img class="cms-nav-icon" src="/icons/cms-users.png" alt="home icon">
                 <a href="/user/index">Users</a>
             </li>
+            <li class="cms-nav-item">
+                <img class="cms-nav-icon" src="/icons/cms-users.png" alt="home icon">
+                <a href="/cms">Artists</a>
+            </li>
+            <li class="cms-nav-item">
+                <img class="cms-nav-icon" src="/icons/cms-users.png" alt="home icon">
+                <a href="/cms/locations">Locations</a>
+            </li>
         </ul>
     </nav>
 

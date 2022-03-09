@@ -39,8 +39,6 @@ $uriEvent = $_GET['event'];
 
                 <input type="date" name="EventStart" value="<?php echo $event->StartDate ?>">
                 <input type="date" name="eventEnd" value="<?php echo $event->EndDate ?>">
-
-                <img src="/icons/cms-edit-form.png" alt="edit button">
             </div>
 
             <div class="form-item">
@@ -55,8 +53,10 @@ $uriEvent = $_GET['event'];
 
                 <a href="/cms/locations"><img class="clickable" src="/icons/cms-edit-form.png" alt="edit button"></a>
             </div>
-
-            <button name="submit" type="submit">Save</button>
+            
+            <button class="cms-saveOverview-xl" name="submit" type="submit">Save changes
+                <img src="/icons/cms-save.png" alt="cancel icon">
+            </button>
     </div>
     </form>
 

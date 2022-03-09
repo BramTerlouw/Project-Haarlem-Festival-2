@@ -378,7 +378,7 @@ canvas {
     display: flex;
     text-align: center;
 }
-.personal-info-btns-container a {
+.cms-cancel-xl {
     width: 45%;
     height: 50px;
     margin: 0 5% 0 0;
@@ -394,11 +394,11 @@ canvas {
 
     color: var(--main-blue);
 }
-.personal-info-btns-container a img, .personal-info-btns-container button img{
+.cms-cancel-xl img, .cms-save-xl img{
     width: 17px;
     height: 17px;
 }
-.personal-info-btns-container button {
+.cms-save-xl {
  width: 45%;
  height: 50px;
  margin: 0 0 0 5%;
@@ -420,7 +420,7 @@ canvas {
 /* ## event overview page */
 .overview-container-info {
     width: 100%;
-    height: 42vh;
+    /* height: 42vh; */
 
     margin: 0 0 10vh 0;
 
@@ -466,7 +466,7 @@ canvas {
 
 .placeholder-image {
     width: 80%;
-    height: 50%;
+    height: 200px;
 
     margin: 0 0 0 10%;
     background-color: lightgray;
@@ -537,6 +537,27 @@ canvas {
     width: 24px;
     height: 24px;
     border-radius: 2px;
+}
+
+
+
+
+.cms-saveOverview-xl img{
+    width: 17px;
+    height: 17px;
+}
+.cms-saveOverview-xl {
+ width: 25%;
+ height: 50px;
+
+ border: 2px solid var(--main-blue);
+ border-radius: 5px;
+
+ font-weight: bold;
+ font-size: 1.2rem;
+
+ background-color: var(--white);
+ cursor: pointer;
 }
 
 
@@ -630,14 +651,14 @@ canvas {
 
 .eventItem-info-container {
     width: 100%;
-    padding: 0 1vw;
+    padding: 0 0 0 20px;
 
     display: flex;
 }
 
 .eventItem-info {
     width: 40%;
-    max-height: 35vh;
+    max-height: 40vh;
 
     display: flex;
     flex-direction: column;
@@ -646,7 +667,7 @@ canvas {
 }
 
 .eventItem-info div {
-    margin: 0 0 10px 0;
+    margin: 0 20px 10px 0;
 }
 
 .eventItem-info h1 {
@@ -658,6 +679,26 @@ canvas {
     min-height: 35vh;
 }
 
+
+
+.cms-saveOverview-xl img{
+    width: 17px;
+    height: 17px;
+}
+.cms-saveOverview-xl {
+ width: 40%;
+ height: 50px;
+ margin: 10px 0 0 0;
+
+ border: 2px solid var(--main-blue);
+ border-radius: 5px;
+
+ font-weight: bold;
+ font-size: 1.2rem;
+
+ background-color: var(--white);
+ cursor: pointer;
+}
 
 
 .eventItem-progam-container {

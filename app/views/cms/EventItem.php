@@ -29,7 +29,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
 
 
         <div class="form-item-dropdwn">
-            <label for="inputActivityPerformers">Performers:</label>
+            <label for="inputActivityPerformers">Performers: (HOLD CTRL TO (DE)SELECT)</label>
             <select name="inputActivityPerformers[]" required multiple>
                 <? foreach ($performers as $performer) {
                     if (in_array($performer, $itemPerformers)) { ?>
@@ -74,8 +74,11 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
             <label for="inputActivityEnd">Timeslot:</label>
             <input type="time" name="inputActivityEnd" value="<? echo $item->End_Time ?>">
         </div>
+
+        <button class="cms-saveOverview-xl" name="submit" type="submit">Save changes
+            <img src="/icons/cms-save.png" alt="cancel icon">
+        </button>
     </div>
-    <button type="submit" name="submit" value="submit">Edit</button>
     <!-- <table>
         <thead>
             <tr>

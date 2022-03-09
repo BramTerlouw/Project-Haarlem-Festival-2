@@ -93,10 +93,10 @@
 
     <!-- custom cancel and submit buttons -->
     <div class="personal-info-btns-container">
-        <a href="/cms">Cancel
+        <a class="cms-cancel-xl" href="/cms">Cancel
             <img src="/icons/cms-cancel.png" alt="cancel icon">
         </a>
-        <button name="submit" type="submit">Save changes
+        <button class="cms-save-xl" name="submit" type="submit">Save changes
             <img src="/icons/cms-save.png" alt="cancel icon">
         </button>
     </div>

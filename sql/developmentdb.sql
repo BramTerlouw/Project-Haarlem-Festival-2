@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Gegenereerd op: 09 mrt 2022 om 13:20
+-- Gegenereerd op: 09 mrt 2022 om 20:57
 -- Serverversie: 10.6.5-MariaDB-1:10.6.5+maria~focal
 -- PHP-versie: 7.4.26
 
@@ -121,12 +121,12 @@ CREATE TABLE `Event_Item` (
 --
 
 INSERT INTO `Event_Item` (`EventItem_ID`, `Name`, `Description`, `Type`, `Date`, `Start_Time`, `Location_ID`, `Ticket_Price`, `End_Time`, `Tickets`, `Event_ID`) VALUES
-(3, 'Gumbo Kings', 'Description', 'Jazz', '2022-07-28', '18:00:00', 1, 15, '19:00:00', 300, 1),
-(4, 'Evolve', 'Description', 'Jazz', '2022-07-29', '19:30:00', 1, 15, '20:30:00', 300, 1),
-(5, 'Ruis SoundSystem', 'Description', 'Jazz', '2022-07-29', '19:30:00', 3, 10, '20:30:00', 200, 1),
-(7, 'Han Bennik', 'Description', 'Jazz', '2022-07-30', '18:00:00', 4, 10, '19:00:00', 150, 1),
-(12, 'Tiesto', 'Description', 'DJ', '2022-07-29', '22:00:00', 7, 60, '23:30:00', 200, 3),
-(13, 'Afrojack', 'Description', 'DJ', '2022-07-29', '20:00:00', 6, 75, '02:00:00', 1500, 3);
+(3, 'Gumbo Kings', 'This band is Gumbo kings and it is a jazz band.', 'Jazz', '2022-07-28', '18:00:00', 1, 15, '19:00:00', 300, 1),
+(4, 'Evolve', 'This is evolve and this is a jazz band.', 'Jazz', '2022-07-29', '19:30:00', 1, 15, '20:30:00', 300, 1),
+(5, 'Ruis SoundSystem', 'Het soundsysteem voor buiten jou huis in het zonnetje met een drankje en een hoedje ja joh!', 'Jazz', '2022-07-29', '19:30:00', 3, 10, '20:30:00', 200, 1),
+(7, 'Han Bennik', 'Han bennik is een man die alles kan!', 'Jazz', '2022-07-30', '18:00:00', 4, 10, '19:00:00', 150, 1),
+(12, 'Tiesto', 'Tiesto is een DJ en hij is niet te missen hoor.', 'DJ', '2022-07-29', '22:00:00', 7, 60, '23:30:00', 200, 3),
+(13, 'Afrojack', 'The G.O.A.T. als het gaat om DJ\'s mensen.', 'DJ', '2022-07-29', '20:00:00', 6, 75, '02:00:00', 1500, 3);
 
 -- --------------------------------------------------------
 
@@ -147,11 +147,11 @@ CREATE TABLE `Lineup` (
 INSERT INTO `Lineup` (`LineUp_ID`, `EventItem_ID`, `Artist_ID`) VALUES
 (13, 13, 11),
 (14, 4, 18),
-(15, 3, 17),
 (16, 7, 8),
 (17, 5, 22),
 (18, 12, 16),
-(19, 12, 11);
+(19, 12, 11),
+(28, 3, 17);
 
 -- --------------------------------------------------------
 
@@ -449,7 +449,7 @@ ALTER TABLE `Event_Item`
 -- AUTO_INCREMENT voor een tabel `Lineup`
 --
 ALTER TABLE `Lineup`
-  MODIFY `LineUp_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `LineUp_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT voor een tabel `Location`

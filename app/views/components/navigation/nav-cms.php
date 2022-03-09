@@ -36,21 +36,21 @@ $names = $this->getEventNames();
             <hr>
 
             <li class="cms-nav-item">
-                <img class="cms-nav-icon" src="/icons/cms-new-archive.png" alt="home icon">
+                <img class="cms-nav-icon" src="/icons/cms-orders.png" alt="orders icon">
                 <a href="/cms/orders">Orders</a>
             </li>
-
             <li class="cms-nav-item">
-                <img class="cms-nav-icon" src="/icons/cms-users.png" alt="home icon">
-                <a href="/user/index">Users</a>
-            </li>
-            <li class="cms-nav-item">
-                <img class="cms-nav-icon" src="/icons/cms-users.png" alt="home icon">
+                <img class="cms-nav-icon" src="/icons/cms-users.png" alt="artists icon">
                 <a href="/cms">Artists</a>
             </li>
             <li class="cms-nav-item">
-                <img class="cms-nav-icon" src="/icons/cms-users.png" alt="home icon">
+                <img class="cms-nav-icon" src="/icons/cms-locations.png" alt="locations icon">
                 <a href="/cms/locations">Locations</a>
+            </li>
+            <hr>
+            <li class="cms-nav-item">
+                <img class="cms-nav-icon" src="/icons/cms-users.png" alt="users icon">
+                <a href="/user/index">Users</a>
             </li>
         </ul>
     </nav>

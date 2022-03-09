@@ -11,6 +11,8 @@ use PDOException;
 class CmsRepository extends Repository
 {
 
+    // ### GET QUERIES ###
+    // ## get event
     public function getEvent($name) {
         try {
             $sqlquery = "SELECT * FROM Event WHERE Name=:name";
@@ -27,6 +29,9 @@ class CmsRepository extends Repository
         }
     }
 
+
+
+    // ## get event item
     public function getEventItems($id, $date) {
         try {
             $sqlquery = "SELECT 
@@ -44,7 +49,6 @@ class CmsRepository extends Repository
                     FROM Event_Item E 
                     INNER JOIN Location L ON E.Location_ID = L.Location_ID 
                     WHERE Event_ID=:eventID AND Date=:date" ;
-
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->bindParam('eventID', $id);
@@ -54,18 +58,18 @@ class CmsRepository extends Repository
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Event_Item');
             return $stmt->fetchAll();
 
-
         } catch(PDOException $e) {
             echo $e;
         }
     }
 
+
+
+    // ## get all locations
     public function getLocations() {
         try {
-            
             $sqlquery = "SELECT * FROM Location";
             $stmt = $this->connection->prepare($sqlquery);
-
 
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Location');
@@ -77,6 +81,9 @@ class CmsRepository extends Repository
         }
     }
 
+
+
+    // ## get events for event
     public function getEventLocations($locationArr) {
         try {
             $questionmarks = str_repeat("?,", count($locationArr)-1) . "?";
@@ -93,6 +100,8 @@ class CmsRepository extends Repository
         }
     }
 
+
+    // ## get one eventitem
     public function getEVentItem($id) {
         try {
             $sqlquery = "SELECT 
@@ -110,7 +119,6 @@ class CmsRepository extends Repository
                 FROM Event_Item E 
                 INNER JOIN Location L ON E.Location_ID = L.Location_ID 
                 WHERE EventItem_ID=:itemID";
-
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->bindParam(':itemID', $id);
@@ -124,19 +132,21 @@ class CmsRepository extends Repository
         }
     }
 
-    public function getPerformers($id) {
+
+
+    // ## get performers for event item
+    public function getItemPerformers($id) {
         try {
-            
-            $sqlquery = "SELECT A.Artist_ID, A.Name 
+            $sqlquery = "SELECT A.Artist_ID, A.Name, A.Description, A.Type 
             FROM Lineup L 
             INNER JOIN Artist A ON A.Artist_ID = L.Artist_ID
             WHERE L.EventItem_ID=:itemID";
-
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->bindParam(':itemID', $id);
             $stmt->execute();
 
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Artist');
             return $stmt->fetchAll();
 
         } catch (PDOException $e) {
@@ -144,6 +154,26 @@ class CmsRepository extends Repository
         }
     }
 
+
+
+    // ## get all performers
+    public function getAllPerformers() {
+        try {
+            $sqlquery = "SELECT Artist_ID, Name, Description, Type FROM Artist";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Artist');
+            
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
+
+    // ## get all event item dates for event (overview day selector)
     public function getDates($id) {
         try {
 
@@ -160,6 +190,49 @@ class CmsRepository extends Repository
         }
     }
 
+
+    // ## get the lineup
+    public function getLineUp() {
+        try {
+            $sqlquery = "SELECT LineUp_ID, EventItem_ID, Artist_ID FROM Lineup";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Lineup');
+
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
+
+    // ## get all event names (for navbar)
+    public function getEventNames() {
+        try {
+            $sqlquery = "SELECT Name From Event";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    
+    // ### update QUERIES ###
+    // ## update an event
     public function updateEvent($id, $eventName, $eventDesc, $eventStart, $eventEnd) {
         try {
             $sqlquery = "Update Event SET Name=:name, StartDate=:start, EndDate=:end, Description=:desc WHERE Event_ID=:id";
@@ -178,6 +251,8 @@ class CmsRepository extends Repository
         }
     }
 
+
+    // ## update an event item
     public function updateEventItem($id, $name, $loc, $desc, $date, $start, $end) {
         try {
             $sqlquery = "UPDATE Event_Item SET Name=:name, Description=:desc, Date=:date, Start_Time=:start, Location_ID=:loc, End_Time=:end WHERE EventItem_ID=:id";
@@ -198,13 +273,17 @@ class CmsRepository extends Repository
         }
     }
 
-    public function getEventNames() {
+
+    public function updateLineUp($eventID, $performerID) {
         try {
-            $sqlquery = "SELECT Name From Event";
+            $sqlquery = "INSERT INTO Lineup (EventItem_ID, Artist_ID) VALUES (:event, :artist)";
             $stmt = $this->connection->prepare($sqlquery);
 
+            $stmt->bindParam(':event', $eventID);
+            $stmt->bindParam(':artist', $performerID);
+
             $stmt->execute();
-            return $stmt->fetchAll();
+
         } catch (PDOException $e) {
             echo $e;
         }

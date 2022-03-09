@@ -28,12 +28,21 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
         </div>
 
 
-        <div class="form-item">
+        <div class="form-item-dropdwn">
             <label for="inputActivityPerformers">Performers:</label>
-            <?php foreach ($itemPerformers as $performer) {?>
-                <p><strong><?php echo $performer[1] ?></strong></p>
-            <?php } ?>
-            <img src="/icons/cms-edit-form.png" alt="edit button">
+            <select name="inputActivityPerformers[]" id="" multiple>
+                <? foreach ($performers as $performer) {
+                    if (in_array($performer, $itemPerformers)) { ?>
+                        <option selected value="<? echo $performer->Artist_ID ?>">
+                            <? echo $performer->Name ?>
+                        </option>
+                    <?} else { ?>
+                        <option value="<? echo $performer->Artist_ID ?>">
+                            <? echo $performer->Name ?>
+                        </option>
+                    <?}
+                }?>
+            </select>
         </div>
 
 

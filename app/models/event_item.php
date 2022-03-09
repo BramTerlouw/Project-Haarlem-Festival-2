@@ -1,5 +1,7 @@
 <?php
+
 namespace Models;
+
 class Event_Item {
     public int $EventItem_ID;
     public string $Name;
@@ -12,18 +14,4 @@ class Event_Item {
     public string $End_Time;
     public int $Tickets;
     public int $Event_ID;
-
-    // public function __get($property) {
-    //     if (property_exists($this, $property)) {
-    //       return $this->$property;
-    //     }
-    //   }
-    
-    //   public function __set($property, $value) {
-    //     if (property_exists($this, $property)) {
-    //       $this->$property = $value;
-    //     }
-    
-    //     return $this;
-    //   }
 }

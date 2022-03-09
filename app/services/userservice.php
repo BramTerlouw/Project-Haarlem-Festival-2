@@ -6,7 +6,6 @@ use Repositories\UserRepository;
 class UserService {
 
     private $repository;
-
     function __construct() {
         $this->repository = new UserRepository();
     }

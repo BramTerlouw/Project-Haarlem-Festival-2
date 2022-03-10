@@ -330,6 +330,22 @@ class CmsRepository extends Repository
             echo $e;
         }
     }
+
+
+
+    // ## delete event item
+    public function deleteEventItem($id) {
+        try {
+            $sqlquery = "DELETE FROM Event_Item WHERE EventItem_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
     
 
 
@@ -360,6 +376,7 @@ class CmsRepository extends Repository
             $stmt->bindParam(':eventID', $eventItem->Event_ID);
 
             $stmt->execute();
+            return $this->connection->lastInsertId();
 
         } catch (PDOException $e) {
             echo $e;

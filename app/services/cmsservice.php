@@ -117,6 +117,12 @@ class CmsService {
 
     // insert new event item
     public function insertEventItem($eventItem) {
-        $this->repository->insertEventItem($eventItem);
+        return $this->repository->insertEventItem($eventItem);
     }
+
+
+    // delete event item
+    public function deleteEventItem($id) {
+        $this->repository->deleteEventItem($id);
+    } 
 }

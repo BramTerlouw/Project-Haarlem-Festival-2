@@ -95,15 +95,9 @@ $uriEvent = $_GET['event'];
 
         <ul class="overview-btns-right">
             <li>
-                <a href="/cms/addEventItem?eventID=<? echo $event->Event_ID ?>">
+                <a href="/cms/addEventItem?eventID=<? echo $event->Event_ID ?>&event=<?echo $uriEvent?>">
                     Add item
                     <img src="/icons/add-item.png" alt="add item">
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    Delete items
-                    <img src="/icons/delete-item.png" alt="delete item">
                 </a>
             </li>
         </ul>
@@ -118,15 +112,23 @@ $uriEvent = $_GET['event'];
                 <th>Location</th>
                 <th>Price</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
             <?php foreach ($itemArr as $item) { ?>
                 <tr>
-                    <td><input type="checkbox" name="" id=""></td>
+                    <td></td>
                     <td><?php echo $item->Name ?></td>
                     <td><?php echo $item->Start_Time ?> - <?php echo $item->End_Time ?></td>
                     <td><?php echo $item->Location ?></td>
                     <td><?php echo $item->Ticket_Price ?> ,-</td>
-                    <td><a href="/cms/eventItem?id=<?php echo $item->EventItem_ID ?>"><img src="/icons/cms-table-edit.png" alt=""></a></td>
+                    <td>
+                        <a href="/cms/eventItem?id=<?php echo $item->EventItem_ID ?>">
+                        <img src="/icons/cms-table-edit.png" alt=""></a>
+                    </td>
+                    <td>
+                        <a href="/cms/deleteItem?id=<?php echo $item->EventItem_ID ?>&event=<?echo $uriEvent?>">
+                        <img src="/icons/delete-item.png" alt=""></a>
+                    </td>
                 </tr>
             <?php } ?>
         </table>

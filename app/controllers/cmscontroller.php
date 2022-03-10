@@ -116,12 +116,30 @@ class CmsController extends Controller {
             $item->Tickets = $_POST['inputActivityTickets'];
             $item->Event_ID = $_GET['eventID'];
 
+            // get all performers for the activity
+            $eventPerformers = array();
+            foreach ($_POST['inputActivityPerformers'] as $performer)
+                array_push($eventPerformers, $performer);
+
             // call insert function
-            $this->service->insertEventItem($item);
+            $lastID = $this->service->insertEventItem($item);
+            $this->updateLineUp($lastID, $eventPerformers);
+            header('Location: /cms/overview?event=' . $_POST['eventName']);
         }
     }
 
 
+
+    // ## delete event item
+    public function deleteItem() {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $event = $_GET['event'];
+            
+            $this->service->deleteEventItem($id);
+            header('Location: /cms/overview?event=' . $event);
+        }
+    }
 
     // ## update an event
     public function updateEvent() {

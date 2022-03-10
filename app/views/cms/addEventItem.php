@@ -83,6 +83,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
             <img src="/icons/cms-save.png" alt="cancel icon">
         </button>
     </div>
+    <input type="hidden" name="eventName" value="<?echo $_GET['event'] ?>">
 </section>
 </form>
 

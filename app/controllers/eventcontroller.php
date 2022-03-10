@@ -2,6 +2,7 @@
 namespace Controllers;
 use Controllers\Controller;
 use Services\eventservice;
+use Services\culinaryservice;
 
 class EventController extends Controller {
     
@@ -20,8 +21,9 @@ class EventController extends Controller {
         require __DIR__ . '/../views/' . $event . '/index.php';
     }
     public function restaurants() {
-        require __DIR__ . '/../views/Culinary/Restaurants.php';
-        $restaurantlist = $this->culinaryService->getRestaurants($Restaurant_ID, $Name, $Type, $Max_visitors, $Wheelchair_accessible):
+        $restaurantlist = $this->culinaryService->getRestaurants();
+        //var_dump($restaurantlist);
+        // require __DIR__ . '/../views/Culinary/Restaurants.php';
     }
 
     public function reservationForm() {

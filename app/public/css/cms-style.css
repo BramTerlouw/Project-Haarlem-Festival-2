@@ -703,7 +703,8 @@ canvas {
 
 .eventItem-progam-container {
     width: 60%;
-    min-height: 40vh; /* mag later weg */
+    /* min-height: 40vh; mag later weg */
+    margin: 0 0 20px 0;
     flex-grow: 1;
 }
 

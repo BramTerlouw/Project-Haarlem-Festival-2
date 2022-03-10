@@ -95,7 +95,7 @@ $uriEvent = $_GET['event'];
 
         <ul class="overview-btns-right">
             <li>
-                <a href="">
+                <a href="/cms/addEventItem?eventID=<? echo $event->Event_ID ?>">
                     Add item
                     <img src="/icons/add-item.png" alt="add item">
                 </a>

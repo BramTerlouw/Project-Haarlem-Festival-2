@@ -366,6 +366,14 @@
 	cursor: pointer;
 	background-color: #4983F8;
 }
+.culinary-slider-button
+{
+	background-color: black;
+	color: white;
+	padding: 1%;
+	border: none;
+	
+}
 .Banner-ingridients{
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("/images/Culinary/image2.jpg");
 	background-repeat: no-repeat;
@@ -462,6 +470,56 @@
 	text-align: center;
 	padding: 1%;
 }
+/* ## Restaurant Page */
+.Page-indicator-top{
+	
+}
+.flex-container-restaurant{
+	display: flex;
+	align-items: baseline;
+}
+.flex-item-restaurant-header{
+	flex-grow: 6;
+}
+.flex-item-restaurant-dropdown{
+	flex-grow: 4;
+}
+.restaurant-element{
+	display: flex;
+	padding: 1%;
+}
+.Restaurant-item-title{
+	justify-content: left;
+}
+.Restaurant-item-img{
+  justify-content: left;
+  
+}
+.Restaurant-item-text{
+	justify-content: right;
+}
+.Restaurant-item-type{
+	justify-content: right;
+}
+.Restaurant-item-button{
+	justify-content: right;
+	background-color: black;
+	color: white;
+	padding: 1%;
+	border: none;
+}
+.Restaurant-item-container{
+	width: 100%;
+    height: 100%;
+    /* border: 1px solid black; */
+    margin: 0 auto;
+}
+.Restaurant-Container{
+	width: 80%;
+	justify-content: center;
+	display: flex;
+}
+
 
 
 
@@ -550,6 +608,7 @@ article p{
 }
 .slider-container {
     display: flex;
+	margin: 0 auto;
 }
 .slider-element {
    padding: 1%;

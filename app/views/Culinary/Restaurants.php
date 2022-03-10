@@ -28,8 +28,10 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 <?php
 
 foreach ($restaurantlist as $restaurant){
-
-    
+    echo $restaurant['Name'];
+    echo $restaurant['type'];
+    echo $restaurant['summary'];
+    echo $restaurant['Wheelchair_accessible'];
 }
 
 

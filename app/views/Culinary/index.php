@@ -11,7 +11,7 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 <!-- Slider with events -->
 <div class="culinary-container">
     <button id="culinary-LeftButton" onclick="RecipeupdateCarouselLeft()"><</button>
-    <div id="slider-container" class="slider-container"></div>
+    <div id="recipe-slider-container" class="slider-container"></div>
     <button id="culinary-RightButton" onclick="RecipeupdateCarouselRight()">></button>
 </div>
 <div class="Culinary-Header">
@@ -21,11 +21,12 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 
 <div class="HomeSlider-container">
     <button id="LeftButton" onclick="updateCarouselLeft()"><</button>
-    <div id="slider-container" class="slider-container"></div>
+    <div id="culinary-slider-container" class="slider-container"></div>
     <button id="RightButton" onclick="updateCarouselRight()">></button>
 </div>
 
-<button class="allrestaurant-button" type="button">Click Me!</button>
+<button class="allrestaurant-button" href="culinary/restaurants" type="button">All Restaurants</button>
+<a href="event/restaurants">HIer kan je alle restaurants zien</a>
 <div class="Banner-ingridients">
     
 <h1 class="ingridients-header">Made with only fresh ingredients from de local community</h1>
@@ -87,34 +88,34 @@ require __DIR__ . '/../components/navigation/nav-website.php';
         // }
 
 
-        var element1 = { title: "Garu de nord"};
-        var element2 = { title: "Ratatouille"};
-        var element3 = { title: "Tiesto"};
-        var element4 = { title: "Rilan & the bombadiers4"};
-        var element5 = { title: "Ratatouille" };
-        var element6 = { title: "Garu de nord"};
-        var element7 = { title: "Ratatouille"};
-        var element8 = { title: "Garu de nord8" };
-        var element9 = { title: "Ratatouille"};
+        var Recipe_element1 = { title: "Garu de nord"};
+        var Recipe_element2 = { title: "Ratatouille"};
+        var Recipe_element3 = { title: "Tiesto"};
+        var Recipe_element4 = { title: "Rilan & the bombadiers4"};
+        var Recipe_element5 = { title: "Ratatouille" };
+        var Recipe_element6 = { title: "Garu de nord"};
+        var Recipe_element7 = { title: "Ratatouille"};
+        var Recipe_element8 = { title: "Garu de nord8" };
+        var Recipe_element9 = { title: "Ratatouille"};
 
-        var elements = [element1, element2, element3, element4, element5, element6, element7, element8, element9];
+        var Recipe_elements = [Recipe_element1, Recipe_element2, Recipe_element3, Recipe_element4, Recipe_element5, Recipe_element6, Recipe_element7, Recipe_element8, Recipe_element9];
         const recipeloopNumbers = [0, 4];
 
         function RecipefillCarousel() {
-            document.getElementById("slider-container").innerHTML = "";
+            document.getElementById("recipe-slider-container").innerHTML = "";
             for (let i = recipeloopNumbers[0]; i < recipeloopNumbers[1]; i++) {
-                var element = document.createElement('div');
-                element.classList.add("slider-element")
+                var Recipe_element = document.createElement('div');
+                Recipe_element.classList.add("slider-element")
 
                 var Recipetitle = document.createElement('h1');
                 var Recipeimg = document.createElement('div');
        
-                Recipetitle.innerText = elements[i].title;
+                Recipetitle.innerText = Recipe_elements[i].title;
                 Recipeimg.classList.add("slider-img")
                 
-                element.appendChild(Recipeimg);
-                element.appendChild(Recipetitle);
-                document.getElementById("slider-container").appendChild(element);
+                Recipe_element.appendChild(Recipeimg);
+                Recipe_element.appendChild(Recipetitle);
+                document.getElementById("recipe-slider-container").appendChild(Recipe_element);
             }
         };
 
@@ -167,7 +168,7 @@ var elements = [element1, element2, element3, element4, element5, element6, elem
 const loopNumbers = [0, 4];
 
 function fillCarousel() {
-    document.getElementById("slider-container").innerHTML = "";
+    document.getElementById("culinary-slider-container").innerHTML = "";
     for (let i = loopNumbers[0]; i < loopNumbers[1]; i++) {
         var element = document.createElement('div');
         element.classList.add("slider-element")
@@ -177,6 +178,8 @@ function fillCarousel() {
         var text = document.createElement('p');
         var button = document.createElement('button');
         var type = document.createElement('p');
+
+        button.classList.add("culinary-slider-button")
         
         button.innerText = "test";
         title.innerText = elements[i].title;
@@ -189,7 +192,7 @@ function fillCarousel() {
         element.appendChild(text);
         element.appendChild(type);
         element.appendChild(button);
-        document.getElementById("slider-container").appendChild(element);
+        document.getElementById("culinary-slider-container").appendChild(element);
     }
 };
 

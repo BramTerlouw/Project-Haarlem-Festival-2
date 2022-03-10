@@ -7,5 +7,12 @@ class EventController extends Controller {
         $event = $_GET['event'];
         require __DIR__ . '/../views/' . $event . '/index.php';
     }
+    public function restaurants() {
+        require __DIR__ . '/../views/Culinary/Restaurants.php';
+    }
+
+    public function reservationForm() {
+        require __DIR__ . '/../views/Culinary/reservationForm.php';
+    }
 }
 ?>

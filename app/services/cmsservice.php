@@ -68,6 +68,12 @@ class CmsService {
     }
 
 
+    // get timespan of event
+    public function getEventTimespan($id) {
+        return $this->repository->getEventTimespan($id);
+    }
+
+
 
     // update an event
     public function updateEvent($id, $eventName, $eventDesc, $eventStart, $eventEnd) {

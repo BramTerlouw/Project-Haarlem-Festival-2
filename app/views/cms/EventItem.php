@@ -58,11 +58,15 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
 <section class="eventItem-progam-container">
     <div class="eventItem-program-datetimepicker">
         <h1>Date & time information:</h1>
-        <div class="form-item-dropdwn">
+        <div class="form-item">
             <label for="inputActivityDate">Date:</label>
-            <select name="inputActivityDate">
-                <option value="<? echo $item->Date ?>"><? echo $item->Date ?></option>
-            </select>
+            
+            <input type="date" name="inputActivityDate" value="<? echo $item->Date ?>" min="<? echo $timespan[0] ?>" max="<? echo $timespan[1] ?>">
+            
+            
+            <!-- <select name="inputActivityDate">
+                <option value="<? echo $item->Date ?>" min="<? echo $timespan[0] ?>" max="<? echo $timespan[1] ?>"><? echo $item->Date ?></option>
+            </select> -->
         </div>
 
         <div class="form-item-short">

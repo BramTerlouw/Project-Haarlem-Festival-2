@@ -70,12 +70,13 @@ class CmsController extends Controller {
         
         // arrays with data for the form
         $item = $this->service->getEventItem($_GET['id']);
+        $timespan = $this->service->getEventTimespan($item->Event_ID);
         $locations = $this->service->getLocations();
         $performers = $this->service->getAllPerformers();
         $itemPerformers = $this->service->getItemPerformers($_GET['id']);
         
         
-        // require the view
+        // // require the view
         require __DIR__ . '/../views/cms/EventItem.php';
     }
 

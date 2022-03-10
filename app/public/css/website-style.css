@@ -227,34 +227,59 @@
 /* ## Tickets Dance */
 
 /* ## Tickets Dance NAV */
-
-.nav-tickets-dance{
-	margin:auto;
-    display:flex;
-    background-color: #151523;
-    color: white;
+.ticket-navigation-dance {
+	background-color: #151523;
+	display: flex;
 }
 
-.nav-list-left-tickets-dance {
-    display:flex;
-    max-width: 95%;
-	list-style: none;
+.nav-tickets-year-dance {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: white;
+	font-size: 20;
 }
 
-.nav-list-right-tickets-dance {
-	margin-left: auto;
-    display:flex;
-    max-width: 95%;
-	list-style: none;
+.navbuttons-tickets-dance {
+	display: flex;
+	justify-content: end;
+}
+.button-AllAccess-Dance{
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: white;
+	background-color: #151523;
+	border: none;
+	padding: 13px; 
+	margin: 0.1%;
+	width: 180px;
 }
 
-.nav-item-tickets-dance{
-	margin: 5px 0 0 0;
-    display:flex;
-    padding: 14px 16px;
-    text-decoration: none;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.button-Friday-Dance{
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: white;
+	background-color: #151523;
+	border: none;
+	padding: 13px; 
+	margin: 0.1%;
+	width: 180px;
+}
+
+.button-Saturday-Dance{
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: white;
+	background-color: #151523;
+	border: none;
+	padding: 13px; 
+	margin: 0.1%;
+	width: 180px;
+}
+
+.button-Sunday-Dance{
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: white;
+	background-color: #151523;
+	border: none;
+	padding: 13px; 
+	margin: 0.1%;
+	width: 180px;
 }
 
 /* ## Tickets Dance Table */
@@ -265,17 +290,22 @@
 	padding: 2%;
 	margin: 1%;
 	display: flex;
-	
+	justify-content: space-evenly;
 }
 
 .td-item-tickets-dance {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-size: 25px;
-	padding: 5%;
 	display: inline-flex;
 	flex-direction: row;
+	margin-left: 60px;
+	margin-right: 60px;
 }
 
+.td-item-image-tickets-dance {
+	height: 125px;
+	width: 125px;
+}
 /* ## Jazz */
 /* ## banner jazz */
 .Banner-jazz{

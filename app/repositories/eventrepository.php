@@ -22,8 +22,8 @@ class eventrepository extends Repository
             {
                 $event = 3;
             }
-            $sqlquery = "SELECT Name, Start_Time, Location_ID, Ticket_Price FROM Event_Item WHERE Event_ID = :event";
-            // $sqlquery = "SELECT Name, Start_Time, Artist_ID, Location_ID, Ticket_Price FROM Event_Item WHERE Date=:date AND Event_ID = :event";
+            $sqlquery = "SELECT Name, Start_Time, End_Time, Location_ID, Ticket_Price FROM Event_Item WHERE Event_ID = :event";
+            // $sqlquery = "SELECT Name, Start_Time, End_Time, Location_ID, Ticket_Price FROM Event_Item WHERE Date=:date AND Event_ID = :event";
             $stmt = $this->connection->prepare($sqlquery);
 
             // bind params
@@ -38,4 +38,5 @@ class eventrepository extends Repository
             echo $e;
         }
     }
+
 }

@@ -39,4 +39,30 @@ class eventrepository extends Repository
         }
     }
 
+    public function getArtists($event) {
+        try {
+            if ($event == "jazz")
+            {
+                $event = "Band";
+            }
+            if ($event == "dance")
+            {
+                $event = "DJ";
+            }
+
+            $sqlquery = "SELECT Artist_ID, Name, Description FROM Artist WHERE Type = :event";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            // bind params
+            $stmt->bindParam(':event', $event);
+
+            // execute and get result
+            $stmt->execute();
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
 }

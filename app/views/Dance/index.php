@@ -53,6 +53,20 @@ foreach($eventlist as $event){?>
 }?>
 </div>
 
+<div class = "artists-dance">
+<h1 class = "artists-title-dance">Performers</h1>
+
+<?php
+foreach($artistlist as $artist){?>
+    <table class = "table-artists-dance">
+    <td class = "td-item-artists-dance"><img class = "td-item-image-artists-dance" src="/images/artists/<?php echo $artist["Artist_ID"]?>.png"></td>
+    <td class = "td-item-artists-dance"><?php echo $artist["Name"] ?></td>
+    <td class = "td-item-artists-dance"><?php echo $artist["Description"]?></td>
+    </table><?php
+}?>
+</div>
+
+
 <?php
 require __DIR__ . '/../components/footer.php';
 ?>

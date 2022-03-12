@@ -330,4 +330,56 @@ class CmsRepository extends Repository
             echo $e;
         }
     }
+
+
+
+    // ## delete event item
+    public function deleteEventItem($id) {
+        try {
+            $sqlquery = "DELETE FROM Event_Item WHERE EventItem_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+    
+
+
+
+
+
+
+
+
+
+    
+    // ### INSERT QUERIES ###
+    // ## delete lineup item
+    public function insertEventItem($eventItem) {
+        try {
+            $sqlquery = "INSERT INTO Event_Item (Name, Description, Type, Date, Start_Time, Location_ID, Ticket_Price, End_Time, Tickets, Event_ID) 
+            VALUES (:name, :desc, 'test', :date, :start, :loc, :price, :end, :tickets, :eventID)";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':name', $eventItem->Name);
+            $stmt->bindParam(':desc', $eventItem->Description);
+            $stmt->bindParam(':date', $eventItem->Date);
+            $stmt->bindParam(':start', $eventItem->Start_Time);
+            $stmt->bindParam(':loc', $eventItem->Location_ID);
+            $stmt->bindParam(':price', $eventItem->Ticket_Price);
+            $stmt->bindParam(':end', $eventItem->End_Time);
+            $stmt->bindParam(':tickets', $eventItem->Tickets);
+            $stmt->bindParam(':eventID', $eventItem->Event_ID);
+
+            $stmt->execute();
+            return $this->connection->lastInsertId();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }

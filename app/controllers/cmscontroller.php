@@ -3,6 +3,7 @@
 namespace Controllers;
 use Controllers\Controller;
 use Services\CmsService;
+use Models\Event_Item;
 
 class CmsController extends Controller {
     
@@ -76,11 +77,69 @@ class CmsController extends Controller {
         $itemPerformers = $this->service->getItemPerformers($_GET['id']);
         
         
-        // // require the view
+        // require the view
         require __DIR__ . '/../views/cms/EventItem.php';
     }
 
 
+
+    // ## add event item view
+    public function addEventItem() {
+
+        // ## arrays with data for the data
+        $timespan = $this->service->getEventTimespan($_GET['eventID']);
+        $performers = $this->service->getAllPerformers();
+        $locations = $this->service->getLocations();
+
+        // require the view
+        require __DIR__ . '/../views/cms/addEventItem.php';
+    }
+
+
+
+    // ## insert event item in db
+    public function insertEventItem() {
+        if (isset($_POST['submit'])) {
+            
+            // filter the post
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+
+            // get vars from post
+            $item = new Event_Item();
+            $item->Name = $_POST['inputActivityName'];
+            $item->Description = $_POST['inputActivityDesc'];
+            $item->Date = $_POST['inputActivityDate'];
+            $item->Start_Time = $_POST['inputActivityStart'];
+            $item->Location_ID = $_POST['inputActivityLocation'];
+            $item->Ticket_Price = $_POST['inputActivityPrice'];
+            $item->End_Time = $_POST['inputActivityEnd'];
+            $item->Tickets = $_POST['inputActivityTickets'];
+            $item->Event_ID = $_GET['eventID'];
+
+            // get all performers for the activity
+            $eventPerformers = array();
+            foreach ($_POST['inputActivityPerformers'] as $performer)
+                array_push($eventPerformers, $performer);
+
+            // call insert function
+            $lastID = $this->service->insertEventItem($item);
+            $this->updateLineUp($lastID, $eventPerformers);
+            header('Location: /cms/overview?event=' . $_POST['eventName']);
+        }
+    }
+
+
+
+    // ## delete event item
+    public function deleteItem() {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $event = $_GET['event'];
+            
+            $this->service->deleteEventItem($id);
+            header('Location: /cms/overview?event=' . $event);
+        }
+    }
 
     // ## update an event
     public function updateEvent() {
@@ -95,7 +154,7 @@ class CmsController extends Controller {
             $eventStart = $_POST['EventStart'];
             $eventEnd = $_POST['eventEnd'];
 
-            // call update functions
+            // call update function
             $this->service->updateEvent($_GET['id'], $eventName, $eventDesc, $eventStart, $eventEnd);
             header('Location: /cms/overview?event=' . $eventName);
         }

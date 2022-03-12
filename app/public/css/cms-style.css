@@ -703,7 +703,8 @@ canvas {
 
 .eventItem-progam-container {
     width: 60%;
-    min-height: 40vh; /* mag later weg */
+    /* min-height: 40vh; mag later weg */
+    margin: 0 0 20px 0;
     flex-grow: 1;
 }
 
@@ -943,4 +944,35 @@ canvas {
 
     text-decoration: none;
     border-radius: 3px;
+}
+
+
+
+
+.table-tickets {
+    width: 80%;
+    margin: 0 0 0 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--form-input-bg);
+    border: 2px solid var(--main-lightblue);
+    border-collapse: collapse;
+    text-align: left;
+    overflow: auto;
+}
+
+.table-tickets tr:nth-child(even) {
+    background-color: var(--table-accent);
+  }
+
+.table-tickets th {
+    position: sticky; 
+    top: 0;
+    padding: 15px 0 15px 5px;
+    font-size: 1.3rem;
+}
+
+.table-tickets td {
+    padding: 5px 0 5px 5px;
+    font-style: italic;
 }

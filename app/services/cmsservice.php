@@ -113,4 +113,16 @@ class CmsService {
     public function getEventNames() {
         return $this->repository->getEventNames();
     }
+
+
+    // insert new event item
+    public function insertEventItem($eventItem) {
+        return $this->repository->insertEventItem($eventItem);
+    }
+
+
+    // delete event item
+    public function deleteEventItem($id) {
+        $this->repository->deleteEventItem($id);
+    } 
 }

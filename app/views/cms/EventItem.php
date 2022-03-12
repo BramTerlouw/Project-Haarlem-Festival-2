@@ -60,13 +60,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
         <h1>Date & time information:</h1>
         <div class="form-item">
             <label for="inputActivityDate">Date:</label>
-            
             <input type="date" name="inputActivityDate" value="<? echo $item->Date ?>" min="<? echo $timespan[0] ?>" max="<? echo $timespan[1] ?>">
-            
-            
-            <!-- <select name="inputActivityDate">
-                <option value="<? echo $item->Date ?>" min="<? echo $timespan[0] ?>" max="<? echo $timespan[1] ?>"><? echo $item->Date ?></option>
-            </select> -->
         </div>
 
         <div class="form-item-short">

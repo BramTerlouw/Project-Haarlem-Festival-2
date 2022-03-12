@@ -1,7 +1,8 @@
 <?php
 
-namespace Services;
-use Repositories\UserRepository;
+namespace Services\Cms;
+use Repositories\Cms\UserRepository;
+
 
 class UserService {
 
@@ -9,25 +10,6 @@ class UserService {
     function __construct() {
         $this->repository = new UserRepository();
     }
-
-
-
-    // temporary login
-    public function getRowCount($userName, $password) {
-        return $this->repository->getRowCount($userName, $password);
-    }
-
-    // public function getCredentials($userName) {
-    //     return $this->repository->getCredentials($userName);
-    // }
-
-
-
-    // get the role of logged user for example
-    public function getRole($userName) {
-        return $this->repository->getRole($userName);
-    }
-
 
 
     // get one user
@@ -47,18 +29,18 @@ class UserService {
     }
 
 
-
     // update a user
     public function updateOne($userArr) {
         $this->repository->updateOne($userArr);
     }
 
 
-
     // insert a user
     public function insertOne($userArr) {
         $this->repository->insertOne($userArr);
     }
+
+
 
     public function validateEmail($email) {
         return $this->repository->validateEmail($email);
@@ -71,23 +53,6 @@ class UserService {
         $this->repository->deleteOne($id);
     }
 
-
-
-    // get all event names for nav
-    public function getEventNames() {
-        return $this->repository->getEventNames();
-    }
-
-
-
-    // reset password
-    public function setResetCode($email, $code) {
-        $this->repository->setResetCode($email, $code);
-    }
-
-    public function getResetMail($code) {
-        return $this->repository->getResetMail($code);
-    }
 
     public function setPassword($email, $password) {
         $this->repository->setPassword($email, $password);

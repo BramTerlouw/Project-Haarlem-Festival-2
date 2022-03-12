@@ -1,8 +1,9 @@
 <?php
 
 namespace Controllers;
+namespace Controllers\Website;
 
-class CartController extends Controller {
+class CartController {
     // private $cmsService;
 
     // function __construct()
@@ -11,7 +12,7 @@ class CartController extends Controller {
     // }
     
     public function index() {
-        require __DIR__ . '/../views/cart/index.php';
+        require __DIR__ . '/../../views/cart/index.php';
     }
 }
 ?>

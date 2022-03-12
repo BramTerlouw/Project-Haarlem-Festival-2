@@ -4,7 +4,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
 ?>
 
 <h1>Add program item:</h1>
-<form action="/cms/insertEventItem?eventID=<? echo $_GET['eventID'] ?>" method="POST">
+<form action="/cms/eventitem/insertOne?eventID=<? echo $_GET['eventID'] ?>" method="POST">
 <section class="eventItem-info-container">
     <div class="eventItem-info">
         <div class="form-item">

@@ -17,7 +17,7 @@ $uriEvent = $_GET['event'];
 
     <h1 class="overview-header"><?php echo ucfirst($uriEvent) ?> Event</h1>
     <div class="overview-info">
-        <form action="/cms/updateEvent?id=<? echo $event->Event_ID ?>" method="POST">
+        <form action="/cms/event/updateOne?id=<? echo $event->Event_ID ?>" method="POST">
             <div class="form-item">
                 <label for="eventName">Event name:</label>
 
@@ -76,7 +76,7 @@ $uriEvent = $_GET['event'];
                 // when there is a date param and matches an array date, give active class
                 if (!isset($_GET['date']) && $i == 0 || (isset($_GET['date']) && $_GET['date'] == $dateArr[$i][0])) { ?>
                     <li>
-                        <a class="btns-left-active" href="/cms/overview?event=<? echo $event->Name ?>&date=<? echo $dateArr[$i][0] ?>">
+                        <a class="btns-left-active" href="/cms/event?event=<? echo $event->Name ?>&date=<? echo $dateArr[$i][0] ?>">
                             <? echo converseDate($dateArr[$i][0]) ?>
                         </a>
                     </li>
@@ -85,7 +85,7 @@ $uriEvent = $_GET['event'];
                 // else display date on normal way
                 else { ?>
                     <li>
-                        <a href="/cms/overview?event=<? echo $event->Name ?>&date=<? echo $dateArr[$i][0] ?>">
+                        <a href="/cms/event?event=<? echo $event->Name ?>&date=<? echo $dateArr[$i][0] ?>">
                             <? echo converseDate($dateArr[$i][0]) ?>
                         </a>
                     </li>
@@ -95,7 +95,7 @@ $uriEvent = $_GET['event'];
 
         <ul class="overview-btns-right">
             <li>
-                <a href="/cms/addEventItem?eventID=<? echo $event->Event_ID ?>&event=<?echo $uriEvent?>">
+                <a href="/cms/eventitem/addEventItem?eventID=<? echo $event->Event_ID ?>&event=<?echo $uriEvent?>">
                     Add item
                     <img src="/icons/add-item.png" alt="add item">
                 </a>
@@ -126,7 +126,7 @@ $uriEvent = $_GET['event'];
                         <img src="/icons/cms-table-edit.png" alt=""></a>
                     </td>
                     <td>
-                        <a href="/cms/deleteItem?id=<?php echo $item->EventItem_ID ?>&event=<?echo $uriEvent?>">
+                        <a href="/cms/eventItem/deleteItem?id=<?php echo $item->EventItem_ID ?>&event=<?echo $uriEvent?>">
                         <img src="/icons/delete-item.png" alt=""></a>
                     </td>
                 </tr>

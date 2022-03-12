@@ -15,12 +15,12 @@
         <li class="nav-item-b"><a href="#">Contact</a></li>
         <div class="icons-nav">
         <li>
-            <a href="/cart">
+            <a href="/hf/cart">
                 <span class="fa fa-shopping-cart"></span>
             </a>
         </li>
         <li>
-            <a href="/cms/login">
+            <a href="/cms/auth">
                 <span class="fas fa-user-circle"></span>
             </a>
         </li>

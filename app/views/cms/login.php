@@ -6,7 +6,7 @@ require __DIR__ . '/../components/head.php';
 </div>
 <main>
     <h1 class="login-title">Content management system Haarlem Festival</h1>
-    <form class="login-form" action="/user/loginValidation" method="post">
+    <form class="login-form" action="/cms/auth/validateAttempt" method="post">
         <div class="login-form-item">
             <label for="">Username</label>
             <input type="text" name="inputUsername" value="Bram_Vol" required>
@@ -16,7 +16,7 @@ require __DIR__ . '/../components/head.php';
             <input type="password" name="inputPassword" value="wachtwoord" required>
         </div>
         <div class="password-forgotten">
-            <a href="/user/emailVerification">Password forgotten?</a>
+            <a href="/cms/auth/emailVerification">Password forgotten?</a>
         </div>
         <button name="submit" type="submit">Login</button>
     </form>

@@ -5,10 +5,10 @@ use Models\Role;
 ?>
 
 <h1>Users:</h1>
-<form class="users-search-container" action="/user/search" method="POST">
+<form class="users-search-container" action="/cms/user/search" method="POST">
     <input class="user-searchbar" name="searchInput" type="text" placeholder="Search...">
     <button name="submit" class="user-search-btn">Search</button>
-    <a href="/user" class="user-reset">X</a>
+    <a href="/cms/user" class="user-reset">X</a>
 </form>
 <div class="users-table-container">
 <table class="users-table">
@@ -33,15 +33,15 @@ use Models\Role;
             <td><? echo $user->Email ?></td>
             <td><? echo $user->PhoneNumber ?></td>
             <td><? echo $user->Role ?></td>
-            <td><a href="<? if ($_SESSION['role'] == Role::Superadmin) echo "/user/deleteOne?id=" . $user->User_ID?>">Delete</a></td>
-            <td><a href="/user/edit?userName=<?echo $user->UserName ?>">Edit</a></td>
+            <td><a href="<? if ($_SESSION['role'] == Role::Superadmin) echo "/cms/user/deleteOne?id=" . $user->User_ID?>">Delete</a></td>
+            <td><a href="/cms/user/edit?userName=<?echo $user->UserName ?>">Edit</a></td>
         </tr>
         <? } ?>
     </tbody>
 </table>
 </div>
 <section class="users-table-btnContainer">
-    <a href="<? if ($_SESSION['role'] == Role::Superadmin) echo "/user/add" ?>">Add user</a>
+    <a href="<? if ($_SESSION['role'] == Role::Superadmin) echo "/cms/user/add" ?>">Add user</a>
     <a href="">Export</a>
 </section>
 

@@ -4,7 +4,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
 ?>
 
 <h1>Program item information:</h1>
-<form action="/cms/updateEventItem?id=<? echo $item->EventItem_ID ?>" method="POST">
+<form action="/cms/eventitem/updateOne?id=<? echo $item->EventItem_ID ?>" method="POST">
 <section class="eventItem-info-container">
     <div class="eventItem-info">
         <div class="form-item">
@@ -31,14 +31,14 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
         <div class="form-item-dropdwn">
             <label for="inputActivityPerformers">Performers: (HOLD CTRL TO (DE)SELECT)</label>
             <select name="inputActivityPerformers[]" required multiple>
-                <? foreach ($performers as $performer) {
-                    if (in_array($performer, $itemPerformers)) { ?>
-                        <option selected value="<? echo $performer->Artist_ID ?>">
-                            <? echo $performer->Name ?>
+                <? foreach ($artists as $artist) {
+                    if (in_array($artist, $itemArtists)) { ?>
+                        <option selected value="<? echo $artist->Artist_ID ?>">
+                            <? echo $artist->Name ?>
                         </option>
                     <?} else { ?>
-                        <option value="<? echo $performer->Artist_ID ?>">
-                            <? echo $performer->Name ?>
+                        <option value="<? echo $artist->Artist_ID ?>">
+                            <? echo $artist->Name ?>
                         </option>
                     <?}
                 }?>

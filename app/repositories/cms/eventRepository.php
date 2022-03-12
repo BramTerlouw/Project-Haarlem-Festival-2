@@ -28,6 +28,7 @@ class EventRepository extends Repository
         }
     }
 
+    
     // ## get all event names (for navbar)
     public function getEventNames() {
         try {
@@ -40,7 +41,6 @@ class EventRepository extends Repository
             echo $e;
         }
     }
-
 
 
     // ## get all event item dates for event (overview day selector)
@@ -61,7 +61,6 @@ class EventRepository extends Repository
     }
 
 
-
     // ## get start and end date of event
     public function getTimespan($id) {
         try {
@@ -76,8 +75,6 @@ class EventRepository extends Repository
             echo $e;
         }
     }
-
-
 
 
     // ### UPDATE QUERIES ###

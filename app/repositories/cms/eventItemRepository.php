@@ -12,8 +12,6 @@ class EventItemRepository extends Repository
 {
 
     // ### GET QUERIES ###
-
-
     // ## get one eventitem
     public function getOne($id) {
         try {
@@ -78,6 +76,7 @@ class EventItemRepository extends Repository
     }
 
 
+    // ### UPDATE QUERIES
     // ## update an event item
     public function updateOne($id, $name, $loc, $desc, $date, $start, $end) {
         try {
@@ -100,9 +99,8 @@ class EventItemRepository extends Repository
     }
 
 
-
     // ### INSERT QUERIES ###
-    // ## delete lineup item
+    // ## insert event item
     public function insertOne($eventItem) {
         try {
             $sqlquery = "INSERT INTO Event_Item (Name, Description, Type, Date, Start_Time, Location_ID, Ticket_Price, End_Time, Tickets, Event_ID) 
@@ -128,7 +126,7 @@ class EventItemRepository extends Repository
     }
 
 
-
+    // ### DELETE QUERIES ### 
     // ## delete event item
     public function deleteOne($id) {
         try {

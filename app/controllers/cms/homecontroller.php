@@ -14,6 +14,8 @@ class HomeController extends Controller{
         $this->eventService = new EventService();
     }
     
+
+    // ## index for dashboard
     public function index() {
         $eventNames = $this->eventService->getEventNames();
         require __DIR__ . '/../../views/cms/index.php';

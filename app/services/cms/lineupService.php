@@ -4,7 +4,6 @@ namespace Services\Cms;
 
 use Repositories\Cms\LineupRepository;
 
-
 class LineupService
 {
 
@@ -15,7 +14,7 @@ class LineupService
     }
 
 
-    // get line up
+    // ## get line up
     public function getOne($id)
     {
         return $this->repository->getOne($id);
@@ -28,21 +27,20 @@ class LineupService
             $this->updateOne($eventID, $performer);
         }
     }
-    // update lineup
+    // ## update lineup
     public function updateOne($eventID, $performerID)
     {
         $this->repository->updateOne($eventID, $performerID);
     }
 
 
-
-    // // ## delete line up item
+    // ## delete line up item
     public function deleteLineUp($deleteArr) {
         foreach ($deleteArr as $item) {
             $this->deleteOne($item->LineUp_ID);
         }
     }
-    // delete line up item
+    // ## delete line up item
     public function deleteOne($lineupID)
     {
         $this->repository->deleteOne($lineupID);

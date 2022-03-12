@@ -11,7 +11,7 @@ class UserRepository extends Repository
 {
 
     // ### GET QUERIES ###
-    // get one user
+    // ## get one user
     public function getOne($userName) {
         try {
             $sqlquery = "SELECT * FROM User WHERE UserName=:userName";
@@ -30,7 +30,7 @@ class UserRepository extends Repository
 
 
 
-    // get all users
+    // ## get all users
     public function getAll() {
         try {
             $sqlquery = "SELECT * FROM User";
@@ -48,7 +48,7 @@ class UserRepository extends Repository
 
 
 
-    // get filtered data users
+    // ## get filtered data users
     public function getMany($filter) {
         try {
             $sqlquery = "SELECT * FROM User WHERE FullName LIKE :pattern OR Email LIKE :pattern";
@@ -68,8 +68,7 @@ class UserRepository extends Repository
     }
 
 
-
-    // get all mail
+    // ## get all mail
     private function getAllEmail() {
         try {
             $sqlquery = "SELECT DISTINCT Email FROM User";
@@ -82,7 +81,6 @@ class UserRepository extends Repository
             echo $e;
         }
     }
-
 
 
     // ### UPDATE QUERIES ###
@@ -105,9 +103,26 @@ class UserRepository extends Repository
     }
 
 
+    // ## set password
+    public function setPassword($email, $password) {
+        try {
+            $sqlquery = "Update User SET Password=:password WHERE Email=:email";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+
+            $stmt->execute();
+            header('Location: /cms/auth');
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
 
     // ### INSERT QUERIES
-    // insert a user
+    // ##insert a user
     public function insertOne($userArr) {
         try {
             $paramArr = [':fullName', ':userName', ':password',':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
@@ -134,9 +149,8 @@ class UserRepository extends Repository
     }
 
 
-
     // ### DELETE QUERIES
-    // Delete a user
+    // ##Delete a user
     public function deleteOne($id) {
         try {
             $sqlquery = "Delete FROM User WHERE User_ID=:id";
@@ -151,30 +165,12 @@ class UserRepository extends Repository
         }
     }
 
-    // check if mail is valid mail
+
+    // ## check if mail is valid mail
     public function validateEmail($email) {
         $emailList = $this->getAllEmail();
 
         foreach ($emailList as $em) { if ($em[0] == $email) return false; }
         return true;
-    }
-
-
-
-
-    // ## set password
-    public function setPassword($email, $password) {
-        try {
-            $sqlquery = "Update User SET Password=:password WHERE Email=:email";
-            $stmt = $this->connection->prepare($sqlquery);
-
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':password', $password);
-
-            $stmt->execute();
-            header('Location: /cms/auth');
-        } catch (PDOException $e) {
-            echo $e;
-        }
     }
 }

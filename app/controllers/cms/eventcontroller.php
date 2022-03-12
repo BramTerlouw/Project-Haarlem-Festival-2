@@ -21,6 +21,7 @@ class EventController extends Controller{
         $this->locationService = new LocationService();
     }
     
+
     // ## event overview
     public function index() {
 
@@ -44,17 +45,18 @@ class EventController extends Controller{
         
         // require the view
         $eventNames = $this->eventService->getEventNames();
-        require __DIR__ . '/../../views/cms/overview.php';
+        require __DIR__ . '/../../views/cms/event/index.php';
     }
 
 
+    // ## index for tickets
     public function tickets() {
         $eventNames = $this->eventService->getEventNames();
-        require __DIR__ . '/../../views/cms/ticket.php';
+        require __DIR__ . '/../../views/cms/event/ticket.php';
     }
 
 
-    // // ## update an event
+    // ## update an event
     public function updateOne() {
         if (isset($_POST['submit'])) {
             

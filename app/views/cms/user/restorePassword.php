@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../components/head.php';
+require __DIR__ . '/../../components/head.php';
 ?>
 
 <div class="login-header">

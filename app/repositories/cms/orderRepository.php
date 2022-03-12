@@ -11,4 +11,16 @@ class OrderRepository extends Repository
 {
 
     // ### GET QUERIES ###
+
+
+
+    // ### UPDATE QUERIES ###
+
+
+
+    // ### INSERT QUERIES ###
+
+
+
+    // ### DELETE QUERIES ###
 }

@@ -12,8 +12,6 @@ class LocationRepository extends Repository
 {
 
     // ### GET QUERIES ###
-
-
     // ## get all locations
     public function getAll() {
         try {

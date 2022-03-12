@@ -21,6 +21,7 @@ class EmailController extends Controller{
         $this->authService = new AuthService();
     }
     
+    
     // request reset pw
     public function requestReset()
     {

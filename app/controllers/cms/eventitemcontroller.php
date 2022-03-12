@@ -27,6 +27,7 @@ class EventItemController {
         $this->lineupService = new LineupService();
     }
     
+
     // ## event item overview
     public function index() {
         
@@ -40,11 +41,11 @@ class EventItemController {
         
         // require the view
         $eventNames = $this->eventService->getEventNames();
-        require __DIR__ . '/../../views/cms/EventItem.php';
+        require __DIR__ . '/../../views/cms/eventItem/index.php';
     }
 
 
-    // // ## update an event item
+    // ## update an event item
     public function updateOne() {
         
         if (isset($_POST['submit'])) {
@@ -76,8 +77,7 @@ class EventItemController {
     }
 
 
-
-    // // ## filter which new performers update the lineup
+    // ## filter which new performers update the lineup
     public function filterUpdateArr($eventID, $performerArr) {
         
         // get line up
@@ -97,8 +97,7 @@ class EventItemController {
     }
 
 
-
-    // // ## filter which new performers must be deleten from lineup
+    // ## filter which new performers must be deleten from lineup
     public function filterDeleteArr($eventID, $performerArr) {
         
         // get line up
@@ -115,7 +114,8 @@ class EventItemController {
             $this->lineupService->deleteLineUp($lineup);
     }
 
-    // // ## add event item view
+
+    // ## add event item view
     public function addEventItem() {
 
         // ## arrays with data for the data
@@ -125,10 +125,11 @@ class EventItemController {
 
         // require the view
         $eventNames = $this->eventService->getEventNames();
-        require __DIR__ . '/../../views/cms/addEventItem.php';
+        require __DIR__ . '/../../views/cms/eventItem/add.php';
     }
 
-    // // ## insert event item in db
+
+    // ## insert event item in db
     public function insertOne() {
         if (isset($_POST['submit'])) {
             

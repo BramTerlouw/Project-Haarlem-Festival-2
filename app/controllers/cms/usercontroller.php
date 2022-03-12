@@ -11,11 +11,9 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 class UserController extends Controller {
-    
-    // service var and constructor
     private $userService;
     private $eventService;
-
+    
     function __construct()
     {
         $this->userService = new UserService;
@@ -23,14 +21,12 @@ class UserController extends Controller {
     }
     
 
-
-    // load index view of users
+    // ## load index view of users
     public function index() {
         $eventNames = $this->eventService->getEventNames();
         $users = $this->userService->getAll();
-        require __DIR__ . '/../../views/user/index.php';
+        require __DIR__ . '/../../views/cms/user/index.php';
     }
-
 
 
     // load index overview users searched data
@@ -41,11 +37,12 @@ class UserController extends Controller {
 
             $eventNames = $this->eventService->getEventNames();
             $users = $this->userService->getMany($filter);
-            require __DIR__ . '/../../views/user/index.php';
+            require __DIR__ . '/../../views/cms/user/index.php';
         }
     }
 
-    // edit a user
+
+    // ## edit a user
     public function edit() {
         $model = NULL;
         if (isset($_GET['userName'])) {
@@ -55,20 +52,18 @@ class UserController extends Controller {
         }
 
         $eventNames = $this->eventService->getEventNames();
-        require __DIR__ . '/../../views/user/edit.php';
+        require __DIR__ . '/../../views/cms/user/edit.php';
     }
 
 
-
-    // add a user
+    // ## add a user
     public function add() {
         $eventNames = $this->eventService->getEventNames();
-        require __DIR__ . '/../../views/user/add.php';
+        require __DIR__ . '/../../views/cms/user/add.php';
     }
 
 
-
-    // update a user
+    // ## update a user
     public function updateOne() {
 
         // check for POST var
@@ -100,14 +95,12 @@ class UserController extends Controller {
                 // when user has permission, update role
                 $this->setPermission($_POST['userRole']);
             }
-
             header('Location: /cms/user');
         }
     }
 
 
-
-    // insert a new user
+    // ## insert a new user
     public function insertOne() {
 
         // check for POST var
@@ -141,12 +134,10 @@ class UserController extends Controller {
     }
 
 
-
-    // delete a user
+    // ## delete a user
     public function deleteOne() {
         $this->userService->deleteOne($_GET['id']);
     }
-
 
 
     // ## set the new password

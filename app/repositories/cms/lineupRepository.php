@@ -10,6 +10,7 @@ use PDOException;
 class LineupRepository extends Repository
 {
 
+    // ### GET QUERIES ###
     // ## get the lineup
     public function getOne($id) {
         try {
@@ -27,6 +28,8 @@ class LineupRepository extends Repository
     }
 
 
+    // ### UPDATE QUERIES
+    // ## update lineup rows
     public function updateOne($eventID, $performerID) {
         try {
             $sqlquery = "INSERT INTO Lineup (EventItem_ID, Artist_ID) VALUES (:event, :artist)";
@@ -43,6 +46,8 @@ class LineupRepository extends Repository
     }
 
 
+    // ### DELETE QUERIES ###
+    // ## Delete lineup row
     public function deleteOne($lineupID) {
         try {
             $sqlquery = "DELETE FROM Lineup WHERE LineUp_ID=:id";

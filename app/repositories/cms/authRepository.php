@@ -10,7 +10,7 @@ use PDOException;
 class AuthRepository extends Repository
 {
     // ### GET QUERIES ###
-    // Temporary login
+    // ## Temporary login
     public function getRowCount($userName, $password) {
         try {
             $sqlquery = "SELECT Count(User_ID) FROM User WHERE UserName=:username AND Password=:password";
@@ -31,7 +31,6 @@ class AuthRepository extends Repository
     }
 
 
-
     // public function getCredentials($userName) {
     //     try {
             
@@ -49,8 +48,7 @@ class AuthRepository extends Repository
     // }
 
 
-
-    // get the role of logged user for example
+    // ## get the role of logged user for example
     public function getRole($userName) {
         try {
             $sqlquery = "SELECT Role FROM User WHERE UserName=:username";
@@ -65,7 +63,6 @@ class AuthRepository extends Repository
             echo $e;
         }
     }
-
 
 
     // ## get reset email
@@ -84,7 +81,8 @@ class AuthRepository extends Repository
     }
 
 
-    // insert reset code
+    // ### INSERT QUERIES ###
+    // ## insert reset code
     public function setResetCode($email, $code) {
         try {
             $sqlquery = "INSERT INTO resetPassword (code, email) VALUES (:code, :email)";

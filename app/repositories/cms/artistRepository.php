@@ -28,7 +28,6 @@ class ArtistRepository extends Repository
     }
 
 
-
     // ## get performers for event item
     public function getMany($id) {
         try {

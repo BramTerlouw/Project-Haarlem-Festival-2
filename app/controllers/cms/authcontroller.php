@@ -7,8 +7,8 @@ use Controllers\Controller;
 use Services\Cms\AuthService;
 
 class AuthController extends Controller{
+    
     private $authService;
-
     function __construct()
     {
         $this->authService = new AuthService();
@@ -18,7 +18,7 @@ class AuthController extends Controller{
         require __DIR__ . '/../../views/cms/login.php';
     }
 
-    // temporary login validation
+    // ## temporary login validation
     public function validateAttempt() {
         
         // check for POST var
@@ -43,6 +43,7 @@ class AuthController extends Controller{
         }
     }
 
+
     // public function validateAttempt() {
         
     //     // check for POST var
@@ -66,25 +67,25 @@ class AuthController extends Controller{
     //     }
     // }
 
+
+    // ## logout function
     public function logout() {
         session_destroy();
         header('Location: /');
     }
 
 
-
-    // email verification
+    //## email verification
     public function emailVerification() {
-        require __DIR__ . '/../../views/user/emailVerification.php';
+        require __DIR__ . '/../../views/cms/user/emailVerification.php';
     }
-
 
 
     // ## get restore token and open view
     public function restorePassword() {
         $code = $_GET['code'];
         $email = $this->authService->getResetMail($code);
-        require __DIR__ . '/../../views/user/restorePassword.php';
+        require __DIR__ . '/../../views/cms/user/restorePassword.php';
     }
 }
 ?>

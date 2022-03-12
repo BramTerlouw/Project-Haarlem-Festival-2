@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/../components/head.php';
-require __DIR__ . '/../components/navigation/nav-cms.php';
+require __DIR__ . '/../../components/head.php';
+require __DIR__ . '/../../components/navigation/nav-cms.php';
 
 function converseDate($date)
 {

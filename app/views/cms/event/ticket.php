@@ -13,6 +13,16 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
                 <th>Sold</th>
                 <th>Edit</th>
             </tr>
+                <? foreach ($tickets as $ticket) { ?>
+                    <tr>
+                        <td></td>
+                        <td><? echo $ticket['Name'] ?></th>
+                        <td>€ <? echo $ticket['Ticket_Price'] ?></td>
+                        <td><? echo $ticket['Tickets'] ?></td>
+                        <td><? echo $ticket['Sold'] ?></td>
+                        <td><button>Edit</button></td>
+                    </tr>
+                <? } ?>
         </table>
 
 </main> <!-- close main tag from cms nav -->

@@ -19,8 +19,8 @@ class EventService {
 
 
     // ## get an event
-    public function getOneByName($name) {
-        return $this->repository->getOneByName($name);
+    public function getOne($id) {
+        return $this->repository->getOne($id);
     }
 
 

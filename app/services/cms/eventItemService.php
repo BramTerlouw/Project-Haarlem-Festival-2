@@ -24,6 +24,18 @@ class EventItemService {
     }
 
 
+    // ## get all tickets for event
+    public function getAllTickets($id) {
+        return $this->repository->getAllTickets($id);
+    }
+
+
+    // ## get tickets for event item
+    public function getManyTickets($id) {
+        return $this->repository->getManyTickets($id);
+    }
+
+
     // ## update event items
     public function updateOne($id, $name, $loc, $desc, $date, $start, $end) {
         $this->repository->updateOne($id, $name, $loc, $desc, $date, $start, $end);
@@ -39,5 +51,5 @@ class EventItemService {
     // ## delete event item
     public function deleteOne($id) {
         $this->repository->deleteOne($id);
-    } 
+    }
 }

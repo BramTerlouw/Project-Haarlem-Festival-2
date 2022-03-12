@@ -23,10 +23,10 @@
             foreach ($eventNames as $name) { ?>
                 <li class="cms-nav-item navdrpdown">
                     <img class="cms-nav-icon" src="/icons/cms-arrow-down.png" alt="home icon">
-                    <a id="no-pointer" href=""><? echo ucfirst($name[0]) ?></a>
+                    <a id="no-pointer" href=""><? echo ucfirst($name[1]) ?></a>
                     <div class="cms-nav-dropdown-content">
                         <a href="/cms/event?event=<? echo $name[0] ?>">- Overview</a>
-                        <a href="/cms/event/tickets?event=<? echo $name[0] ?>">- Tickets</a>
+                        <a href="/cms/eventItem/tickets?event=<? echo $name[1] ?>&id=<? echo $name[0] ?>">- Tickets</a>
                     </div>
                 </li>
             <? } ?>

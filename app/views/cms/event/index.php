@@ -15,7 +15,7 @@ $uriEvent = $_GET['event'];
 
 <section class="overview-container-info">
 
-    <h1 class="overview-header"><?php echo ucfirst($uriEvent) ?> Event</h1>
+    <h1 class="overview-header">Event overview:</h1>
     <div class="overview-info">
         <form action="/cms/event/updateOne?id=<? echo $event->Event_ID ?>" method="POST">
             <div class="form-item">
@@ -76,7 +76,7 @@ $uriEvent = $_GET['event'];
                 // when there is a date param and matches an array date, give active class
                 if (!isset($_GET['date']) && $i == 0 || (isset($_GET['date']) && $_GET['date'] == $dateArr[$i][0])) { ?>
                     <li>
-                        <a class="btns-left-active" href="/cms/event?event=<? echo $event->Name ?>&date=<? echo $dateArr[$i][0] ?>">
+                        <a class="btns-left-active" href="/cms/event?event=<? echo $event->Event_ID ?>&date=<? echo $dateArr[$i][0] ?>">
                             <? echo converseDate($dateArr[$i][0]) ?>
                         </a>
                     </li>
@@ -85,7 +85,7 @@ $uriEvent = $_GET['event'];
                 // else display date on normal way
                 else { ?>
                     <li>
-                        <a href="/cms/event?event=<? echo $event->Name ?>&date=<? echo $dateArr[$i][0] ?>">
+                        <a href="/cms/event?event=<? echo $event->Event_ID ?>&date=<? echo $dateArr[$i][0] ?>">
                             <? echo converseDate($dateArr[$i][0]) ?>
                         </a>
                     </li>

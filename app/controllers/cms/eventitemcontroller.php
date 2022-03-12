@@ -171,5 +171,13 @@ class EventItemController {
             header('Location: /cms/event?event=' . $event);
         }
     }
+
+
+    // ## index for tickets
+    public function tickets() {
+        $tickets = $this->eventItemService->getAllTickets($_GET['id']);
+        $eventNames = $this->eventService->getEventNames();
+        require __DIR__ . '/../../views/cms/event/ticket.php';
+    }
 }
 ?>

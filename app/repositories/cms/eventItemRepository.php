@@ -76,6 +76,50 @@ class EventItemRepository extends Repository
     }
 
 
+    // ## get all tickets
+    public function getAllTickets($id) {
+        try {
+            $sqlquery = "SELECT
+                E.EventItem_ID, E.Name, E.Ticket_Price, E.Tickets, COUNT(B.EventItem_ID) AS Sold
+                FROM Booking B
+                INNER JOIN Event_Item E ON E.EventItem_ID = B.EventItem_ID
+                WHERE E.Event_ID=:id
+                GROUP BY B.EventItem_ID";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
+    // ## get item tickets
+    public function getManyTickets($id) {
+        try {
+            $sqlquery = "SELECT
+                E.EventItem_ID, E.Ticket_Price, E.Tickets, COUNT(B.EventItem_ID) AS Sold
+                FROM Booking B
+                INNER JOIN Event_Item E ON E.EventItem_ID = B.EventItem_ID
+                WHERE B.EventItem_ID=:id
+                GROUP BY B.EventItem_ID";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
     // ### UPDATE QUERIES
     // ## update an event item
     public function updateOne($id, $name, $loc, $desc, $date, $start, $end) {

@@ -12,12 +12,12 @@ class EventRepository extends Repository
 
     // ### GET QUERIES ###
     // ## get event
-    public function getOneByName($name) {
+    public function getOne($id) {
         try {
-            $sqlquery = "SELECT * FROM Event WHERE Name=:name";
+            $sqlquery = "SELECT * FROM Event WHERE Event_ID=:id";
             $stmt = $this->connection->prepare($sqlquery);
 
-            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':id', $id);
             $stmt->execute();
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Event');
@@ -32,7 +32,7 @@ class EventRepository extends Repository
     // ## get all event names (for navbar)
     public function getEventNames() {
         try {
-            $sqlquery = "SELECT Name From Event";
+            $sqlquery = "SELECT Event_ID, Name From Event";
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->execute();

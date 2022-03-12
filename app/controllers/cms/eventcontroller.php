@@ -27,7 +27,7 @@ class EventController extends Controller{
 
         // arrays with data for the form
         $locationIDs = [];
-        $event = $this->eventService->getOneByName($_GET['event']);
+        $event = $this->eventService->getOne($_GET['event']);
         $dateArr = $this->eventService->getDates($event->Event_ID);
 
 
@@ -46,13 +46,6 @@ class EventController extends Controller{
         // require the view
         $eventNames = $this->eventService->getEventNames();
         require __DIR__ . '/../../views/cms/event/index.php';
-    }
-
-
-    // ## index for tickets
-    public function tickets() {
-        $eventNames = $this->eventService->getEventNames();
-        require __DIR__ . '/../../views/cms/event/ticket.php';
     }
 
 

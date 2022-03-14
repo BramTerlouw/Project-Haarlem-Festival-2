@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Gegenereerd op: 09 mrt 2022 om 20:57
+-- Gegenereerd op: 14 mrt 2022 om 21:37
 -- Serverversie: 10.6.5-MariaDB-1:10.6.5+maria~focal
 -- PHP-versie: 7.4.26
 
@@ -71,6 +71,20 @@ CREATE TABLE `Booking` (
   `Order_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `Booking`
+--
+
+INSERT INTO `Booking` (`Booking_ID`, `EventItem_ID`, `Type`, `Order_ID`) VALUES
+(9, 13, '', 2),
+(10, 13, '', 2),
+(11, 13, '', 4),
+(12, 4, '', 1),
+(13, 4, '', 1),
+(14, 3, '', 2),
+(15, 3, '', 2),
+(16, 3, '', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -92,7 +106,7 @@ CREATE TABLE `Event` (
 --
 
 INSERT INTO `Event` (`Event_ID`, `Name`, `StartDate`, `EndDate`, `Description`, `Type`, `Status`) VALUES
-(1, 'Jazz', '2022-07-28', '2022-07-31', 'This is the description of Jazz kaas', 'Jazz', 'Active'),
+(1, 'Jazz', '2022-07-28', '2022-07-31', 'This is the description of Jazz', 'Jazz', 'Active'),
 (2, 'Food', '2021-07-28', '2021-07-31', 'This is the description of food.', 'Food', 'Inactive'),
 (3, 'Dance', '2022-07-27', '2022-07-30', 'This is the description of Dance', 'Dance', 'Active');
 
@@ -245,7 +259,21 @@ CREATE TABLE `resetPassword` (
 --
 
 INSERT INTO `resetPassword` (`reset_ID`, `code`, `email`) VALUES
-(5, '1621fb41cf3fbd', 'bramterlouw12@gmail.com');
+(5, '1621fb41cf3fbd', 'bramterlouw12@gmail.com'),
+(6, '1622ce14fcecf5', 'bramterlouw12@gmail.com'),
+(7, '1622ce18f06e3f', 'bramterlouw12@gmail.com'),
+(8, '1622ce22298463', 'bramterlouw12@gmail.com'),
+(9, '1622ce23f6322b', 'bramterlouw12@gmail.com'),
+(10, '1622ce2cf2047f', 'bramterlouw12@gmail.com'),
+(11, '1622faa3a6579f', 'bramterlouw12@gmail.com'),
+(12, '1622faa73eb315', 'bramterlouw12@gmail.com'),
+(13, '1622faa8ce1f74', 'bramterlouw12@gmail.com'),
+(14, '1622faa9f43463', 'bramterlouw12@gmail.com'),
+(15, '1622fadc670718', 'bramterlouw12@gmail.com'),
+(16, '1622fb3606cca2', 'bramterlouw12@gmail.com'),
+(17, '1622fb387293e8', 'bramterlouw12@gmail.com'),
+(18, '1622fb39c5ae66', 'bramterlouw12@gmail.com'),
+(19, '1622fb3c7265c9', 'bramterlouw12@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -329,9 +357,9 @@ CREATE TABLE `User` (
 --
 
 INSERT INTO `User` (`User_ID`, `FullName`, `UserName`, `Password`, `BirthDate`, `Gender`, `Address`, `PostCode`, `City`, `Role`, `Supervisor`, `Email`, `PhoneNumber`) VALUES
-(1, 'Bram terlouw', 'Bram_Vol', 'wachtwoord', '2022-02-10', 'Male', 'Zijsingel 2 ', '2013DN Haarlem ', 'Haarlem', 'Volunteer', 'Mark De Haan', 'bramterlouw12@gmail.com', 638087845),
-(2, 'Mark De Haan', 'Mark_Admin', 'wachtwoord', '2022-02-10', 'Male', 'Zijsingel 2 ', '2013DN Haarlem ', 'Haarlem', 'Admin', 'NVT', 'Test@hotmail.com', 638087845),
-(6, 'Gerwin van Dijken', 'Gerwin_Super', 'wachtwoord', '1990-01-01', 'Male', 'test straat', '1388 LS', 'Alkmaar', 'Superadmin', 'De baas', 'test@email', 6929922);
+(1, 'Bram terlouw', 'Bram_Vol', '$2y$10$Nf.5vC8OPf/oSgBH3BaAmukcgE3RNFU4JtYFyb3WTQBKXBf36bYOO', '2022-02-10', 'Male', 'Zijsingel 2 ', '2013DN Haarlem ', 'Haarlem', 'Volunteer', 'Mark De Haan', 'bramterlouw12@gmail.com', 638087845),
+(2, 'Mark De Haan', 'Mark_Admin', '$2y$10$6xczITQk3QOSPEW.jjogEOfwgcJLENNiA8RUUatlpxcgTV7/jwVUW', '2022-02-10', 'Male', 'Zijsingel 2 ', '2013DN Haarlem ', 'Haarlem', 'Admin', 'NVT', 'Test@hotmail.com', 638087845),
+(6, 'Gerwin van Dijken', 'Gerwin_Super', '$2y$10$1q6BcMHUi57sLBsKbOlQUOiKYqvGljzKgB8k6ZBTpY7xvApWTP.iC', '1990-01-01', 'Male', 'test straat', '1388 LS', 'Alkmaar', 'Superadmin', 'De baas', 'test@email', 6929922);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -431,7 +459,7 @@ ALTER TABLE `Artist`
 -- AUTO_INCREMENT voor een tabel `Booking`
 --
 ALTER TABLE `Booking`
-  MODIFY `Booking_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Booking_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT voor een tabel `Event`
@@ -443,13 +471,13 @@ ALTER TABLE `Event`
 -- AUTO_INCREMENT voor een tabel `Event_Item`
 --
 ALTER TABLE `Event_Item`
-  MODIFY `EventItem_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `EventItem_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT voor een tabel `Lineup`
 --
 ALTER TABLE `Lineup`
-  MODIFY `LineUp_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `LineUp_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT voor een tabel `Location`
@@ -473,7 +501,7 @@ ALTER TABLE `Reservation`
 -- AUTO_INCREMENT voor een tabel `resetPassword`
 --
 ALTER TABLE `resetPassword`
-  MODIFY `reset_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `reset_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT voor een tabel `Restaurant`
@@ -491,7 +519,7 @@ ALTER TABLE `Session`
 -- AUTO_INCREMENT voor een tabel `User`
 --
 ALTER TABLE `User`
-  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Beperkingen voor geëxporteerde tabellen

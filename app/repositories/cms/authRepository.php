@@ -10,42 +10,22 @@ use PDOException;
 class AuthRepository extends Repository
 {
     // ### GET QUERIES ###
-    // ## Temporary login
-    public function getRowCount($userName, $password) {
+    // ## get credentials
+    public function getCredentials($userName) {
         try {
-            $sqlquery = "SELECT Count(User_ID) FROM User WHERE UserName=:username AND Password=:password";
+            
+            $sqlquery = "SELECT UserName, Password FROM User Where UserName=:username";
             $stmt = $this->connection->prepare($sqlquery);
 
-            $stmt->bindParam(':username', $userName);
-            $stmt->bindParam(':password', $password);
-
-            // execute and get rowcount
+            $stmt->bindParam('username', $userName);
             $stmt->execute();
-            $rowCount = $stmt->fetchColumn();
 
-            return $rowCount; // <-- return count
+            return $stmt->fetchAll();
             
         } catch (PDOException $e) {
             echo $e;
         }
     }
-
-
-    // public function getCredentials($userName) {
-    //     try {
-            
-    //         $sqlquery = "SELECT UserName, Password FROM User Where UserName=:username";
-    //         $stmt = $this->connection->prepare($sqlquery);
-
-    //         $stmt->bindParam('username', $userName);
-    //         $stmt->execute();
-
-    //         return $stmt->fetchAll();
-            
-    //     } catch (PDOException $e) {
-    //         echo $e;
-    //     }
-    // }
 
 
     // ## get the role of logged user for example

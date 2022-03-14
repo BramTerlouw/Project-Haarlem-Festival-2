@@ -69,12 +69,20 @@ class UserController extends Controller {
         // check for POST var
         if (isset($_POST['submit'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+            $pwChange = false;
 
             $userArr = array();
             array_push($userArr, $_POST['userID']);
             array_push($userArr, $_POST['userFullName']);
             array_push($userArr, $_POST['userName']);
-            array_push($userArr, $_POST['userPw']);
+
+            if (strlen($_POST['userPw']) > 0) {
+                $pw = $_POST['userPw'];
+                $hash = password_hash($pw, PASSWORD_DEFAULT);
+                array_push($userArr, $hash);
+                $pwChange = true;
+            }
+
             array_push($userArr, $_POST['userBD']);
             array_push($userArr, $_POST['gender']);
             array_push($userArr, $_POST['userAddress']);
@@ -90,7 +98,7 @@ class UserController extends Controller {
             array_push($userArr, $_POST['userEmail']);
             array_push($userArr, $_POST['userPhone']);
 
-            $this->userService->updateOne($userArr);
+            $this->userService->updateOne($userArr, $pwChange);
             if (isset($_POST['userRole']) && $_POST['userName'] == $_SESSION['userName']) { 
                 // when user has permission, update role
                 $this->setPermission($_POST['userRole']);
@@ -111,11 +119,9 @@ class UserController extends Controller {
             array_push($userArr, $_POST['userFullName']);
             array_push($userArr, $_POST['userName']);
 
-            // $pw = $_POST['userPw'];
-            // $hash = password_hash($pw, PASSWORD_DEFAULT);
-            // array_push($userArr, $hash);
-            // !!!!!! adjust update one for the hash !!!!!!
-            array_push($userArr, $_POST['userPw']);
+            $pw = $_POST['userPw'];
+            $hash = password_hash($pw, PASSWORD_DEFAULT);
+            array_push($userArr, $hash);
 
             array_push($userArr, $_POST['userBD']);
             array_push($userArr, $_POST['gender']);
@@ -144,7 +150,9 @@ class UserController extends Controller {
     public function setPassword() {
         if (isset($_POST['submit'])) {
             if ($_POST['inputPassword'] == $_POST['inputPassword']) {
-                $this->userService->setPassword($_GET['email'], $_POST['inputPassword']);
+                $pw = $_POST['inputPassword'];
+                $hash = password_hash($pw, PASSWORD_DEFAULT);
+                $this->userService->setPassword($_GET['email'], $hash);
             }
         }
     }

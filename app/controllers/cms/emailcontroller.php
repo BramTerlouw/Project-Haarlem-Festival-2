@@ -41,7 +41,7 @@ class EmailController extends Controller{
                     $mail->Host       = 'smtp.gmail.com';
                     $mail->SMTPAuth   = true;
                     $mail->Username   = 'haarlemfestival2022@gmail.com';
-                    $mail->Password   = 'InhollandisLeuk9!';
+                    $mail->Password   = 'Ad55gkle!!lK';
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port       = 587;
 
@@ -62,7 +62,8 @@ class EmailController extends Controller{
                     header('Location: http://localhost/cms/auth');
 
                 } catch (Exception $e) {
-                    header('Location: /cms/auth/emailVerification?error=emailfailed');
+                    //header('Location: /cms/auth/emailVerification?error=emailfailed');
+                    echo $e->getMessage();
                 }
             } else {
                 header('Location: /cms/auth/emailVerification?error=EmailDoesNotExist');

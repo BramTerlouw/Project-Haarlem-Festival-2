@@ -31,8 +31,8 @@ class UserService {
 
 
     // ## update a user
-    public function updateOne($userArr) {
-        $this->repository->updateOne($userArr);
+    public function updateOne($userArr, $pwChange) {
+        $this->repository->updateOne($userArr, $pwChange);
     }
 
 

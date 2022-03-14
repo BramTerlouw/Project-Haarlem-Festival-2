@@ -18,7 +18,8 @@ class AuthController extends Controller{
         require __DIR__ . '/../../views/cms/login.php';
     }
 
-    // ## temporary login validation
+    
+    // ## validate login attempt
     public function validateAttempt() {
         
         // check for POST var
@@ -29,10 +30,9 @@ class AuthController extends Controller{
             $userName = $_POST['inputUsername'];
             $password = $_POST['inputPassword'];
             
-            $rowCount = $this->authService->getRowCount($userName, $password);
+            $data = $this->authService->getCredentials($userName);
 
-            // when user exists, set session var and go to home
-            if ($rowCount == 1) {
+            if (password_verify($password, $data[0][1])) {
                 $_SESSION['logginIn'] = true;
                 $_SESSION['userName'] = $userName;
                 $this->setPermission($this->authService->getRole($userName));
@@ -42,30 +42,6 @@ class AuthController extends Controller{
             }
         }
     }
-
-
-    // public function validateAttempt() {
-        
-    //     // check for POST var
-    //     if (isset($_POST['submit'])) {
-    //         $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
-            
-    //         // get vars
-    //         $userName = $_POST['inputUsername'];
-    //         $password = $_POST['inputPassword'];
-            
-    //         $data = $this->service->getCredentials($userName);
-
-    //         if (password_verify($password, $data[0][1])) {
-    //             $_SESSION['logginIn'] = true;
-    //             $_SESSION['userName'] = $userName;
-    //             $this->setPermission($this->service->getRole($userName));
-    //             header('Location: /cms');
-    //         } else { // give error
-    //             header('location: /cms/login?error=loginfailed');
-    //         }
-    //     }
-    // }
 
 
     // ## logout function

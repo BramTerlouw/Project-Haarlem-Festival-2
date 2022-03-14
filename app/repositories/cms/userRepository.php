@@ -85,11 +85,18 @@ class UserRepository extends Repository
 
     // ### UPDATE QUERIES ###
     // update a user
-    public function updateOne($userArr) {
+    public function updateOne($userArr, $pwChange) {
         try {
-            $paramArr = [':id', ':fullName', ':userName', ':password',':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
 
-            $sqlquery = "UPDATE User SET FullName=:fullName, UserName=:userName, Password=:password,BirthDate=:birthDate, Gender=:gender, Address=:address, PostCode=:postcode, City=:city, Role=:role, Supervisor=:supervisor, Email=:email, PhoneNumber=:phoneNumber WHERE User_ID=:id";
+            if ($pwChange) {
+                $paramArr = [':id', ':fullName', ':userName', ':password',':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
+
+                $sqlquery = "UPDATE User SET FullName=:fullName, UserName=:userName, Password=:password,    BirthDate=:birthDate, Gender=:gender, Address=:address, PostCode=:postcode, City=:city, Role=:role, Supervisor=:supervisor, Email=:email, PhoneNumber=:phoneNumber WHERE User_ID=:id";
+            } else {
+                $paramArr = [':id', ':fullName', ':userName', ':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
+
+                $sqlquery = "UPDATE User SET FullName=:fullName, UserName=:userName, BirthDate=:birthDate, Gender=:gender, Address=:address, PostCode=:postcode, City=:city, Role=:role, Supervisor=:supervisor, Email=:email, PhoneNumber=:phoneNumber WHERE User_ID=:id";
+            }
             $stmt = $this->connection->prepare($sqlquery);
 
             for ($i=0; $i < sizeof($paramArr); $i++) { 

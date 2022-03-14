@@ -86,8 +86,8 @@
     <!-- Password recovery section -->
     <h1>Password recovery</h1>
     <div class="form-item <?php isSecureClass(false, $model->UserName, $model->Role)?>">
-        <label for="userPw">Current password:</label>
-        <input type="password" name="userPw" value="<?php echo $model->Password ?>">
+        <label for="userPw">New password:</label>
+        <input type="password" name="userPw" value="">
         <img src="/icons/cms-<?php isSecureIcon(false, $model->UserName, $model->Role)?>.png" alt="edit button">
     </div>
 

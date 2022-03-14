@@ -16,5 +16,4 @@ class Controller {
         elseif ($role == 'Admin') { $_SESSION['role'] = Role::Admin; } 
         else { $_SESSION['role'] = Role::Superadmin; }
     }
-
 }

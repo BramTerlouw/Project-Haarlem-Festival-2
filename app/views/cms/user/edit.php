@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/../components/head.php';
-require __DIR__ . '/../components/navigation/nav-cms.php';
+require __DIR__ . '/../../components/head.php';
+require __DIR__ . '/../../components/navigation/nav-cms.php';
 use Models\Role;
 
 function isSecureClass($secure, $userName, $userRole) {
@@ -16,7 +16,7 @@ function isSecureIcon($secure, $userName, $userRole) {
     else echo "edit-form";
 }
 
-require __DIR__ . '/../components/userForm.php';
+require __DIR__ . '/../../components/userForm.php';
 ?>
 
 

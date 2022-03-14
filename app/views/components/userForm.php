@@ -2,7 +2,7 @@
 
 <!-- Personal information section -->
 <h1>Personal information</h1>
-<form class="personal-info-form" action="/user/updateOne" method="post">
+<form class="personal-info-form" action="/cms/user/updateOne" method="post">
     <div class="form-item <?php isSecureClass(false, $model->UserName, $model->Role)?>">
         <label for="userFullName">Full name:</label>
         <input type="text" name="userFullName" value="<?php echo $model->FullName ?>">
@@ -93,7 +93,7 @@
 
     <!-- custom cancel and submit buttons -->
     <div class="personal-info-btns-container">
-        <a class="cms-cancel-xl" href="/cms">Cancel
+        <a class="cms-cancel-xl" href="/cms/home">Cancel
             <img src="/icons/cms-cancel.png" alt="cancel icon">
         </a>
         <button class="cms-save-xl" name="submit" type="submit">Save changes

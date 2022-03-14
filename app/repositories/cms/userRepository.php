@@ -1,72 +1,17 @@
 <?php
-
 namespace Repositories;
+namespace Repositories\Cms;
+
 use Repositories\Repository;
-use Models\User;
+
 use PDO;
 use PDOException;
 
-
-class UserRepository extends Repository {
+class UserRepository extends Repository
+{
 
     // ### GET QUERIES ###
-    // Temporary login
-    public function getRowCount($userName, $password) {
-        try {
-            $sqlquery = "SELECT Count(User_ID) FROM User WHERE UserName=:username AND Password=:password";
-            $stmt = $this->connection->prepare($sqlquery);
-
-            $stmt->bindParam(':username', $userName);
-            $stmt->bindParam(':password', $password);
-
-            // execute and get rowcount
-            $stmt->execute();
-            $rowCount = $stmt->fetchColumn();
-
-            return $rowCount; // <-- return count
-            
-        } catch (PDOException $e) {
-            echo $e;
-        }
-    }
-
-    // public function getCredentials($userName) {
-    //     try {
-            
-    //         $sqlquery = "SELECT UserName, Password FROM User Where UserName=:username";
-    //         $stmt = $this->connection->prepare($sqlquery);
-
-    //         $stmt->bindParam('username', $userName);
-    //         $stmt->execute();
-
-    //         return $stmt->fetchAll();
-            
-    //     } catch (PDOException $e) {
-    //         echo $e;
-    //     }
-    // }
-
-
-
-    // get the role of logged user for example
-    public function getRole($userName) {
-        try {
-            $sqlquery = "SELECT Role FROM User WHERE UserName=:username";
-            $stmt = $this->connection->prepare($sqlquery);
-
-            $stmt->bindParam(':username', $userName);
-
-            $stmt->execute();
-            return $stmt->fetchColumn();
-
-        } catch (PDOException $e) {
-            echo $e;
-        }
-    }
-
-
-
-    // get one user
+    // ## get one user
     public function getOne($userName) {
         try {
             $sqlquery = "SELECT * FROM User WHERE UserName=:userName";
@@ -85,7 +30,7 @@ class UserRepository extends Repository {
 
 
 
-    // get all users
+    // ## get all users
     public function getAll() {
         try {
             $sqlquery = "SELECT * FROM User";
@@ -103,7 +48,7 @@ class UserRepository extends Repository {
 
 
 
-    // get filtered data users
+    // ## get filtered data users
     public function getMany($filter) {
         try {
             $sqlquery = "SELECT * FROM User WHERE FullName LIKE :pattern OR Email LIKE :pattern";
@@ -123,8 +68,7 @@ class UserRepository extends Repository {
     }
 
 
-
-    // get all mail
+    // ## get all mail
     private function getAllEmail() {
         try {
             $sqlquery = "SELECT DISTINCT Email FROM User";
@@ -137,39 +81,6 @@ class UserRepository extends Repository {
             echo $e;
         }
     }
-
-
-
-    // Get all event names for nav
-    public function getEventNames() {
-        try {
-            $sqlquery = "SELECT Name From Event";
-            $stmt = $this->connection->prepare($sqlquery);
-
-            $stmt->execute();
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            echo $e;
-        }
-    }
-
-
-
-    // ## get reset email
-    public function getResetMail($code) {
-        try {
-            $sqlquery = "SELECT email FROM resetPassword WHERE code=:code";
-            $stmt = $this->connection->prepare($sqlquery);
-
-            $stmt->bindParam(':code', $code);
-            $stmt->execute();
-
-            return $stmt->fetchColumn();
-        } catch (PDOException $e) {
-            echo $e;
-        }
-    }
-
 
 
     // ### UPDATE QUERIES ###
@@ -192,7 +103,6 @@ class UserRepository extends Repository {
     }
 
 
-
     // ## set password
     public function setPassword($email, $password) {
         try {
@@ -203,7 +113,7 @@ class UserRepository extends Repository {
             $stmt->bindParam(':password', $password);
 
             $stmt->execute();
-            header('Location: /cms/login');
+            header('Location: /cms/auth');
         } catch (PDOException $e) {
             echo $e;
         }
@@ -212,7 +122,7 @@ class UserRepository extends Repository {
 
 
     // ### INSERT QUERIES
-    // insert a user
+    // ##insert a user
     public function insertOne($userArr) {
         try {
             $paramArr = [':fullName', ':userName', ':password',':birthDate', ':gender', ':address', ':postcode', ':city', ':role', ':supervisor', ':email', ':phoneNumber'];
@@ -228,9 +138,9 @@ class UserRepository extends Repository {
             
             if ($this->validateEmail($userArr[10])) {
                 $stmt->execute();
-                header('Location: /user');
+                header('Location: /cms/user');
             } else {
-                header('Location: /user/add?error=emailExists');
+                header('Location: /cms/user/add?error=emailExists');
             }
 
         } catch (PDOException $e) {
@@ -239,26 +149,8 @@ class UserRepository extends Repository {
     }
 
 
-
-    // insert reset code
-    public function setResetCode($email, $code) {
-        try {
-            $sqlquery = "INSERT INTO resetPassword (code, email) VALUES (:code, :email)";
-            $stmt = $this->connection->prepare($sqlquery);
-
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':code', $code);
-
-            $stmt->execute();
-        } catch (PDOException $e) {
-            echo $e;
-        }
-    }
-
-
-
     // ### DELETE QUERIES
-    // Delete a user
+    // ##Delete a user
     public function deleteOne($id) {
         try {
             $sqlquery = "Delete FROM User WHERE User_ID=:id";
@@ -267,13 +159,14 @@ class UserRepository extends Repository {
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 
-            header('Location: /user');
+            header('Location: /cms/user');
         } catch (PDOException $e) {
             echo $e;
         }
     }
 
-    // check if mail is valid mail
+
+    // ## check if mail is valid mail
     public function validateEmail($email) {
         $emailList = $this->getAllEmail();
 

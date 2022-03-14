@@ -6,10 +6,16 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Services\\Website\\' => array($baseDir . '/services/website'),
+    'Services\\Cms\\' => array($baseDir . '/services/cms'),
     'Services\\' => array($baseDir . '/services'),
     'Routers\\' => array($baseDir . '/routers'),
+    'Repositories\\Website\\' => array($baseDir . '/repositories/website'),
+    'Repositories\\Cms\\' => array($baseDir . '/repositories/cms'),
     'Repositories\\' => array($baseDir . '/repositories'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Models\\' => array($baseDir . '/models'),
+    'Controllers\\Website\\' => array($baseDir . '/controllers/website'),
+    'Controllers\\Cms\\' => array($baseDir . '/controllers/cms'),
     'Controllers\\' => array($baseDir . '/controllers'),
 );

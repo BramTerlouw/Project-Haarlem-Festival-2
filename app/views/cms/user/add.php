@@ -1,10 +1,10 @@
 <?php
-require __DIR__ . '/../components/head.php';
-require __DIR__ . '/../components/navigation/nav-cms.php';
+require __DIR__ . '/../../components/head.php';
+require __DIR__ . '/../../components/navigation/nav-cms.php';
 ?>
 
 <h1>Add new user:</h1>
-<form class="personal-info-form" action="/user/insertOne" method="post">
+<form class="personal-info-form" action="/cms/user/insertOne" method="post">
     <div class="form-item">
         <label for="userFullName">Full name:</label>
         <input type="text" name="userFullName" value="">
@@ -91,7 +91,7 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
 
     <!-- custom cancel and submit buttons -->
     <div class="personal-info-btns-container">
-        <a href="/cms">Cancel
+        <a href="/cms/user">Cancel
             <img src="/icons/cms-cancel.png" alt="cancel icon">
         </a>
         <button name="submit" type="submit">Add user

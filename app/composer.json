@@ -6,8 +6,17 @@
         "psr-4": {
             "Routers\\": "routers",
             "Controllers\\": "controllers",
+            "Controllers\\Website\\": "controllers/website",
+            "Controllers\\Cms\\": "controllers/cms",
+            
             "Services\\": "services",
+            "Services\\Website\\": "services/website",
+            "Services\\Cms\\": "services/cms",
+            
             "Repositories\\": "repositories",
+            "Repositories\\Website\\": "repositories/website",
+            "Repositories\\Cms\\": "repositories/cms",
+
             "Models\\": "models"
         }
     }

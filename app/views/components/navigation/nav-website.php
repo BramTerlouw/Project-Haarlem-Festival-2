@@ -20,7 +20,7 @@
             </a>
         </li>
         <li>
-            <a href="/cms/login">
+            <a href="/cms/auth">
                 <span class="fas fa-user-circle"></span>
             </a>
         </li>

@@ -9,11 +9,15 @@ class ComposerStaticInit9553b919fb90e7fc1c673cf94a087987
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
+            'Services\\Website\\' => 17,
+            'Services\\Cms\\' => 13,
             'Services\\' => 9,
         ),
         'R' => 
         array (
             'Routers\\' => 8,
+            'Repositories\\Website\\' => 21,
+            'Repositories\\Cms\\' => 17,
             'Repositories\\' => 13,
         ),
         'P' => 
@@ -26,11 +30,21 @@ class ComposerStaticInit9553b919fb90e7fc1c673cf94a087987
         ),
         'C' => 
         array (
+            'Controllers\\Website\\' => 20,
+            'Controllers\\Cms\\' => 16,
             'Controllers\\' => 12,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Services\\Website\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/services/website',
+        ),
+        'Services\\Cms\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/services/cms',
+        ),
         'Services\\' => 
         array (
             0 => __DIR__ . '/../..' . '/services',
@@ -38,6 +52,14 @@ class ComposerStaticInit9553b919fb90e7fc1c673cf94a087987
         'Routers\\' => 
         array (
             0 => __DIR__ . '/../..' . '/routers',
+        ),
+        'Repositories\\Website\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/repositories/website',
+        ),
+        'Repositories\\Cms\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/repositories/cms',
         ),
         'Repositories\\' => 
         array (
@@ -50,6 +72,14 @@ class ComposerStaticInit9553b919fb90e7fc1c673cf94a087987
         'Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/models',
+        ),
+        'Controllers\\Website\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/controllers/website',
+        ),
+        'Controllers\\Cms\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/controllers/cms',
         ),
         'Controllers\\' => 
         array (

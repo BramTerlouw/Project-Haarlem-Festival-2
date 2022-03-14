@@ -1,12 +1,12 @@
 <?php
-require __DIR__ . '/../components/head.php';
+require __DIR__ . '/../../components/head.php';
 ?>
 
 <div class="login-header">
 </div>
 <main>
     <h1 class="login-title">Password recovery</h1>
-    <form class="password-form" action="/user/setPassword?email=<? echo $email ?>" method="post">
+    <form class="password-form" action="/cms/user/setPassword?email=<? echo $email ?>" method="post">
         
         <div class="password-form-item">
             <label for="inputPassword">New password:</label>

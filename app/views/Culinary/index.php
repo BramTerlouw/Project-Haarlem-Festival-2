@@ -25,7 +25,7 @@ require __DIR__ . '/../components/navigation/nav-website.php';
     <button id="RightButton" onclick="updateCarouselRight()">></button>
 </div>
 
-<button class="allrestaurant-button" href="culinary/restaurants" type="button">All Restaurants</button>
+<button class="allrestaurant-button" onclick="window.location.href='event/restaurants'" type="button">All Restaurants</button>
 <a href="event/restaurants">HIer kan je alle restaurants zien</a>
 <div class="Banner-ingridients">
     
@@ -181,7 +181,7 @@ function fillCarousel() {
 
         button.classList.add("culinary-slider-button")
         
-        button.innerText = "test";
+        button.innerText = "Make Reservation";
         title.innerText = elements[i].title;
         img.classList.add("slider-img")
         text.innerHTML = elements[i].description;

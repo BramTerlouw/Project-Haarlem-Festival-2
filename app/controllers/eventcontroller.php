@@ -23,7 +23,7 @@ class EventController extends Controller {
     public function restaurants() {
         $restaurantlist = $this->culinaryService->getRestaurants();
         //var_dump($restaurantlist);
-        // require __DIR__ . '/../views/Culinary/Restaurants.php';
+        require __DIR__ . '/../views/Culinary/Restaurants.php';
     }
 
     public function reservationForm() {

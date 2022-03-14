@@ -25,17 +25,24 @@ require __DIR__ . '/../components/navigation/nav-website.php';
         <div id="Restaurant-item-container" class="Restaurant-container"></div>
     </div>
 
+
+<?php foreach ($restaurantlist as $restaurant){ ?>
+
+    <?php echo $restaurant->Name;?>
+    <?php echo $restaurant->Type;?>
+
+    <? if ($restaurant->Wheelchair_accessible)
+            echo "wel!";
+        else
+            echo "Niet!";
+    ?>
+    
+    <? echo $restaurant->Summary; ?>
+    <br><br><br>
+
+ <?php } ?> 
+
 <?php
-
-foreach ($restaurantlist as $restaurant){
-    echo $restaurant['Name'];
-    echo $restaurant['type'];
-    echo $restaurant['summary'];
-    echo $restaurant['Wheelchair_accessible'];
-}
-
-
-
 require __DIR__ . '/../components/footer.php';
 ?>
 

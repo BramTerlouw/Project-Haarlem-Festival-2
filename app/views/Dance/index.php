@@ -24,30 +24,48 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 
 <div class = "ticket-overview-dance">
 
-<nav class="nav-tickets-dance">
+<div class = "ticket-navigation-dance">
+    <h3 class="nav-tickets-year-dance">2022</h3>
 
-    <ul class="nav-list-left-tickets-dance">
-        <li class="nav-item-tickets-dance">2022</li>
-    </ul>
-
-    <ul class="nav-list-right-tickets-dance">
-        <li class="nav-item-tickets-dance"><a href="#">All-Access</a></li>
-        <li class="nav-item-tickets-dance"><a href="#">FRI. 29 July</a></li>
-        <li class="nav-item-tickets-dance"><a href="#">SAT. 30 July</a></li>
-        <li class="nav-item-tickets-dance"><a href="#">SUN. 31 July</a></li>
-    </ul>
-</nav>
+    <div class ="navbuttons-tickets-dance">   
+        <button class="button-AllAccess-Dance"type="button">All-Access</button>
+        <button class="button-Friday-Dance"type="button">FRI. 29 July</button>
+        <button class="button-Saturday-Dance"type="button">SAT. 30 July</button>
+        <button class="button-Sunday-Dance"type="button">SUN. 31 July</button>
+    </div>
+</div>
 
 <?php
 foreach($eventlist as $event){?>
     <table class = "table-tickets-dance">
+    <td class = "td-item-tickets-dance"><img class = "td-item-image-tickets-dance" src="/images/locations/<?php echo $event["Location_ID"]?>.png"></td>
     <td class = "td-item-tickets-dance"><?php echo $event["Name"] ?></td>
-    <td class = "td-item-tickets-dance"><?php echo $event["Start_Time"] ?></td>
+    <td class = "td-item-tickets-dance"><?php echo $event["Start_Time"]?></td>
+    <td class = "td-item-tickets-dance"><?php echo $event["End_Time"] ?></td>
     <td class = "td-item-tickets-dance"><?php echo $event["Location_ID"] ?></td>
-    <td class = "td-item-tickets-dance"><?php echo $event["Ticket_Price"] ?></td>
+    <td class = "td-item-tickets-dance">€<?php echo $event["Ticket_Price"] ?></td>
+    <td class = "td-item-tickets-dance">
+    <a href="#">
+                <span class="fa fa-shopping-cart"></span>
+            </a>
+            </td>
     </table><?php
 }?>
 </div>
+
+<div class = "artists-dance">
+<h1 class = "artists-title-dance">Performers</h1>
+
+<?php
+foreach($artistlist as $artist){?>
+    <table class = "table-artists-dance">
+    <td class = "td-item-artists-dance"><img class = "td-item-image-artists-dance" src="/images/artists/<?php echo $artist["Artist_ID"]?>.png"></td>
+    <td class = "td-item-artists-dance"><?php echo $artist["Name"] ?></td>
+    <td class = "td-item-artists-dance"><?php echo $artist["Description"]?></td>
+    </table><?php
+}?>
+</div>
+
 
 <?php
 require __DIR__ . '/../components/footer.php';

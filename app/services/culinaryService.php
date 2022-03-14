@@ -1,10 +1,12 @@
 <?php
-require __DIR__ . '/../repositories/culinaryRepository.php';
+
+namespace Services;
+use Repositories\culinaryRepository;
 
 class CulinaryService {
 
-    public function getRestaurants($Restaurant_ID, $Name, $Type, $Max_visitors, $Wheelchair_accessible) {
+    public function getRestaurants() {
         $repository = new CulinaryRepository();
-        return $repository->getRestaurants($Restaurant_ID, $Name, $Type, $Max_visitors, $Wheelchair_accessible);
+        return $repository->getRestaurants();
     }
 }

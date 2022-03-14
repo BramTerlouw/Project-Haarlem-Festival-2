@@ -1,6 +1,8 @@
 <?php
 
-public class Restaurant(){
+namespace Models;
+
+class Restaurant {
 
 public int $Restaurant_ID;
 public string $Name;

@@ -11,15 +11,11 @@ class AuthService {
         $this->repository = new AuthRepository();
     }
 
-    // ## temporary login
-    public function getRowCount($userName, $password) {
-        return $this->repository->getRowCount($userName, $password);
+
+    // ## get credentials
+    public function getCredentials($userName) {
+        return $this->repository->getCredentials($userName);
     }
-
-
-    // public function getCredentials($userName) {
-    //     return $this->repository->getCredentials($userName);
-    // }
 
 
     // ## get the role of logged user for example

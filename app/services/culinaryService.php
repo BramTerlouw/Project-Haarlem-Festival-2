@@ -9,4 +9,9 @@ class CulinaryService {
         $repository = new CulinaryRepository();
         return $repository->getRestaurants();
     }
+
+    public function getOne($id) {
+        $repository = new CulinaryRepository();
+        return $repository->getOne($id);
+    }
 }

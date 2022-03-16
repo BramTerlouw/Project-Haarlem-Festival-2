@@ -6,6 +6,10 @@ use Repositories\eventrepository;
 
 class eventservice {
 
+public function getOneEvent($event) {
+        $repository = new eventrepository();
+        return $repository->getOneEvent($event);
+    }
 public function getEvents($event, $date) {
         $repository = new eventrepository();
         return $repository->getEvents($event, $date);

@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/navigation/nav-homepage.php';
+
 ?>
 <body>
     <header>

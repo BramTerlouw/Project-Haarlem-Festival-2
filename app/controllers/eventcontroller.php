@@ -17,14 +17,20 @@ class EventController extends Controller {
 
     public function index() {
         $event = $_GET['event'];
-        $datelist = $this->eventService->getDates($event);
+        $dateList = $this->eventService->getDates($event);
+        $eventList = $this->eventService->getOneEvent($event);
+
 
         // get the event items
         if (!isset($_GET['Date'])) { 
-            $eventlist = $this->eventService->getEvents($event, $datelist[0][0]); }
+            $eventItemList = $this->eventService->getEvents($event, $dateList[0][0]); 
+        }
         else { 
-            $eventlist = $this->eventService->getEvents($event, $_GET['Date']); }
-        $artistlist = $this->eventService->getArtists($event);
+            $eventItemList = $this->eventService->getEvents($event, $_GET['Date']); 
+        }
+
+
+        $artistList = $this->eventService->getArtists($event);
         require __DIR__ . '/../views/' . $event . '/index.php';
     }
     public function restaurants() {

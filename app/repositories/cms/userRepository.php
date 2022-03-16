@@ -180,4 +180,34 @@ class UserRepository extends Repository
         foreach ($emailList as $em) { if ($em[0] == $email) return false; }
         return true;
     }
+
+
+
+
+
+
+
+
+    // ## migrate users
+    public function userMigration() {
+        $pwVol = password_hash('wachtwoord', PASSWORD_DEFAULT);
+        $pwAdmin = password_hash('wachtwoord', PASSWORD_DEFAULT);
+        $pwSuper = password_hash('wachtwoord', PASSWORD_DEFAULT);
+
+        try { 
+            $sqlquery = "INSERT INTO User (FullName, UserName, Password, BirthDate, Gender, Address, PostCode, City, Role, Supervisor, Email, PhoneNumber) VALUES
+                ('Bram terlouw', 'Bram_Vol', :pwVol, '2022-02-10', 'Male', 'Zijsingel 2 ', '2013DN Haarlem ', 'Haarlem', 'Volunteer', 'Mark De Haan', 'bramterlouw12@gmail.com', 638087845),
+                ('Mark De Haan', 'Mark_Admin', :pwAdmin, '2022-02-10', 'Male', 'Zijsingel 2 ', '2013DN Haarlem ', 'Haarlem', 'Admin', 'NVT', 'Test@hotmail.com', 638087845),
+                ('Gerwin van Dijken', 'Gerwin_Super', :pwSuper, '1990-01-01', 'Male', 'test straat', '1388 LS', 'Alkmaar', 'Superadmin', 'De baas', 'test@email', 6929922);";
+            
+            $stmt = $this->connection->prepare($sqlquery);
+            $stmt->bindParam(':pwVol', $pwVol);
+            $stmt->bindParam(':pwAdmin', $pwAdmin);
+            $stmt->bindParam(':pwSuper', $pwSuper);
+            $stmt->execute();
+            
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }

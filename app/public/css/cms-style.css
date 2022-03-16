@@ -976,3 +976,23 @@ canvas {
     padding: 5px 0 5px 5px;
     font-style: italic;
 }
+
+
+
+
+
+.ticket-detail-container {
+    width: 20vw;
+    margin: 0 0 0 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-detail-container .form-item {
+    margin: 10px 0 0 0;
+}
+
+.ticket-detail-container button {
+    width: 50%;
+}

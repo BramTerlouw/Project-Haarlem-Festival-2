@@ -40,4 +40,21 @@ class EventService {
     public function updateOne($id, $eventName, $eventDesc, $eventStart, $eventEnd) {
         $this->repository->updateOne($id, $eventName, $eventDesc, $eventStart, $eventEnd);
     }
+
+
+
+
+
+
+    // ### methods for dashboard data
+    // ## get all tickets for a event
+    public function getAllTickets($id) {
+        return $this->repository->getAllTickets($id);
+    }
+
+
+    // ## get all sells for a event
+    public function getAllSold($id) {
+        return $this->repository->getAllSold($id);
+    }
 }

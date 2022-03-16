@@ -67,5 +67,23 @@ class EventController extends Controller{
             header('Location: /cms/event?event=' . $eventName);
         }
     }
+
+
+
+
+
+    // ### methods for dashboard data
+    // ## get all tickets and sells for a event
+    public function getDonutData() {
+        $data = array();
+
+        $jazzTotal = $this->eventService->getAllTickets(1);
+        $jazzSold = $this->eventService->getAllSold(1);
+        $danceTotal = $this->eventService->getAllTickets(3);
+        $danceSold = $this->eventService->getAllSold(3);
+
+        array_push($data, array('totalJazz' => $jazzTotal, 'totalDance' => $danceTotal, 'jazzSold' => $jazzSold, 'danceSold' => $danceSold));
+        echo json_encode($data);
+    }
 }
 ?>

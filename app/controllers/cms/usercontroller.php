@@ -156,5 +156,42 @@ class UserController extends Controller {
             }
         }
     }
+
+
+    // ## export user data
+    public function exportUserData() {
+        $output = "";
+        $data = $this->userService->getAll();
+        
+        $output .= '
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Number</th>
+                    <th>Role</th>
+                    <th></th>
+                </tr>
+        ';
+        foreach ($data as $user) {
+            $output .= '
+                <tr>
+                    <td>' . $user->User_ID. '</td>
+                    <td>' . $user->UserName . '</td>
+                    <td>' . $user->FullName . '</td>
+                    <td>' . $user->Email . '</td>
+                    <td>' . $user->PhoneNumber . '</td>
+                    <td>' . $user->Role . '</td>
+                </tr>
+            ';
+        }
+        $output .= '</table>';
+
+        header("Content-type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=user_Report.xls");
+        echo $output;
+    }
 }
 ?>

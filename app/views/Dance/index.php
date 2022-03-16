@@ -27,22 +27,24 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 <div class = "ticket-navigation-dance">
     <h3 class="nav-tickets-year-dance">2022</h3>
 
-    <div class ="navbuttons-tickets-dance">   
-        <button class="button-AllAccess-Dance"type="button">All-Access</button>
-        <button class="button-Friday-Dance"type="button">FRI. 29 July</button>
-        <button class="button-Saturday-Dance"type="button">SAT. 30 July</button>
-        <button class="button-Sunday-Dance"type="button">SUN. 31 July</button>
+    <div class ="navbuttons-tickets-dance"> 
+        
+    <?php
+    foreach($datelist as $date){?>
+    <button class="button-date-Dance"type="button"><?php echo $date["Date"] ?></button>
+    <?php
+    }?>  
     </div>
 </div>
 
 <?php
 foreach($eventlist as $event){?>
     <table class = "table-tickets-dance">
-    <td class = "td-item-tickets-dance"><img class = "td-item-image-tickets-dance" src="/images/locations/<?php echo $event["Location_ID"]?>.png"></td>
+    <td class = "td-item-tickets-dance"><img class = "td-item-image-tickets-dance" src="/images/locations/<?php echo $event["Location"]?>.png"></td>
     <td class = "td-item-tickets-dance"><?php echo $event["Name"] ?></td>
     <td class = "td-item-tickets-dance"><?php echo $event["Start_Time"]?></td>
     <td class = "td-item-tickets-dance"><?php echo $event["End_Time"] ?></td>
-    <td class = "td-item-tickets-dance"><?php echo $event["Location_ID"] ?></td>
+    <td class = "td-item-tickets-dance"><?php echo $event["Location"] ?></td>
     <td class = "td-item-tickets-dance">€<?php echo $event["Ticket_Price"] ?></td>
     <td class = "td-item-tickets-dance">
     <a href="#">
@@ -58,11 +60,11 @@ foreach($eventlist as $event){?>
 
 <?php
 foreach($artistlist as $artist){?>
-    <table class = "table-artists-dance">
-    <td class = "td-item-artists-dance"><img class = "td-item-image-artists-dance" src="/images/artists/<?php echo $artist["Artist_ID"]?>.png"></td>
-    <td class = "td-item-artists-dance"><?php echo $artist["Name"] ?></td>
-    <td class = "td-item-artists-dance"><?php echo $artist["Description"]?></td>
-    </table><?php
+    <div class = "div-artists-dance">
+    <img class = "image-artists-dance" src="/images/artists/<?php echo $artist["Artist_ID"]?>.png">
+    <h1 class = "h1-artists-dance"><?php echo $artist["Name"] ?></h1>
+    <p class = "p-artists-dance"><?php echo $artist["Description"]?></p>
+    </div><?php
 }?>
 </div>
 

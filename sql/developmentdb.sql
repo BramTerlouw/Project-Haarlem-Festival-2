@@ -140,8 +140,8 @@ INSERT INTO `Event_Item` (`EventItem_ID`, `Name`, `Description`, `Type`, `Date`,
 (5, 'Ruis SoundSystem', 'Het soundsysteem voor buiten jou huis in het zonnetje met een drankje en een hoedje ja joh!', 'Jazz', '2022-07-29', '19:30:00', 3, 10, '20:30:00', 200, 1),
 (7, 'Han Bennik', 'Han bennik is een man die alles kan!', 'Jazz', '2022-07-30', '18:00:00', 4, 10, '19:00:00', 150, 1),
 (12, 'Tiesto', 'Tiesto is een DJ en hij is niet te missen hoor.', 'DJ', '2022-07-29', '22:00:00', 7, 60, '23:30:00', 200, 3),
-(13, 'Afrojack', 'The G.O.A.T. als het gaat om DJ\'s mensen.', 'DJ', '2022-07-29', '20:00:00', 6, 75, '02:00:00', 1500, 3);
-
+(13, 'Afrojack', 'The G.O.A.T. als het gaat om DJ\'s mensen.', 'DJ', '2022-07-29', '20:00:00', 6, 75, '02:00:00', 1500, 3),
+(20, 'Nicky Romero', 'Nicky Romero in Club Stalker.', 'DJ', '2022-07-30', '23:00:00', 7, 60, '00:30:00', 200, 3);
 -- --------------------------------------------------------
 
 --

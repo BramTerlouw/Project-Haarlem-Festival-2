@@ -17,7 +17,13 @@ class EventController extends Controller {
 
     public function index() {
         $event = $_GET['event'];
-        $eventlist = $this->eventService->getEvents($event);
+        $datelist = $this->eventService->getDates($event);
+
+        // get the event items
+        if (!isset($_GET['Date'])) { 
+            $eventlist = $this->eventService->getEvents($event, $datelist[0][0]); }
+        else { 
+            $eventlist = $this->eventService->getEvents($event, $_GET['Date']); }
         $artistlist = $this->eventService->getArtists($event);
         require __DIR__ . '/../views/' . $event . '/index.php';
     }

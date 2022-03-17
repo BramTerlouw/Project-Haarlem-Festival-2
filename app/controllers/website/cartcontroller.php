@@ -96,5 +96,11 @@ class CartController {
 
         header('Location: /hf/' . $event . '?event=' . $event);
     }
+
+    public function unset() {
+        unset($_SESSION['reservations']);
+        unset($_SESSION['tickets']);
+        header('Location: /hf/cart');
+    }
 }
 ?>

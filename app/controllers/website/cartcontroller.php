@@ -25,7 +25,7 @@ class CartController {
 
         $bookings = $this->getCartBookings();
         $reservations = $this->getCartReservations();
-        
+
         $total = $this->calcTotal($bookings, $reservations);
         require __DIR__ . '/../../views/cart/index.php';
     }
@@ -46,11 +46,11 @@ class CartController {
     private function getCartReservations() {
         $reservations = array();
         foreach ($_SESSION['reservations'] as $reservation) {
-            $restaurant = $this->culinaryService->getOne($reservation['id']);
+            $restaurant = $this->culinaryService->getOne($reservation['restaurant_ID']);
 
             $dateTimeArr = explode(',', $reservation['dateTime']);
 
-            array_push($reservations, array('restaurant' => $restaurant, 'amountChild' => $reservation['amountChild'], 'amountAdult' => $reservation['amountAdult'], 'date' => $dateTimeArr[0], 'time' => $dateTimeArr[1]));
+            array_push($reservations, array('id' => $reservation['id'], 'restaurant' => $restaurant, 'amountChild' => $reservation['amountChild'], 'amountAdult' => $reservation['amountAdult'], 'date' => $dateTimeArr[0], 'time' => $dateTimeArr[1]));
         }
         return $reservations;
     }
@@ -81,6 +81,8 @@ class CartController {
         header('Location: /hf/cart');
     }
 
+
+    // ## add booking to cart
     public function AddTicketToCart() {
         if (!isset($_SESSION['tickets']))
             $_SESSION['tickets']=array();
@@ -97,6 +99,37 @@ class CartController {
         header('Location: /hf/' . $event . '?event=' . $event);
     }
 
+
+    // ## add reservation to cart
+    public function addResToCart() {
+         // check for POST var
+         if (isset($_POST['submit'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+            
+            if (!isset($_SESSION['reservations']))
+            $_SESSION['reservations']=array();
+
+            // get vars
+            $tempID = uniqid();
+            $nrAdults = $_POST['NmbAdults'];
+            $nrChidls = $_POST['NmbChild'];
+            $date = $_POST['ActivityDate'];
+            $time = $_POST['ActivityTime'];
+            if (isset($_POST['ActivityMessage']))
+                $message = $_POST['ActivityMessage'];
+            else
+                $message = "";
+            $datetime = $date . ',' . $time;
+
+            // make reservation and push to session
+            $res = array('id' => $tempID, 'restaurant_ID' => $_GET['id'], 'amountAdult' => $nrAdults, 'amountChild' => $nrChidls, 'dateTime' => $datetime, 'message' => $message);
+            array_push($_SESSION['reservations'], $res);
+        }
+        header('Location: /hf/culinary/restaurants');
+    }
+
+
+    // ## empty cart by unsetting the session vars
     public function unset() {
         unset($_SESSION['reservations']);
         unset($_SESSION['tickets']);

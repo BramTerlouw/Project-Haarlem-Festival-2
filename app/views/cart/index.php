@@ -40,7 +40,7 @@ require __DIR__ . '/../components/navigation/nav-website.php';
                     <td><? echo $reservation['date'] ?></td>
                     <td><? echo $reservation['time'] ?></td>
                     <td></td>
-                    <td><button>Edit</button></td>
+                    <td><a href="/hf/culinary/reservationForm?id=<? echo $reservation['restaurant']->Restaurant_ID ?>&res=<? echo $reservation['id'] ?>">Edit</a></td>
                     <td></td>
                     </tr>
                 <?}?>

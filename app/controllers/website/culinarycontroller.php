@@ -20,11 +20,18 @@ class CulinaryController extends Controller {
 
     public function restaurants() {
         $restaurantlist = $this->culinaryService->getRestaurants();
-        //var_dump($restaurantlist);
         require __DIR__ . '/../../views/Culinary/Restaurants.php';
 
     }
     public function reservationForm() {
+        $timespan = $this->culinaryService->getTimespan(2);
+        $restaurant = $this->culinaryService->getOne($_GET['id']);
+        if (isset($_GET['res']))
+            $key = array_search($_GET['res'], array_column($_SESSION['reservations'], 'id'));
+
+        if (isset($key))
+            $reservation = $_SESSION['reservations'][$key];
+
         require __DIR__ . '/../../views/Culinary/reservationForm.php';
     }
 

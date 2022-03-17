@@ -9,9 +9,11 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
     <div class="cms-container-small border-right">
         <h2>Ticket availability</h2>
         <div class="cms-graph-small">
+            <h2>Jazz</h2>
             <canvas id="graph-tickets1"></canvas>
         </div>
         <div class="cms-graph-small">
+            <h2>Dance</h2>
             <canvas id="graph-tickets2"></canvas>
         </div>
     </div>
@@ -53,32 +55,43 @@ require __DIR__ . '/../components/navigation/nav-cms.php';
 <script>
     // Values ticket availability
     var xTickets = ["Available", "Sold"];
-    var yTickets = [80, 20];
     var colorTickets = ["#148582", "grey"];
 
-    // chart ticket availability
-    var ticketChart1 = new Chart("graph-tickets1", {
-        type: "doughnut",
-        data: {
-            labels: xTickets,
-            datasets: [{
-                backgroundColor: colorTickets,
-                data: yTickets
-            }]
-        },
-        options: {}
-    });
-    var ticketChart2 = new Chart("graph-tickets2", {
-        type: "doughnut",
-        data: {
-            labels: xTickets,
-            datasets: [{
-                backgroundColor: colorTickets,
-                data: yTickets
-            }]
-        },
-        options: {}
-    });
+    fetch('http://localhost/cms/event/getDonutData') // <-- call to api route
+    .then(result => result.json()) // <-- get json
+    .then(data => {
+        console.log(data)
+        var yJazz = [data[0].totalJazz[0], data[0].jazzSold[0]];
+        var yDance = [data[0].totalDance[0], data[0].danceSold[0]];
+        
+        
+        // chart ticket availability
+        var ticketChart1 = new Chart("graph-tickets1", {
+            type: "doughnut",
+            data: {
+                labels: xTickets,
+                datasets: [{
+                    backgroundColor: colorTickets,
+                    data: yJazz
+                }]
+            },
+            options: {}
+        });
+        var ticketChart2 = new Chart("graph-tickets2", {
+            type: "doughnut",
+            data: {
+                labels: xTickets,
+                datasets: [{
+                    backgroundColor: colorTickets,
+                    data: yDance
+                }]
+            },
+            options: {}
+        });
+    })
+    .catch(error => console.log(error));
+
+
 
     // Values sales
     var xSales = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];

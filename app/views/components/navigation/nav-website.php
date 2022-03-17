@@ -15,7 +15,7 @@
         <li class="nav-item-b"><a href="#">Contact</a></li>
         <div class="icons-nav">
         <li>
-            <a href="/cart">
+            <a href="/hf/cart">
                 <span class="fa fa-shopping-cart"></span>
             </a>
         </li>

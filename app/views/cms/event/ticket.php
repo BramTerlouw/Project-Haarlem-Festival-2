@@ -10,7 +10,6 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
                 <th>Program item</th>
                 <th>Ticket Price</th>
                 <th>Total</th>
-                <th>Sold</th>
                 <th>Edit</th>
             </tr>
                 <? foreach ($tickets as $ticket) { ?>
@@ -19,8 +18,7 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
                         <td><? echo $ticket['Name'] ?></th>
                         <td>€ <? echo $ticket['Ticket_Price'] ?></td>
                         <td><? echo $ticket['Tickets'] ?></td>
-                        <td><? echo $ticket['Sold'] ?></td>
-                        <td><button>Edit</button></td>
+                        <td><a href="/cms/eventItem/ticketDetail?id=<? echo $ticket['EventItem_ID'] ?>">Edit</a></td>
                     </tr>
                 <? } ?>
         </table>

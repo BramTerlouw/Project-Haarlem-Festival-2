@@ -42,7 +42,7 @@ use Models\Role;
 </div>
 <section class="users-table-btnContainer">
     <a href="<? if ($_SESSION['role'] == Role::Superadmin) echo "/cms/user/add" ?>">Add user</a>
-    <a href="">Export</a>
+    <a href="/cms/user/exportUserData">Export</a>
 </section>
 
 </main> <!-- close main tag from cms nav -->

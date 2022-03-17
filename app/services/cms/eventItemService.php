@@ -36,9 +36,21 @@ class EventItemService {
     }
 
 
+    // ## get tickets for item without sells
+    public function getManyTicketsWithoutSells($id) {
+        return $this->repository->getManyTicketsWithoutSells($id);
+    }
+
+
     // ## update event items
     public function updateOne($id, $name, $loc, $desc, $date, $start, $end) {
         $this->repository->updateOne($id, $name, $loc, $desc, $date, $start, $end);
+    }
+
+
+    // ## update ticket info for event item
+    public function updateTickets($id, $price, $amount) {
+        $this->repository->updateTickets($id, $price, $amount);
     }
 
 

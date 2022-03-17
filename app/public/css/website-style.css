@@ -1024,7 +1024,6 @@ article p{
 
 
 .reservation-form-wrapper h1 {
-	margin: 10vh 0 0 0;
 	width: 100%;
 }
 
@@ -1044,9 +1043,14 @@ article p{
 	justify-content: space-around;
 }
 
-/* .res-form-item label{
-	width: 100%;
-} */
+.reservation-form button {
+	height: 30%;
+	border: 2px solid black;
+	padding: 3px 5px;
+	border-radius: 4px;
+	font-size: 1.3rem;
+	align-self: flex-end;
+}
 
 .res-form-item input, .res-form-item textarea {
 	width: 70%;
@@ -1055,4 +1059,12 @@ article p{
 	border: 1px solid blue;
 	border-radius: 5px;
 	font-size: 1.3rem;
+}
+
+
+
+.reservation-info-wrapper {
+	width: 50%;
+
+	margin: 20px auto;
 }

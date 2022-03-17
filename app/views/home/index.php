@@ -1,11 +1,13 @@
 <?php
 require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/navigation/nav-homepage.php';
+
 // uncomment one time, load website and then comment
 // use Repositories\Cms\UserRepository;
 // $repository = new UserRepository();
 // $repository->userMigration();
 // uncomment one time, load website and then comment
+
 ?>
 <body>
     <header>

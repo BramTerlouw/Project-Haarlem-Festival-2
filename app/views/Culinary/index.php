@@ -23,7 +23,6 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 
 <!-- Button to go to instant go to the restaurant page -->
 <button class="allrestaurant-button" onclick="window.location.href='/hf/culinary/restaurants'" type="button">All Restaurants</button>
-<button class="allrestaurant-button" onclick="window.location.href='/hf/culinary/reservationForm'" type="button">test</button>
 
 <!-- Banner with quote -->
 <div class="Banner-ingridients">    
@@ -71,11 +70,10 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 <script>
 
 function getSliderData() {
-          fetch(/eventcontroller/fetchSlider)
+          fetch('/hf/culinary/fetchSliderdata')
               .then(result => result.json())
-              .then(items => {
-                   items.forEach(item => {
-
+              .then(restaurants => {
+                restaurants.forEach(restaurant => {
                     var element = document.createElement('div');
                     element.classList.add("slider-element")
 
@@ -88,10 +86,10 @@ function getSliderData() {
                      button.classList.add("culinary-slider-button")
                       
                      button.innerText = "Make Reservation";
-                     title.innerText = elements[i].title;
+                     title.innerText = restaurant.Name;
                      img.classList.add("slider-img")
-                     text.innerHTML = elements[i].description;
-                     type.innerHTML = elements[i].type
+                     text.innerHTML = restaurant.Summary;
+                     type.innerHTML = restaurant.Type;
                       
                      element.appendChild(img);
                      element.appendChild(title);
@@ -100,7 +98,8 @@ function getSliderData() {
                      element.appendChild(button);
                      document.getElementById("culinary-slider-container").appendChild(element);
                   });
-                  console.log(items)
+                  console.log(restaurants);
+                  
               })
               .catch(error => console.log(error));
         }

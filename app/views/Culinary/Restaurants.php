@@ -27,20 +27,31 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 
 
 <?php foreach ($restaurantlist as $restaurant){ ?>
+    <div class="Restaurant-list">
+            <div class="Restaurant-title">
+                <?php echo $restaurant->Name;?>
+            </div>
+            <div class="Restaurant-type">
+                <?php echo $restaurant->Type;?> 
+            </div>
+            
+            <div class="Restaurant-summary">
+                <? echo $restaurant->Summary; ?>
+            </div>
 
-    <?php echo $restaurant->Name;?>
-    <?php echo $restaurant->Type;?>
-
-    <? if ($restaurant->Wheelchair_accessible)
-            echo "wel!";
-        else
-            echo "Niet!";
-    ?>
+            <div class="Restaurant-access">
+                <? if ($restaurant->Wheelchair_accessible)
+                        echo "This restaurant is wheelchair accessible";
+                    else
+                        echo "This restaurant is'nt wheelchair accessible";
+                ?>
+            </div>
+        <div class="Restaurant-button">
+            <button class="allrestaurant-button" onclick="window.location.href='/hf/culinary/reservationForm'" type="button">Make reservation</button>
+        </div>
+        <br><br><br>
+    </div>  
     
-    <? echo $restaurant->Summary; ?>
-    <button class="allrestaurant-button" onclick="window.location.href='/hf/culinary/reservationForm?id=<?echo $restaurant->Restaurant_ID?>'" 
-    type="button">Make reservation</button>
-    <br><br><br>
 
  <?php } ?> 
 

@@ -8,6 +8,9 @@ public int $Restaurant_ID;
 public string $Name;
 public string $Type;
 public string $Summary;
+public string $Adres;
+public int $Price_Adults;
+public int $Price_Children;
 public int $Max_visitors;
 public bool $Wheelchair_accessible;
 }

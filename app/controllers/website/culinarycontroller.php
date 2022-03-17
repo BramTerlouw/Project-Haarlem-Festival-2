@@ -21,6 +21,7 @@ class CulinaryController extends Controller {
     public function restaurants() {
         $restaurantlist = $this->culinaryService->getRestaurants();
         require __DIR__ . '/../../views/Culinary/Restaurants.php';
+
     }
     public function reservationForm() {
         $timespan = $this->culinaryService->getTimespan(2);
@@ -35,7 +36,8 @@ class CulinaryController extends Controller {
     }
 
     public function fetchSliderdata(){
-
+        $restaurantlist = $this->culinaryService->getRestaurants();
+        echo json_encode($restaurantlist);
 
     }
     public function insertReservation() {
@@ -49,8 +51,6 @@ class CulinaryController extends Controller {
             $Amount_Children = $_POST['Amount_Children'];
             $Amount_Adults = $_POST['Amount_Adults'];
         }
-
-    
     }
 }
 ?>

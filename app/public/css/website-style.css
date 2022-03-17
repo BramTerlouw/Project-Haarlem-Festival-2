@@ -958,3 +958,38 @@ article p{
 	color: white;
 }
 
+
+
+.reservation-form-wrapper h1 {
+	margin: 10vh 0 0 0;
+	width: 100%;
+}
+
+.reservation-form {
+	width: 50%;
+	margin: 0 auto 10vh auto;
+
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.res-form-item {
+	width: 50%;
+	font-size: 1.3rem;
+
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+/* .res-form-item label{
+	width: 100%;
+} */
+
+.res-form-item input, .res-form-item textarea {
+	width: 70%;
+
+	display: flex;
+	border: 1px solid blue;
+	border-radius: 5px;
+	font-size: 1.3rem;
+}

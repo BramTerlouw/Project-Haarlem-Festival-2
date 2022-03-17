@@ -24,6 +24,7 @@ class CulinaryController extends Controller {
         require __DIR__ . '/../../views/Culinary/Restaurants.php';
     }
     public function reservationForm() {
+        $timespan = $this->culinaryService->getTimespan($_GET['id']);
         require __DIR__ . '/../../views/Culinary/reservationForm.php';
     }
 

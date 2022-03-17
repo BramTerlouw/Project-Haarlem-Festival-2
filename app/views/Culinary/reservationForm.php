@@ -2,46 +2,37 @@
 require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/navigation/nav-website.php';
 ?>
-<div>
-<form class="Reservation-form" action="event/insertReservation" method="post">
-    <div class="form-item">
-        <label for="fname">First Name</label>
-            <input type="text" id="fname" name="fname">   
+<div class="reservation-form-wrapper">
+    <form class="reservation-form" action="" method="post">
+        
+        <h1>Reservation form:</h1>
+        <div class="res-form-item">
+                <label for="lname">Number of adults</label>
+                <input type="text" id="NmbAdults" name="NmbAdults">
+            </div>    
+        
+        <div class="res-form-item">
+                <label for="lname">Number of children</label>
+                <input type="text" id="NmbChild" name="NmbChild">
+            </div> 
+        
+        <div class="res-form-item">
+            <label for="Date">Choose a Date:</label>
+            <input type="date" name="inputActivityDate" value="" min="<? echo $timespan[0] ?>" max="<? echo $timespan[1] ?>" required>
         </div>
-    <div class="form-item">
-        <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lname">   
+        
+        <div class="res-form-item">
+            <label for="Time">Choose a Time:</label>
+            <input type="time" name="inputActivityStart" value="" required>
         </div>
-    <div class="form-item">
-        <label for="lname">Email</label>
-            <input type="text" id="Email" name="Email">
+
+        <div class="res-form-item">
+            <label for="Time">Message:</label>
+            <textarea name="inputActivityStart" value="" required></textarea>
         </div>
-    <div class="form-item">
-        <label for="lname">Number of adults</label>
-            <input type="text" id="NmbAdults" name="NmbAdults">
-        </div>    
-    <div class="form-item">
-        <label for="lname">Number of children</label>
-            <input type="text" id="NmbChild" name="NmbChild">
-        </div> 
-    <div class="form-item">
-        <label for="Date">Choose a Date:</label>
-            <select id="Date" name="Date">
-                <option value="28th July">28th July</option>
-                <option value="29th July">29th July</option>
-                <option value="30th July">30th July</option>
-            </select>
-    </div>
-    <div class="form-item">
-        <label for="Time">Choose a Time:</label>
-            <select id="Time" name="Time">
-                <option value="18:00">18:00</option>
-                <option value="19:00">19:00</option>
-                <option value="20:00">20:00</option>
-            </select>
-    </div>
-    <input type="submit" value="submit">
-</form>
+
+        <button type="submit">Make reservation</button>
+    </form>
 </div>
 <?php
 require __DIR__ . '/../components/footer.php';

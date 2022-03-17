@@ -81,7 +81,7 @@ class CartController {
         header('Location: /hf/cart');
     }
 
-    public function AddTicketgToCart() {
+    public function AddTicketToCart() {
         if (!isset($_SESSION['tickets']))
             $_SESSION['tickets']=array();
         
@@ -95,33 +95,6 @@ class CartController {
         }
 
         header('Location: /hf/' . $event . '?event=' . $event);
-    }
-
-
-
-
-
-
-
-
-
-
-
-    // ## TO BE DELETEN WHEN ALL EVENT PAGES ARE DONE AND HAVE IMPLEMENTED THIS
-    public function set() {
-        // Temporary
-        $_SESSION['tickets'][3] = 1;
-        $_SESSION['tickets'][12] = 2;
-        array_push($_SESSION['reservations'], array( 'id' => 3, 'amountChild' => 2, 'amountAdult' => 2, 'dateTime' => '29-07-2022,18:00' ));
-        array_push($_SESSION['reservations'], array( 'id' => 4, 'amountChild' => 2, 'amountAdult' => 2, 'dateTime' => '29-07-2022,18:00' ));
-        // Temporary
-        header('Location: /hf/cart');
-    }
-    public function unset() {
-        // Temporary
-        unset($_SESSION['tickets']);
-        unset($_SESSION['reservations']);
-        header('Location: /hf/cart');
     }
 }
 ?>

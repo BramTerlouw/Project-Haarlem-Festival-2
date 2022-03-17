@@ -14,4 +14,9 @@ class CulinaryService {
         $repository = new culinaryRepository();
         return $repository->getOne($id);
     }
+
+    public function getTimespan($id) {
+        $repository = new culinaryRepository();
+        return $repository->getTimespan($id);
+    }
 }

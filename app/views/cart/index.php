@@ -59,7 +59,6 @@ require __DIR__ . '/../components/navigation/nav-website.php';
             <a class="cart-bottom-btn" href="/">Back</a>
         </div>
         <div>
-            <a class="cart-bottom-btn" href="/hf/cart/set">Set temporary cart items</a>
             <a class="cart-bottom-btn" href="/hf/cart/unset">Empty cart</a>
         </div>
     </div>

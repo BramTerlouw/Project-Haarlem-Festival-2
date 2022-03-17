@@ -44,5 +44,21 @@ Class CulinaryRepository extends Repository
             echo $e;
         }
     }
+
+
+    // ## get start and end date of event
+    public function getTimespan($id) {
+        try {
+            $sqlquery = "SELECT StartDate, EndDate FROM Event WHERE Event_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return $stmt->fetch();
+        } catch(PDOException $e) {
+            echo $e;
+        }
+    }
 }
 ?>

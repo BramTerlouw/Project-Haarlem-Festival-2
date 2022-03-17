@@ -53,7 +53,7 @@ foreach($eventItemList as $event){?>
     <td class = "td-item-tickets-dance"><?php echo $event["Location"] ?></td>
     <td class = "td-item-tickets-dance">€<?php echo $event["Ticket_Price"] ?></td>
     <td class = "td-item-tickets-dance">
-    <a href="#">
+    <a href="/hf/cart/addTicketToCart?event=<? echo $_GET['event'] ?>&id=<? echo $event['EventItem_ID']?>">
                 <span class="fa fa-shopping-cart"></span>
             </a>
             </td>

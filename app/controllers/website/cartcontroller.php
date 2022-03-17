@@ -81,6 +81,22 @@ class CartController {
         header('Location: /hf/cart');
     }
 
+    public function AddTicketgToCart() {
+        if (!isset($_SESSION['tickets']))
+            $_SESSION['tickets']=array();
+        
+        $id = $_GET['id'];
+        $event = $_GET['event'];
+
+        if (array_key_exists($id, $_SESSION['tickets'])) {
+            $_SESSION['tickets'][$id] += 1;
+        } else {
+            $_SESSION['tickets'][$id] = 1;
+        }
+
+        header('Location: /hf/' . $event . '?event=' . $event);
+    }
+
 
 
 

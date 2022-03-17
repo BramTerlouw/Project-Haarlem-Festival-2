@@ -7,27 +7,34 @@ use Controllers\Controller;
 use Services\Cms\EventService;
 use Services\Cms\EventItemService;
 use Services\Cms\LocationService;
+use Services\website\CulinaryService;
 
 
 class EventController extends Controller{
     private $eventService;
     private $eventItemService;
     private $locationService;
+    private $culinaryservice;
 
     function __construct()
     {
         $this->eventService = new EventService();
         $this->eventItemService = new EventItemService();
         $this->locationService = new LocationService();
+        $this->culinaryService = new Culinaryservice();
     }
     
 
     // ## event overview
     public function index() {
-
         // arrays with data for the form
         $locationIDs = [];
         $event = $this->eventService->getOne($_GET['event']);
+
+        if ($event->Type == "Reservations") {
+            $this->reservationIndex($event);
+            return;
+        }
         $dateArr = $this->eventService->getDates($event->Event_ID);
 
 
@@ -49,6 +56,16 @@ class EventController extends Controller{
     }
 
 
+
+    public function reservationIndex($event)
+    {
+        $eventNames = $this->eventService->getEventNames();
+        $restaurantlist = $this->culinaryService->getRestaurants();
+        //var_dump($restaurantlist);
+        require __DIR__ . '/../../views/cms/event/restaurant.php';
+    }
+
+
     // ## update an event
     public function updateOne() {
         if (isset($_POST['submit'])) {
@@ -64,7 +81,7 @@ class EventController extends Controller{
 
             // call update function
             $this->eventService->updateOne($_GET['id'], $eventName, $eventDesc, $eventStart, $eventEnd);
-            header('Location: /cms/event?event=' . $_GET['id']);
+            header('Location: /cms/event?event=' . $eventName);
         }
     }
 

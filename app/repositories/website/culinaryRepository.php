@@ -1,5 +1,5 @@
 <?php
-namespace Repositories;
+namespace Repositories\Website;
 
 use Repositories\Repository;
 use PDO;
@@ -10,7 +10,7 @@ use Models\Restaurant;
 // require __DIR__ . '/repository.php';
 // require __DIR__ . '/../models/restaurant.php';
 
-Class culinaryRepository extends Repository
+Class CulinaryRepository extends Repository
 {
     public function getRestaurants(){
         try {

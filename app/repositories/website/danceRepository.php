@@ -1,13 +1,15 @@
 <?php
 
-namespace Repositories;
+namespace Repositories\Website;
 use Repositories\Repository;
+
 use Models\Event_Item;
 use Models\Event;
+
 use PDO;
 use PDOException;
 
-class eventrepository extends Repository
+class DanceRepository extends Repository
 {
     public function getOneEvent($event) {
         try {

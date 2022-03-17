@@ -1,17 +1,17 @@
 <?php
 
-namespace Services;
-use Repositories\culinaryRepository;
+namespace Services\Website;
+use Repositories\Website\culinaryRepository;
 
 class CulinaryService {
 
     public function getRestaurants() {
-        $repository = new CulinaryRepository();
+        $repository = new culinaryRepository();
         return $repository->getRestaurants();
     }
 
     public function getOne($id) {
-        $repository = new CulinaryRepository();
+        $repository = new culinaryRepository();
         return $repository->getOne($id);
     }
 }

@@ -4,7 +4,7 @@ namespace Controllers;
 namespace Controllers\Website;
 
 use Services\Cms\EventItemService;
-use Services\CulinaryService;
+use Services\Website\CulinaryService;
 
 class CartController {
     private $eventItemService;

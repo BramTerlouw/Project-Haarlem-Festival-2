@@ -6,9 +6,9 @@
 
     <ul class="nav-list-left">
         <li class="nav-item"><a href="/">Home</a></li>
-        <li class="nav-item"><a href="/event?event=dance">Dance</a></li>
-        <li class="nav-item"><a href="/event?event=jazz">Jazz</a></li>
-        <li class="nav-item"><a href="/event?event=culinary">Culinary</a></li>
+        <li class="nav-item"><a href="/hf/dance?event=dance">Dance</a></li>
+        <li class="nav-item"><a href="/hf/jazz?event=jazz">Jazz</a></li>
+        <li class="nav-item"><a href="/hf/culinary?event=culinary">Culinary</a></li>
     </ul>
 
     <ul class="nav-list-right">

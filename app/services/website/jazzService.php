@@ -1,27 +1,27 @@
 <?php
 
-namespace Services;
-use Repositories\eventrepository;
+namespace Services\Website;
+use Repositories\Website\JazzRepository;
 
 
-class eventservice {
+class JazzService {
 
 public function getOneEvent($event) {
-        $repository = new eventrepository();
+        $repository = new JazzRepository();
         return $repository->getOneEvent($event);
     }
 public function getEvents($event, $date) {
-        $repository = new eventrepository();
+        $repository = new JazzRepository();
         return $repository->getEvents($event, $date);
     }
 
 public function getDates($event) {
-    $repository = new eventrepository();
+    $repository = new JazzRepository();
     return $repository->getDates($event);
     }
 
 public function getArtists($event) {
-    $repository = new eventrepository();
+    $repository = new JazzRepository();
     return $repository->getArtists($event);
     }
 }

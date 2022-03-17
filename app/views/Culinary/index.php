@@ -22,8 +22,8 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 </div>
 
 <!-- Button to go to instant go to the restaurant page -->
-<button class="allrestaurant-button" onclick="window.location.href='event/restaurants'" type="button">All Restaurants</button>
-<button class="allrestaurant-button" onclick="window.location.href='event/reservationForm'" type="button">test</button>
+<button class="allrestaurant-button" onclick="window.location.href='/hf/culinary/restaurants'" type="button">All Restaurants</button>
+<button class="allrestaurant-button" onclick="window.location.href='/hf/culinary/reservationForm'" type="button">test</button>
 
 <!-- Banner with quote -->
 <div class="Banner-ingridients">    

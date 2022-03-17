@@ -47,7 +47,7 @@ require __DIR__ . '/../components/navigation/nav-website.php';
                 ?>
             </div>
         <div class="Restaurant-button">
-            <button class="allrestaurant-button" onclick="window.location.href='/hf/culinary/reservationForm'" type="button">Make reservation</button>
+            <button class="allrestaurant-button" onclick="window.location.href='/hf/culinary/reservationForm?id=<? echo $restaurant->Restaurant_ID ?>'" type="button">Make reservation</button>
         </div>
         <br><br><br>
     </div>  

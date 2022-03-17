@@ -96,4 +96,39 @@ class EventRepository extends Repository
             echo $e;
         }
     }
+
+
+
+
+    // ### methods for dashboard data
+    // ## get all tickets for a event
+    public function getAllTickets($id) {
+        try {
+            $sqlquery = "SELECT SUM(A.Tickets) FROM Event E INNER JOIN Event_Item A ON E.Event_ID = A.Event_ID WHERE E.Event_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
+    // ## get all sells for a event
+    public function getAllSold($id) {
+        try {
+            $sqlquery = "SELECT COUNT(B.EventItem_ID) FROM Booking B INNER JOIN Event_Item E ON B.EventItem_ID = E.EventItem_ID WHERE E.Event_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }

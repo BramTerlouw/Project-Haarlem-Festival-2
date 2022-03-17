@@ -20,38 +20,35 @@ require __DIR__ . '/../components/navigation/nav-website.php';
                 </tr>
             </thead>
             <tbody class="cart-tbody">
-                <tr>
-                    <td>All-access Jazz</td>
+            <?
+                    foreach ($bookings as $booking) { ?>
+                    <tr>
+                    <td><? echo $booking['item']->Name ?></td>
                     <td>Patronaat</td>
-                    <td>29 July</td>
-                    <td>18:00-19:00</td>
-                    <td>35,00 X</td>
-                    <td><input type="number" name="" id="" value="2"></td>
-                    <td>70</td>
-                </tr>
-                <tr>
-                    <td>All-access Jazz</td>
-                    <td>Patronaat</td>
-                    <td>29 July</td>
-                    <td>18:00-19:00</td>
-                    <td>35,00 X</td>
-                    <td><input type="number" name="" id="" value="2"></td>
-                    <td>70</td>
-                </tr>
-                <tr>
-                    <td>Reservation</td>
-                    <td>Spektakel</td>
-                    <td>29 July</td>
-                    <td>20:00</td>
-                    <td>120,00</td>
+                    <td><? echo $booking['item']->Date ?></td>
+                    <td><? echo $booking['item']->Start_Time ?>-<? echo $booking['item']->End_Time ?></td>
+                    <td>€ <? echo $booking['item']->Ticket_Price ?> X</td>
+                    <td><input type="number" onchange="setBookingAmount(this.value, this.name)" name="<? echo $booking['item']->EventItem_ID ?>" id="" value="<? echo $booking['amount'] ?>"></td>
+                    <td>€ <? echo $booking['item']->Ticket_Price * $booking['amount'] ?></td>
+                    </tr>
+                <?}?>
+                <?
+                    foreach ($reservations as $reservation) { ?>
+                    <tr>
+                    <td><? echo $reservation['restaurant']->Name ?></td>
+                    <td></td>
+                    <td><? echo $reservation['date'] ?></td>
+                    <td><? echo $reservation['time'] ?></td>
+                    <td></td>
                     <td><button>Edit</button></td>
-                    <td>120</td>
-                </tr>
+                    <td></td>
+                    </tr>
+                <?}?>
             </tbody>
         </table>
         <div class="cart-total">
             <span class="cart-total">
-                Total: 70,00
+                Total: € <? echo $total ?>
             </span>
         </div>
     </div>
@@ -62,8 +59,8 @@ require __DIR__ . '/../components/navigation/nav-website.php';
             <a class="cart-bottom-btn" href="/">Back</a>
         </div>
         <div>
-            <a class="cart-bottom-btn" href="#">Share</a>
-            <a class="cart-bottom-btn" href="#">Payment</a>
+            <a class="cart-bottom-btn" href="/hf/cart/set">Set temporary cart items</a>
+            <a class="cart-bottom-btn" href="/hf/cart/unset">Empty cart</a>
         </div>
     </div>
 
@@ -124,6 +121,10 @@ require __DIR__ . '/../components/navigation/nav-website.php';
         }
     }
     fillCarousel();
+
+    function setBookingAmount(amount, id) {
+        window.location.href = "/hf/cart/setBookingAmount?id=" + id + "&amount=" + amount;
+    }
 </script>
 <?php
 require __DIR__ . '/../components/footer.php';

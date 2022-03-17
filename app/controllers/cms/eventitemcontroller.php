@@ -179,5 +179,39 @@ class EventItemController {
         $eventNames = $this->eventService->getEventNames();
         require __DIR__ . '/../../views/cms/event/ticket.php';
     }
+
+    public function ticketDetail() {
+        $eventNames = $this->eventService->getEventNames();
+        $tickets = $this->eventItemService->getManyTickets($_GET['id']);
+
+        // when no tickets are available, no sells are made, so do query without join on bookings
+        if (sizeof($tickets) == 0) 
+            $tickets = $this->eventItemService->getManyTicketsWithoutSells($_GET['id']);
+        require __DIR__ . '/../../views/cms/event/ticketDetail.php';
+    }
+
+
+    // ## update ticket info for event item
+    public function updateTickets() {
+        if (isset($_POST['submit'])) {
+            
+            // filter the post
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+
+            // get vars from post
+            $id = $_POST['eventItemID'];
+            $price = $_POST['ticketPrice'];
+            $amount = $_POST['ticketAmount'];
+            $sold = $_POST['ticketSold'];
+
+            if ($amount < $sold) {
+                header('Location: /cms/eventItem/ticketDetail?id=' . $id . '&error=amountToLow');
+                return;
+            } else {
+                $this->eventItemService->updateTickets($id, $price, $amount);
+                header('Location: /cms/eventItem/ticketDetail?id=' . $id);
+            }
+        }
+    }
 }
 ?>

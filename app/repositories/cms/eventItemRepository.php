@@ -79,12 +79,11 @@ class EventItemRepository extends Repository
     // ## get all tickets
     public function getAllTickets($id) {
         try {
-            $sqlquery = "SELECT
-                E.EventItem_ID, E.Name, E.Ticket_Price, E.Tickets, COUNT(B.EventItem_ID) AS Sold
-                FROM Booking B
-                INNER JOIN Event_Item E ON E.EventItem_ID = B.EventItem_ID
+                $sqlquery = "SELECT
+                E.EventItem_ID, E.Name, E.Ticket_Price, E.Tickets
+                FROM Event_Item E
                 WHERE E.Event_ID=:id
-                GROUP BY B.EventItem_ID";
+                ";
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->bindParam(':id', $id);
@@ -120,6 +119,26 @@ class EventItemRepository extends Repository
     }
 
 
+    // ## get item tickets without any sells
+    public function getManyTicketsWithoutSells($id) {
+        try {
+            $sqlquery = "SELECT
+                E.EventItem_ID, E.Name, E.Ticket_Price, E.Tickets
+                FROM Event_Item E
+                WHERE E.EventItem_ID=:id
+                ";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
     // ### UPDATE QUERIES
     // ## update an event item
     public function updateOne($id, $name, $loc, $desc, $date, $start, $end) {
@@ -134,6 +153,24 @@ class EventItemRepository extends Repository
             $stmt->bindParam(':start', $start);
             $stmt->bindParam(':loc', $loc);
             $stmt->bindParam(':end', $end);
+
+            $stmt->execute();
+            
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
+    // ## update ticket info for event item
+    public function updateTickets($id, $price, $amount) {
+        try {
+            $sqlquery = "UPDATE Event_Item SET Ticket_Price=:price, Tickets=:amount WHERE EventItem_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':price', $price);
+            $stmt->bindParam(':amount', $amount);
+            $stmt->bindParam(':id', $id);
 
             $stmt->execute();
             

@@ -33,23 +33,6 @@ to the big stage at the Grote Markt to perform for all visitors for free!
         <button class="button-Sunday-jazz"type="button">SUN. 31 July</button>
     </div>
 </div>
-
-<?php
-foreach($eventlist as $event){?>
-    <table class = "table-tickets-jazz">
-    <td class = "td-item-tickets-jazz"><img class = "td-item-image-tickets-jazz" src="/images/locations/<?php echo $event["Location_ID"]?>.png"></td>
-    <td class = "td-item-tickets-jazz"><?php echo $event["Name"] ?></td>
-    <td class = "td-item-tickets-jazz"><?php echo $event["Start_Time"]?></td>
-    <td class = "td-item-tickets-jazz"><?php echo $event["End_Time"] ?></td>
-    <td class = "td-item-tickets-jazz"><?php echo $event["Location_ID"] ?></td>
-    <td class = "td-item-tickets-jazz">€<?php echo $event["Ticket_Price"] ?></td>
-    <td class = "td-item-tickets-jazz">
-    <a href="#">
-                <span class="fa fa-shopping-cart"></span>
-            </a>
-            </td>
-    </table><?php
-}?>
 </div>
 
 <?php

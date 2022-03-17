@@ -10,10 +10,6 @@ foreach($eventList as $event){?>
 <h1 class="dance-title"><?php echo $event["Name"]?></h1>
 <?php }?>
 
-<?php
-foreach($eventList as $event){?>
-<h2 class="dance-undertitle"><?php echo $event["Name"]?></h2>
-<?php }?>
 
 <?php
 foreach($eventList as $event){?>
@@ -41,7 +37,7 @@ foreach($eventList as $event){?>
         
     <?php
     foreach($dateList as $date){?>
-    <button class="button-date-Dance"type="button"><?php echo $date["Date"] ?></button>
+    <a href="/hf/dance?event=dance&date=<? echo $date[0]?>" class="button-date-Dance"type="button"><?php echo $date["Date"] ?></a>
     <?php
     }?>  
     </div>

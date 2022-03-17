@@ -24,4 +24,9 @@ public function getArtists($event) {
     $repository = new DanceRepository();
     return $repository->getArtists($event);
     }
+
+public function getLocations() {
+    $repository = new DanceRepository();
+    return $repository->getLocations();
+    }    
 }

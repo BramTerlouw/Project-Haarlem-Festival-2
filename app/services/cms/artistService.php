@@ -22,4 +22,9 @@ class ArtistService {
     public function getMany($id) {
         return $this->repository->getMany($id);
     }
+
+    // ## update artist
+    public function updateOne($id, $name, $desc, $type) {
+        $this->repository->updateOne($id, $name, $desc, $type);
+    }
 }

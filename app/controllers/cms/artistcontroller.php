@@ -23,5 +23,23 @@ class ArtistController extends Controller{
         $artistList = $this->artistService->getAll();
         require __DIR__ . '/../../views/cms/artist/index.php';
     }
+
+    // ## update an event item
+    public function updateOne() {
+        
+        if (isset($_POST['submit'])) {
+            
+            // filter the post
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+
+            // get vars from post
+            $name = $_POST['inputArtistName'];
+            $desc = $_POST['inputArtistDescription'];
+            $type = $_POST['inputArtistType'];
+  
+            // call update functions
+            $this->artistService->updateOne($_GET['id'], $name, $desc, $type);
+        }
+    }
 }
 ?>

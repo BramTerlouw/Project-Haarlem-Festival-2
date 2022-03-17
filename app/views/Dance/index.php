@@ -74,6 +74,24 @@ foreach($artistList as $artist){?>
 }?>
 </div>
 
+<div class = "location-dance">
+
+<h1 class ="location-title-dance">Venues</h1>
+
+<div class ="location-images-dance">
+
+<?php
+foreach($locationList as $location){?>
+    <div class = "div-location-dance">
+    <img class = "image-location-dance" src="/images/locations/<?php echo $location["Name"]?>.png">
+    <h1 class = "h1-location-dance"><?php echo $location["Name"] ?></h1>
+    <p class = "p-location-dance"><?php echo $location["Address"]?></p>
+    </div><?php
+}?>
+</div>
+</div>
+</div>
+
 
 <?php
 require __DIR__ . '/../components/footer.php';

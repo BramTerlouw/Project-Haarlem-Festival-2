@@ -140,4 +140,18 @@ class DanceRepository extends Repository
         }
     }
 
+    public function getLocations() {
+        try {
+            $sqlquery = "SELECT Location_ID, Name, Address FROM Location";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            // execute and get result
+            $stmt->execute();
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
 }

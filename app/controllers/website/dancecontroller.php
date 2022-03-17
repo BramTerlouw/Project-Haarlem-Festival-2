@@ -27,6 +27,7 @@ class DanceController extends Controller {
 
 
         $artistList = $this->eventService->getArtists($event);
+        $locationList = $this->eventService->getLocations();
         require __DIR__ . '/../../views/' . $event . '/index.php';
     }
 }

@@ -81,6 +81,8 @@ class CartController {
         header('Location: /hf/cart');
     }
 
+
+    // ## add booking to cart
     public function AddTicketToCart() {
         if (!isset($_SESSION['tickets']))
             $_SESSION['tickets']=array();
@@ -97,6 +99,8 @@ class CartController {
         header('Location: /hf/' . $event . '?event=' . $event);
     }
 
+
+    // ## add reservation to cart
     public function addResToCart() {
          // check for POST var
          if (isset($_POST['submit'])) {
@@ -115,15 +119,17 @@ class CartController {
                 $message = $_POST['ActivityMessage'];
             else
                 $message = "";
-
             $datetime = $date . ',' . $time;
 
+            // make reservation and push to session
             $res = array('id' => $tempID, 'restaurant_ID' => $_GET['id'], 'amountAdult' => $nrAdults, 'amountChild' => $nrChidls, 'dateTime' => $datetime, 'message' => $message);
             array_push($_SESSION['reservations'], $res);
         }
         header('Location: /hf/culinary/restaurants');
     }
 
+
+    // ## empty cart by unsetting the session vars
     public function unset() {
         unset($_SESSION['reservations']);
         unset($_SESSION['tickets']);

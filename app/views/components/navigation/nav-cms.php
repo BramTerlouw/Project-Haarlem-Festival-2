@@ -38,7 +38,7 @@
             </li>
             <li class="cms-nav-item">
                 <img class="cms-nav-icon" src="/icons/cms-users.png" alt="artists icon">
-                <a href="/cms/home">Artists</a>
+                <a href="/cms/artist">Artists</a>
             </li>
             <li class="cms-nav-item">
                 <img class="cms-nav-icon" src="/icons/cms-locations.png" alt="locations icon">

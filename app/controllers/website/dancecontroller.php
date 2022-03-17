@@ -18,11 +18,11 @@ class DanceController extends Controller {
         $eventList = $this->eventService->getOneEvent($event);
 
         // get the event items
-        if (!isset($_GET['Date'])) { 
+        if (!isset($_GET['date'])) { 
             $eventItemList = $this->eventService->getEvents($event, $dateList[0][0]); 
         }
         else { 
-            $eventItemList = $this->eventService->getEvents($event, $_GET['Date']); 
+            $eventItemList = $this->eventService->getEvents($event, $_GET['date']); 
         }
 
 

@@ -11,12 +11,12 @@ class CulinaryService {
         $this->repository = new culinaryRepository();
     }
 
-    public function getRestaurants() {
-        return $this->repository->getRestaurants();
+    public function getAll() {
+        return $this->repository->getAll();
     }
 
-    public function getRestaurantsByType($type) {
-        return $this->repository->getRestaurantsByType($type);
+    public function getManyByType($type) {
+        return $this->repository->getManyByType($type);
     }
 
     public function getOne($id) {

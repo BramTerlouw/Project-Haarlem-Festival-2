@@ -20,8 +20,9 @@ require __DIR__ . '/../components/navigation/nav-website.php';
                 </tr>
             </thead>
             <tbody class="cart-tbody">
+                <!-- First print all bookings in session -->
             <?
-                    foreach ($bookings as $booking) { ?>
+                foreach ($bookings as $booking) { ?>
                     <tr>
                     <td><? echo $booking['item']->Name ?></td>
                     <td>Patronaat</td>
@@ -32,20 +33,29 @@ require __DIR__ . '/../components/navigation/nav-website.php';
                     <td>€ <? echo $booking['item']->Ticket_Price * $booking['amount'] ?></td>
                     </tr>
                 <?}?>
+
+                <!-- Second print all reservations in session -->
                 <?
                     foreach ($reservations as $reservation) { ?>
                     <tr>
                     <td><? echo $reservation['restaurant']->Name ?></td>
-                    <td></td>
+                    <td><? echo $reservation['restaurant']->Adres ?></td>
                     <td><? echo $reservation['date'] ?></td>
                     <td><? echo $reservation['time'] ?></td>
-                    <td></td>
+                    <td>€ 
+                        <? echo (($reservation['restaurant']->Price_Adults * $reservation['amountAdult']) + 
+                        ($reservation['restaurant']->Price_Children * $reservation['amountChild'])) ?>
+                    </td>
                     <td><a href="/hf/culinary/reservationForm?id=<? echo $reservation['restaurant']->Restaurant_ID ?>&res=<? echo $reservation['id'] ?>">Edit</a></td>
-                    <td></td>
+                    <td>€ 
+                        <? echo (($reservation['restaurant']->Price_Adults * $reservation['amountAdult']) + 
+                        ($reservation['restaurant']->Price_Children * $reservation['amountChild']) + 10) ?>
+                    </td>
                     </tr>
                 <?}?>
             </tbody>
         </table>
+        <!-- Display total amount of selected items-->
         <div class="cart-total">
             <span class="cart-total">
                 Total: € <? echo $total ?>

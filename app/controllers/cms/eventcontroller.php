@@ -60,7 +60,7 @@ class EventController extends Controller{
     public function reservationIndex($event)
     {
         $eventNames = $this->eventService->getEventNames();
-        $restaurantlist = $this->culinaryService->getRestaurants();
+        $restaurantlist = $this->culinaryService->getAll();
         //var_dump($restaurantlist);
         require __DIR__ . '/../../views/cms/event/restaurant.php';
     }

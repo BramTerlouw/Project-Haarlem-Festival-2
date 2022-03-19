@@ -525,7 +525,6 @@
 }
 
 /* ## Tickets jazz Table */
-
 .table-tickets-jazz {
 	background-color: #151523;
 	color: white;
@@ -549,14 +548,129 @@
 	width: 125px;
 }
 
+
+
+
+
+
 /* ## culinary */
-/* ## banner culinary */
-.Banner-culinary{
+/* ## banners culinary */
+.Banner-culinary {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("/images/banner/banner-culinary.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	
 }
+
+.Banner-ingridients {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("/images/Culinary/image2.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.ingridients-header {
+	text-align: left;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: white;
+	font-size: 30px;
+	padding: 6%;
+}
+
+.culinary-title {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: white;
+	font-size: 72px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+ 	justify-content: center;
+	padding: 6%;
+}
+
+.Culinary-Header {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	text-align: center;
+	padding: 6%;
+}
+
+#culinaryheader {
+
+	font-size: 70px;
+	margin-bottom: 3%;
+}
+
+#Diversity-header{
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	text-align: center;
+	font-size: 50px;
+	margin-bottom: 1%;
+}
+
+.diversity-header-text{
+	text-align: center;
+	padding: 1%;
+}
+
+
+/* Slider culinary index page */
+.culinary-Slider-container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+.culinary-slider {
+    display: flex;
+	margin: 0 auto;
+}
+.slider-element {
+   padding: 1%;
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+ }
+ .slider-img {
+    width: 100%;
+    height: 270px;
+    background-color: gray;
+ }
+ .culinary-slider-typeContainer {
+	 width: 100%;
+	 text-align: left;
+ }
+ #RightButton{
+    margin-right: 5%;
+    width: 10%;
+	height: 20%;
+	margin-top: 10%;
+ }
+ #LeftButton{
+    margin-left: 5%;
+    width: 10%;
+	height: 20%;
+	margin-top: 10%;
+ }
+ .culinary-slider-button {
+	width: 50%;
+	align-self: flex-start;
+	background-color: black;
+	color: white;
+	padding: 2%;
+	border: none;
+	border-radius: 3px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.culinary-slider-button:hover {
+	background-color: #4983F8;
+}
+
+
+
+/* btn to overview restaurants */
 .allrestaurant-button{
 	border-radius: 10px;
 	border: none;
@@ -568,81 +682,10 @@
 	cursor: pointer;
 	background-color: #4983F8;
 }
-.culinary-slider-button
-{
-	width: 50%;
-	align-self: flex-start;
-	background-color: black;
-	color: white;
-	padding: 2%;
-	border: none;
-	border-radius: 3px;
-	font-weight: bold;
-	cursor: pointer;
-	
-}
-.culinary-slider-button:hover {
-	background-color: #4983F8;
-}
-.Banner-ingridients{
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("/images/Culinary/image2.jpg");
-	background-repeat: no-repeat;
-	background-size: 100%;
-}
-.ingridients-header{
-	text-align: left;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	color: white;
-	font-size: 30px;
-	padding: 6%;
-}
 
-.culinary-title{
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	color: white;
-	font-size: 72px;
-	text-align: center;
-	display: flex;
-	align-items: center;
- 	justify-content: center;
-	padding: 6%;
-}
-.Culinary-Header{
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	text-align: center;
-	padding: 6%;
-}
-.culinary-container{
-	width: 100%;
-    height: 100%;
-    /* border: 1px solid black; */
-    margin: 0 auto;
-    display: flex;
-}
-#culinary-RightButton{
-    margin-right: 5%;
-    width: 5%;
-	height: 20%;
-	margin-top: 10%;
-	background-color: black;
-	color: white;
-	border: none;
- }
- #culinary-LeftButton{
-    margin-left: 5%;
-    width: 5%;
-	height: 20%;
-	margin-top: 10%;
-	background-color: black;
-	color: white;
-	border: none;
- }
-#culinaryheader{
 
-	font-size: 70px;
-	margin-bottom: 3%;
-}
-.recipe-grid-container {
+/* grid with buttons of all restaurant food types */
+.type-grid-container {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
@@ -651,10 +694,10 @@
   	grid-template-columns: repeat(3, 1fr);
 	justify-items:  center;
 }
-.recipe-grid-item{
+.type-grid-item {
 	width: 50%;
 }
-.recipe-button{
+.type-button {
 	align-items: center;
 	border-radius: 12px;
 	border: none;
@@ -669,22 +712,6 @@
 	background-color: #4983F8;
 	width: 100%;
   }
-#Diversity-header{
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	text-align: center;
-	font-size: 50px;
-	margin-bottom: 1%;
-}
-.diversity-header-text{
-	text-align: center;
-	padding: 1%;
-}
-
-
-
-
-
-
 
 
 
@@ -769,13 +796,6 @@
 .flex-item-restaurant-dropdown{
 	flex-grow: 4;
 }
-.Restaurant-title{
-	flex-grow: 8;
-	font-weight: bold;
-}
-.Restaurant-type{
-	flex-grow: 2;
-}
 
 
 
@@ -791,7 +811,6 @@
     opacity: 0.7;
     width: 100%;
     height: 50vh;
-
 }
 
 .banner-text{
@@ -856,74 +875,28 @@ article p{
 
 
 
-.HomeSlider-container {
-    width: 100%;
-    height: 100%;
-    /* border: 1px solid black; */
-    margin: 0 auto;
-    display: flex;
-}
-.slider-container {
-    display: flex;
-	margin: 0 auto;
-}
-.slider-element {
-   padding: 1%;
-    width: 35%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
- }
- .slider-img {
-    width: 100%;
-    height: 270px;
-    background-color: gray;
- }
- .culinary-slider-descContainer {
-	 margin: 10px 0 20px 0;
-	 text-align: left;
- }
- .culinary-slider-typeContainer {
-	 width: 100%;
-	 text-align: left;
- }
- #line{
-	 width: 75%;
- }
- #RightButton{
-    margin-right: 5%;
-    width: 10%;
-	height: 20%;
-	margin-top: 10%;
- }
- #LeftButton{
-    margin-left: 5%;
-    width: 10%;
-	height: 20%;
-	margin-top: 10%;
- }
- .grid-container {
+
+.grid-container {
     margin-left: auto;
     margin-right: auto;
     width: 80%;
     display: grid;
     grid-template-columns: auto auto auto;
-  }
-  .grid-item{
-    /* background-color: #2196F3; */
+}
+.grid-item{
     padding: 5%;
     display: flex;
-  }
-  .Socialmedia{
+}
+
+.Socialmedia{
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-  }
-  i{
-      height: 30px;
-   }
+}
+
+i {
+    height: 30px;
+}
 
 .culinary-allrestaurants-button {
 	width: 90vw;
@@ -948,7 +921,7 @@ article p{
 }
 
 .cart {
-	width: 70%;
+	width: 85%;
 	height: auto;
 	min-height: 30vh;
 	
@@ -968,7 +941,7 @@ article p{
 
 /* ## cart buttons beneath cart */
 .cart-bottom-container {
-	width: 70%;
+	width: 85%;
 	height: 100px;
 
 	margin: 0 auto;
@@ -1040,7 +1013,7 @@ article p{
 
 .cart-table {
 	width: 100%;
-	text-align: center;
+	text-align: left;
 	color: white;
 	background-color: #151523;
 
@@ -1121,10 +1094,7 @@ article p{
 	font-size: 1.3rem;
 }
 
-
-
 .reservation-info-wrapper {
 	width: 50%;
-
 	margin: 20px auto;
 }

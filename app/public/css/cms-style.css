@@ -649,7 +649,7 @@ canvas {
 
 
 
-
+/* ## event item overview */
 .eventItem-info-container {
     width: 100%;
     padding: 0 0 0 20px;
@@ -762,6 +762,8 @@ canvas {
     background-color: var(--main-green);
     font-weight: bold;
 }
+
+
 
 /* ## Artist cms */
 .artist-container {
@@ -959,7 +961,7 @@ canvas {
 
 
 
-
+/* ## email verification */
 .email-verification-container {
     width: 20vw;
     margin: 5vh auto;
@@ -991,7 +993,7 @@ canvas {
 
 
 
-
+/* ## tickets */
 .table-tickets {
     width: 80%;
     margin: 0 0 0 20px;

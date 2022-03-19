@@ -7,21 +7,16 @@ use PDOException;
 
 use Models\Restaurant;
 
-// require __DIR__ . '/repository.php';
-// require __DIR__ . '/../models/restaurant.php';
-
 Class CulinaryRepository extends Repository
 {
-    public function getRestaurants(){
+    public function getAll(){
         try {
-            $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible FROM Restaurant";
+            $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible, Adres, Price_Adults, Price_Children FROM Restaurant";
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Restaurant');
            
-            //$data = $stmt->fetchAll();
-            //var_dump($data);
             return $stmt->fetchAll();
             
         } catch (PDOException $e) {
@@ -29,9 +24,9 @@ Class CulinaryRepository extends Repository
         }
     }
 
-    public function getRestaurantsByType($type) {
+    public function getManyByType($type) {
         try {
-            $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible FROM Restaurant WHERE Type LIKE :pattern";
+            $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible, Adres, Price_Adults, Price_Children FROM Restaurant WHERE Type LIKE :pattern";
             $stmt = $this->connection->prepare($sqlquery);
 
             $pattern = '%' . $type . '%';
@@ -50,7 +45,7 @@ Class CulinaryRepository extends Repository
 
     public function getOne($id) {
         try {
-            $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible FROM Restaurant WHERE Restaurant_ID=:id";
+            $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible, Adres, Price_Adults, Price_Children FROM Restaurant WHERE Restaurant_ID=:id";
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->bindParam(':id', $id);

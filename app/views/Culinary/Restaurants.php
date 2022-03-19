@@ -11,7 +11,6 @@ require __DIR__ . '/../components/navigation/nav-website.php';
     <div class="flex-container-restaurant">
         <div class="flex-item-restaurant-header">
             <h1>Participating Restaurants</h1>
-            <hr id="line">
         </div>
         <div class="flex-item-restaurant-dropdown">
             <label for="Filter">Filter:</label>

@@ -62,6 +62,13 @@ class CartController {
         foreach ($bookings as $booking) {
             $total += ($booking['item']->Ticket_Price * $booking['amount']);
         }
+
+        foreach ($reservations as $reservation) {
+            $total += $reservation['restaurant']->Price_Adults * $reservation['amountAdult'];
+            $total += $reservation['restaurant']->Price_Children * $reservation['amountChild'];
+            $total += 10;
+        }
+
         return $total;
     }
 
@@ -124,7 +131,7 @@ class CartController {
             // make reservation and push to session
             $res = array('id' => $tempID, 'restaurant_ID' => $_GET['id'], 'amountAdult' => $nrAdults, 'amountChild' => $nrChidls, 'dateTime' => $datetime, 'message' => $message);
 
-            if (isset($_POST['res_ID'])) {
+            if (isset($_POST['res_ID'])) { // or edit and replace
                 $key = array_search($_POST['res_ID'], array_column($_SESSION['reservations'], 'id'));
                 $_SESSION['reservations'][$key] = $res;
             }

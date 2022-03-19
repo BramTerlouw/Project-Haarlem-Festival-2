@@ -15,10 +15,10 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 </div>
 
 <!-- Slider with restaurants -->
-<div class="HomeSlider-container">
+<div class="culinary-Slider-container">
   <button id="LeftButton" onclick="updateCarouselLeft()"><
     </button>
-      <div id="culinary-slider-container" class="slider-container"></div>
+      <div id="culinary-slider" class="culinary-slider"></div>
       <button id="RightButton" onclick="updateCarouselRight()">></button>
 </div>
 
@@ -38,10 +38,10 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 </div>
 
 <!-- Panels with Diversity -->
-<div class="recipe-grid-container">
+<div class="type-grid-container">
   <? foreach ($types as $type) { ?>
-    <div class="recipe-grid-item">
-    <a class="recipe-button" href="/hf/culinary/restaurants?type=<? echo $type['Type'] ?>"><? echo $type['Type'] ?></a>
+    <div class="type-grid-item">
+    <a class="type-button" href="/hf/culinary/restaurants?type=<? echo $type['Type'] ?>"><? echo $type['Type'] ?></a>
   </div>
   <? } ?>
 
@@ -62,7 +62,7 @@ require __DIR__ . '/../components/navigation/nav-website.php';
   }
 
   function fillCarousel() {
-    document.getElementById("culinary-slider-container").innerHTML = "";
+    document.getElementById("culinary-slider").innerHTML = "";
     for (let index = loopnumbers; index < (loopnumbers + 3); index++) {
       var element = document.createElement('div');
       element.classList.add("slider-element")
@@ -101,7 +101,7 @@ require __DIR__ . '/../components/navigation/nav-website.php';
       element.appendChild(typeContainer);
 
       element.appendChild(button);
-      document.getElementById("culinary-slider-container").appendChild(element);
+      document.getElementById("culinary-slider").appendChild(element);
 
     }
   }

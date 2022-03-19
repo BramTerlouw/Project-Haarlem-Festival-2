@@ -23,10 +23,10 @@ class CulinaryController extends Controller {
         $types = $this->culinaryService->getTypes();
         
         if (isset($_GET['type'])) {
-            $restaurantlist = $this->culinaryService->getRestaurantsByType($_GET['type']);
+            $restaurantlist = $this->culinaryService->getManyByType($_GET['type']);
         }
         else
-            $restaurantlist = $this->culinaryService->getRestaurants();
+            $restaurantlist = $this->culinaryService->getAll();
         require __DIR__ . '/../../views/Culinary/Restaurants.php';
 
     }
@@ -43,7 +43,7 @@ class CulinaryController extends Controller {
     }
 
     public function fetchSliderdata(){
-        $restaurantlist = $this->culinaryService->getRestaurants();
+        $restaurantlist = $this->culinaryService->getAll();
         echo json_encode($restaurantlist);
 
     }

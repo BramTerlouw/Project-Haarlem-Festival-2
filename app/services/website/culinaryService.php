@@ -5,18 +5,28 @@ use Repositories\Website\culinaryRepository;
 
 class CulinaryService {
 
+    private $repository;
+
+    function __construct() {
+        $this->repository = new culinaryRepository();
+    }
+
     public function getRestaurants() {
-        $repository = new culinaryRepository();
-        return $repository->getRestaurants();
+        return $this->repository->getRestaurants();
+    }
+
+    public function getRestaurantsByType($type) {
+        return $this->repository->getRestaurantsByType($type);
     }
 
     public function getOne($id) {
-        $repository = new culinaryRepository();
-        return $repository->getOne($id);
+        return $this->repository->getOne($id);
     }
 
     public function getTimespan($id) {
-        $repository = new culinaryRepository();
-        return $repository->getTimespan($id);
+        return $this->repository->getTimespan($id);
+    }
+    public function getTypes() {
+        return $this->repository->getTypes();
     }
 }

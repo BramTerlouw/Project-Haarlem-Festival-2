@@ -123,9 +123,15 @@ class CartController {
 
             // make reservation and push to session
             $res = array('id' => $tempID, 'restaurant_ID' => $_GET['id'], 'amountAdult' => $nrAdults, 'amountChild' => $nrChidls, 'dateTime' => $datetime, 'message' => $message);
-            array_push($_SESSION['reservations'], $res);
+
+            if (isset($_POST['res_ID'])) {
+                $key = array_search($_POST['res_ID'], array_column($_SESSION['reservations'], 'id'));
+                $_SESSION['reservations'][$key] = $res;
+            }
+            else
+                array_push($_SESSION['reservations'], $res);
         }
-        header('Location: /hf/culinary/restaurants');
+        header('Location: /hf/culinary?event=culinary');
     }
 
 

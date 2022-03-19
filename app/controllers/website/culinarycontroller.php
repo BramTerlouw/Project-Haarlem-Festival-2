@@ -15,11 +15,18 @@ class CulinaryController extends Controller {
 
     public function index() {
         $event = $_GET['event'];
+        $types = $this->culinaryService->getTypes();
         require __DIR__ . '/../../views/' . $event . '/index.php';
     }
 
     public function restaurants() {
-        $restaurantlist = $this->culinaryService->getRestaurants();
+        $types = $this->culinaryService->getTypes();
+        
+        if (isset($_GET['type'])) {
+            $restaurantlist = $this->culinaryService->getRestaurantsByType($_GET['type']);
+        }
+        else
+            $restaurantlist = $this->culinaryService->getRestaurants();
         require __DIR__ . '/../../views/Culinary/Restaurants.php';
 
     }

@@ -21,7 +21,9 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 
 <div class="reservation-form-wrapper">
     <form class="reservation-form" action="/hf/cart/addResToCart?id=<? echo $restaurant->Restaurant_ID ?>" method="post">
-
+        <? if (isset($_GET['res'])) {?>
+            <input type="hidden" name="res_ID" value="<? echo $_GET['res'] ?>">
+        <? } ?>
         <h1>Reservation form:</h1>
         <div class="res-form-item">
             <label for="lname">Number of adults</label>

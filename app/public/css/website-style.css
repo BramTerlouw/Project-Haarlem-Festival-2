@@ -352,7 +352,6 @@
 	flex-wrap: wrap;
 	justify-content: space-around;
 	width: 80vw;
-	height: 80vw;
 }
 /* ## Locations Dance DIV */
 
@@ -559,21 +558,31 @@
 	
 }
 .allrestaurant-button{
-	border-radius: 15%;
+	border-radius: 10px;
 	border: none;
 	color: white;
-	padding: 2%;
+	font-weight: bold;
+	padding: 15px 20px;
+	margin: 20px auto;
 	font-size: 16px;
 	cursor: pointer;
 	background-color: #4983F8;
 }
 .culinary-slider-button
 {
+	width: 50%;
+	align-self: flex-start;
 	background-color: black;
 	color: white;
 	padding: 2%;
 	border: none;
+	border-radius: 3px;
+	font-weight: bold;
+	cursor: pointer;
 	
+}
+.culinary-slider-button:hover {
+	background-color: #4983F8;
 }
 .Banner-ingridients{
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("/images/Culinary/image2.jpg");
@@ -636,7 +645,7 @@
 .recipe-grid-container {
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: 90%;
 	padding-bottom: 5%;
 	display: grid;
   	grid-template-columns: repeat(3, 1fr);
@@ -658,8 +667,7 @@
 	margin: 4px 2px;
 	cursor: pointer;
 	background-color: #4983F8;
-	padding-left: 20%;
-	padding-right: 20%;
+	width: 100%;
   }
 #Diversity-header{
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -671,7 +679,85 @@
 	text-align: center;
 	padding: 1%;
 }
+
+
+
+
+
+
+
+
+
+
 /* ## Restaurant Page */
+.Restaurant-Container {
+	width: 90vw;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.restaurant-item {
+	border: 1px solid black;
+	width: 90vw;
+	height: 200px;
+
+	display: flex;
+	flex-direction: row;
+	margin: 10px 0 10px 0;
+}
+
+.restaurant-item-img {
+	background-color: grey;
+	width: 20%;
+	height: 100%;
+}
+
+.restaurant-item-content {
+	width: 80%;
+	height: 100%;
+	padding: 5px;
+	position: relative;
+}
+
+.restaurant-item-content button {
+	background-color: black;
+	border: none;
+	border-radius: 5px;
+
+	color: white;
+	font-weight: bold;
+
+	position: absolute;
+	top: 80%;
+	right: 10px;
+	padding: 8px 10px;
+
+	cursor: pointer;
+}
+
+.restaurant-item-content button:hover {
+	background-color: #4983F8;
+}
+
+.resetFilter {
+	border: 1px solid black;
+	padding: 0 3px;
+	text-decoration: none;
+}
+.resetFilter:hover {
+	background-color: #4983F8;
+	color: white;
+	font-weight: bold;
+}
+
+
+
+
+.flex-container-restaurant {
+	width: 90vw;
+	margin: 0 auto;
+}
 .Restaurant-list{
 	display: flex;
 	flex-wrap: wrap;
@@ -690,15 +776,6 @@
 .Restaurant-type{
 	flex-grow: 2;
 }
-/* .Restaurant-summary{
-	
-}
-.Restaurant-acces{
-	
-}
-.Restaurant-button{
-	
-} */
 
 
 
@@ -792,7 +869,7 @@ article p{
 }
 .slider-element {
    padding: 1%;
-    width: 25%;
+    width: 35%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -804,15 +881,14 @@ article p{
     height: 270px;
     background-color: gray;
  }
- /* Button {
-    height: fit-content;
-    margin-top: 5%;
-    padding: 10px;
-    width: 80%;
-    background-color: black;
-    color: white; 
+ .culinary-slider-descContainer {
+	 margin: 10px 0 20px 0;
+	 text-align: left;
  }
- */
+ .culinary-slider-typeContainer {
+	 width: 100%;
+	 text-align: left;
+ }
  #line{
 	 width: 75%;
  }
@@ -849,6 +925,13 @@ article p{
       height: 30px;
    }
 
+.culinary-allrestaurants-button {
+	width: 90vw;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-around;
+}
+
 
 
 
@@ -862,8 +945,6 @@ article p{
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("/images/cart-background.png");
 	background-repeat:no-repeat;
 	background-size: cover;
-	
-	/* overflow-y: hidden; */
 }
 
 .cart {

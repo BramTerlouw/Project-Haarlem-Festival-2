@@ -29,6 +29,25 @@ Class CulinaryRepository extends Repository
         }
     }
 
+    public function getRestaurantsByType($type) {
+        try {
+            $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible FROM Restaurant WHERE Type LIKE :pattern";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $pattern = '%' . $type . '%';
+            $stmt->bindParam(':pattern', $pattern);
+
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Restaurant');
+           
+            return $stmt->fetchAll();
+            
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
     public function getOne($id) {
         try {
             $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible FROM Restaurant WHERE Restaurant_ID=:id";
@@ -56,6 +75,20 @@ Class CulinaryRepository extends Repository
             $stmt->execute();
 
             return $stmt->fetch();
+        } catch(PDOException $e) {
+            echo $e;
+        }
+    }
+
+
+    public function getTypes() {
+        try {
+            $sqlquery = "SELECT Type FROM Restaurant GROUP BY Type";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
         } catch(PDOException $e) {
             echo $e;
         }

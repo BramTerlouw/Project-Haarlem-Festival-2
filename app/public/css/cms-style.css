@@ -811,8 +811,8 @@ canvas {
 
 
 /* ## locations cms */
-.locations-container {
-    width: 80%;
+.location-container {
+    width: 100%;
     height: 80vh;
     margin: 10px 0 0 20px;
 
@@ -824,29 +824,35 @@ canvas {
 }
 
 .location-item {
-    width: 20%;
-    height: 30%;
+    width: 25%;
+    height: 40%;
     border: 1px solid var(--main-blue);
     margin: 20px 2.5%;
     padding: 10px;
 }
 
 .location-img {
-    width: 100%;
+    width: 50%;
     height: 50%;
     background-color: lightgray;
 }
 
+.location-image {
+    width: 100%;
+    height: 100%;
+}
 .location-form {
     display: flex;
     flex-wrap: wrap;
     margin: 10px 0 0 0;
 }
 
-.location-form label, .location-form input {
-    width: 50%;
+.location-form label {
+    width: 30%;
 }
-
+.location-form input {
+    width: 70%;
+}
 
 
 /* ## table for users */

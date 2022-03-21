@@ -15,7 +15,8 @@ class LocationRepository extends Repository
     // ## get all locations
     public function getAll() {
         try {
-            $sqlquery = "SELECT * FROM Location";
+            $sqlquery = "SELECT * FROM Location
+                        ORDER BY Name;";
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->execute();

@@ -14,10 +14,6 @@ foreach($eventList as $event){?>
 <?php
 foreach($eventList as $event){?>
 <p class="dance-description"> <?php echo $event["Description"]?>
-    <!-- A brand new addition to the Haarlem Festival 
-    is the Haarlem Dance Event. In this event dance, house, techno and trance are central. 
-    Names as Nicky Romero, Afrojack, Tiësto, Hardwell, Armin van Buuren and Martin Garrix are 
-    performing on multiple stages spread over the beautyfull city of Haarlem, North-Holland. -->
 </p>
 <?php }?>
 

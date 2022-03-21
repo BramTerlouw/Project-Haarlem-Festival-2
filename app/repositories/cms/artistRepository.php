@@ -60,7 +60,6 @@ class ArtistRepository extends Repository
             $stmt->bindParam(':desc', $desc);
             $stmt->bindParam(':type', $type);
             $stmt->execute();
-            
         } catch (PDOException $e) {
             echo $e;
         }

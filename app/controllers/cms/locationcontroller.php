@@ -20,6 +20,7 @@ class LocationController {
     // ## index for locations
     public function index() {
         $eventNames = $this->eventService->getEventNames();
+        $locationList = $this->locationService->getAll();
         require __DIR__ . '/../../views/cms/location/index.php';
     }
 }

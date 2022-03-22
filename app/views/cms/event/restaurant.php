@@ -11,6 +11,7 @@ function converseDate($date)
 
 <?php
 $uriEvent = $_GET['event'];
+//dit is een test commit omdat bram dan kan mergen.
 ?>
 
 <section class="overview-container-info">

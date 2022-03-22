@@ -18,7 +18,7 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
         </div>
         <div class="form-item">
             <label for="ticketAmount">Amount of tickets available:</label>
-            <input type="number" name="ticketAmount" value="<? echo $tickets[0]['Tickets'] ?>">
+            <input type="number" min="1" name="ticketAmount" value="<? echo $tickets[0]['Tickets'] ?>">
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         <div class="form-item">

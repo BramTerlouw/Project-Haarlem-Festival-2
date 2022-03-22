@@ -97,6 +97,12 @@ class CartController {
         $id = $_GET['id'];
         $event = $_GET['event'];
 
+        // check if there are enough tickets
+        if (!$this->checkTicketStock($id)) {
+            header('Location: /hf/' . $event . '?event=' . $event);
+            return;
+        }
+
         if (array_key_exists($id, $_SESSION['tickets'])) {
             $_SESSION['tickets'][$id] += 1;
         } else {
@@ -104,6 +110,28 @@ class CartController {
         }
 
         header('Location: /hf/' . $event . '?event=' . $event);
+    }
+
+
+    // ## only add to cart when enough tickets are left
+    private function checkTicketStock($id) {
+        $ticketsSold = $this->eventItemService->getManyTickets($id);
+        
+        // if no sells are made, there are enough tickets
+        if ($ticketsSold == null)
+            return true;
+
+        // if there are already tickets in cart, get those, else set to 0
+        if (array_key_exists($id, $_SESSION['tickets']))
+            $cartAmount = $_SESSION['tickets'][$id];
+        else
+            $cartAmount = 0;
+        
+        // if there is enough return true, else return false
+        if (($ticketsSold[0]['Sold'] + $cartAmount) >= $ticketsSold[0]['Tickets'])
+            return false;
+        else
+            return true;
     }
 
 

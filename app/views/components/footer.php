@@ -27,10 +27,10 @@
   	 			<h4>Overview</h4>
   	 			<ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/dance">Dance</a></li>
-                    <li><a href="/jazz">Jazz</a></li>
-                    <li><a href="/culinary">Culinary</a></li>
-                    <li><a href="/cms/login">CMS</a></li>
+                    <li><a href="/hf/dance?event=dance">Dance</a></li>
+                    <li><a href="/hf/jazz?event=jazz">Jazz</a></li>
+                    <li><a href="/hf/culinary?event=culinary">Culinary</a></li>
+                    <li><a href="/cms/auth">CMS</a></li>
                 </ul>
   	 		</div>
                <div class="footer-col">

@@ -10,9 +10,10 @@ class OrderController {
     
     private $orderService;
     private $eventService;
+    
     function __construct()
     {
-        $this->locationService = new OrderService();
+        $this->orderService = new OrderService();
         $this->eventService = new EventService();
     }
     
@@ -20,6 +21,7 @@ class OrderController {
     // ## index for orders
     public function index() {
         $eventNames = $this->eventService->getEventNames();
+        $orderList = $this->orderService->getAll();
         require __DIR__ . '/../../views/cms/order/index.php';
     }
 }

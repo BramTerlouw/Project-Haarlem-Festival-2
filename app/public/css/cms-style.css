@@ -779,8 +779,7 @@ canvas {
 }
 
 .artist-item {
-    width: 25%;
-    height: 40%;
+    height: 400px;
     border: 1px solid var(--main-blue);
     margin: 20px 2.5%;
     padding: 10px;
@@ -809,6 +808,12 @@ canvas {
     width: 70%;
 }
 
+.artist-item-add {
+    height: 250px;
+    border: 1px solid var(--main-blue);
+    margin: 20px 2.5%;
+    padding: 10px;
+}
 
 /* ## locations cms */
 .location-container {
@@ -824,8 +829,7 @@ canvas {
 }
 
 .location-item {
-    width: 25%;
-    height: 40%;
+    height: 400px;
     border: 1px solid var(--main-blue);
     margin: 20px 2.5%;
     padding: 10px;
@@ -852,6 +856,13 @@ canvas {
 }
 .location-form input {
     width: 70%;
+}
+
+.location-item-add {
+    height: 150px;
+    border: 1px solid var(--main-blue);
+    margin: 20px 2.5%;
+    padding: 10px;
 }
 
 

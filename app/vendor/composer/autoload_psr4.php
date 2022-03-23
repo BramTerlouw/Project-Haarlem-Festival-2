@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Symfony\\Polyfill\\Php72\\' => array($vendorDir . '/symfony/polyfill-php72'),
+    'Symfony\\Polyfill\\Intl\\Normalizer\\' => array($vendorDir . '/symfony/polyfill-intl-normalizer'),
+    'Symfony\\Polyfill\\Intl\\Idn\\' => array($vendorDir . '/symfony/polyfill-intl-idn'),
     'Services\\Website\\' => array($baseDir . '/services/website'),
     'Services\\Cms\\' => array($baseDir . '/services/cms'),
     'Services\\' => array($baseDir . '/services'),
@@ -13,8 +16,13 @@ return array(
     'Repositories\\Website\\' => array($baseDir . '/repositories/website'),
     'Repositories\\Cms\\' => array($baseDir . '/repositories/cms'),
     'Repositories\\' => array($baseDir . '/repositories'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
+    'Mollie\\Api\\' => array($vendorDir . '/mollie/mollie-api-php/src'),
     'Models\\' => array($baseDir . '/models'),
+    'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
+    'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
+    'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Controllers\\Website\\' => array($baseDir . '/controllers/website'),
     'Controllers\\Cms\\' => array($baseDir . '/controllers/cms'),
     'Controllers\\' => array($baseDir . '/controllers'),

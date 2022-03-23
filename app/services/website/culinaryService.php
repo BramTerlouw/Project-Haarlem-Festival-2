@@ -19,6 +19,10 @@ class CulinaryService {
         return $this->repository->getManyByType($type);
     }
 
+    public function getManyFromArr() {
+        return $this->repository->getManyFromArr();
+    }
+
     public function getOne($id) {
         return $this->repository->getOne($id);
     }

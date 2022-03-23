@@ -49,6 +49,46 @@ class ArtistRepository extends Repository
     }
 
 
+    // ## get performers from random arr
+    public function getManyFromArr() {
+        $ids = $this->getIdArr();
+        $arr = array();
+        
+        try {
+            for ($i=0; $i < 3; $i++) { 
+                $sqlquery = "SELECT Artist_ID, Name, Description, Type FROM Artist WHERE Artist_ID=:id";
+                $stmt = $this->connection->prepare($sqlquery);
+
+                $id = $ids[array_rand($ids)];
+                $stmt->bindParam(':id', $id[0]);
+                $stmt->execute();
+                $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Artist');
+           
+                array_push($arr, $stmt->fetch());
+                unset($ids[array_search($id, $ids)]);
+            }
+            return $arr;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
+    // ## get all id's
+    private function getIdArr() {
+        try {
+            $sqlquery = "SELECT Artist_ID FROM Artist";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->execute();
+            return $stmt->fetchAll();
+            
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
      // ## update an artist
      public function updateOne($id, $name, $desc, $type) {
         try {

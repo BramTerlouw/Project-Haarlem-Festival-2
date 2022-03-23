@@ -23,6 +23,12 @@ class ArtistService {
         return $this->repository->getMany($id);
     }
 
+
+    // ## get random performers for home page
+    public function getManyFromArr() {
+        return $this->repository->getManyFromArr();
+    }
+
     // ## update artist
     public function updateOne($id, $name, $desc, $type) {
         $this->repository->updateOne($id, $name, $desc, $type);

@@ -17,12 +17,16 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
     </thead>
     <tbody>
        <tr>
-           <td>1</td>
-           <td>Mark het feestbeest</td>
-           <td>062918798</td>
-           <td>feestbeest@feestje.feest</td>
-           <td><a href="">View</a></td>
+       <?php
+        foreach($orderList as $order){?>
+           <td><?php echo $order->Order_ID ?></td>
+           <td><?php echo $order->FullName ?></td>
+           <td><?php echo $order->PhoneNumber ?></td>
+           <td><?php echo $order->Email ?></td>
+           <td><a href="/cms/order/view?order_id=<? echo $order->Order_ID ?>">View</a></td>
        </tr>
+       <?php
+        }?> 
     </tbody>
 </table>
 </div>

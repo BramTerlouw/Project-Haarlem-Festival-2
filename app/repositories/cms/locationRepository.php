@@ -15,7 +15,8 @@ class LocationRepository extends Repository
     // ## get all locations
     public function getAll() {
         try {
-            $sqlquery = "SELECT * FROM Location";
+            $sqlquery = "SELECT * FROM Location
+                        ORDER BY Name;";
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->execute();
@@ -42,6 +43,52 @@ class LocationRepository extends Repository
             return $stmt->fetchAll();
 
         } catch(PDOException $e) {
+            echo $e;
+        }
+    }
+
+     // ## update location
+     public function updateOne($id, $name, $address) {
+        try {
+            $sqlquery = "UPDATE Location SET Name=:name, Address=:address WHERE Location_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':address', $address);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    // ## insert location
+    public function insertOne($name, $address) {
+        try {
+            $sqlquery = "INSERT INTO Location (Name, Address) 
+            VALUES (:name, :address)";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':address', $address);
+
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    // ## delete location
+    public function deleteOne($id) {
+        try {
+            $sqlquery = "DELETE FROM Location WHERE Location_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
             echo $e;
         }
     }

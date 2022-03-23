@@ -52,15 +52,46 @@ class ArtistRepository extends Repository
      // ## update an artist
      public function updateOne($id, $name, $desc, $type) {
         try {
-            $sqlquery = "UPDATE Artist SET Name=:name, Description=:desc, Type=:type, WHERE Artist_ID=:id";
+            $sqlquery = "UPDATE Artist SET Name=:name, Description=:desc, Type=:type WHERE Artist_ID=:id";
             $stmt = $this->connection->prepare($sqlquery);
 
-            $stmt->bindParam('id', $id);
+            $stmt->bindParam(':id', $id);
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':desc', $desc);
             $stmt->bindParam(':type', $type);
             $stmt->execute();
-            
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    // ## insert artist
+    public function insertOne($name, $desc, $type) {
+        try {
+            $sqlquery = "INSERT INTO Artist (Name, Description, Type) 
+            VALUES (:name, :desc, :type)";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':desc', $desc);
+            $stmt->bindParam(':type', $type);
+
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    // ## delete artist
+    public function deleteOne($id) {
+        try {
+            $sqlquery = "DELETE FROM Artist WHERE Artist_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+
+            $stmt->execute();
         } catch (PDOException $e) {
             echo $e;
         }

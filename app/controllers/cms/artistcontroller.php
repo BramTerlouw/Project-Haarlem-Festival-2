@@ -24,9 +24,8 @@ class ArtistController extends Controller{
         require __DIR__ . '/../../views/cms/artist/index.php';
     }
 
-    // ## update an event item
+    // ## update an artist
     public function updateOne() {
-        
         if (isset($_POST['submit'])) {
             
             // filter the post
@@ -39,6 +38,39 @@ class ArtistController extends Controller{
   
             // call update functions
             $this->artistService->updateOne($_GET['id'], $name, $desc, $type);
+
+            header('Location: /cms/artist');
+        }
+    }
+
+    // ## insert an artist
+    public function insertOne() {
+        if (isset($_POST['add'])) {
+            
+            // filter the post
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW); // <-- filter POST
+
+            // get vars from post
+            $name = $_POST['inputArtistName'];
+            $desc = $_POST['inputArtistDescription'];
+            $type = $_POST['inputArtistType'];
+  
+            // call update functions
+            $this->artistService->insertOne($name, $desc, $type);
+
+            header('Location: /cms/artist');
+        }
+    }
+
+    // ## Delete an artist
+    public function deleteOne() {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            // call update functions
+            $this->artistService->deleteOne($id);
+
+            header('Location: /cms/artist');
         }
     }
 }

@@ -27,4 +27,14 @@ class ArtistService {
     public function updateOne($id, $name, $desc, $type) {
         $this->repository->updateOne($id, $name, $desc, $type);
     }
+
+    // ## insert artist
+    public function insertOne($name, $desc, $type) {
+        $this->repository->insertOne($name, $desc, $type);
+    }
+
+    // ## delete artist
+    public function deleteOne($id) {
+        $this->repository->deleteOne($id);
+    }
 }

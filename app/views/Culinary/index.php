@@ -50,6 +50,7 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 <script>
   var elements = [];
   var loopnumbers = 0;
+  var amountShown = 4;
 
   function getSliderData() {
     fetch('/hf/culinary/fetchSliderdata')
@@ -63,7 +64,7 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 
   function fillCarousel() {
     document.getElementById("culinary-slider").innerHTML = "";
-    for (let index = loopnumbers; index < (loopnumbers + 3); index++) {
+    for (let index = loopnumbers; index < (loopnumbers + amountShown); index++) {
       var element = document.createElement('div');
       element.classList.add("slider-element")
 
@@ -75,14 +76,15 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 
       var title = document.createElement('h2');
       var typeTitle = document.createElement('h2');
-      var img = document.createElement('div');
+      var img = document.createElement('img');
       var text = document.createElement('p');
       var button = document.createElement('button');
       var type = document.createElement('p');
 
       button.classList.add("culinary-slider-button")
       button.addEventListener("click", function() { openForm(elements[index].Restaurant_ID);});
-      img.classList.add("slider-img")
+      img.classList.add("slider-img");
+      img.src = '/images/Culinary/' + elements[index].Restaurant_ID + '.png';
       
       button.innerText = "Make Reservation";
       typeTitle.innerHTML = "Type";

@@ -26,7 +26,7 @@ require __DIR__ . '/../components/navigation/nav-website.php';
     <div class="Restaurant-Container">
         <? foreach ($restaurantlist as $restaurant) {?>
             <div class="restaurant-item">
-                <div class="restaurant-item-img"></div>
+                <img class="restaurant-item-img" src="/images/Culinary/<? echo $restaurant->Restaurant_ID ?>.png" alt="restaurant picture">
                 <div class="restaurant-item-content">
                     <!-- restaurant  name and summary -->
                     <h2><? echo $restaurant->Name ?></h2><hr>

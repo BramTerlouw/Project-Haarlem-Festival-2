@@ -45,7 +45,6 @@ class CulinaryController extends Controller {
     public function fetchSliderdata(){
         $restaurantlist = $this->culinaryService->getAll();
         echo json_encode($restaurantlist);
-
     }
     public function insertReservation() {
 

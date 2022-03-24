@@ -1149,13 +1149,13 @@ i {
 	padding: 5px 20px 15px 20px;
   }
   
-  input[type=text] {
+  /* input[type=text] {
 	width: 100%;
 	margin-bottom: 20px;
 	padding: 12px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
-  }
+  } */
   
   label {
 	margin-bottom: 10px;

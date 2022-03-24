@@ -24,5 +24,28 @@ class OrderController {
         $orderList = $this->orderService->getAll();
         require __DIR__ . '/../../views/cms/order/index.php';
     }
+
+    // ## view an order
+    public function view() {
+        $eventNames = $this->eventService->getEventNames();
+        $orderList = $this->orderService->getAll();
+        require __DIR__ . '/../../views/cms/order/view.php';
+    }
+
+    // ## create invoice
+    public function createInvoice() {
+        if (isset($_POST['invoice'])) {
+            
+            header('Location: /cms/order/view');
+        }
+    }
+
+    // ## create ticket
+    public function createTicket() {
+        if (isset($_POST['ticket'])) {
+            
+            header('Location: /cms/order/view');
+        }
+    }
 }
 ?>

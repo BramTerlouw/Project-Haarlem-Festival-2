@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Gegenereerd op: 24 mrt 2022 om 12:40
+-- Gegenereerd op: 24 mrt 2022 om 13:07
 -- Serverversie: 10.6.5-MariaDB-1:10.6.5+maria~focal
 -- PHP-versie: 7.4.25
 
@@ -208,18 +208,22 @@ CREATE TABLE `Order` (
   `Order_ID` int(11) NOT NULL,
   `PhoneNumber` bigint(25) NOT NULL,
   `FullName` varchar(55) NOT NULL,
-  `Email` varchar(55) NOT NULL
+  `Email` varchar(55) NOT NULL,
+  `Adress` varchar(55) NOT NULL,
+  `Payment_Due_Date` date NOT NULL,
+  `Total_price` int(11) NOT NULL,
+  `SubTotal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `Order`
 --
 
-INSERT INTO `Order` (`Order_ID`, `PhoneNumber`, `FullName`, `Email`) VALUES
-(1, 638087845, 'Jelle Koomen', 'Test@hotmail.com'),
-(2, 7238087653, 'Bram Terlouw', 'BramTerlouw@gmail.com'),
-(3, 638087886, 'Fabian Kluivert', 'Fabiankluivert@hotmail.com'),
-(4, 7238088953, 'Jesse Kops', 'JesseKops@hotmail.com');
+INSERT INTO `Order` (`Order_ID`, `PhoneNumber`, `FullName`, `Email`, `Adress`, `Payment_Due_Date`, `Total_price`, `SubTotal`) VALUES
+(1, 638087845, 'Jelle Koomen', 'Test@hotmail.com', '', '0000-00-00', 0, 0),
+(2, 7238087653, 'Bram Terlouw', 'BramTerlouw@gmail.com', '', '0000-00-00', 0, 0),
+(3, 638087886, 'Fabian Kluivert', 'Fabiankluivert@hotmail.com', '', '0000-00-00', 0, 0),
+(4, 7238088953, 'Jesse Kops', 'JesseKops@hotmail.com', '', '0000-00-00', 0, 0);
 
 -- --------------------------------------------------------
 

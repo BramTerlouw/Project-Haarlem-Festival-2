@@ -2,21 +2,7 @@
 require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/navigation/nav-website.php';
 
-// $mollie = new '\vendor\Mollie\Api\MollieApiClient()';
-// $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
 
-// $payment = $mollie->payments->create([
-//     "amount" => [
-//         "currency" => "EUR",
-//         "value" => "10.00"
-//     ],
-//     "description" => "Order #{$orderID}",
-//     "redirectUrl" => "",
-//     "webhookUrl"  => "",
-//     "metadata" => [
-//         "order_id" => $orderID,
-//     ],
-// ]);
 ?>
 
 <!-- Payment header -->

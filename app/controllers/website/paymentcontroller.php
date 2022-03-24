@@ -17,5 +17,33 @@ class PaymentController extends Controller {
     public function creditcard() {
         require __DIR__ . '/../../views/payment/creditcard.php';
     }
+
+    public function insertOrder(){
+
+
+
+
+
+    }
+    public function insertBooking($order){
+
+
+
+
+        
+    }
+    public function insertReservation($order){
+
+
+
+
+        
+    }
+
+
+
+
+
+
 }
 ?>

@@ -11,7 +11,7 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
     foreach ($locationList as $location) { ?>
         <form action="/cms/location/updateOne?id=<? echo $location->Location_ID ?>" method="post">
             <div class="location-item">
-                <div class="location-img"><img class="location-image" src="/images/locations/<?php echo $location->Name ?>.png"></div>
+                <div class="location-img"><img class="location-image" src="/images/locations/<?php echo $location->Location_ID ?>.png"></div>
                 <div class="location-form">
                     <label for="inputLocationName">Name: </label>
                     <input type="text" name="inputLocationName" value='<?php echo $location->Name ?>'>

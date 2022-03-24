@@ -62,6 +62,7 @@ class DanceRepository extends Repository
                 E.Type AS Type, 
                 E.Date AS Date, 
                 E.Start_Time AS Start_Time, 
+                E.Location_ID AS Location_ID,
                 L.Name AS Location, 
                 E.Ticket_Price AS Ticket_Price, 
                 E.End_Time AS End_Time, 

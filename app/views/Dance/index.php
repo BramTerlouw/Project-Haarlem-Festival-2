@@ -42,7 +42,7 @@ foreach($eventList as $event){?>
 <?php
 foreach($eventItemList as $event){?>
     <table class = "table-tickets-dance">
-    <td class = "td-item-tickets-dance"><img class = "td-item-image-tickets-dance" src="/images/locations/<?php echo $event["Location"]?>.png"></td>
+    <td class = "td-item-tickets-dance"><img class = "td-item-image-tickets-dance" src="/images/locations/<?php echo $event["Location_ID"]?>.png"></td>
     <td class = "td-item-tickets-dance"><?php echo $event["Name"] ?></td>
     <td class = "td-item-tickets-dance"><?php echo $event["Start_Time"]?></td>
     <td class = "td-item-tickets-dance"><?php echo $event["End_Time"] ?></td>
@@ -79,7 +79,7 @@ foreach($artistList as $artist){?>
 <?php
 foreach($locationList as $location){?>
     <div class = "div-location-dance">
-    <img class = "image-location-dance" src="/images/locations/<?php echo $location["Name"]?>.png">
+    <img class = "image-location-dance" src="/images/locations/<?php echo $location["Location_ID"]?>.png">
     <h1 class = "h1-location-dance"><?php echo $location["Name"] ?></h1>
     <p class = "p-location-dance"><?php echo $location["Address"]?></p>
     </div><?php

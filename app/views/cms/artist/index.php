@@ -13,11 +13,11 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
                 <div class="artist-img"><img class="artist-image" src="/images/artists/<?php echo $artist->Artist_ID ?>.png"></div>
                 <div class="artist-form">
                     <label for="inputArtistName">Name: </label>
-                    <input type="text" name="inputArtistName" value='<?php echo $artist->Name ?>'>
+                    <input type="text" name="inputArtistName" value='<?php echo $artist->Name ?>'required>
                     <label for="inputArtistDescription">Description: </label>
-                    <textarea class="artist-textarea" name="inputArtistDescription" rows="4">'<?php echo $artist->Description ?>'</textarea>
+                    <textarea class="artist-textarea" name="inputArtistDescription" rows="4" required>'<?php echo $artist->Description ?>'</textarea>
                     <label for="inputArtistType">Type: </label>
-                    <input type="text" name="inputArtistType" value='<?php echo $artist->Type ?>'>
+                    <input type="text" name="inputArtistType" value='<?php echo $artist->Type ?>'required>
                 </div>
                 <button type="submit" name="submit">Edit</button>
                 </form>
@@ -32,11 +32,11 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
             <h1>Add artist:</h1>
             <div class="artist-form">
                 <label for="inputArtistName">Name: </label>
-                <input type="text" name="inputArtistName">
+                <input type="text" name="inputArtistName" required>
                 <label for="inputArtistDescription">Description: </label>
-                <textarea class="artist-textarea" name="inputArtistDescription" rows="4"></textarea>
+                <textarea class="artist-textarea" name="inputArtistDescription" rows="4" required></textarea>
                 <label for="inputArtistType">Type: </label>
-                <input type="text" name="inputArtistType">
+                <input type="text" name="inputArtistType" required>
             </div>
             <button name="add" type="add">Add</button>
         </div>

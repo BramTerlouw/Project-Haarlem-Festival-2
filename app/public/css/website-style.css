@@ -1111,7 +1111,149 @@ i {
 	font-size: 1.3rem;
 }
 
+
+
+/* Payment */
+.Payementrow {
+	display: -ms-flexbox; /* IE10 */
+	display: flex;
+	-ms-flex-wrap: wrap; /* IE10 */
+	flex-wrap: wrap;
+	margin: 0 -16px;
+	width: 80%;
+	margin-left: 10%;
+  }
+  
+  .col-25 {
+	-ms-flex: 25%; /* IE10 */
+	flex: 25%;
+  }
+  
+  .col-50 {
+	-ms-flex: 50%; /* IE10 */
+	flex: 50%;
+  }
+  
+  .col-75 {
+	-ms-flex: 75%; /* IE10 */
+	flex: 75%;
+  }
+  
+  .col-25,
+  .col-50,
+  .col-75 {
+	padding: 0 16px;
+  }
+  
+  .Payementcontainer {
+	padding: 5px 20px 15px 20px;
+  }
+  
+  input[type=text] {
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+  }
+  
+  label {
+	margin-bottom: 10px;
+	display: block;
+  }
+  
+  .icon-container {
+	margin-bottom: 20px;
+	padding: 7px 0;
+	font-size: 24px;
+  }
+  
+  .btn {
+	background-color: #4983F8;
+	color: white;
+	padding: 12px;
+	margin: 10px 0;
+	border: none;
+	width: 50%;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 17px;
+  }
+  
+  .btn:hover {
+	background-color: #86a9ee;
+  }
+  
+  span.price {
+	float: right;
+	color: grey;
+  }
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+  @media (max-width: 800px) {
+	.row {
+	  flex-direction: column-reverse;
+	}
+	.col-25 {
+	  margin-bottom: 20px;
+	}
+  }
+  .PaymentHeader{
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	text-align: center;
+	padding: 6%;
+  }
+  .Payment-title{
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: 72px;
+	text-align: center;
+}
+.Paymentselector{
+	display: flex;
+	justify-content: center;
+	padding-bottom: 5%;
+}
+.Paymentselector-item{
+	padding-left: 10%;
+    padding-right: 10%;
+}
+.Paymentselector-item:hover {
+	background-color: #bcc6da;
+	border-radius: 10%;
+  }
+.PayementImage{
+	height: 200px;
+}
+.PayementTitle{
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	text-align: center;
+	font-size: large;
+}
+.payment-link{
+	color: #151523;
+	text-decoration: none;
+}
+.Back-button{
+	padding-left: 1%;
+    padding-right: 1%;
+    margin-left: 15%;
+    margin-top: 5%;
+    color: white;
+    background-color: black;
+    border: none;
+    padding-top: 10px;
+	padding-bottom: 10px;
+}
+.PaymentHeader-detail{
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	text-align: center;
+	padding-bottom: 6%;
+	padding-left: 6%;
+	padding-right: 6%;
+  }
+
 .reservation-info-wrapper {
 	width: 50%;
 	margin: 20px auto;
 }
+

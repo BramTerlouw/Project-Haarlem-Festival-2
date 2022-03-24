@@ -7,6 +7,5 @@ class Order {
     public string $PhoneNumber;
     public string $FullName;
     public string $Email;
-    public int $Is_Scanned;
 }
 ?>

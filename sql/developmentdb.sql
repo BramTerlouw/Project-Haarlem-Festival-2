@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Gegenereerd op: 17 mrt 2022 om 19:48
+-- Gegenereerd op: 24 mrt 2022 om 13:07
 -- Serverversie: 10.6.5-MariaDB-1:10.6.5+maria~focal
 -- PHP-versie: 7.4.25
 
@@ -68,22 +68,24 @@ CREATE TABLE `Booking` (
   `Booking_ID` int(11) NOT NULL,
   `EventItem_ID` int(11) NOT NULL,
   `Type` varchar(55) NOT NULL,
-  `Order_ID` int(11) NOT NULL
+  `Order_ID` int(11) NOT NULL,
+  `Qr_Code_ID` varchar(300) NOT NULL,
+  `Is_scanned` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `Booking`
 --
 
-INSERT INTO `Booking` (`Booking_ID`, `EventItem_ID`, `Type`, `Order_ID`) VALUES
-(9, 13, '', 2),
-(10, 13, '', 2),
-(11, 13, '', 4),
-(12, 4, '', 1),
-(13, 4, '', 1),
-(14, 3, '', 2),
-(15, 3, '', 2),
-(16, 3, '', 3);
+INSERT INTO `Booking` (`Booking_ID`, `EventItem_ID`, `Type`, `Order_ID`, `Qr_Code_ID`, `Is_scanned`) VALUES
+(9, 13, '', 2, '', 0),
+(10, 13, '', 2, '', 0),
+(11, 13, '', 4, '', 0),
+(12, 4, '', 1, '', 0),
+(13, 4, '', 1, '', 0),
+(14, 3, '', 2, '', 0),
+(15, 3, '', 2, '', 0),
+(16, 3, '', 3, '', 0);
 
 -- --------------------------------------------------------
 
@@ -207,18 +209,21 @@ CREATE TABLE `Order` (
   `PhoneNumber` bigint(25) NOT NULL,
   `FullName` varchar(55) NOT NULL,
   `Email` varchar(55) NOT NULL,
-  `Is_Scanned` tinyint(1) NOT NULL
+  `Adress` varchar(55) NOT NULL,
+  `Payment_Due_Date` date NOT NULL,
+  `Total_price` int(11) NOT NULL,
+  `SubTotal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `Order`
 --
 
-INSERT INTO `Order` (`Order_ID`, `PhoneNumber`, `FullName`, `Email`, `Is_Scanned`) VALUES
-(1, 638087845, 'Jelle Koomen', 'Test@hotmail.com', 0),
-(2, 7238087653, 'Bram Terlouw', 'BramTerlouw@gmail.com', 0),
-(3, 638087886, 'Fabian Kluivert', 'Fabiankluivert@hotmail.com', 1),
-(4, 7238088953, 'Jesse Kops', 'JesseKops@hotmail.com', 0);
+INSERT INTO `Order` (`Order_ID`, `PhoneNumber`, `FullName`, `Email`, `Adress`, `Payment_Due_Date`, `Total_price`, `SubTotal`) VALUES
+(1, 638087845, 'Jelle Koomen', 'Test@hotmail.com', '', '0000-00-00', 0, 0),
+(2, 7238087653, 'Bram Terlouw', 'BramTerlouw@gmail.com', '', '0000-00-00', 0, 0),
+(3, 638087886, 'Fabian Kluivert', 'Fabiankluivert@hotmail.com', '', '0000-00-00', 0, 0),
+(4, 7238088953, 'Jesse Kops', 'JesseKops@hotmail.com', '', '0000-00-00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -292,48 +297,25 @@ CREATE TABLE `Restaurant` (
   `Wheelchair_accessible` tinyint(1) NOT NULL,
   `Price_Adults` decimal(11,2) NOT NULL,
   `Price_Children` decimal(11,2) NOT NULL,
-  `Adres` varchar(55) NOT NULL
+  `Adres` varchar(55) NOT NULL,
+  `Sessions` int(11) NOT NULL,
+  `Duration` time NOT NULL,
+  `Start_Time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `Restaurant`
 --
 
-INSERT INTO `Restaurant` (`Restaurant_ID`, `Name`, `Type`, `Summary`, `Max_visitors`, `Wheelchair_accessible`, `Price_Adults`, `Price_Children`, `Adres`) VALUES
-(3, 'Ratatouille', 'French, Fish & seafood', 'Ratatouille. The successful Michelin restaurant in Haarlem of chef Jozua Jaring is just like Ratatouille a mix of French cuisine in today\'s reality with an excellent price-quality ratio in an accessible environment in Haarlem.', 150, 0, '45.00', '22.50', 'Spaarne 96, 2011 CL Haarlem, Nederland'),
-(4, 'Restaurant fris', 'Dutch, French, European', 'In the middle of Haarlem, near the Frederikspark, is Restaurant Fris. A modern restaurant where chef Rick May presents dishes based on classic French cuisine, which he refines with global influences.', 150, 1, '45.00', '22.50', 'Twijnderslaan 7, 2012 BG Haarlem, Nederland'),
-(7, 'Grand Cafe Brinkman', 'Dutch, Modern, European', 'Café Brinkmann has been a household name in Haarlem and the surrounding area since 1879. Good food, perfect coffee and staff that serve with verve and pleasure. All this against the backdrop of a monumental building, in the middle of the historic center, with a huge terrace that catches every ray of sunshine.', 150, 1, '35.00', '17.50', 'Grote Markt 13, 2011 RC Haarlem, Nederland'),
-(8, 'Urban Frenchy Bistro Toujours', 'Dutch, FIsh&SeaFood, European', 'For an intimate, cozy and beautiful dinner with friends or family, take a seat in our beautiful restaurant area. With radiant daylight thanks to the domes on our roof. In the evening, the domes provide a magical light that makes it possible to dine under the stars. Our signature dishes? The Côte de Boeuf and lobster. But we serve a much wider range of beautiful dishes as a matter of course. We particularly recommend that you come and try them all. \r\n\r\n', 150, 1, '35.00', '17.50', 'Oude Groenmarkt 10-12, 2011 HL Haarlem, Nederland'),
-(9, 'SpeckTakel', 'European, InterNational, Asian', 'Specktakel a world restaurant in a world location. Specktakel is a unique restaurant centrally located in the heart of Haarlem with a special courtyard and terrace. At Specktakel you do not eat in silence. Not only because of the sociability of your company, but also by the international food and worldly wine you enjoy.', 150, 1, '35.00', '17.50', 'Spekstraat 4, 2011 HM Haarlem, Nederland'),
-(10, 'Restaurant Mr & Mrs', 'Dutch, FIsh&SeaFood, European', 'Mr. & Mrs. offers an ambiance where you feel at ease. Mr. creates delicious taste explosions with honest products ', 150, 1, '45.00', '17.50', 'Lange Veerstraat 4, 2011 DB Haarlem, Nederland'),
-(11, 'The Golden Bull', 'Steakhouse, Argentinian, European', 'In addition to high quality steaks, we offer a cozy no-nonsense atmosphere. All this combined with a wide range of special wines. An experience where your taste buds are extremely stimulated.\r\nAll our meats are prepared on the lava stone grill, which provides an enormous taste sensation.', 150, 0, '35.00', '17.50', 'Zijlstraat 39, 2011 TK Haarlem, Nederland'),
-(12, 'Restaurant ML', 'Dutch, FIsh&SeaFood, European', 'In the middle of Haarlem, near the Frederikspark, is Restaurant Fris. A modern restaurant where chef Rick May presents dishes based on classic French cuisine, which he refines with global influences.', 150, 1, '45.00', '22.50', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland');
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `Session`
---
-
-CREATE TABLE `Session` (
-  `Session_ID` int(11) NOT NULL,
-  `Restaurant_ID` int(11) NOT NULL,
-  `Session_Name` varchar(55) NOT NULL,
-  `Session_Time` time NOT NULL,
-  `Duration` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `Session`
---
-
-INSERT INTO `Session` (`Session_ID`, `Restaurant_ID`, `Session_Name`, `Session_Time`, `Duration`) VALUES
-(1, 10, 'First Session', '18:00:00', '01:30:00'),
-(2, 10, 'Second Session', '19:30:00', '01:30:00'),
-(3, 10, 'Third Session', '21:00:00', '01:30:00'),
-(4, 3, 'First Session', '17:00:00', '02:00:00'),
-(7, 3, 'Second Session', '19:00:00', '02:00:00'),
-(8, 3, 'Third Session', '21:00:00', '02:00:00');
+INSERT INTO `Restaurant` (`Restaurant_ID`, `Name`, `Type`, `Summary`, `Max_visitors`, `Wheelchair_accessible`, `Price_Adults`, `Price_Children`, `Adres`, `Sessions`, `Duration`, `Start_Time`) VALUES
+(3, 'Ratatouille', 'French, Fish & seafood', 'Ratatouille. The successful Michelin restaurant in Haarlem of chef Jozua Jaring is just like Ratatouille a mix of French cuisine in today\'s reality with an excellent price-quality ratio in an accessible environment in Haarlem.', 150, 0, '45.00', '22.50', 'Spaarne 96, 2011 CL Haarlem, Nederland', 3, '01:30:00', '18:00:00'),
+(4, 'Restaurant fris', 'Dutch, French, European', 'In the middle of Haarlem, near the Frederikspark, is Restaurant Fris. A modern restaurant where chef Rick May presents dishes based on classic French cuisine, which he refines with global influences.', 150, 1, '45.00', '22.50', 'Twijnderslaan 7, 2012 BG Haarlem, Nederland', 3, '02:00:00', '17:30:00'),
+(7, 'Grand Cafe Brinkman', 'Dutch, Modern, European', 'Café Brinkmann has been a household name in Haarlem and the surrounding area since 1879. Good food, perfect coffee and staff that serve with verve and pleasure. All this against the backdrop of a monumental building, in the middle of the historic center, with a huge terrace that catches every ray of sunshine.', 150, 1, '35.00', '17.50', 'Grote Markt 13, 2011 RC Haarlem, Nederland', 3, '01:30:00', '16:30:00'),
+(8, 'Urban Frenchy Bistro Toujours', 'Dutch, FIsh&SeaFood, European', 'For an intimate, cozy and beautiful dinner with friends or family, take a seat in our beautiful restaurant area. With radiant daylight thanks to the domes on our roof. In the evening, the domes provide a magical light that makes it possible to dine under the stars. Our signature dishes? The Côte de Boeuf and lobster. But we serve a much wider range of beautiful dishes as a matter of course. We particularly recommend that you come and try them all. \r\n\r\n', 150, 1, '35.00', '17.50', 'Oude Groenmarkt 10-12, 2011 HL Haarlem, Nederland', 3, '01:30:00', '17:30:00'),
+(9, 'SpeckTakel', 'European, InterNational, Asian', 'Specktakel a world restaurant in a world location. Specktakel is a unique restaurant centrally located in the heart of Haarlem with a special courtyard and terrace. At Specktakel you do not eat in silence. Not only because of the sociability of your company, but also by the international food and worldly wine you enjoy.', 150, 1, '35.00', '17.50', 'Spekstraat 4, 2011 HM Haarlem, Nederland', 3, '01:30:00', '17:00:00'),
+(10, 'Restaurant Mr & Mrs', 'Dutch, FIsh&SeaFood, European', 'Mr. & Mrs. offers an ambiance where you feel at ease. Mr. creates delicious taste explosions with honest products ', 150, 1, '45.00', '17.50', 'Lange Veerstraat 4, 2011 DB Haarlem, Nederland', 3, '01:30:00', '18:00:00'),
+(11, 'The Golden Bull', 'Steakhouse, Argentinian, European', 'In addition to high quality steaks, we offer a cozy no-nonsense atmosphere. All this combined with a wide range of special wines. An experience where your taste buds are extremely stimulated.\r\nAll our meats are prepared on the lava stone grill, which provides an enormous taste sensation.', 150, 0, '35.00', '17.50', 'Zijlstraat 39, 2011 TK Haarlem, Nederland', 3, '01:30:00', '17:30:00'),
+(12, 'Restaurant ML', 'Dutch, FIsh&SeaFood, European', 'In the middle of Haarlem, near the Frederikspark, is Restaurant Fris. A modern restaurant where chef Rick May presents dishes based on classic French cuisine, which he refines with global influences.', 150, 1, '45.00', '22.50', 'Kleine Houtstraat 70, 2011 DR Haarlem, Nederland', 2, '02:00:00', '17:00:00');
 
 -- --------------------------------------------------------
 
@@ -438,13 +420,6 @@ ALTER TABLE `Restaurant`
   ADD PRIMARY KEY (`Restaurant_ID`);
 
 --
--- Indexen voor tabel `Session`
---
-ALTER TABLE `Session`
-  ADD PRIMARY KEY (`Session_ID`),
-  ADD KEY `Restaurant_ID` (`Restaurant_ID`);
-
---
 -- Indexen voor tabel `User`
 --
 ALTER TABLE `User`
@@ -515,12 +490,6 @@ ALTER TABLE `Restaurant`
   MODIFY `Restaurant_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT voor een tabel `Session`
---
-ALTER TABLE `Session`
-  MODIFY `Session_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
 -- AUTO_INCREMENT voor een tabel `User`
 --
 ALTER TABLE `User`
@@ -556,12 +525,6 @@ ALTER TABLE `Lineup`
 --
 ALTER TABLE `Reservation`
   ADD CONSTRAINT `Reservation_ibfk_1` FOREIGN KEY (`Restaurant_ID`) REFERENCES `Restaurant` (`Restaurant_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Beperkingen voor tabel `Session`
---
-ALTER TABLE `Session`
-  ADD CONSTRAINT `Session_ibfk_1` FOREIGN KEY (`Restaurant_ID`) REFERENCES `Restaurant` (`Restaurant_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

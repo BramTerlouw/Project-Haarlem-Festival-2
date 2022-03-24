@@ -22,4 +22,19 @@ class LocationService {
     public function getManyFromArr($locationArr) {
         return $this->repository->getManyFromArr($locationArr);
     }
+
+    // ## update location
+    public function updateOne($id, $name, $address) {
+        $this->repository->updateOne($id, $name, $address);
+    }
+
+    // ## insert location
+    public function insertOne($name, $address) {
+        $this->repository->insertOne($name, $address);
+    }
+
+    // ## delete location
+    public function deleteOne($id) {
+        $this->repository->deleteOne($id);
+    }
 }

@@ -14,10 +14,6 @@ foreach($eventList as $event){?>
 <?php
 foreach($eventList as $event){?>
 <p class="dance-description"> <?php echo $event["Description"]?>
-    <!-- A brand new addition to the Haarlem Festival 
-    is the Haarlem Dance Event. In this event dance, house, techno and trance are central. 
-    Names as Nicky Romero, Afrojack, Tiësto, Hardwell, Armin van Buuren and Martin Garrix are 
-    performing on multiple stages spread over the beautyfull city of Haarlem, North-Holland. -->
 </p>
 <?php }?>
 
@@ -46,7 +42,7 @@ foreach($eventList as $event){?>
 <?php
 foreach($eventItemList as $event){?>
     <table class = "table-tickets-dance">
-    <td class = "td-item-tickets-dance"><img class = "td-item-image-tickets-dance" src="/images/locations/<?php echo $event["Location"]?>.png"></td>
+    <td class = "td-item-tickets-dance"><img class = "td-item-image-tickets-dance" src="/images/locations/<?php echo $event["Location_ID"]?>.png"></td>
     <td class = "td-item-tickets-dance"><?php echo $event["Name"] ?></td>
     <td class = "td-item-tickets-dance"><?php echo $event["Start_Time"]?></td>
     <td class = "td-item-tickets-dance"><?php echo $event["End_Time"] ?></td>
@@ -83,7 +79,7 @@ foreach($artistList as $artist){?>
 <?php
 foreach($locationList as $location){?>
     <div class = "div-location-dance">
-    <img class = "image-location-dance" src="/images/locations/<?php echo $location["Name"]?>.png">
+    <img class = "image-location-dance" src="/images/locations/<?php echo $location["Location_ID"]?>.png">
     <h1 class = "h1-location-dance"><?php echo $location["Name"] ?></h1>
     <p class = "p-location-dance"><?php echo $location["Address"]?></p>
     </div><?php

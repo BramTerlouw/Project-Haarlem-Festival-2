@@ -10,4 +10,9 @@ class OrderService {
     function __construct() {
         $this->repository = new OrderRepository();
     }
+
+    // ## get orders
+    public function getAll() {
+        return $this->repository->getAll();
+    }
 }

@@ -3,71 +3,41 @@ require __DIR__ . '/../../components/head.php';
 require __DIR__ . '/../../components/navigation/nav-cms.php';
 ?>
 
-<h1>Locations:</h1>
+<h1>Venues:</h1>
 
-<section class="locations-container">
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-            <label for="">Name: </label>
-            <input type="text">
-            <label for="">Address: </label>
-            <input type="text">
-        </div>
-        <button>Edit</button>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-            <label for="">Name: </label>
-            <input type="text">
-            <label for="">Address: </label>
-            <input type="text">
-        </div>
-        <button>Edit</button>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-            <label for="">Name: </label>
-            <input type="text">
-            <label for="">Address: </label>
-            <input type="text">
-        </div>
-        <button>Edit</button>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-            <label for="">Name: </label>
-            <input type="text">
-            <label for="">Address: </label>
-            <input type="text">
-        </div>
-        <button>Edit</button>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-            <label for="">Name: </label>
-            <input type="text">
-            <label for="">Address: </label>
-            <input type="text">
-        </div>
-        <button>Edit</button>
-    </div>
-    <div class="location-item">
-        <div class="location-img"></div>
-        <div class="location-form">
-            <label for="">Name: </label>
-            <input type="text">
-            <label for="">Address: </label>
-            <input type="text">
-        </div>
-        <button>Edit</button>
-    </div>
+<section class="location-container">
 
+    <?php
+    foreach ($locationList as $location) { ?>
+        <form action="/cms/location/updateOne?id=<? echo $location->Location_ID ?>" method="post">
+            <div class="location-item">
+                <div class="location-img"><img class="location-image" src="/images/locations/<?php echo $location->Location_ID ?>.png"></div>
+                <div class="location-form">
+                    <label for="inputLocationName">Name: </label>
+                    <input type="text" name="inputLocationName" value='<?php echo $location->Name ?>'>
+                    <label for="inputLocationAddress">Address: </label>
+                    <input type="text" name="inputLocationAddress" value='<?php echo $location->Address ?>'>
+                </div>
+                <button type="submit" name="submit">Edit</button>
+        </form>
+        <form action="/cms/location/deleteOne?id=<? echo $location->Location_ID ?>" method="post">
+            <button type="delete" name="delete">Delete</button>
+            </div>
+        </form>
+    <?php
+    } ?>
+
+    <form action="/cms/location/insertOne" method="post">
+        <div class="location-item-add">
+            <h1>Add location:</h1>
+            <div class="location-form">
+                <label for="inputLocationName">Name: </label>
+                <input type="text" name="inputLocationName">
+                <label for="inputLocationAddress">Address: </label>
+                <input type="text" name="inputLocationAddress">
+            </div>
+            <button name="add" type="add">Add</button>
+        </div>
+    </form>
+    </div>
 </section>
-
-</main> <!-- close main tag from cms nav -->
-</div> <!-- close div of whole container from cms nav -->

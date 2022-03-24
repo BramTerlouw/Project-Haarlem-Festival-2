@@ -14,7 +14,7 @@ class OrderRepository extends Repository
     // ### GET QUERIES ###
     public function getAll() {
         try {
-            $sqlquery = "SELECT Order_ID, PhoneNumber, FullName, Email, Is_Scanned FROM `Order`";
+            $sqlquery = "SELECT Order_ID, PhoneNumber, FullName, Email FROM `Order`";
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->execute();

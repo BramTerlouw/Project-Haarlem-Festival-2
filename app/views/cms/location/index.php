@@ -14,9 +14,9 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
                 <div class="location-img"><img class="location-image" src="/images/locations/<?php echo $location->Location_ID ?>.png"></div>
                 <div class="location-form">
                     <label for="inputLocationName">Name: </label>
-                    <input type="text" name="inputLocationName" value='<?php echo $location->Name ?>'>
+                    <input type="text" name="inputLocationName" value='<?php echo $location->Name ?>'required>
                     <label for="inputLocationAddress">Address: </label>
-                    <input type="text" name="inputLocationAddress" value='<?php echo $location->Address ?>'>
+                    <input type="text" name="inputLocationAddress" value='<?php echo $location->Address ?>'required>
                 </div>
                 <button type="submit" name="submit">Edit</button>
         </form>
@@ -32,9 +32,9 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
             <h1>Add location:</h1>
             <div class="location-form">
                 <label for="inputLocationName">Name: </label>
-                <input type="text" name="inputLocationName">
+                <input type="text" name="inputLocationName" required>
                 <label for="inputLocationAddress">Address: </label>
-                <input type="text" name="inputLocationAddress">
+                <input type="text" name="inputLocationAddress" required>
             </div>
             <button name="add" type="add">Add</button>
         </div>

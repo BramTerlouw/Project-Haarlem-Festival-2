@@ -61,7 +61,6 @@ class EventController extends Controller{
     {
         $eventNames = $this->eventService->getEventNames();
         $restaurantlist = $this->culinaryService->getAll();
-        //var_dump($restaurantlist);
         require __DIR__ . '/../../views/cms/event/restaurant.php';
     }
 

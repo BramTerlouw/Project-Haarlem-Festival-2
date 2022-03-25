@@ -609,8 +609,8 @@ canvas {
 
 /* ## table for event items */
 .table-wrapper {
-    height: 100%;
-    overflow-y: auto;
+    max-height: 43vh;
+    overflow-y: scroll;
 }
 
 .event-item-table {
@@ -631,9 +631,11 @@ canvas {
 
   .event-item-table th {
     position: sticky; 
+    background-color: var(--form-input-bg);
     top: 0;
     padding: 15px 0 15px 5px;
     font-size: 1.3rem;
+
 }
 
 .event-item-table td {

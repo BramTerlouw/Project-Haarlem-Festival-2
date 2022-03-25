@@ -58,8 +58,13 @@ $uriEvent = $_GET['event'];
 
     <div class="overview-btn-container">
 
-        <ul class="overview-btns-left">
-            <a href="">Add</a>
+    <ul class="overview-btns-right">
+            <li>
+                <a href="/cms/restaurant/index">
+                    Add Restaurant
+                    <img src="/icons/add-item.png" alt="add item">
+                </a>
+            </li>
         </ul>
 
     </div>

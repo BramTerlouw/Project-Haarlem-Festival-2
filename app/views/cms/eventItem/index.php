@@ -77,54 +77,6 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
             <img src="/icons/cms-save.png" alt="cancel icon">
         </button>
     </div>
-    <!-- <table>
-        <thead>
-            <tr>
-                <th>Activity name</th>
-                <th>Time</th>
-                <th>Location</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Fox & the Mayors</td>
-                <td>18:00 - 19:00</td>
-                <td>Patronaat</td>
-                <td>15,00 ,-</td>
-            </tr>
-            <tr>
-                <td>Fox & the Mayors</td>
-                <td>18:00 - 19:00</td>
-                <td>Patronaat</td>
-                <td>15,00 ,-</td>
-            </tr>
-            <tr>
-                <td>Fox & the Mayors</td>
-                <td>18:00 - 19:00</td>
-                <td>Patronaat</td>
-                <td>15,00 ,-</td>
-            </tr>
-            <tr>
-                <td>Fox & the Mayors</td>
-                <td>18:00 - 19:00</td>
-                <td>Patronaat</td>
-                <td>15,00 ,-</td>
-            </tr>
-            <tr>
-                <td>Fox & the Mayors</td>
-                <td>18:00 - 19:00</td>
-                <td>Patronaat</td>
-                <td>15,00 ,-</td>
-            </tr>
-            <tr>
-                <td>Fox & the Mayors</td>
-                <td>18:00 - 19:00</td>
-                <td>Patronaat</td>
-                <td>15,00 ,-</td>
-            </tr>
-        </tbody>
-    </table> -->
 </section>
 </form>
 

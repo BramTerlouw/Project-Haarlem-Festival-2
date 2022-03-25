@@ -7,21 +7,21 @@ use Controllers\Controller;
 use Services\Cms\EventService;
 use Services\Cms\EventItemService;
 use Services\Cms\LocationService;
-use Services\website\CulinaryService;
+use Services\Cms\RestaurantService;
 
 
 class EventController extends Controller{
     private $eventService;
     private $eventItemService;
     private $locationService;
-    private $culinaryservice;
+    private $restaurantService;
 
     function __construct()
     {
         $this->eventService = new EventService();
         $this->eventItemService = new EventItemService();
         $this->locationService = new LocationService();
-        $this->culinaryService = new Culinaryservice();
+        $this->restaurantService = new RestaurantService();
     }
     
 
@@ -60,7 +60,7 @@ class EventController extends Controller{
     public function reservationIndex($event)
     {
         $eventNames = $this->eventService->getEventNames();
-        $restaurantlist = $this->culinaryService->getAll();
+        $restaurantlist = $this->restaurantService->getAll();
         require __DIR__ . '/../../views/cms/event/restaurant.php';
     }
 

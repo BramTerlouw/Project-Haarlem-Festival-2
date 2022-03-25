@@ -5,6 +5,8 @@ require __DIR__ . '/../components/navigation/nav-website.php';
 
 ?>
 
+<INPUT class="Back-button" TYPE="button" VALUE="Previous Page" onClick="history.go(-1);">
+
 <!-- Payment header -->
 <div class="PaymentHeader">
 <h1 class="Payment-title">Payment</h1>

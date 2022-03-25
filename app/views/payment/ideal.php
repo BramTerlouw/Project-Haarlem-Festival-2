@@ -2,6 +2,7 @@
 require __DIR__ . '/../components/head.php';
 require __DIR__ . '/../components/navigation/nav-website.php';
 ?>
+
 <INPUT class="Back-button" TYPE="button" VALUE="Back" onClick="history.go(-1);">
 
 <div class="PaymentHeader-detail">

@@ -6,6 +6,15 @@ use Services\Website\ReservationService;
 
 class PaymentController extends Controller {
 
+    private $bookingservice;
+    private $reservationservice;
+    
+    function __construct()
+    {
+        $this->bookingservice = new Bookingservice();
+        $this->reservationservice = new ReservationService();
+    }
+
     public function index() {
         require __DIR__ . '/../../views/payment/index.php';
     }
@@ -65,14 +74,19 @@ class PaymentController extends Controller {
     }
 
     public function insertOrder(){
-
+        
     }
+
+
     public function insertBooking($order){
-
+        $this->bookingservice->insertBooking();
     }
+
     public function insertReservation($order){
-
+        $this->reservationservice->insertReservation();
     }
+
+
     public function ProcessPayment(){
         /*
         * How to verify Mollie API Payments in a webhook.

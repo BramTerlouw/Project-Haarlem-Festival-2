@@ -14,4 +14,9 @@ class RestaurantService {
     public function getAll() {
         return $this->repository->getAll();
     }
+
+
+    public function getOne($id) {
+        return $this->repository->getOne($id);
+    }
 }

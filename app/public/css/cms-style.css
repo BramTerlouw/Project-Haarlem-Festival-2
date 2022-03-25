@@ -1074,7 +1074,6 @@ canvas {
 
 .restaurant-form {
     width: 50vw;
-    /* border: 1px solid black; */
     margin: 0 0 0 20px;
     display: flex;
     flex-wrap: wrap;

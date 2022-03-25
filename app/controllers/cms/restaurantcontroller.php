@@ -20,7 +20,18 @@ class RestaurantController {
 
     public function index() {
         $eventNames = $this->eventService->getEventNames();
+        $restaurant = $this->restaurantService->getOne($_GET['id']);
         require __DIR__ . '/../../views/cms/restaurant/index.php';
+    }
+
+
+    public function add() {
+        $eventNames = $this->eventService->getEventNames();
+        require __DIR__ . '/../../views/cms/restaurant/add.php';
+    }
+
+    public function delete() {
+        echo "deze moet je ff doen JELLE";
     }
     
 }

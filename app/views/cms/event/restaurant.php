@@ -49,7 +49,7 @@ $uriEvent = $_GET['event'];
     </form>
 
     <div class="overview-image">
-        <div class="placeholder-image"></div>
+        <img class="placeholder-image" src="/images/banner/2.png" alt="">
         <button>Upload image(s)</button>
     </div>
 </section>
@@ -60,7 +60,7 @@ $uriEvent = $_GET['event'];
 
     <ul class="overview-btns-right">
             <li>
-                <a href="/cms/restaurant/index">
+                <a href="/cms/restaurant/add">
                     Add Restaurant
                     <img src="/icons/add-item.png" alt="add item">
                 </a>
@@ -90,11 +90,11 @@ $uriEvent = $_GET['event'];
                     <td><? echo $restaurant->Price_Adults?></td>
                     <td><? echo $restaurant->Price_Children?></td>
                     <td>
-                        <a href="#">
+                        <a href="/cms/restaurant?id=<? echo $restaurant->Restaurant_ID?>">
                         <img src="/icons/cms-table-edit.png" alt=""></a>
                     </td>
                     <td>
-                        <a href="#">
+                        <a href="/cms/restaurant/delete">
                         <img src="/icons/delete-item.png" alt=""></a>
                     </td>
                 </tr>

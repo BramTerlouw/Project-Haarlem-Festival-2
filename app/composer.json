@@ -2,8 +2,8 @@
     "require": {
         "phpmailer/phpmailer": "^6.6",
         "mollie/mollie-api-php": "2.0",
-        "mpdf/mpdf": "^6.1",
-        "endroid/qr-code": "^4.4"
+        "endroid/qr-code": "^4.4",
+        "knplabs/knp-snappy": "^1.4"
     },
     "autoload": {
         "psr-4": {

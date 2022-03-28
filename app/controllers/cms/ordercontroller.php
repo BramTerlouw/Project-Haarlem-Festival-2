@@ -5,6 +5,7 @@ namespace Controllers\Cms;
 
 use Services\Cms\OrderService;
 use Services\Cms\EventService;
+use Knp\Snappy\Pdf;
 
 class OrderController {
     
@@ -32,13 +33,13 @@ class OrderController {
         require __DIR__ . '/../../views/cms/order/view.php';
     }
 
-    // ## create invoice
-    public function createInvoice() {
-        if (isset($_POST['invoice'])) {
+    // // ## create invoice
+    // public function createInvoice() {
+    //     if (isset($_POST['invoice'])) {
             
-            header('Location: /cms/order/view');
-        }
-    }
+    //         header('Location: /cms/order/view');
+    //     }
+    // }
 
     // ## create ticket
     public function createTicket() {
@@ -47,5 +48,18 @@ class OrderController {
             header('Location: /cms/order/view');
         }
     }
+
+    // // invoice in cms
+    // public function createInvoice()
+    // {
+    //     if (isset($_POST['invoice'])) {
+
+    //         $snappy = new Pdf('/usr/local/bin/wkhtmltopdf');
+    //         $snappy->generateFromHtml('<h1>Bill</h1><p>You owe me money, dude.</p>', 'test.pdf');
+    //         header('Content-Type: application/pdf');
+    //         header('Content-Disposition: attachment; filename="file.pdf"');
+    //         echo $snappy->getOutput('http://www.github.com');
+    //     }
+    // }
 }
 ?>

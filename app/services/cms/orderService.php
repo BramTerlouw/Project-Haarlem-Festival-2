@@ -15,4 +15,10 @@ class OrderService {
     public function getAll() {
         return $this->repository->getAll();
     }
+
+    // // ## create invoice
+    // public function createInvoice() {
+    //     return $this->repository->createInvoice();
+    // }
+
 }

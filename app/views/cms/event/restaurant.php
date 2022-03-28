@@ -14,7 +14,7 @@ $uriEvent = $_GET['event'];
 //dit is een test commit omdat bram dan kan mergen.
 ?>
 
-<section class="overview-container-info">
+<section class="overview-container-info restaurant-margin">
 
     <h1 class="overview-header">Event overview:</h1>
     <div class="overview-info">
@@ -41,19 +41,6 @@ $uriEvent = $_GET['event'];
                 <input type="date" name="EventStart" value="<?php echo $event->StartDate ?>">
                 <input type="date" name="eventEnd" value="<?php echo $event->EndDate ?>">
             </div>
-
-            <div class="form-item">
-                <label for="">Location(s):</label>
-
-                <?php
-                if (isset($locArr)) {
-                    foreach ($locArr as $location) { ?>
-                        <p><strong><?php echo $location ?></strong></p>
-                <?php }
-                } ?>
-
-                <a href="/cms/locations"><img class="clickable" src="/icons/cms-edit-form.png" alt="edit button"></a>
-            </div>
             
             <button class="cms-saveOverview-xl" name="submit" type="submit">Save changes
                 <img src="/icons/cms-save.png" alt="cancel icon">
@@ -62,15 +49,58 @@ $uriEvent = $_GET['event'];
     </form>
 
     <div class="overview-image">
-        <div class="placeholder-image"></div>
+        <img class="placeholder-image" src="/images/banner/2.png" alt="">
         <button>Upload image(s)</button>
     </div>
 </section>
 
-<!-- <section class="overview-container-table">
+<section class="overview-container-table">
 
-   
-</section> -->
+    <div class="overview-btn-container">
+
+    <ul class="overview-btns-right">
+            <li>
+                <a href="/cms/restaurant/add">
+                    Add Restaurant
+                    <img src="/icons/add-item.png" alt="add item">
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+<div class="table-wrapper">
+        <table class="event-item-table">
+            <tr>
+                <th></th>
+                <th>Restaurant</th>
+                <th>Address</th>
+                <th>Seats</th>
+                <th>Price</th>
+                <th>Price(-12)</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <?php foreach ($restaurantlist as $restaurant) { ?>
+                <tr>
+                    <td></td>
+                    <td><? echo $restaurant->Name?></td>
+                    <td><? echo $restaurant->Adres?></td>
+                    <td><? echo $restaurant->Max_visitors?></td>
+                    <td><? echo $restaurant->Price_Adults?></td>
+                    <td><? echo $restaurant->Price_Children?></td>
+                    <td>
+                        <a href="/cms/restaurant?id=<? echo $restaurant->Restaurant_ID?>">
+                        <img src="/icons/cms-table-edit.png" alt=""></a>
+                    </td>
+                    <td>
+                        <a href="/cms/restaurant/delete">
+                        <img src="/icons/delete-item.png" alt=""></a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </table>
+    </div>
 
 
 </main> <!-- close main tag from cms nav -->

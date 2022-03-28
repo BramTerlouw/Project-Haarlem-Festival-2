@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '82dd92e9d038a965b181a00ee4e8db5db9581938',
+        'reference' => '71d10cf1176230b52b1ad64c1d30cb53fc662c3d',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '82dd92e9d038a965b181a00ee4e8db5db9581938',
+            'reference' => '71d10cf1176230b52b1ad64c1d30cb53fc662c3d',
             'dev_requirement' => false,
         ),
         'bacon/bacon-qr-code' => array(
@@ -131,6 +131,15 @@
             'install_path' => __DIR__ . '/../ralouphie/getallheaders',
             'aliases' => array(),
             'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+            'dev_requirement' => false,
+        ),
+        'setasign/fpdf' => array(
+            'pretty_version' => '1.8',
+            'version' => '1.8.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../setasign/fpdf',
+            'aliases' => array(),
+            'reference' => 'a8a76e8cfc1db7b1a18c096a021a0cdff70db6b5',
             'dev_requirement' => false,
         ),
         'symfony/polyfill-intl-idn' => array(

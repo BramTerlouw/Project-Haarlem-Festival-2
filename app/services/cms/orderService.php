@@ -16,9 +16,8 @@ class OrderService {
         return $this->repository->getAll();
     }
 
-    // // ## create invoice
-    // public function createInvoice() {
-    //     return $this->repository->createInvoice();
-    // }
+    public function getOne($order_id) {
+        return $this->repository->getOne($order_id);
+    }
 
 }

@@ -7,11 +7,11 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
 
 <div class="order-buttons">
 <? $order_id = $_GET['order_id']; ?>
-    <form action="/cms/email/SendInvoice?order_id=<? echo $order_id ?>" method="post">
+    <form action="/cms/email/sendInvoice?order_id=<? echo $order_id ?>" method="post">
         <button class="order-button" name="send-invoice" type="send-invoice">Send Invoice</button>
     </form>
-    <form action="/cms/qr/createQrCode?order_id=<? echo $order_id ?>" method="post">
-    <!-- <form action="/cms/pdf/createTicket?order_id=<? echo $order_id ?>" method="post"> -->
-        <button class="order-button" name="ticket" type="ticket">Ticket</button>
+    <!-- <form action="/cms/qr/createQrCode?order_id=<? echo $order_id ?>" method="post"> -->
+    <form action="/cms/email/sendTicket?order_id=<? echo $order_id ?>" method="post">
+        <button class="order-button" name="send-ticket" type="send-ticket">Send Ticket</button>
     </form>
 </div>

@@ -52,7 +52,7 @@ class PdfController extends Controller
                 $pdf->Cell(40, 10, "Payment due: $order[Payment_Due_Date]");
                 $pdf->Ln();
                 $pdf->Cell(40, 10, "Date: $date");
-                $pdf->Output('F',"$order[Order_ID].pdf");
+                $pdf->Output('F',"$order_id-invoice.pdf");
             }
         }
     }
@@ -62,7 +62,7 @@ class PdfController extends Controller
         $order_id = $_GET['order_id'];
         $bookingData = $this->bookingService->getOne($order_id);
 
-        if (isset($_POST['ticket'])) {
+        if (isset($_POST['send-ticket'])) {
 
             foreach ($bookingData as $data) {
                 $pdf = new GlobalFPDF();
@@ -79,7 +79,7 @@ class PdfController extends Controller
                 $pdf->Ln();
                 $pdf->Cell(40, 10, "QR-Code: ");
                 $pdf->Ln();
-                $pdf->Output();
+                $pdf->Output('F',"$order_id-ticket.pdf");
             }
         }
     }

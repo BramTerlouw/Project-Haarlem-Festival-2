@@ -74,10 +74,8 @@ class PaymentController extends Controller {
     }
 
     public function insertOrder(){
-        
+        $this->orderservice->inserOne();
     }
-
-
     public function insertBooking($order){
         $this->bookingservice->insertBooking();
     }
@@ -88,12 +86,6 @@ class PaymentController extends Controller {
 
 
     public function ProcessPayment(){
-        /*
-        * How to verify Mollie API Payments in a webhook.
-        *
-        * See: https://docs.mollie.com/guides/webhooks
-        */
-
         try {
             /*
             * Initialize the Mollie API library with your API key.

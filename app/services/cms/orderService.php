@@ -15,4 +15,7 @@ class OrderService {
     public function getAll() {
         return $this->repository->getAll();
     }
+    public function insertOne(){
+        $this->repository->insertOne();
+    }
 }

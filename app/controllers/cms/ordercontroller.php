@@ -24,5 +24,14 @@ class OrderController {
         $orderList = $this->orderService->getAll();
         require __DIR__ . '/../../views/cms/order/index.php';
     }
+    public function insertOne(){
+        $this->orderService->insertOne();
+    }
+    public function deleteOne(){
+        $this->orderService->deleteOne();
+    }
+    public function updateOne(){
+        $this->orderService->updateOne();
+    }
 }
 ?>

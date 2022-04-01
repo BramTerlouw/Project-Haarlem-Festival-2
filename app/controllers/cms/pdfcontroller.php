@@ -7,8 +7,9 @@ namespace Controllers\Cms;
 use Controllers\Controller;
 use FPDF as GlobalFPDF;
 use Services\Cms\OrderService;
+use Services\Cms\BookingService;
 
-define('EURO',chr(128));
+define('EURO', chr(128));
 
 class PdfController extends Controller
 {
@@ -16,6 +17,7 @@ class PdfController extends Controller
     function __construct()
     {
         $this->orderService = new OrderService();
+        $this->bookingService = new BookingService();
     }
 
     public function createInvoice()
@@ -23,17 +25,8 @@ class PdfController extends Controller
         $order_id = $_GET['order_id'];
         $orderData = $this->orderService->getOne($order_id);
 
-        if (isset($_POST['invoice'])) {
+        if (isset($_POST['send-invoice'])) {
             foreach ($orderData as $order) {
-
-                $fullName = $order["FullName"];
-                $adress = $order["Adress"];
-                $phoneNumber = $order["PhoneNumber"];
-                $email = $order["Email"];
-                $subTotal = $order["SubTotal"];
-                $total = $order["Total_price"];
-                $totalTax = $order["Total_price"]*1.021;
-                $paymentDue = $order["Payment_Due_Date"];
                 $date = date("Y/m/d");
 
                 $pdf = new GlobalFPDF();
@@ -42,24 +35,24 @@ class PdfController extends Controller
                 $pdf->Cell(40, 10, "Invoice Haarlem Festival");
                 $pdf->SetFont('Arial', '', 12);
                 $pdf->Ln();
-                $pdf->Cell(40,10,"$fullName");
+                $pdf->Cell(40, 10, "$order[FullName]");
                 $pdf->Ln();
-                $pdf->Cell(40,10,"Adress: $adress");
+                $pdf->Cell(40, 10, "Adress: $order[Adress]");
                 $pdf->Ln();
-                $pdf->Cell(40,10,"Phone number: $phoneNumber");
+                $pdf->Cell(40, 10, "Phone number: $order[PhoneNumber]");
                 $pdf->Ln();
-                $pdf->Cell(40,10,"Email: $email");
+                $pdf->Cell(40, 10, "Email: $order[Email]");
                 $pdf->Ln();
-                $pdf->Cell(40,10,"Subtotal: ".EURO."$subTotal");
+                $pdf->Cell(40, 10, "Subtotal: " . EURO . "$order[SubTotal]");
                 $pdf->Ln();
-                $pdf->Cell(40,10,"Total: ".EURO."$total");
+                $pdf->Cell(40, 10, "Total: " . EURO . "$order[Total_price]");
                 $pdf->Ln();
-                $pdf->Cell(40,10,"Total with added tax: ".EURO."$totalTax");
+                $pdf->Cell(40, 10, "Total with added tax: " . EURO . $order["Total_price"] * 1.021);
                 $pdf->Ln();
-                $pdf->Cell(40,10,"Payment due: $paymentDue");
+                $pdf->Cell(40, 10, "Payment due: $order[Payment_Due_Date]");
                 $pdf->Ln();
-                $pdf->Cell(40,10,"Date: $date");
-                $pdf->Output();
+                $pdf->Cell(40, 10, "Date: $date");
+                $pdf->Output('F',"$order[Order_ID].pdf");
             }
         }
     }
@@ -67,25 +60,24 @@ class PdfController extends Controller
     public function createTicket()
     {
         $order_id = $_GET['order_id'];
-        $orderData = $this->orderService->getOne($order_id);
+        $bookingData = $this->bookingService->getOne($order_id);
 
         if (isset($_POST['ticket'])) {
-            foreach ($orderData as $order) {
 
-                $fullName = $order["FullName"];
-                $phoneNumber = $order["PhoneNumber"];
-
+            foreach ($bookingData as $data) {
                 $pdf = new GlobalFPDF();
                 $pdf->AddPage();
+
                 $pdf->SetFont('Arial', 'B', 16);
                 $pdf->Cell(40, 10, "Ticket(s) Haarlem Festival");
+                
                 $pdf->SetFont('Arial', '', 12);
                 $pdf->Ln();
-                $pdf->Cell(40,10,"$fullName");
+                $pdf->Cell(40, 10, $data["Order_ID"]);
                 $pdf->Ln();
-                $pdf->Cell(40,10,"$phoneNumber");
+                $pdf->Cell(40, 10, $data["Event_Item"]);
                 $pdf->Ln();
-                $pdf->Cell(40,10,"QR-Code: ");
+                $pdf->Cell(40, 10, "QR-Code: ");
                 $pdf->Ln();
                 $pdf->Output();
             }

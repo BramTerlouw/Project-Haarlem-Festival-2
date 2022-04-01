@@ -80,7 +80,7 @@ class EventController extends Controller{
 
             // call update function
             $this->eventService->updateOne($_GET['id'], $eventName, $eventDesc, $eventStart, $eventEnd);
-            header('Location: /cms/event?event=' . $eventName);
+            header('Location: /cms/event?event=' . $_GET['id']);
         }
     }
 

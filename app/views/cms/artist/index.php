@@ -8,38 +8,35 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
 <section class="artist-container">
     <?php
     foreach ($artistList as $artist) { ?>
-        <form action="/cms/artist/updateOne?id=<? echo $artist->Artist_ID ?>" method="post">
-            <div class="artist-item">
-                <div class="artist-img"><img class="artist-image" src="/images/artists/<?php echo $artist->Artist_ID ?>.png"></div>
-                <div class="artist-form">
-                    <label for="inputArtistName">Name: </label>
-                    <input type="text" name="inputArtistName" value='<?php echo $artist->Name ?>'required>
-                    <label for="inputArtistDescription">Description: </label>
-                    <textarea class="artist-textarea" name="inputArtistDescription" rows="4" required>'<?php echo $artist->Description ?>'</textarea>
-                    <label for="inputArtistType">Type: </label>
-                    <input type="text" name="inputArtistType" value='<?php echo $artist->Type ?>'required>
-                </div>
-                <button type="submit" name="submit">Edit</button>
-                </form>
-                <form action="/cms/artist/deleteOne?id=<? echo $artist->Artist_ID ?>" method="post">
-                <button type="delete" name="delete">Delete</button>
-            </div>
-        </form>
+        <div class="artist-item">
+        <div class="artist-img-wrapper"><img src="/images/artists/<?php echo $artist->Artist_ID ?>.png" alt="artist img"></div>
+            <form class="artist-form" action="/cms/artist/updateOne?id=<? echo $artist->Artist_ID ?>" method="post">
+                <label for="inputArtistName">Name: </label>
+                <input type="text" name="inputArtistName" value='<?php echo $artist->Name ?>'required>
+                <label for="inputArtistDescription">Description: </label>
+                <textarea name="inputArtistDescription" rows="4" required>
+                    <?php echo $artist->Description ?>
+                </textarea>
+                <label for="inputArtistType">Type: </label>
+                <input type="text" name="inputArtistType" value='<?php echo $artist->Type ?>'required>
+                <button type="submit" class="artist-cms-button" name="submit">Edit</button>
+            </form>
+            <form action="/cms/artist/deleteOne?id=<? echo $artist->Artist_ID ?>" method="post">
+                <button type="delete" class="artist-cms-button" name="delete">Delete</button>
+            </form>
+    </div>
     <?php
     } ?>
-    <form action="/cms/artist/insertOne" method="post">
-        <div class="artist-item-add">
-            <h1>Add artist:</h1>
-            <div class="artist-form">
+    <div class="artist-item">
+    <h1>Add artist:</h1>
+            <form class="artist-form" action="/cms/artist/insertOne" method="post">
                 <label for="inputArtistName">Name: </label>
-                <input type="text" name="inputArtistName" required>
+                <input type="text" name="inputArtistName" value=''required>
                 <label for="inputArtistDescription">Description: </label>
-                <textarea class="artist-textarea" name="inputArtistDescription" rows="4" required></textarea>
+                <textarea name="inputArtistDescription" rows="4" required></textarea>
                 <label for="inputArtistType">Type: </label>
-                <input type="text" name="inputArtistType" required>
-            </div>
-            <button name="add" type="add">Add</button>
-        </div>
-    </form>
+                <input type="text" name="inputArtistType" value=''required>
+                <button name="add" class="artist-cms-button" type="add">Add</button>
+            </form>
     </div>
 </section>

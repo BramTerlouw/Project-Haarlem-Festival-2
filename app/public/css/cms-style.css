@@ -893,7 +893,7 @@ canvas {
 }
 
 .location-item-add {
-    height: 150px;
+    height: 200px;
     border: 1px solid var(--main-blue);
     margin: 20px 2.5%;
     padding: 10px;
@@ -1010,7 +1010,18 @@ canvas {
     background-color: var(--form-input-bg);
 }
 
-
+/* ## view for orders */
+.order-buttons {
+    display: flex;
+    justify-content: center;
+}
+.order-button {
+    color: var(--main-lightblue);
+    background-color: var(--main-green);
+    margin: 2%;
+    height: 100px;
+    width: 150px;
+}
 
 /* ## email verification */
 .email-verification-container {

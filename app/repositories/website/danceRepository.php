@@ -143,7 +143,7 @@ class DanceRepository extends Repository
 
     public function getLocations() {
         try {
-            $sqlquery = "SELECT Location_ID, Name, Address FROM Location";
+            $sqlquery = "SELECT Location_ID, Name, Address FROM Location ORDER BY Name";
             $stmt = $this->connection->prepare($sqlquery);
 
             // execute and get result

@@ -15,4 +15,9 @@ class OrderService {
     public function getAll() {
         return $this->repository->getAll();
     }
+
+    public function getOne($order_id) {
+        return $this->repository->getOne($order_id);
+    }
+
 }

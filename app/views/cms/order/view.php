@@ -10,8 +10,9 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
     <form action="/cms/email/sendInvoice?order_id=<? echo $order_id ?>" method="post">
         <button class="order-button" name="send-invoice" type="send-invoice">Send Invoice</button>
     </form>
-    <!-- <form action="/cms/qr/createQrCode?order_id=<? echo $order_id ?>" method="post"> -->
-    <form action="/cms/email/sendTicket?order_id=<? echo $order_id ?>" method="post">
+    <form action="/cms/qr/createQrCode?order_id=<? echo $order_id ?>" method="post">
+    <button class="order-button" name="send-ticket" type="send-ticket">Send Ticket</button>
+    <!-- <form action="/cms/email/sendTicket?order_id=<? echo $order_id ?>" method="post">
         <button class="order-button" name="send-ticket" type="send-ticket">Send Ticket</button>
-    </form>
+    </form> -->
 </div>

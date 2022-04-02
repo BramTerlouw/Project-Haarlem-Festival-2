@@ -33,9 +33,26 @@ class QrController extends Controller
     {
         // $order_id = $_GET['order_id'];
         // $orderData = $this->orderService->getOne($order_id);
+        $result = Builder::create()
+        ->writer(new PngWriter())
+        ->writerOptions([])
+        ->data('Custom QR code contents')
+        ->encoding(new Encoding('UTF-8'))
+        ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
+        ->size(300)
+        ->margin(10)
+        ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
+        ->labelText('This is the label')
+        ->labelFont(new NotoSans(20))
+        ->labelAlignment(new LabelAlignmentCenter())
+        ->build();
+
+        // Directly output the QR code
+        header('Content-Type: ' . $result->getMimeType());
+        echo $result->getString();
 
         if (isset($_POST['ticket'])) {
-            $qr = new QrCode("Hi");
+            //$qr = new QrCode("Hi");
         }
     }
 }

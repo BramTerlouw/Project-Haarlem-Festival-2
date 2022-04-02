@@ -30,48 +30,6 @@ class PaymentController extends Controller {
     public function confirmation(){
         require __DIR__ . '/../../views/payment/confirmation.php';
     }
-    public function InitializeMollie(){
-        /*
-        * Make sure to disable the display of errors in production code!
-        */
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
-
-        //require_once __DIR__ . "/../vendor/autoload.php";
-        require_once __DIR__ . "/functions.php";
-
-        /*
-        * Initialize the Mollie API library with your API key.
-        *
-        * See: https://www.mollie.com/dashboard/developers/api-keys
-        */
-        $mollie = new \Mollie\Api\MollieApiClient();
-        $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
-    }
-    public function createPayment(){
-        $payment = $mollie->payments->create([
-            "amount" => [
-                "currency" => "EUR",
-                "value" => "10.00"
-            ],
-            "description" => "Order #{$orderID}",
-            "redirectUrl" => "payment/confirmation",
-            "webhookUrl"  => "",
-            "metadata" => [
-                "order_id" => $orderID,
-            ],
-        ]);
-
-    }
-    public function RecievePayement(){
-        $payment = $mollie->payments->get($payment->id);
-
-        if ($payment->isPaid())
-        {
-            echo "Payment received.";
-        }
-    }
 
     public function insertOrder(){
         $this->orderservice->inserOne();
@@ -84,6 +42,49 @@ class PaymentController extends Controller {
         $this->reservationservice->insertReservation();
     }
 
+    public function UpdatePaymentStatus($Order_ID){
+        $this->orderservice->updatePaymentStatus($Order_ID);
+    }
+
+    public function InitializeMollie(){
+        /*
+        * Make sure to disable the display of errors in production code!
+        */
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+
+        $mollie = new \Mollie\Api\MollieApiClient();
+        $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
+
+        $this->createIdealPayment($mollie);
+    }
+  
+    public function createIdealPayment($mollie){
+        // $payment = $mollie->payments->create([
+        //     "amount" => [
+        //         "currency" => "EUR",
+        //         "value" => "27.50", // You must send the correct number of decimals, thus we enforce the use of strings
+        //     ],
+        //     "method" => \Mollie\Api\Types\PaymentMethod::IDEAL,
+        //     "description" => "Order #{$Order_ID}",
+        //     "redirectUrl" => "payment/confirmation",
+        //     "webhookUrl" => ProcessPayment(),
+        //     "metadata" => [
+        //         "Order_ID" => $Order_ID,
+        //     ],
+        //     "issuer" => ! empty($_POST["issuer"]) ? $_POST["issuer"] : null,
+        // ]);
+        $payment = $mollie->payments->create([
+            "amount" => [
+                "currency" => "EUR",
+                "value" => "10.00"
+            ],
+            "description" => "My first API payment",
+            "redirectUrl" => "payment/confirmation",
+            "webhookUrl" => "/../../ProcessPayment()",
+        ]);
+    }
 
     public function ProcessPayment(){
         try {
@@ -103,7 +104,7 @@ class PaymentController extends Controller {
             /*
             * Update the order in the database.
             */
-            database_write($orderId, $payment->status);
+            //database_write($orderId, $payment->status);
 
             if ($payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks()) {
                 /*
@@ -111,6 +112,8 @@ class PaymentController extends Controller {
                 * At this point you'd probably want to start the process of delivering the product to the customer.
                 */
                 //updaten van de payment status
+                UpdatePaymentStatus($Order_ID);
+
             } elseif ($payment->isOpen()) {
                 /*
                 * The payment is open.

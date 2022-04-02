@@ -63,10 +63,10 @@ class OrderRepository extends Repository
 
 
     // ### INSERT QUERIES ###
-    public function insertOne($Fullname, $Adress, $Email, $Phonenumber){
+    public function insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal){
         $PayementDate = date("Y/m/d");
-        $Pricetotal = 10;
-        $pricesub = 8;
+        $Pricetotal = $subTotal * 1.21;
+        
 
         try {
             $sqlquery = "INSERT INTO `Order` (PhoneNumber, FullName, Email, Adress, Payment_Due_Date, Total_price, subTotal, Payment_Status) 
@@ -81,7 +81,7 @@ class OrderRepository extends Repository
             $stmt->bindParam(':Adress', $Adress);
             $stmt->bindParam(':Payment_Due_Date', $PayementDate);
             $stmt->bindParam(':Total_price', $Pricetotal);
-            $stmt->bindParam(':subTotal', $pricesub);
+            $stmt->bindParam(':subTotal', $subTotal);
 
             $stmt->execute();
             return $this->connection->lastInsertId();
@@ -93,7 +93,7 @@ class OrderRepository extends Repository
 
 
     // ### DELETE QUERIES ###
-    public	function deleteOne(){
+    public function deleteOne(){
         try {
             $sqlquery = "DELETE FROM Order WHERE Order_ID=:id";
             $stmt = $this->connection->prepare($sqlquery);
@@ -101,6 +101,20 @@ class OrderRepository extends Repository
             $stmt->bindParam(':id', $id);
 
             $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function updatePaymentStatus(){
+        try {
+            $sqlquery = "UPDATE Order SET Payment_Status= :Payment_Status WHERE Order_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':Payment_Status', true);
+            
+            $stmt->execute();
+            
         } catch (PDOException $e) {
             echo $e;
         }

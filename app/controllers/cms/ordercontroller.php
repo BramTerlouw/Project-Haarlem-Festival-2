@@ -8,6 +8,10 @@ use Services\Cms\EventService;
 use Services\Cms\EventItemService;
 use Services\Website\CulinaryService;
 use Knp\Snappy\Pdf;
+use Services\website\ReservationService;
+use Services\cms\BookingService;
+use Controllers\website\PaymentController;
+
 
 class OrderController {
     
@@ -15,6 +19,9 @@ class OrderController {
     private $eventService;
     private $eventItemService;
     private $culinaryService;
+    private $reservationService;
+    private $bookingService;
+    private $paymentcontroller;
     
     function __construct()
     {
@@ -22,7 +29,9 @@ class OrderController {
         $this->eventService = new EventService();
         $this->eventItemService = new EventItemService();
         $this->culinaryService = new CulinaryService();
-        
+        $this->reservationService = new reservationService();
+        $this->bookingService = new BookingService();
+        $this->paymentcontroller = new PaymentController();
     }
     
 
@@ -45,17 +54,32 @@ class OrderController {
             $Adress = $_POST['address'];
             $Email = $_POST['email'];
             $Phonenumber = $_POST['phonenumber'];
-            
+            $bookings = $this->getCartBookings();
+            $reservations = $this->getCartReservations();
+            $subTotal = $this->calcTotal($bookings, $reservations);
 
+           $id=$this->orderService->insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal);
+           $this->insertBooking($id, $bookings);
+           $this->insertReservation($id, $reservations);
 
-           $id=$this->orderService->insertOne($Fullname, $Adress, $Email, $Phonenumber);
-           $this->insertBooking($id);
+           $this->InitializeMollie();
+
         }
     }
-
-    public function insertBooking($id){
-        $booking = $this->getCartBookings();
-        var_dump($booking);
+    public function InitializeMollie(){
+        $this->paymentcontroller->InitializeMollie();
+    }
+    public function insertBooking($id, $bookings){
+        foreach($bookings as $booking){
+            for ($x = 0; $x < $booking['amount']; $x++){
+                $this->bookingService->insertBooking($booking, $id);
+            }
+        }
+    }
+    public function insertReservation($id, $reservations){
+        foreach($reservations as $reservation){
+            $this->reservationService->insertReservation($reservation, $id);
+        }
     }
 
     public function deleteOne(){
@@ -66,8 +90,8 @@ class OrderController {
     }
 
 
-     // ## get all bookings from session
-     private function getCartBookings() {
+    // ## get all bookings from session
+    private function getCartBookings() {
         $bookings = array();
         foreach ($_SESSION['tickets'] as $key => $value) {
             $booking = $this->eventItemService->getOne($key);
@@ -115,6 +139,5 @@ class OrderController {
         $orderData = $this->orderService->getOne($order_id);
         require __DIR__ . '/../../views/cms/order/view.php';
     }
-
 }
 ?>

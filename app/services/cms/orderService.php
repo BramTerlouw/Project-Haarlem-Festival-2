@@ -16,13 +16,16 @@ class OrderService {
         return $this->repository->getAll();
     }
 
-    public function insertOne($Fullname, $Adress, $Email, $Phonenumber){
-        return $this->repository->insertOne($Fullname, $Adress, $Email, $Phonenumber);
+    public function insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal){
+        return $this->repository->insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal);
     }
 
     public function getOne($order_id) {
         return $this->repository->getOne($order_id);
     }
 
+    public function updatePaymentStatus(){
+        return $this->repository->updatePaymentStatus();
+    }
 
 }

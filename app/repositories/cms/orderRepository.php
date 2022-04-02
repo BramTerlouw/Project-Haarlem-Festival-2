@@ -31,11 +31,11 @@ class OrderRepository extends Repository
     // ### UPDATE QUERIES ###
     public	function updateOne(){
         try {
-            $sqlquery = "UPDATE Order SET Ticket_Price=:price, Tickets=:amount WHERE EventItem_ID=:id";
+            $sqlquery = "UPDATE Order SET Total_Price=:Total_Price, SubTotal=:SubTotal WHERE Order_ID=:id";
             $stmt = $this->connection->prepare($sqlquery);
 
-            $stmt->bindParam(':price', $price);
-            $stmt->bindParam(':amount', $amount);
+            $stmt->bindParam(':Total_Price', $Total_Price);
+            $stmt->bindParam(':SubTotal', $SubTotal);
             $stmt->bindParam(':id', $id);
 
             $stmt->execute();
@@ -47,23 +47,28 @@ class OrderRepository extends Repository
 
 
     // ### INSERT QUERIES ###
-    public	function insertOne(){
+    public function insertOne($Fullname, $Adress, $Email, $Phonenumber){
+        $PayementDate = date("Y/m/d");
+        $Pricetotal = 10;
+        $pricesub = 8;
+
         try {
-            $sqlquery = "INSERT INTO Order (PhoneNumber, FullName, Email, Adress) 
-            VALUES (:Order_ID, :PhoneNumber, :FullName, :Email, :Adress)";
+            $sqlquery = "INSERT INTO `Order` (PhoneNumber, FullName, Email, Adress, Payment_Due_Date, Total_price, subTotal, Payment_Status) 
+            VALUES (:PhoneNumber, :FullName, :Email, :Adress, :Payment_Due_Date, :Total_price, :subTotal, false)";
+
             $stmt = $this->connection->prepare($sqlquery);
 
             //$stmt->bindParam(':Order_ID', $order->Order_ID);
             $stmt->bindParam(':PhoneNumber', $Phonenumber);
-            $stmt->bindParam(':FullName', $FullName);
+            $stmt->bindParam(':FullName', $Fullname);
             $stmt->bindParam(':Email', $Email);
             $stmt->bindParam(':Adress', $Adress);
-            $stmt->bindParam(':Payment_Due_Date', $order->Payment_Due_Date);
-            $stmt->bindParam(':Total_price', $order->Total_price);
-            $stmt->bindParam(':subTotal', $order->subTotal);
+            $stmt->bindParam(':Payment_Due_Date', $PayementDate);
+            $stmt->bindParam(':Total_price', $Pricetotal);
+            $stmt->bindParam(':subTotal', $pricesub);
 
             $stmt->execute();
-            //return $this->connection->lastInsertId();
+            return $this->connection->lastInsertId();
 
         } catch (PDOException $e) {
             echo $e;

@@ -125,5 +125,77 @@ Class CulinaryRepository extends Repository
             echo $e;
         }
     }
+      // ### UPDATE QUERIES ###
+      public function updateOne(){
+        try {
+            $sqlquery = "UPDATE Restaurant SET Restaurant(Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible, Price_Adults, Price_Children, Adres, Sessions, Duration, Start_Time) VALUES (:Restaurant_ID, :Name, :Type, :Summary, :Max_visitors, Wheelchair_accessible, :Price_Adults, :Price_Children, :Adres, :Sessions, :Duration, :Start_Time) WHERE Restaurant_ID=:id";
+            
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':Restaurant_ID', $Restaurant_ID);
+            $stmt->bindParam(':FullName', $FullName);
+            $stmt->bindParam(':Name', $Name);
+            $stmt->bindParam(':Type', $Type);
+            $stmt->bindParam(':Summary', $Summary);
+            $stmt->bindParam(':Max_visitors', $Max_visitors);
+            $stmt->bindParam(':Price_Adults', $Price_Adults);
+            $stmt->bindParam(':Price_Children', $Price_Children);
+            $stmt->bindParam(':Adres', $Adres);
+            $stmt->bindParam(':Sessions', $Sessions);
+            $stmt->bindParam(':Duration', $Duration);
+            $stmt->bindParam(':Start_Time', $Start_Time);
+            $stmt->bindParam(':id', $id);
+
+            $stmt->execute();
+            
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
+    // ### INSERT QUERIES ###
+    public	function insertOne(){
+        try {
+            $sqlquery = "INSERT INTO Restaurant(Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible, Price_Adults, Price_Children, Adres, Sessions, Duration, Start_Time) VALUES (:Restaurant_ID, :Name, :Type, :Summary, :Max_visitors, Wheelchair_accessible, :Price_Adults, :Price_Children, :Adres, :Sessions, :Duration, :Start_Time)";
+
+            $stmt = $this->connection->prepare($sqlquery);
+
+            //$stmt->bindParam(':Order_ID', $order->Order_ID);
+            $stmt->bindParam(':Restaurant_ID', $Restaurant_ID);
+            $stmt->bindParam(':FullName', $FullName);
+            $stmt->bindParam(':Name', $Name);
+            $stmt->bindParam(':Type', $Type);
+            $stmt->bindParam(':Summary', $Summary);
+            $stmt->bindParam(':Max_visitors', $Max_visitors);
+            $stmt->bindParam(':Price_Adults', $Price_Adults);
+            $stmt->bindParam(':Price_Children', $Price_Children);
+            $stmt->bindParam(':Adres', $Adres);
+            $stmt->bindParam(':Sessions', $Sessions);
+            $stmt->bindParam(':Duration', $Duration);
+            $stmt->bindParam(':Start_Time', $Start_Time);
+
+            $stmt->execute();
+            //return $this->connection->lastInsertId();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
+    // ### DELETE QUERIES ###
+    public	function deleteOne(){
+        try {
+            $sqlquery = "DELETE FROM Restaurant WHERE Restaurant_ID =:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $id);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }
 ?>

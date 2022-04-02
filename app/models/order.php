@@ -11,5 +11,6 @@ class Order {
     public string $Payment_Due_Date;
     public int $Total_price;
     public int $Subtotal;
+    public int $SubTotal;
 }
 ?>

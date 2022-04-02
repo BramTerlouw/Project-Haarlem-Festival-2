@@ -7,6 +7,7 @@ use Services\Cms\OrderService;
 use Services\Cms\EventService;
 use Services\Cms\EventItemService;
 use Services\Website\CulinaryService;
+use Knp\Snappy\Pdf;
 
 class OrderController {
     
@@ -31,6 +32,7 @@ class OrderController {
         $orderList = $this->orderService->getAll();
         require __DIR__ . '/../../views/cms/order/index.php';
     }
+
     public function insertOne(){
 
         if (isset($_POST['submit'])) {
@@ -104,5 +106,15 @@ class OrderController {
 
         return $total;
     }
+
+    // ## view an order
+    public function view() {
+        $eventNames = $this->eventService->getEventNames();
+        $orderList = $this->orderService->getAll();
+        $order_id = $_GET['order_id'];
+        $orderData = $this->orderService->getOne($order_id);
+        require __DIR__ . '/../../views/cms/order/view.php';
+    }
+
 }
 ?>

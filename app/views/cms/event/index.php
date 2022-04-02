@@ -61,7 +61,8 @@ $uriEvent = $_GET['event'];
     </form>
 
     <div class="overview-image">
-        <div class="placeholder-image"></div>
+        <!-- <div class="placeholder-image"></div> -->
+        <img class="placeholder-image" src="/images/banner/<?echo $event->Event_ID ?>.jpg" alt="">
         <button>Upload image(s)</button>
     </div>
 </section>

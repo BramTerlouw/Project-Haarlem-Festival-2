@@ -423,7 +423,7 @@ canvas {
     width: 100%;
     /* height: 42vh; */
 
-    margin: 0 0 10vh 0;
+    margin: 0 0 5vh 0;
 
     display: flex;
     flex-wrap: wrap;
@@ -431,7 +431,7 @@ canvas {
 
 .overview-container-table {
     width: 100%;
-    height: 43vh;
+    min-height: 50vh;
     background-color: var(--form-input-bg);
 }
 
@@ -531,7 +531,8 @@ canvas {
 .overview-btns-right li a {
     text-decoration: none;
     font-size: 1.5rem;
-    margin: 0 20px 0 0;
+    margin: 0 20px 0 20px;
+    color: var(--main-blue)
 }
 
 .overview-btns-right li a img {
@@ -609,8 +610,11 @@ canvas {
 
 /* ## table for event items */
 .table-wrapper {
-    height: 100%;
-    overflow-y: auto;
+    /* min-height: 40vh; */
+    /* max-height: 45vh; */
+    max-height: 35vh;
+    overflow-y: scroll;
+    background-color: var(--form-input-bg);
 }
 
 .event-item-table {
@@ -631,9 +635,11 @@ canvas {
 
   .event-item-table th {
     position: sticky; 
+    background-color: var(--form-input-bg);
     top: 0;
     padding: 15px 0 15px 5px;
     font-size: 1.3rem;
+
 }
 
 .event-item-table td {
@@ -770,46 +776,69 @@ canvas {
 .artist-container {
     width: 100%;
     height: 80vh;
-    margin: 10px 0 0 20px;
+    margin: 10px 0 0 0px;
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 
     overflow-y: auto;
 }
 
 .artist-item {
-    height: 400px;
+    width: 30%;
     border: 1px solid var(--main-blue);
-    border-radius: 5px;
-    box-shadow: 3px 3px var(--form-input-border);
-    margin: 20px 2.5%;
-    padding: 10px;
+    border-radius: 10px;
+    margin: 0 0 20px 0;
+    background-color: var(--form-input-bg);
 }
 
-.artist-img {
-    width: 50%;
+.artist-img-wrapper {
+    width: 90%;
     height: 50%;
-    background-color: lightgray;
+    margin: 20px auto;
 }
 
-.artist-image {
+.artist-img-wrapper img {
     width: 100%;
     height: 100%;
+    border-radius: 10px;
 }
+
 .artist-form {
     display: flex;
-    flex-wrap: wrap;
-    margin: 10px 0 0 0;
+    flex-direction: column;
+}
+
+.artist-form label, .artist-form input, .artist-form textarea {
+    margin: 0 0 0 20px;
+    width: 70%;
+    color: var(--main-blue)
+}
+
+.artist-form input, .artist-form textarea {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--main-blue);
+    padding: 3px 5px;
 }
 
 .artist-form label {
-    width: 30%;
+    font-weight: bold;
 }
-.artist-form input, .artist-textarea {
-    width: 70%;
+
+.artist-cms-button {
+    width: 20%;
+    background-color: var(--white);
+    border: 2px solid var(--main-blue);
+    border-radius: 5px;
+    margin: 0 0 5px 20px;
+    font-weight: bold;
 }
+
+
+
 
 .artist-item-add {
     height: 250px;
@@ -864,7 +893,7 @@ canvas {
 }
 
 .location-item-add {
-    height: 150px;
+    height: 200px;
     border: 1px solid var(--main-blue);
     margin: 20px 2.5%;
     padding: 10px;
@@ -981,7 +1010,18 @@ canvas {
     background-color: var(--form-input-bg);
 }
 
-
+/* ## view for orders */
+.order-buttons {
+    display: flex;
+    justify-content: center;
+}
+.order-button {
+    color: var(--main-lightblue);
+    background-color: var(--main-green);
+    margin: 2%;
+    height: 100px;
+    width: 150px;
+}
 
 /* ## email verification */
 .email-verification-container {
@@ -1062,4 +1102,17 @@ canvas {
 
 .ticket-detail-container button {
     width: 50%;
+}
+
+
+
+.restaurant-form {
+    width: 50vw;
+    margin: 0 0 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.restaurant-form .form-item {
+    margin: 10px 5px;
 }

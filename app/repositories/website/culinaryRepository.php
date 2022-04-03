@@ -82,7 +82,7 @@ Class CulinaryRepository extends Repository
 
     public function getOne($id) {
         try {
-            $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible, Adres, Price_Adults, Price_Children FROM Restaurant WHERE Restaurant_ID=:id";
+            $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible, Adres, Price_Adults, Price_Children, Sessions, Duration, Start_Time FROM Restaurant WHERE Restaurant_ID=:id";
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->bindParam(':id', $id);

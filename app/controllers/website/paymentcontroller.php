@@ -44,32 +44,29 @@ class PaymentController extends Controller {
         $this->reservationservice->insertReservation();
     }
 
-    public function UpdatePaymentStatus($Order_ID){
-        $this->orderservice->updatePaymentStatus($Order_ID);
+    public function UpdatePaymentStatus(){
+        $this->orderservice->updatePaymentStatus();
     }
 
     public function InitializeMollie(){
+        $mollie = new \Mollie\Api\MollieApiClient();
+        $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
         try {
-            $orderId = time();
-            $mollie = new \Mollie\Api\MollieApiClient();
-            $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
             $payment = $mollie->payments->create([
                   "amount" => [
                         "currency" => "EUR",
                         "value" => "10.00" // You must send the correct number of decimals, thus we enforce the use of strings
                   ],
                   "description" => "Order #12345",
-                  "redirectUrl" => " https://7433-213-127-46-47.ngrok.io/hf/payment/confirmation",
-                  "webhookUrl" => "https://7433-213-127-46-47.ngrok.io/hf/payment/ProcessPayment",
+                  "redirectUrl" => " http://f9d5-213-127-46-47.ngrok.io/hf/payment/confirmation",
+                  "webhookUrl" => "http://f9d5-213-127-46-47.ngrok.io/hf/payment/ProcessPayment",
                 //   "metadata" => [
-                //     "order_id" => $order->id,
+                //     "order_id" => $orderId,
                 // ],
-                  
             ]);
     
             header("Location: " . $payment->getCheckoutUrl(), true, 303);
 
-            
         } catch (\Mollie\Api\Exceptions\ApiException $e) {
             echo "API call failed: " . htmlspecialchars($e->getMessage());
         }
@@ -77,24 +74,26 @@ class PaymentController extends Controller {
     }
 
     public function ProcessPayment(){
+        //header("Location: /");
         $mollie = new \Mollie\Api\MollieApiClient();
         $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
         try {
-            $payment = $mollie->payments->get($_POST["id"]);
+            $payment = $mollie->payments->get($_POST["order_id"]);
             $orderId = $payment->metadata->order_id;
-
-            if ($payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks()) {
+            
+            if ($payment->isPaid()) {
                 //updaten van de payment status
-                UpdatePaymentStatus($orderId);
-            } else {
-
-                return $this->json(["Error" => "Some error Occurred!"]);
+                //UpdatePaymentStatus($orderId);
                 
+                
+            } else {
+                return $this->json(["Error" => "Some error Occurred!"]);
             } 
             
-        } catch (ApiException $e) {
+        } catch (\Mollie\Api\Exceptions\ApiException $e) {
             echo "API call failed: " . htmlspecialchars($e->getMessage());
         }
     }
+
 }
 ?>

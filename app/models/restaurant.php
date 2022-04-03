@@ -13,5 +13,10 @@ public float $Price_Adults;
 public float $Price_Children;
 public int $Max_visitors;
 public bool $Wheelchair_accessible;
+
+public int $Sessions;
+public string $Duration;
+public string $Start_Time;
+public bool $Status;
 }
 ?>

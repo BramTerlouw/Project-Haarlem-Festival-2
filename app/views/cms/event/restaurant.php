@@ -94,7 +94,7 @@ $uriEvent = $_GET['event'];
                         <img src="/icons/cms-table-edit.png" alt=""></a>
                     </td>
                     <td>
-                        <a href="/cms/restaurant/delete">
+                        <a href="/cms/restaurant/delete?id=<? echo $restaurant->Restaurant_ID ?>">
                         <img src="/icons/delete-item.png" alt=""></a>
                     </td>
                 </tr>

@@ -31,6 +31,7 @@ class PaymentController extends Controller {
     }
     public function confirmation(){
         require __DIR__ . '/../../views/payment/confirmation.php';
+        $this->ProcessPayment();
     }
 
     public function insertOrder(){
@@ -44,8 +45,8 @@ class PaymentController extends Controller {
         $this->reservationservice->insertReservation();
     }
 
-    public function UpdatePaymentStatus(){
-        $this->orderservice->updatePaymentStatus();
+    public function UpdatePaymentStatus($id){
+        $this->orderservice->updatePaymentStatus($id);
     }
 
     public function InitializeMollie(){
@@ -60,40 +61,36 @@ class PaymentController extends Controller {
                   "description" => "Order #12345",
                   "redirectUrl" => " http://f9d5-213-127-46-47.ngrok.io/hf/payment/confirmation",
                   "webhookUrl" => "http://f9d5-213-127-46-47.ngrok.io/hf/payment/ProcessPayment",
-                //   "metadata" => [
-                //     "order_id" => $orderId,
-                // ],
+                  "metadata" => [
+                    "order_id" => $orderId,
+                ],
             ]);
     
             header("Location: " . $payment->getCheckoutUrl(), true, 303);
-
         } catch (\Mollie\Api\Exceptions\ApiException $e) {
             echo "API call failed: " . htmlspecialchars($e->getMessage());
         }
       
     }
-
     public function ProcessPayment(){
-        //header("Location: /");
         $mollie = new \Mollie\Api\MollieApiClient();
         $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
+        
         try {
-            $payment = $mollie->payments->get($_POST["order_id"]);
+            $payment = $mollie->payments->get($_POST["id"]);
             $orderId = $payment->metadata->order_id;
             
             if ($payment->isPaid()) {
                 //updaten van de payment status
-                //UpdatePaymentStatus($orderId);
-                
+                UpdatePaymentStatus($id);
                 
             } else {
-                return $this->json(["Error" => "Some error Occurred!"]);
+                //return $this->json(["Error" => "Some error Occurred!"]);
             } 
             
         } catch (\Mollie\Api\Exceptions\ApiException $e) {
             echo "API call failed: " . htmlspecialchars($e->getMessage());
         }
     }
-
 }
 ?>

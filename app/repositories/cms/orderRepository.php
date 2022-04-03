@@ -106,11 +106,12 @@ class OrderRepository extends Repository
         }
     }
 
-    public function updatePaymentStatus(){
+    public function updatePaymentStatus($id){
         try {
             $sqlquery = "UPDATE Order SET Payment_Status= :Payment_Status WHERE Order_ID=:id";
             $stmt = $this->connection->prepare($sqlquery);
-
+            
+            $stmt->bindParam(':Order_ID', $id);
             $stmt->bindParam(':Payment_Status', true);
             
             $stmt->execute();

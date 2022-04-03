@@ -63,7 +63,6 @@ class OrderController {
            $this->insertReservation($id, $reservations);
 
            $this->InitializeMollie();
-
         }
     }
     public function InitializeMollie(){

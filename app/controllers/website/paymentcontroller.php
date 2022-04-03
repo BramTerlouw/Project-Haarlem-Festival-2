@@ -3,6 +3,8 @@ namespace Controllers\Website;
 use Controllers\Controller;
 use Services\Website\BookingService;
 use Services\Website\ReservationService;
+use Mollie\Api\Exceptions\ApiException;
+use Mollie\Api\MollieApiClient;
 
 class PaymentController extends Controller {
 
@@ -47,77 +49,50 @@ class PaymentController extends Controller {
     }
 
     public function InitializeMollie(){
-        /*
-        * Make sure to disable the display of errors in production code!
-        */
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
-
+        
         $mollie = new \Mollie\Api\MollieApiClient();
         $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
-
-        $this->createIdealPayment($mollie);
-    }
-  
-    public function createIdealPayment($mollie){
-        // $payment = $mollie->payments->create([
-        //     "amount" => [
-        //         "currency" => "EUR",
-        //         "value" => "27.50", // You must send the correct number of decimals, thus we enforce the use of strings
-        //     ],
-        //     "method" => \Mollie\Api\Types\PaymentMethod::IDEAL,
-        //     "description" => "Order #{$Order_ID}",
-        //     "redirectUrl" => "payment/confirmation",
-        //     "webhookUrl" => ProcessPayment(),
-        //     "metadata" => [
-        //         "Order_ID" => $Order_ID,
-        //     ],
-        //     "issuer" => ! empty($_POST["issuer"]) ? $_POST["issuer"] : null,
-        // ]);
         $payment = $mollie->payments->create([
-            "amount" => [
-                "currency" => "EUR",
-                "value" => "10.00"
-            ],
-            "description" => "My first API payment",
-            "redirectUrl" => "payment/confirmation",
-            "webhookUrl" => "/../../ProcessPayment()",
+              "amount" => [
+                    "currency" => "EUR",
+                    "value" => "10.00" // You must send the correct number of decimals, thus we enforce the use of strings
+              ],
+              "description" => "Order #12345",
+              "redirectUrl" => "/payment/confirmation",
+              "webhookUrl" => "/payment/processpayment",
+              "metadata" => [
+                    "order_id" => "12345",
+              ],
         ]);
+
+        header("Location: " . $payment->getCheckoutUrl(), true, 303);
+        $this->RetrievePayment();
+    }
+    public function RetrievePayment(){
+
+        $payment = $mollie->payments->get($payment->id);
+
+        if ($payment->isPaid())
+        {
+            echo "Payment received.";
+        }
+
     }
 
     public function ProcessPayment(){
         try {
-            /*
-            * Initialize the Mollie API library with your API key.
-            *
-            * See: https://www.mollie.com/dashboard/developers/api-keys
-            */
-            require "../initialize.php";
-
-            /*
-            * Retrieve the payment's current state.
-            */
+           
             $payment = $mollie->payments->get($_POST["id"]);
             $orderId = $payment->metadata->order_id;
 
-            /*
-            * Update the order in the database.
-            */
-            //database_write($orderId, $payment->status);
-
             if ($payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks()) {
-                /*
-                * The payment is paid and isn't refunded or charged back.
-                * At this point you'd probably want to start the process of delivering the product to the customer.
-                */
                 //updaten van de payment status
-                UpdatePaymentStatus($Order_ID);
+                UpdatePaymentStatus($orderId);
 
             } elseif ($payment->isOpen()) {
-                /*
-                * The payment is open.
-                */
+
+                return $this->json(["Error" => "Some error Occurred!"]);
+                
             } elseif ($payment->isPending()) {
                 /*
                 * The payment is pending.
@@ -145,7 +120,7 @@ class PaymentController extends Controller {
                 * The status of the payment is still "paid"
                 */
             }
-        } catch (\Mollie\Api\Exceptions\ApiException $e) {
+        } catch (ApiException $e) {
             echo "API call failed: " . htmlspecialchars($e->getMessage());
         }
     }

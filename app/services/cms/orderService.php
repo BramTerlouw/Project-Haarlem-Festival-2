@@ -16,8 +16,8 @@ class OrderService {
         return $this->repository->getAll();
     }
 
-    public function insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal){
-        return $this->repository->insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal);
+    public function insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal, $Pricetotal){
+        return $this->repository->insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal, $Pricetotal);
     }
 
     public function getOne($order_id) {

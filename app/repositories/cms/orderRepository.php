@@ -63,9 +63,9 @@ class OrderRepository extends Repository
 
 
     // ### INSERT QUERIES ###
-    public function insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal){
+    public function insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal, $Pricetotal){
         $PayementDate = date("Y/m/d");
-        $Pricetotal = $subTotal * 1.21;
+        
         
 
         try {
@@ -105,7 +105,7 @@ class OrderRepository extends Repository
             echo $e;
         }
     }
-
+    //method for updating the status of the payment
     public function updatePaymentStatus($id){
         try {
             $sqlquery = "UPDATE Order SET Payment_Status= :Payment_Status WHERE Order_ID=:id";

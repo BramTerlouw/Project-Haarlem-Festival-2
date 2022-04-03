@@ -48,21 +48,21 @@ class PaymentController extends Controller {
     public function UpdatePaymentStatus($id){
         $this->orderservice->updatePaymentStatus($id);
     }
-
-    public function InitializeMollie(){
+    //method to initialze mollie and creating the payment with the corrrect price
+    public function InitializeMollie($Pricetotal, $id){
         $mollie = new \Mollie\Api\MollieApiClient();
         $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
         try {
             $payment = $mollie->payments->create([
                   "amount" => [
                         "currency" => "EUR",
-                        "value" => "10.00" // You must send the correct number of decimals, thus we enforce the use of strings
+                        "value" => number_format((float)$Pricetotal, 2, '.', '') 
                   ],
-                  "description" => "Order #12345",
+                  "description" => "Order #{$id}",
                   "redirectUrl" => " http://f9d5-213-127-46-47.ngrok.io/hf/payment/confirmation",
                   "webhookUrl" => "http://f9d5-213-127-46-47.ngrok.io/hf/payment/ProcessPayment",
                   "metadata" => [
-                    "order_id" => $orderId,
+                    "order_id" => $id,
                 ],
             ]);
     
@@ -72,13 +72,15 @@ class PaymentController extends Controller {
         }
       
     }
+    //Method for checking of the payment is paid
+    //Calling the method for updating the payment status to paid
     public function ProcessPayment(){
         $mollie = new \Mollie\Api\MollieApiClient();
         $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
         
         try {
             $payment = $mollie->payments->get($_POST["id"]);
-            $orderId = $payment->metadata->order_id;
+            $id = $payment->metadata->order_id;
             
             if ($payment->isPaid()) {
                 //updaten van de payment status

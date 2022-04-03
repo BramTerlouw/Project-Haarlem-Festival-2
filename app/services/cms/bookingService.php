@@ -2,7 +2,7 @@
 
 namespace Services\Cms;
 
-use Repositories\Cms\BookingRepository;
+use Repositories\website\BookingRepository;
 
 class BookingService {
     private $repository;
@@ -12,9 +12,12 @@ class BookingService {
     }
 
     // ## get bookings
-
     public function getOne($order_id) {
         return $this->repository->getOne($order_id);
+    }
+    // ## insert a booking when the payment is ready
+    public function insertBooking($booking, $id){
+        return $this->repository->insertBooking($booking, $id);
     }
 
     public function updateQr($order_id, $qrCodeId) {

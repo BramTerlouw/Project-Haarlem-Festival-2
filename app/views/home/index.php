@@ -120,9 +120,10 @@ require __DIR__ . '/../components/navigation/nav-homepage.php';
   </div>
 
   <script>
+    //var where the data for the carousel is stored
     var elements = [];
     const loopNumbers = [0, 4];
-
+    //fetching the data that will be inside of the carousel
     function getSliderData() {
       fetch('/home/fetchSliderData')
         .then(result => result.json())
@@ -132,7 +133,8 @@ require __DIR__ . '/../components/navigation/nav-homepage.php';
         })
         .catch((error) => console.log(error))
     }
-
+    //Method for filling the carousel with the correct html elements and adding the value to them.
+    //Looping trough every element in de var
     function fillCarousel() {
       document.getElementById("slider-container").innerHTML = "";
       for (let index = loopNumbers[0]; index < loopNumbers[1]; index++) {
@@ -155,7 +157,7 @@ require __DIR__ . '/../components/navigation/nav-homepage.php';
         document.getElementById("slider-container").appendChild(element);
       }
     };
-
+    //Method for updating the loopnumber and then filling the carousell again
     function updateCarouselLeft() {
       if (loopNumbers[0] > 0) {
         loopNumbers[0] -= 1;
@@ -163,7 +165,7 @@ require __DIR__ . '/../components/navigation/nav-homepage.php';
         fillCarousel();
       }
     }
-
+    //Method for updating the loopnumber and then filling the carousell again
     function updateCarouselRight() {
       if (loopNumbers[1] < elements.length) {
         loopNumbers[0] += 1;
@@ -171,6 +173,7 @@ require __DIR__ . '/../components/navigation/nav-homepage.php';
         fillCarousel();
       }
     }
+    //calling the fetching method
     getSliderData();
   </script>
 </body>

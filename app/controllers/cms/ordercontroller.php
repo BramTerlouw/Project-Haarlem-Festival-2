@@ -8,12 +8,20 @@ use Services\Cms\EventService;
 use Services\Cms\EventItemService;
 use Services\Website\CulinaryService;
 
+use Knp\Snappy\Pdf;
+use Services\website\ReservationService;
+use Services\cms\BookingService;
+use Controllers\website\PaymentController;
+
 class OrderController {
     
     private $orderService;
     private $eventService;
     private $eventItemService;
     private $culinaryService;
+    private $reservationService;
+    private $bookingService;
+    private $paymentcontroller;
     
     function __construct()
     {
@@ -21,7 +29,9 @@ class OrderController {
         $this->eventService = new EventService();
         $this->eventItemService = new EventItemService();
         $this->culinaryService = new CulinaryService();
-        
+        $this->reservationService = new reservationService();
+        $this->bookingService = new BookingService();
+        $this->paymentcontroller = new PaymentController();
     }
     
 
@@ -31,7 +41,8 @@ class OrderController {
         $orderList = $this->orderService->getAll();
         require __DIR__ . '/../../views/cms/order/index.php';
     }
-
+    //method for inserting the order and the booking and reservation in the cart
+    //Then it will initialize the payment trough mollie
     public function insertOne(){
 
         if (isset($_POST['submit'])) {
@@ -44,29 +55,48 @@ class OrderController {
             $Adress = $_POST['address'];
             $Email = $_POST['email'];
             $Phonenumber = $_POST['phonenumber'];
-            
+            $bookings = $this->getCartBookings();
+            $reservations = $this->getCartReservations();
+            $subTotal = $this->calcTotal($bookings, $reservations);
+            $Pricetotal = $subTotal * 1.21;
 
+           $id=$this->orderService->insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal, $Pricetotal);
+           $this->insertBooking($id, $bookings);
+           $this->insertReservation($id, $reservations);
 
-           $id=$this->orderService->insertOne($Fullname, $Adress, $Email, $Phonenumber);
-           $this->insertBooking($id);
+           $this->InitializeMollie($Pricetotal, $id);
         }
     }
-
-    public function insertBooking($id){
-        $booking = $this->getCartBookings();
-        var_dump($booking);
+    //method for calling the method for mollie
+    public function InitializeMollie($Pricetotal, $id){
+        $this->paymentcontroller->InitializeMollie($Pricetotal, $id);
     }
-
+    //method to insert a booking with the correct data into the database
+    public function insertBooking($id, $bookings){
+        foreach($bookings as $booking){
+            for ($x = 0; $x < $booking['amount']; $x++){
+                $this->bookingService->insertBooking($booking, $id);
+            }
+        }
+    }
+    //method to insert a reservation into the database
+    public function insertReservation($id, $reservations){
+        foreach($reservations as $reservation){
+            $this->reservationService->insertReservation($reservation, $id);
+        }
+    }
+    //method for deleting a order
     public function deleteOne(){
         $this->orderService->deleteOne();
     }
+    //method for updating an order
     public function updateOne(){
         $this->orderService->updateOne();
     }
 
 
-     // ## get all bookings from session
-     private function getCartBookings() {
+    // get all bookings from session and storing them in a array
+    private function getCartBookings() {
         $bookings = array();
         foreach ($_SESSION['tickets'] as $key => $value) {
             $booking = $this->eventItemService->getOne($key);
@@ -76,7 +106,7 @@ class OrderController {
     }
 
 
-    // ## get all reservations from session
+    // get all reservations from session and storing them in a array
     private function getCartReservations() {
         $reservations = array();
         foreach ($_SESSION['reservations'] as $reservation) {
@@ -117,6 +147,5 @@ class OrderController {
         
         require __DIR__ . '/../../views/cms/order/view.php';
     }
-
 }
 ?>

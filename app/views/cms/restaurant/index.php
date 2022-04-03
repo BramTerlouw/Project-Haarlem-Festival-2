@@ -2,7 +2,6 @@
 require __DIR__ . '/../../components/head.php';
 require __DIR__ . '/../../components/navigation/nav-cms.php';
 use Models\Role;
-var_dump($restaurant->Status);
 ?>
 
 <h1>Restaurant information:</h1>
@@ -67,9 +66,9 @@ var_dump($restaurant->Status);
     </section>
     <button name="submit" type="submit">Edit restaurant</button>
     <? if ($_SESSION['role'] == Role::Admin && $restaurant->Status == true) { ?>
-        <a href="/cms/restaurant/changeStatus?status=1">Deactivate</a>
+        <a href="/cms/restaurant/changeStatus?status=1&id=<?echo $restaurant->Restaurant_ID ?>">Deactivate</a>
     <? } else { ?>
-        <a href="/cms/restaurant/changeStatus?status=0">Activate</a>
+        <a href="/cms/restaurant/changeStatus?status=0&id=<?echo $restaurant->Restaurant_ID ?>">Activate</a>
     <? } ?>
 </form>
 

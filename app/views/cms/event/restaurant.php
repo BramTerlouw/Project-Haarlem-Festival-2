@@ -81,8 +81,12 @@ $uriEvent = $_GET['event'];
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <?php foreach ($restaurantlist as $restaurant) { ?>
-                <tr>
+            <?php foreach ($restaurantlist as $restaurant) { 
+                if ($restaurant->Status == '0') {?>
+                    <tr class="deactivate">
+                <? } else  { ?>
+                    <tr>
+                <? } ?>
                     <td></td>
                     <td><? echo $restaurant->Name?></td>
                     <td><? echo $restaurant->Adres?></td>

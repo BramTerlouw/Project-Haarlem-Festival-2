@@ -81,9 +81,17 @@ class RestaurantController {
 
 
     public function changeStatus() {
-        if (isset($_GET['status'])) {
+        if (isset($_GET['status']) && isset($_GET['id'])) {
             $status = $_GET['status'];
-            echo $status;
+            $id = $_GET['id'];
+            
+            if ($status == '0') {
+                $this->restaurantService->updateStatus('1', $id);
+            }
+            if ($status == '1') {
+                $this->restaurantService->updateStatus('0', $id);
+            }
+            header('Location: /cms/restaurant?id=' . $id);
         }
     }
     

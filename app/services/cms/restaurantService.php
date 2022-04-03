@@ -34,4 +34,9 @@ class RestaurantService {
     public function deleteOne($id) {
         $this->repository->deleteOne($id);
     }
+
+
+    public function updateStatus($status, $id) {
+        $this->repository->updateStatus($status, $id);
+    }
 }

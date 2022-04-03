@@ -15,7 +15,7 @@ class RestaurantRepository extends Repository
     // ## get all
     public function getAll(){
         try {
-            $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible, Adres, Price_Adults, Price_Children FROM Restaurant";
+            $sqlquery = "SELECT Restaurant_ID, Name, Type, Summary, Max_visitors, Wheelchair_accessible, Adres, Price_Adults, Price_Children, Sessions, Duration, Start_Time, Status FROM Restaurant";
             $stmt = $this->connection->prepare($sqlquery);
 
             $stmt->execute();
@@ -71,6 +71,17 @@ class RestaurantRepository extends Repository
         } catch (PDOException $e) {
             echo $e;
         }
+    }
+
+
+    public function updateStatus($status, $id) {
+        $sqlquery = "UPDATE Restaurant SET Status=:status WHERE Restaurant_ID=:id";
+        $stmt = $this->connection->prepare($sqlquery);
+
+        $stmt->bindParam(':status', $status);
+        $stmt->bindParam(':id', $id);
+
+        $stmt->execute();
     }
 
 

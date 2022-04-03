@@ -7,6 +7,7 @@ use Services\Cms\RestaurantService;
 use Services\Cms\EventService;
 
 use Models\Event_Item;
+use Models\Restaurant;
 
 class RestaurantController {
     private $restaurantService;
@@ -30,8 +31,68 @@ class RestaurantController {
         require __DIR__ . '/../../views/cms/restaurant/add.php';
     }
 
+    public function addRestaurant() {
+        if (isset($_POST['submit'])) {
+            $newRestaurant = new Restaurant();
+            $newRestaurant->Name = $_POST['inputRestaurantName'];
+            $newRestaurant->Type = $_POST['inputRestaurantType'];
+            $newRestaurant->Summary = $_POST['inputRestaurantDesc'];
+            $newRestaurant->Max_visitors = $_POST['inputRestaurantMax'];
+            $newRestaurant->Wheelchair_accessible = $_POST['inputRestaurantAccess'];
+            $newRestaurant->Price_Adults = $_POST['inputRestaurantPrice'];
+            $newRestaurant->Price_Children = $_POST['inputRestaurantPriceChild'];
+            $newRestaurant->Adres = $_POST['inputRestaurantAddress'];
+            $newRestaurant->sessions = $_POST['inputRestaurantSessions'];
+            $newRestaurant->duration = $_POST['inputRestaurantDuration'];
+            $newRestaurant->start_time = $_POST['inputRestaurantStart'];
+            
+            $this->restaurantService->insertOne($newRestaurant);
+        }
+    }
+
+    public function editRestaurant() {
+        if (isset($_POST['submit'])) {
+            $newRestaurant = new Restaurant();
+            $newRestaurant->Restaurant_ID = $_GET['id'];
+            $newRestaurant->Name = $_POST['inputRestaurantName'];
+            $newRestaurant->Type = $_POST['inputRestaurantType'];
+            $newRestaurant->Summary = $_POST['inputRestaurantDesc'];
+            $newRestaurant->Max_visitors = $_POST['inputRestaurantMax'];
+            $newRestaurant->Wheelchair_accessible = $_POST['inputRestaurantAccess'];
+            $newRestaurant->Price_Adults = $_POST['inputRestaurantPrice'];
+            $newRestaurant->Price_Children = $_POST['inputRestaurantPriceChild'];
+            $newRestaurant->Adres = $_POST['inputRestaurantAddress'];
+            $newRestaurant->sessions = $_POST['inputRestaurantSessions'];
+            $newRestaurant->duration = $_POST['inputRestaurantDuration'];
+            $newRestaurant->start_time = $_POST['inputRestaurantStart'];
+            
+            $this->restaurantService->updateOne($newRestaurant);
+        }
+    }
+
     public function delete() {
-        echo "deze moet je ff doen JELLE";
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            
+            $this->restaurantService->deleteOne($id);
+            header('Location: /cms/event?event=2');
+        }
+    }
+
+
+    public function changeStatus() {
+        if (isset($_GET['status']) && isset($_GET['id'])) {
+            $status = $_GET['status'];
+            $id = $_GET['id'];
+            
+            if ($status == '0') {
+                $this->restaurantService->updateStatus('1', $id);
+            }
+            if ($status == '1') {
+                $this->restaurantService->updateStatus('0', $id);
+            }
+            header('Location: /cms/restaurant?id=' . $id);
+        }
     }
     
 }

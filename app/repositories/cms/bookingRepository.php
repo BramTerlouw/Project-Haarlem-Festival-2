@@ -41,6 +41,34 @@ class BookingRepository extends Repository
 
     // ### UPDATE QUERIES ###
 
+    public function updateQr($booking_ID, $qrCodeId) {
+        try {
+            $sqlquery = "UPDATE Booking SET Qr_Code_ID=:qrCodeId WHERE Booking_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $booking_ID);
+            $stmt->bindParam(':qrCodeId', $qrCodeId);
+
+            $stmt->execute();
+            
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function updateIsScanned($qrCodeId) {
+        try {
+            $sqlquery = "UPDATE Booking SET Is_Scanned='1' WHERE Qr_Code_ID=:id";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':id', $qrCodeId);
+
+            $stmt->execute();
+            
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 
 
     // ### INSERT QUERIES ###

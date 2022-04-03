@@ -7,11 +7,11 @@ use Services\Cms\OrderService;
 use Services\Cms\EventService;
 use Services\Cms\EventItemService;
 use Services\Website\CulinaryService;
+
 use Knp\Snappy\Pdf;
 use Services\website\ReservationService;
 use Services\cms\BookingService;
 use Controllers\website\PaymentController;
-
 
 class OrderController {
     
@@ -139,9 +139,12 @@ class OrderController {
     // ## view an order
     public function view() {
         $eventNames = $this->eventService->getEventNames();
+
         $orderList = $this->orderService->getAll();
+
         $order_id = $_GET['order_id'];
         $orderData = $this->orderService->getOne($order_id);
+        
         require __DIR__ . '/../../views/cms/order/view.php';
     }
 }

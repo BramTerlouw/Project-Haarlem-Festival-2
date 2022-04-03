@@ -420,7 +420,7 @@
 /* ## Jazz */
 /* ## banner jazz */
 .Banner-jazz{
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("/images/banner/jazz-banner.jpg");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("/images/banner/1.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	
@@ -583,7 +583,7 @@
 /* ## culinary */
 /* ## banners culinary */
 .Banner-culinary {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("/images/banner/banner-culinary.png");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("/images/banner/2.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	

@@ -13,19 +13,7 @@ class DanceRepository extends Repository
 {
     public function getOneEvent($event) {
         try {
-            if ($event == "jazz")
-            {
-                $event = 1;
-            }
-            if ($event == "culinary")
-            {
-                $event = 2;
-            }
-            if ($event == "dance")
-            {
-                $event = 3;
-            }
-            $sqlquery = "SELECT Event_ID, Name, Description FROM Event WHERE Event_ID= :event" ;
+            $sqlquery = "SELECT Event_ID, Name, Description FROM Event WHERE Name= :event" ;
             $stmt = $this->connection->prepare($sqlquery);
 
             // bind params
@@ -40,6 +28,8 @@ class DanceRepository extends Repository
         }
     }
 
+    // get all events by date 
+    
     public function getEvents($event, $date) {
         try {
             if ($event == "jazz")
@@ -86,6 +76,8 @@ class DanceRepository extends Repository
         }
     }
 
+    // get all dates by event
+
     public function getDates($event) {
         try {
             if ($event == "jazz")
@@ -101,6 +93,7 @@ class DanceRepository extends Repository
                 $event = 3;
             }
             $sqlquery = "SELECT DISTINCT Date FROM Event_Item WHERE Event_ID = :event";
+            
             $stmt = $this->connection->prepare($sqlquery);
 
             // bind params
@@ -114,6 +107,9 @@ class DanceRepository extends Repository
             echo $e;
         }
     }
+
+
+    // get all artists by event
 
     public function getArtists($event) {
         try {
@@ -141,6 +137,8 @@ class DanceRepository extends Repository
         }
     }
 
+    // get all locations
+    
     public function getLocations() {
         try {
             $sqlquery = "SELECT Location_ID, Name, Address FROM Location ORDER BY Name";

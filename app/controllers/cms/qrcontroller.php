@@ -32,6 +32,8 @@ class QrController extends Controller
         $this->bookingService = new BookingService();
     }
 
+    // generate qr code
+
     function createQrCode()
     {
         $order_id = $_GET['order_id'];
@@ -40,13 +42,13 @@ class QrController extends Controller
         if (isset($_POST['send-ticket'])) {
 
             foreach ($bookingData as $booking) {
-                $qrCodeID= hash("md5", $booking["Booking_ID"]);
-                $this->bookingService->updateQr($booking["Booking_ID"], $qrCodeID);
+                $qrCodeID= hash("md5", $booking["Booking_ID"]); // hash booking id to prevent fraud
+                $this->bookingService->updateQr($booking["Booking_ID"], $qrCodeID); // add hashed id to db
 
                 $result = Builder::create()
                     ->writer(new PngWriter())
                     ->writerOptions([])
-                    ->data("/cms/booking/updateIsScanned?Qr_Code_ID=$qrCodeID")
+                    ->data("/cms/booking/updateIsScanned?Qr_Code_ID=$qrCodeID") // if scanned db will be updated
                     ->encoding(new Encoding('UTF-8'))
                     ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
                     ->size(300)
@@ -54,7 +56,7 @@ class QrController extends Controller
                     ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
                     ->build();
                     
-                $result->saveToFile("$booking[Booking_ID]-ticket.png");
+                $result->saveToFile("$booking[Booking_ID]-ticket.png"); // save qr code ticket
             }
         }
     }

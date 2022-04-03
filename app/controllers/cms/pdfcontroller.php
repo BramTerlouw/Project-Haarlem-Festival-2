@@ -24,6 +24,8 @@ class PdfController extends Controller
         $this->qrController = new QrController();
     }
 
+    // create invoice pdf
+
     public function createInvoice()
     {
         $order_id = $_GET['order_id'];
@@ -54,16 +56,19 @@ class PdfController extends Controller
                 $pdf->Cell(40, 10, "Payment due: $order[Payment_Due_Date]");
                 $pdf->Ln();
                 $pdf->Cell(40, 10, "Date: $date");
-                $pdf->Output('F',"$order_id-invoice.pdf");
+                $pdf->Output('F',"$order_id-invoice.pdf"); // save pdf
             }
         }
     }
+
+    // create ticket pdf
 
     public function createTicket()
     {
         $order_id = $_GET['order_id'];
         $bookingData = $this->bookingService->getOne($order_id);
         
+        // generate qr code first
         $this->qrController->createQrCode();
 
         if (isset($_POST['send-ticket'])) {
@@ -83,9 +88,9 @@ class PdfController extends Controller
                 $pdf->Ln();
                 $pdf->Cell(40, 10, "QR-Code: ");
                 $pdf->Ln();
-                $pdf->Image("$data[Booking_ID]-ticket.png",40,40,50);
+                $pdf->Image("$data[Booking_ID]-ticket.png",40,40,50); //add qr code to pdf
                 $pdf->Ln();
-                $pdf->Output('F',"$data[Booking_ID]-ticket.pdf");
+                $pdf->Output('F',"$data[Booking_ID]-ticket.pdf"); // save pdf 
             }
         }
     }

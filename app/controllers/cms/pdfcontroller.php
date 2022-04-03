@@ -5,6 +5,7 @@ namespace Controllers;
 namespace Controllers\Cms;
 
 use Controllers\Controller;
+use Controllers\Cms\QrController;
 use FPDF as GlobalFPDF;
 use Services\Cms\OrderService;
 use Services\Cms\BookingService;
@@ -14,10 +15,13 @@ define('EURO', chr(128));
 class PdfController extends Controller
 {
     private $orderService;
+    private $bookingService;
+    private $qrController;
     function __construct()
     {
         $this->orderService = new OrderService();
         $this->bookingService = new BookingService();
+        $this->qrController = new QrController();
     }
 
     public function createInvoice()
@@ -43,11 +47,9 @@ class PdfController extends Controller
                 $pdf->Ln();
                 $pdf->Cell(40, 10, "Email: $order[Email]");
                 $pdf->Ln();
-                $pdf->Cell(40, 10, "Subtotal: " . EURO . "$order[SubTotal]");
+                $pdf->Cell(40, 10, "Subtotal: " . EURO . "$order[Total_price]");
                 $pdf->Ln();
-                $pdf->Cell(40, 10, "Total: " . EURO . "$order[Total_price]");
-                $pdf->Ln();
-                $pdf->Cell(40, 10, "Total with added tax: " . EURO . $order["Total_price"] * 1.021);
+                $pdf->Cell(40, 10, "Total: " . EURO . "$order[Total_price]" * 1.21);
                 $pdf->Ln();
                 $pdf->Cell(40, 10, "Payment due: $order[Payment_Due_Date]");
                 $pdf->Ln();
@@ -61,6 +63,8 @@ class PdfController extends Controller
     {
         $order_id = $_GET['order_id'];
         $bookingData = $this->bookingService->getOne($order_id);
+        
+        $this->qrController->createQrCode();
 
         if (isset($_POST['send-ticket'])) {
 
@@ -79,7 +83,9 @@ class PdfController extends Controller
                 $pdf->Ln();
                 $pdf->Cell(40, 10, "QR-Code: ");
                 $pdf->Ln();
-                $pdf->Output('F',"$order_id-ticket.pdf");
+                $pdf->Image("$data[Booking_ID]-ticket.png",40,40,50);
+                $pdf->Ln();
+                $pdf->Output('F',"$data[Booking_ID]-ticket.pdf");
             }
         }
     }

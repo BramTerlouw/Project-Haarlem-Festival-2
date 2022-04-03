@@ -7,7 +7,6 @@ use Services\Cms\OrderService;
 use Services\Cms\EventService;
 use Services\Cms\EventItemService;
 use Services\Website\CulinaryService;
-use Knp\Snappy\Pdf;
 
 class OrderController {
     

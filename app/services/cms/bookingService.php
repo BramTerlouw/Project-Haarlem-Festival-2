@@ -17,4 +17,11 @@ class BookingService {
         return $this->repository->getOne($order_id);
     }
 
+    public function updateQr($order_id, $qrCodeId) {
+        return $this->repository->updateQr($order_id, $qrCodeId);
+    }
+
+    public function updateIsScanned($qrCodeId) {
+        return $this->repository->updateIsScanned($qrCodeId);
+    }
 }

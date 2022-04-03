@@ -4,65 +4,65 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
 ?>
 
 <h1>Add new restaurant</h1>
-<form>
+<form action="/cms/restaurant/addRestaurant" method="POST">
     <section class="restaurant-form">
 
         <div class="form-item">
-            <label for="inputActivityName">Name restaurant:</label>
-            <input type="text" name="inputActivityName" value="">
+            <label for="inputRestaurantName">Name restaurant:</label>
+            <input type="text" name="inputRestaurantName" value="" required>
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         <div class="form-item">
-            <label for="inputActivityName">Type:</label>
-            <input type="text" name="inputActivityName" value="">
+            <label for="inputRestaurantType">Type:</label>
+            <input type="text" name="inputRestaurantType" value="" required>
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         <div class="form-item">
-            <label for="inputActivityName">Accessibility:</label>
-            <input type="text" name="inputActivityName" value="">
+            <label for="inputRestaurantAccess">Accessibility:</label>
+            <input type="text" name="inputRestaurantAccess" value="" required>
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         <div class="form-item">
-            <label for="inputActivityName">Address:</label>
-            <input type="text" name="inputActivityName" value="">
+            <label for="inputRestaurantAddress">Address:</label>
+            <input type="text" name="inputRestaurantAddress" value="" required>
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         <div class="form-item">
-            <label for="inputActivityName">Seats:</label>
-            <input type="text" name="inputActivityName" value="">
+            <label for="inputRestaurantMax">Seats:</label>
+            <input type="number" name="inputRestaurantMax" value="" required>
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         <div class="form-item">
-            <label for="inputActivityName">Price:</label>
-            <input type="text" name="inputActivityName" value="">
+            <label for="inputRestaurantPrice">Price:</label>
+            <input type="number" name="inputRestaurantPrice" value="" required>
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         <div class="form-item">
-            <label for="inputActivityName">Price (-12):</label>
-            <input type="text" name="inputActivityName" value="">
+            <label for="inputRestaurantPriceChild">Price (-12):</label>
+            <input type="number" name="inputRestaurantPriceChild" value="" required>
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         <div class="form-item">
-            <label for="inputActivityName">Sessions:</label>
-            <input type="text" name="inputActivityName" value="">
+            <label for="inputRestaurantSessions">Sessions:</label>
+            <input type="number" name="inputRestaurantSessions" value="" required>
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         <div class="form-item">
-            <label for="inputActivityName">Start:</label>
-            <input type="text" name="inputActivityName" value="">
+            <label for="inputRestaurantStart">Start:</label>
+            <input type="time" name="inputRestaurantStart" value="" required>
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         <div class="form-item">
-            <label for="inputActivityName">Duration:</label>
-            <input type="text" name="inputActivityName" value="">
+            <label for="inputRestaurantDuration">Duration:</label>
+            <input type="time" name="inputRestaurantDuration" value="" required>
             <img src="/icons/cms-edit-form.png" alt="edit button">
         </div>
         <div class="form-item">
-            <label for="inputActivityDesc">Description:</label>
-            <textarea class="test" name="inputActivityDesc" rows="6"></textarea>
+            <label for="inputRestaurantDesc">Description:</label>
+            <textarea class="test" name="inputRestaurantDesc" rows="6" required></textarea>
         </div>
-
     </section>
+    <button name="submit" type="submit">Add restaurant</button>
 </form>
 
 </main> <!-- close main tag from cms nav -->

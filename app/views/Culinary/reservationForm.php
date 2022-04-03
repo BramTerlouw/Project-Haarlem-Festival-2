@@ -45,12 +45,28 @@ require __DIR__ . '/../components/navigation/nav-website.php';
             min="<? echo $timespan[0] ?>" max="<? echo $timespan[1] ?>" required>
         </div>
 
-        <div class="res-form-item">
+        <!-- <div class="res-form-item">
             <label for="Time">Choose a Time:</label>
             <input type="time" name="ActivityTime" value="<? if (isset($reservation)) {
                 $datetime = explode(',', $reservation['dateTime']);
                 echo $datetime[1];
             } ?>" required>
+        </div> -->
+
+        <div class="res-form-item">
+            <label for="ActivityTime">Time:</label>
+            <select name="ActivityTime">
+                <? 
+                $options = 
+                array(date('H:i', strtotime($restaurant->Start_Time)), date('H:i', strtotime($restaurant->Start_Time) + strtotime($restaurant->Duration)), date('H:i', strtotime($restaurant->Start_Time) + strtotime($restaurant->Duration) + strtotime($restaurant->Duration)));
+                foreach ($options as $option) {
+                    ?> <option value="<? echo $option ?>"<? if (isset($reservation)) {
+                        $datetime = explode(',', $reservation['dateTime']);
+                        if ($option == $datetime[1]) echo "selected";
+                    } ?>><? echo $option ?></option><?
+                }
+                ?>
+            </select>
         </div>
 
         <div class="res-form-item">

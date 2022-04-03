@@ -81,8 +81,12 @@ $uriEvent = $_GET['event'];
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <?php foreach ($restaurantlist as $restaurant) { ?>
-                <tr>
+            <?php foreach ($restaurantlist as $restaurant) { 
+                if ($restaurant->Status == '0') {?>
+                    <tr class="deactivate">
+                <? } else  { ?>
+                    <tr>
+                <? } ?>
                     <td></td>
                     <td><? echo $restaurant->Name?></td>
                     <td><? echo $restaurant->Adres?></td>
@@ -94,7 +98,7 @@ $uriEvent = $_GET['event'];
                         <img src="/icons/cms-table-edit.png" alt=""></a>
                     </td>
                     <td>
-                        <a href="/cms/restaurant/delete">
+                        <a href="/cms/restaurant/delete?id=<? echo $restaurant->Restaurant_ID ?>">
                         <img src="/icons/delete-item.png" alt=""></a>
                     </td>
                 </tr>

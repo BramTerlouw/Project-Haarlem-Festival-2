@@ -629,6 +629,11 @@ canvas {
     overflow: auto;
 }
 
+.event-item-table .deactivate {
+    background-color: lightgrey;
+    color: grey;
+}
+
 .event-item-table tr:nth-child(even) {
     background-color: var(--table-accent);
   }

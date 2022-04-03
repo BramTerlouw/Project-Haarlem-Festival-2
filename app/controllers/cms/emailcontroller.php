@@ -80,18 +80,23 @@ class EmailController extends Controller
             }
         }
     }
+
+    // Send invoice
+
     public function sendInvoice()
     {
+
+        // create invoice first
         $this->pdfController->createInvoice();
         
         if (isset($_POST['send-invoice'])) {
 
             $order_id = $_GET['order_id'];
             $orderData = $this->orderService->getOne($order_id);
+
             foreach ($orderData as $order) {
+
                 //Create an instance; passing `true` enables exceptions
-
-
                 $mail = new PHPMailer(true);
                 try {
                     //Server settings
@@ -120,7 +125,11 @@ class EmailController extends Controller
                         <p>In the appendix you can find the invoice.</p><br>';
 
                     if ($mail->send()) {
+
+                        // delete the PDF file after it has been sent
                         unlink("$order[Order_ID]-invoice.pdf");}
+
+                        // return to view
                         header('Location: /cms/order/view?order_id=' . $order_id);
 
                 } catch (Exception $e) {
@@ -130,8 +139,13 @@ class EmailController extends Controller
         }
     }
 
+
+    // Send tickets
+
     public function sendTicket()
     {
+
+        // create pdf first
         $this->pdfController->createTicket();
         
         if (isset($_POST['send-ticket'])) {
@@ -174,8 +188,13 @@ class EmailController extends Controller
                         <p>In the appendix you can find your ticket(s).</p><br>';
 
                     if ($mail->send()) {
+
+                        // delete pdf/png after it has been sent
+                        foreach ($bookingData as $booking) {
                         unlink("$booking[Booking_ID]-ticket.pdf");
-                        unlink("$booking[Booking_ID]-ticket.png");}
+                        unlink("$booking[Booking_ID]-ticket.png");}}
+
+                        // return to view
                         header('Location: /cms/order/view?order_id=' . $order_id);
 
                 } catch (Exception $e) {

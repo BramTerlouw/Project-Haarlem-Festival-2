@@ -21,6 +21,7 @@ class BookingController {
     // ## index for bookings
     public function index() {
         $eventNames = $this->eventService->getEventNames();
+
         $Qr_Code_ID = $_GET['Qr_Code_ID'];
         $this->bookingService->updateIsScanned($Qr_Code_ID);
         require __DIR__ . '/../../views/cms/order/index.php';
@@ -29,8 +30,10 @@ class BookingController {
     // ## view an order
     public function view() {
         $eventNames = $this->eventService->getEventNames();
+
         $order_id = $_GET['order_id'];
         $bookingData = $this->bookingService->getOne($order_id);
+        
         require __DIR__ . '/../../views/cms/order/view.php';
     }
     

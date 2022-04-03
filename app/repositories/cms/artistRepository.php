@@ -12,6 +12,7 @@ class ArtistRepository extends Repository
 {
 
     // ### GET QUERIES ###
+    
     // ## get all artists
     public function getAll() {
         try {

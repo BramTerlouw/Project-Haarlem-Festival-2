@@ -109,9 +109,12 @@ class OrderController {
     // ## view an order
     public function view() {
         $eventNames = $this->eventService->getEventNames();
+
         $orderList = $this->orderService->getAll();
+
         $order_id = $_GET['order_id'];
         $orderData = $this->orderService->getOne($order_id);
+        
         require __DIR__ . '/../../views/cms/order/view.php';
     }
 

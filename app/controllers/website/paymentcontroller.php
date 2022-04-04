@@ -1,7 +1,7 @@
 <?php
 namespace Controllers\Website;
 use Controllers\Controller;
-use Services\Website\BookingService;
+use Services\Cms\BookingService;
 use Services\Website\ReservationService;
 use Mollie\Api\Exceptions\ApiException;
 use Mollie\Api\MollieApiClient;

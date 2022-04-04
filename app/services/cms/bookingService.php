@@ -2,7 +2,7 @@
 
 namespace Services\Cms;
 
-use Repositories\website\BookingRepository;
+use Repositories\Cms\BookingRepository;
 
 class BookingService {
     private $repository;

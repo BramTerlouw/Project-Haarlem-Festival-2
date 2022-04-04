@@ -37,13 +37,13 @@ class PaymentController extends Controller {
     public function insertOrder(){
         $this->orderservice->inserOne();
     }
-    public function insertBooking($order){
-        $this->bookingservice->insertBooking();
-    }
+    // public function insertBooking($order){
+    //     $this->bookingservice->insertBooking();
+    // }
 
-    public function insertReservation($order){
-        $this->reservationservice->insertReservation();
-    }
+    // public function insertReservation($order){
+    //     $this->reservationservice->insertReservation();
+    // }
 
     public function UpdatePaymentStatus($id){
         $this->orderservice->updatePaymentStatus($id);

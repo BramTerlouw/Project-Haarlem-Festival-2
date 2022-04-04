@@ -67,7 +67,7 @@ use Models\Role;
     <button name="submit" type="submit">Edit restaurant</button>
     <? if ($_SESSION['role'] == Role::Admin && $restaurant->Status == true) { ?>
         <a href="/cms/restaurant/changeStatus?status=1&id=<?echo $restaurant->Restaurant_ID ?>">Deactivate</a>
-    <? } else { ?>
+    <? } elseif ($_SESSION['role'] == Role::Admin && $restaurant->Status == false) { ?>
         <a href="/cms/restaurant/changeStatus?status=0&id=<?echo $restaurant->Restaurant_ID ?>">Activate</a>
     <? } ?>
 </form>

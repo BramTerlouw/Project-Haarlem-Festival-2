@@ -85,15 +85,6 @@ class OrderController {
             $this->reservationService->insertReservation($reservation, $id);
         }
     }
-    //method for deleting a order
-    public function deleteOne(){
-        $this->orderService->deleteOne();
-    }
-    //method for updating an order
-    public function updateOne(){
-        $this->orderService->updateOne();
-    }
-
 
     // get all bookings from session and storing them in a array
     private function getCartBookings() {

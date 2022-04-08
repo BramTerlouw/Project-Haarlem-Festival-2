@@ -9,7 +9,7 @@ require __DIR__ . '/../../components/head.php';
     <form class="email-verification-container" action="/cms/email/requestReset" method="POST">
 
         <label class="lblEmailForgotten" for="inputMail">Enter email for verification</label>
-        <input class="inputEmailForgotten" type="text" name="inputMail" value="bramterlouw12@gmail.com" required>
+        <input class="inputEmailForgotten" type="text" name="inputMail" value="" placeholder="Enter email..." required>
         <button class="buttonEmailForgotten">Continue</button>
 
     </form>

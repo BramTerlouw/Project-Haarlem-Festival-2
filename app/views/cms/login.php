@@ -9,11 +9,11 @@ require __DIR__ . '/../components/head.php';
     <form class="login-form" action="/cms/auth/validateAttempt" method="post">
         <div class="login-form-item">
             <label for="">Username</label>
-            <input type="text" name="inputUsername" value="Bram_Vol" required>
+            <input type="text" name="inputUsername" value="" placeholder="Enter username..." required>
         </div>
         <div class="login-form-item">
             <label for="">Password</label>
-            <input type="password" name="inputPassword" value="wachtwoord" required>
+            <input type="password" name="inputPassword" value="" placeholder="Enter password..." required>
         </div>
         <div class="password-forgotten">
             <a href="/cms/auth/emailVerification">Password forgotten?</a>

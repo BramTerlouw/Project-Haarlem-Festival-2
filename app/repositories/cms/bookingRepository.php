@@ -21,7 +21,6 @@ class BookingRepository extends Repository
             $sqlquery = "SELECT 
             B.Booking_ID AS Booking_ID, 
             E.Name AS Event_Item, 
-            B.Type AS Type, 
             B.Order_ID AS Order_ID, 
             B.Qr_Code_ID AS Qr_Code_ID, 
             B.Is_Scanned AS Is_Scanned

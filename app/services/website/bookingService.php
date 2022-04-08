@@ -10,6 +10,9 @@ class BookingService {
     function __construct() {
         $this->repository = new BookingRepository();
     }
+
+
+    // ## insert booking
     function InsertBooking(){
         $this->repository = new BookingRepository();
         return $repository->insertBooking();

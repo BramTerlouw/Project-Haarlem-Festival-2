@@ -17,9 +17,14 @@ class PaymentController extends Controller {
         $this->reservationservice = new ReservationService();
     }
 
+
+    // ## index function for payment
     public function index() {
         require __DIR__ . '/../../views/payment/index.php';
     }
+
+
+    // ## payment method views
     public function ideal() {
         require __DIR__ . '/../../views/payment/ideal.php';
     }
@@ -29,11 +34,16 @@ class PaymentController extends Controller {
     public function creditcard() {
         require __DIR__ . '/../../views/payment/creditcard.php';
     }
+
+
+    // ## confirmation view
     public function confirmation(){
         require __DIR__ . '/../../views/payment/confirmation.php';
         $this->ProcessPayment();
     }
 
+
+    // ## insert order
     public function insertOrder(){
         $this->orderservice->inserOne();
     }
@@ -45,10 +55,14 @@ class PaymentController extends Controller {
     //     $this->reservationservice->insertReservation();
     // }
 
+
+    // ## update payment status
     public function UpdatePaymentStatus($id){
         $this->orderservice->updatePaymentStatus($id);
     }
-    //method to initialze mollie and creating the payment with the corrrect price
+
+
+    // ## method to initialze mollie and creating the payment with the corrrect price
     public function InitializeMollie($Pricetotal, $id){
         $mollie = new \Mollie\Api\MollieApiClient();
         $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
@@ -72,8 +86,10 @@ class PaymentController extends Controller {
         }
       
     }
-    //Method for checking of the payment is paid
-    //Calling the method for updating the payment status to paid
+
+
+    // ## Method for checking of the payment is paid
+    // ## Calling the method for updating the payment status to paid
     public function ProcessPayment(){
         $mollie = new \Mollie\Api\MollieApiClient();
         $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");

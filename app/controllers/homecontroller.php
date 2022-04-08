@@ -15,19 +15,27 @@ class HomeController extends Controller {
         $this->culinaryService = new CulinaryService();
     }
 
+
+    // ## index function of homepage
     public function index() {
         require __DIR__ . '/../views/home/index.php';
     }
 
+
+    // ## fetch slider data
     public function fetchSliderData() {
         $elements = array_merge($this->getSliderRestaurants(), $this->getSliderDance());
         echo json_encode($elements);
     }
 
+
+    // ## get slider restaurants
     public function getSliderRestaurants() {
         return $this->culinaryService->getManyFromArr();
     }
 
+
+    // ## get slider dance event items
     public function getSliderDance() {
         return $this->artistService->getManyFromArr();
     }

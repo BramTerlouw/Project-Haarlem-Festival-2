@@ -13,12 +13,16 @@ class CulinaryController extends Controller {
         $this->culinaryService = new culinaryservice();
     }
 
+
+    // ## index function of culinary page
     public function index() {
         $event = $_GET['event'];
         $types = $this->culinaryService->getTypes();
         require __DIR__ . '/../../views/' . $event . '/index.php';
     }
 
+
+    // ## function to get restaurants, by type if url param is set
     public function restaurants() {
         $types = $this->culinaryService->getTypes();
         
@@ -30,6 +34,9 @@ class CulinaryController extends Controller {
         require __DIR__ . '/../../views/Culinary/Restaurants.php';
 
     }
+
+
+    // ## load reservation form
     public function reservationForm() {
         $timespan = $this->culinaryService->getTimespan(2);
         $restaurant = $this->culinaryService->getOne($_GET['id']);
@@ -42,10 +49,15 @@ class CulinaryController extends Controller {
         require __DIR__ . '/../../views/Culinary/reservationForm.php';
     }
 
+
+    // ## fetch slider data
     public function fetchSliderdata(){
         $restaurantlist = $this->culinaryService->getAll();
         echo json_encode($restaurantlist);
     }
+
+
+    // ## insert reservation
     public function insertReservation() {
 
         // check for POST var

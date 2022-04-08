@@ -12,6 +12,8 @@ class DanceController extends Controller {
         $this->eventService = new DanceService();
     }
 
+
+    // ## index function for dance
     public function index() {
         $event = $_GET['event'];
         $dateList = $this->eventService->getDates($event);
@@ -24,7 +26,6 @@ class DanceController extends Controller {
         else { 
             $eventItemList = $this->eventService->getEvents($event, $_GET['date']); 
         }
-
 
         $artistList = $this->eventService->getArtists($event);
         $locationList = $this->eventService->getLocations();

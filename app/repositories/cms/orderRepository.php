@@ -44,24 +44,6 @@ class OrderRepository extends Repository
         }
     }
 
-    // ### UPDATE QUERIES ###
-    public	function updateOne(){
-        try {
-            $sqlquery = "UPDATE Order SET Total_Price=:Total_Price, SubTotal=:SubTotal WHERE Order_ID=:id";
-            $stmt = $this->connection->prepare($sqlquery);
-
-            $stmt->bindParam(':Total_Price', $Total_Price);
-            $stmt->bindParam(':SubTotal', $SubTotal);
-            $stmt->bindParam(':id', $id);
-
-            $stmt->execute();
-            
-        } catch (PDOException $e) {
-            echo $e;
-        }
-    }
-
-
     // ### INSERT QUERIES ###
     public function insertOne($Fullname, $Adress, $Email, $Phonenumber, $subTotal, $Pricetotal){
         $PayementDate = date("Y/m/d");
@@ -91,20 +73,6 @@ class OrderRepository extends Repository
         }
     }
 
-
-    // ### DELETE QUERIES ###
-    public function deleteOne(){
-        try {
-            $sqlquery = "DELETE FROM Order WHERE Order_ID=:id";
-            $stmt = $this->connection->prepare($sqlquery);
-
-            $stmt->bindParam(':id', $id);
-
-            $stmt->execute();
-        } catch (PDOException $e) {
-            echo $e;
-        }
-    }
     //method for updating the status of the payment
     public function updatePaymentStatus($id){
         try {

@@ -56,7 +56,7 @@ class EventController extends Controller{
     }
 
 
-
+    // ## index for reservations
     public function reservationIndex($event)
     {
         $eventNames = $this->eventService->getEventNames();

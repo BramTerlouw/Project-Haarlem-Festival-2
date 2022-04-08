@@ -41,6 +41,8 @@ class OrderController {
         $orderList = $this->orderService->getAll();
         require __DIR__ . '/../../views/cms/order/index.php';
     }
+
+    
     //method for inserting the order and the booking and reservation in the cart
     //Then it will initialize the payment trough mollie
     public function insertOne(){

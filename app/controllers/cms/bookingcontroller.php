@@ -36,6 +36,5 @@ class BookingController {
         
         require __DIR__ . '/../../views/cms/order/view.php';
     }
-    
 }
 ?>

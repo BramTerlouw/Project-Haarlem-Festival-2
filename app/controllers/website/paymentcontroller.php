@@ -84,7 +84,7 @@ class PaymentController extends Controller {
             
             if ($payment->isPaid()) {
                 //updaten van de payment status
-                UpdatePaymentStatus($id);
+                //UpdatePaymentStatus($id);
                 
             } else {
                 //return $this->json(["Error" => "Some error Occurred!"]);

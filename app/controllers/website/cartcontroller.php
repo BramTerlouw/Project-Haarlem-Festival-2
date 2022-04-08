@@ -16,6 +16,8 @@ class CartController {
         $this->culinaryService = new CulinaryService();
     }
     
+
+    // index function of cart
     public function index() {
 
         if (!isset($_SESSION['reservations']))

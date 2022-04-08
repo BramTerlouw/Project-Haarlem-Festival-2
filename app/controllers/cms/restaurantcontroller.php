@@ -19,6 +19,8 @@ class RestaurantController {
         $this->eventService = new EventService();
     }
 
+
+    // ## index for restaurant overview
     public function index() {
         $eventNames = $this->eventService->getEventNames();
         $restaurant = $this->restaurantService->getOne($_GET['id']);
@@ -26,11 +28,14 @@ class RestaurantController {
     }
 
 
+    // ## load add restaurant view
     public function add() {
         $eventNames = $this->eventService->getEventNames();
         require __DIR__ . '/../../views/cms/restaurant/add.php';
     }
 
+
+    // ## add restaurant
     public function addRestaurant() {
         if (isset($_POST['submit'])) {
             $newRestaurant = new Restaurant();
@@ -50,6 +55,8 @@ class RestaurantController {
         }
     }
 
+
+    // ## edit restaurant
     public function editRestaurant() {
         if (isset($_POST['submit'])) {
             $newRestaurant = new Restaurant();
@@ -70,6 +77,8 @@ class RestaurantController {
         }
     }
 
+
+    // ## delete restaurant
     public function delete() {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -80,6 +89,7 @@ class RestaurantController {
     }
 
 
+    // ## change status of restaurant
     public function changeStatus() {
         if (isset($_GET['status']) && isset($_GET['id'])) {
             $status = $_GET['status'];
@@ -94,6 +104,5 @@ class RestaurantController {
             header('Location: /cms/restaurant?id=' . $id);
         }
     }
-    
 }
 ?>

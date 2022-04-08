@@ -1,7 +1,6 @@
 <?php
 
 namespace Controllers;
-
 namespace Controllers\Cms;
 
 use Controllers\Controller;
@@ -62,7 +61,6 @@ class PdfController extends Controller
     }
 
     // create ticket pdf
-
     public function createTicket()
     {
         $order_id = $_GET['order_id'];

@@ -33,7 +33,6 @@ class QrController extends Controller
     }
 
     // generate qr code
-
     function createQrCode()
     {
         $order_id = $_GET['order_id'];

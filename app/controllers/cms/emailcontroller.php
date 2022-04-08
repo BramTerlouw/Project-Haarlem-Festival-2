@@ -82,7 +82,6 @@ class EmailController extends Controller
     }
 
     // Send invoice
-
     public function sendInvoice()
     {
 
@@ -141,7 +140,6 @@ class EmailController extends Controller
 
 
     // Send tickets
-
     public function sendTicket()
     {
 

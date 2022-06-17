@@ -34,6 +34,11 @@ require __DIR__ . '/../../components/navigation/nav-cms.php';
                 <textarea name="inputArtistDescription" rows="4" required></textarea>
                 <label for="inputArtistType">Type: </label>
                 <input type="text" name="inputArtistType" autocomplete="off" value=''required>
+                
+                <form action="cms/artist/uploadImage" method="post" enctype="multipart/form-data">
+                    <input type="file" name="
+                </form>
+
                 <button name="add" class="artist-cms-button" type="add">Add</button>
             </form>
     </div>

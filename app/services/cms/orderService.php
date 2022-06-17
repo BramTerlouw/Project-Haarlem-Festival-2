@@ -24,8 +24,8 @@ class OrderService {
         return $this->repository->getOne($order_id);
     }
 
-    public function updatePaymentStatus(){
-        return $this->repository->updatePaymentStatus();
+    public function updatePaymentStatus($id){
+        return $this->repository->updatePaymentStatus($id);
     }
 
 }

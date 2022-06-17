@@ -51,7 +51,7 @@ class PdfController extends Controller
                 $pdf->Ln();
                 $pdf->Cell(40, 10, "Subtotal: " . EURO . "$order[Total_price]");
                 $pdf->Ln();
-                $pdf->Cell(40, 10, "Total: " . EURO . "$order[Total_price]" * 1.21);
+                $pdf->Cell(40, 10, "Total: $order[Total_price] x 21% = " . EURO . "$order[Total_price]" * 1.21);
                 $pdf->Ln();
                 $pdf->Cell(40, 10, "Payment due: $order[Payment_Due_Date]");
                 $pdf->Ln();

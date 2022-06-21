@@ -47,13 +47,7 @@ class PaymentController extends Controller {
     public function insertOrder(){
         $this->orderservice->inserOne();
     }
-    // public function insertBooking($order){
-    //     $this->bookingservice->insertBooking();
-    // }
-
-    // public function insertReservation($order){
-    //     $this->reservationservice->insertReservation();
-    // }
+   
 
 
     // ## update payment status
@@ -64,8 +58,10 @@ class PaymentController extends Controller {
 
     // ## method to initialze mollie and creating the payment with the corrrect price
     public function InitializeMollie($Pricetotal, $id){
+
         $mollie = new \Mollie\Api\MollieApiClient();
         $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
+
         try {
             $payment = $mollie->payments->create([
                   "amount" => [

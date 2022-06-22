@@ -69,8 +69,8 @@ class PaymentController extends Controller {
                         "value" => number_format((float)$Pricetotal, 2, '.', '') 
                   ],
                   "description" => "Order #{$id}",
-                  "redirectUrl" => " http://f9d5-213-127-46-47.ngrok.io/hf/payment/confirmation",
-                  "webhookUrl" => "http://f9d5-213-127-46-47.ngrok.io/hf/payment/ProcessPayment",
+                  "redirectUrl" => " http://50e3-213-10-3-48.ngrok.io/hf/payment/confirmation",
+                  "webhookUrl" => "http://50e3-213-10-3-48.ngrok.io/hf/payment/ProcessPayment",
                   "metadata" => [
                     "order_id" => $id,
                 ],

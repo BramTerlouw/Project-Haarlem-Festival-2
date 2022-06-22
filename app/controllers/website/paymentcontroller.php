@@ -89,9 +89,10 @@ class PaymentController extends Controller {
     public function ProcessPayment(){
         $mollie = new \Mollie\Api\MollieApiClient();
         $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
+        $mollie_payment_ID = $_POST["id"];
         
         try {
-            $payment = $mollie->payments->get($_POST["id"]);
+            $payment = $mollie->payments->get($mollie_payment_ID);
             $id = $payment->metadata->order_id;
             
             if ($payment->isPaid()) {

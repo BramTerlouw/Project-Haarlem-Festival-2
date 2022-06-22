@@ -92,12 +92,13 @@ class PaymentController extends Controller {
         $mollie_payment_ID = $_POST["id"];
         
         try {
-            $payment = $mollie->payments->get($mollie_payment_ID);
+            $payment = $mollie->payments->get($payment->id);
             $id = $payment->metadata->order_id;
             
             if ($payment->isPaid()) {
                 //updaten van de payment status
                 //UpdatePaymentStatus($id);
+                echo "Payment recieved.";
                 
             } else {
                 //return $this->json(["Error" => "Some error Occurred!"]);

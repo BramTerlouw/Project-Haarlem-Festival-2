@@ -49,7 +49,7 @@ foreach($eventItemList as $event){?>
     <td class = "td-item-tickets-dance"><?php echo $event["Location"] ?></td>
     <td class = "td-item-tickets-dance">€<?php echo $event["Ticket_Price"] ?></td>
     <td class = "td-item-tickets-dance">
-    <a href="/hf/cart/addTicketToCart?event=<? echo $_GET['event'] ?>&id=<? echo $event['EventItem_ID']?>">
+    <a href="/hf/cart/addTicketToCart?event=<? echo $_GET['event'] ?>&id=<? echo $event['EventItem_ID']?>"  >
                 <span class="fa fa-shopping-cart"></span>
             </a>
             </td>
@@ -87,7 +87,14 @@ foreach($locationList as $location){?>
 </div>
 </div>
 </div>
+ <script>
+    function myFunction(value) {
+    var popup = document.getElementById("myPopup");
+    popup.innerText = value;
+    popup.classList.toggle("show");
+    }
 
+ </script>
 
 <?php
 require __DIR__ . '/../components/footer.php';

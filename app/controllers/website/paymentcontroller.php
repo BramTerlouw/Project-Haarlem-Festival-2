@@ -5,16 +5,19 @@ use Services\Cms\BookingService;
 use Services\Website\ReservationService;
 use Mollie\Api\Exceptions\ApiException;
 use Mollie\Api\MollieApiClient;
+use Services\Cms\OrderService; 
 
 class PaymentController extends Controller {
 
     private $bookingservice;
     private $reservationservice;
+    private $orderservice;
     
     function __construct()
     {
         $this->bookingservice = new Bookingservice();
         $this->reservationservice = new ReservationService();
+        $this->orderservice = new OrderService();
     }
 
 
@@ -48,12 +51,19 @@ class PaymentController extends Controller {
         $this->orderservice->inserOne();
     }
    
-
-
     // ## update payment status
     public function UpdatePaymentStatus($id){
         $this->orderservice->updatePaymentStatus($id);
     }
+
+    public function UpdateOrderUuid($id, $uuid){
+        $this->orderservice->UpdateOrderUuid($id, $uuid);
+    }
+
+    public function GetOrderByUuid($uuid){
+        $this->orderservice->GetOrderByUuid($uuid);
+    }
+
 
 
     // ## method to initialze mollie and creating the payment with the corrrect price
@@ -61,26 +71,31 @@ class PaymentController extends Controller {
 
         $mollie = new \Mollie\Api\MollieApiClient();
         $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
-
+       //var_dump($_SERVER["HTTP_ORIGIN"] . "/hf/payment/confirmation");
+       //var_dump($_SERVER["HTTP_ORIGIN"]);
         try {
+            
             $payment = $mollie->payments->create([
-                  "amount" => [
-                        "currency" => "EUR",
-                        "value" => number_format((float)$Pricetotal, 2, '.', '') 
-                  ],
-                  "description" => "Order #{$id}",
-                  "redirectUrl" => " http://50e3-213-10-3-48.ngrok.io/hf/payment/confirmation",
-                  "webhookUrl" => "http://50e3-213-10-3-48.ngrok.io/hf/payment/ProcessPayment",
-                  "metadata" => [
+                "amount" => [
+                    "currency" => "EUR",
+                    "value" => number_format((float)$Pricetotal, 2, '.', '')
+                ],
+                "description" => "Order #{$id}",
+                "redirectUrl" => $_SERVER["HTTP_ORIGIN"] . "/hf/payment/confirmation",
+                "webhookUrl" => $_SERVER["HTTP_ORIGIN"] . "/hf/payment/ProcessPayment",
+                "metadata" => [
                     "order_id" => $id,
                 ],
             ]);
     
+            $this->UpdateOrderUuid($id, $payment->id);
+            
             header("Location: " . $payment->getCheckoutUrl(), true, 303);
+
         } catch (\Mollie\Api\Exceptions\ApiException $e) {
             echo "API call failed: " . htmlspecialchars($e->getMessage());
         }
-      
+    
     }
 
 
@@ -89,23 +104,26 @@ class PaymentController extends Controller {
     public function ProcessPayment(){
         $mollie = new \Mollie\Api\MollieApiClient();
         $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
-        $mollie_payment_ID = $_POST["id"];
-        
+        //$mollie_payment_ID = $_POST["id"];
+        file_put_contents(dirname(__DIR__, 2) . "/mollielogs.txt", $_POST["id"], FILE_APPEND);
+    
         try {
-            $payment = $mollie->payments->get($payment->id);
-            $id = $payment->metadata->order_id;
+            $payment = $mollie->payments->get($_POST["id"]);
+            
             
             if ($payment->isPaid()) {
-                //updaten van de payment status
-                //UpdatePaymentStatus($id);
-                echo "Payment recieved.";
                 
-            } else {
-                //return $this->json(["Error" => "Some error Occurred!"]);
-            } 
+                $foundOrder = $this->GetOrderByUuid($_POST["id"]);
+                file_put_contents(dirname(__DIR__, 2) . "/mollielogs.txt", $foundOrder, FILE_APPEND);
+                
+
+                $this->UpdatePaymentStatus($foundOrder["Order_ID"]);
+            }
+
             
         } catch (\Mollie\Api\Exceptions\ApiException $e) {
-            echo "API call failed: " . htmlspecialchars($e->getMessage());
+            // echo "API call failed: " . htmlspecialchars($e->getMessage());
+            //file_put_contents(dirname(__DIR__, 2) . "/mollielogs.txt", $e->getMessage(), FILE_APPEND);
         }
     }
 }

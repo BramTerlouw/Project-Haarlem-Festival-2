@@ -88,4 +88,37 @@ class OrderRepository extends Repository
             echo $e;
         }
     }
+    
+    public function updateOrderUuid($id, $Uuid){
+        try {
+            $sqlquery = "UPDATE `Order` SET uuid= :Uuid WHERE Order_ID= :id";
+
+            $stmt = $this->connection->prepare($sqlquery);
+            
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':Uuid', $Uuid);
+            
+            $stmt->execute();
+            
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getOneOrderByUuid($Uuid)
+    {
+        try {
+            $sqlquery = "SELECT Order_ID FROM `Order` WHERE uuid = :uuid";
+            $stmt = $this->connection->prepare($sqlquery);
+
+            $stmt->bindParam(':uuid', $Uuid);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+   
 }

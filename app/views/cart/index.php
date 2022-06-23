@@ -15,8 +15,10 @@ require __DIR__ . '/../components/navigation/nav-website.php';
                     <th>Location</th>
                     <th>Date</th>
                     <th>Time</th>
-                    <th>Price</th>
+                    <th>Price per ticket</th>
                     <th>Amount</th>
+                    <th>price</th>
+                    <th>price with btw</th>
                 </tr>
             </thead>
             <tbody class="cart-tbody">
@@ -31,6 +33,7 @@ require __DIR__ . '/../components/navigation/nav-website.php';
                     <td>€ <? echo $booking['item']->Ticket_Price ?> X</td>
                     <td><input type="number" onchange="setBookingAmount(this.value, this.name)" name="<? echo $booking['item']->EventItem_ID ?>" id="" value="<? echo $booking['amount'] ?>"></td>
                     <td>€ <? echo $booking['item']->Ticket_Price * $booking['amount'] ?></td>
+                    <td>€ <? echo $booking['item']->Ticket_Price * $booking['amount'] * 1.21 ?></td>
                     </tr>
                 <?}?>
 
@@ -51,6 +54,10 @@ require __DIR__ . '/../components/navigation/nav-website.php';
                         <? echo (($reservation['restaurant']->Price_Adults * $reservation['amountAdult']) + 
                         ($reservation['restaurant']->Price_Children * $reservation['amountChild']) + 10) ?>
                     </td>
+                    <td>€ 
+                        <? echo (($reservation['restaurant']->Price_Adults * $reservation['amountAdult']) + 
+                        ($reservation['restaurant']->Price_Children * $reservation['amountChild']) + 10 * 1.21) ?>
+                    </td>
                     </tr>
                 <?}?>
             </tbody>
@@ -59,6 +66,11 @@ require __DIR__ . '/../components/navigation/nav-website.php';
         <div class="cart-total">
             <span class="cart-total">
                 Total: € <? echo $total ?>
+            </span>
+        </div>
+        <div class="cart-total">
+            <span class="cart-total">
+                Total with btw: € <? echo $total * 1.21 ?>
             </span>
         </div>
     </div>

@@ -103,17 +103,20 @@ class CartController {
         if (!$this->checkTicketStock($id)) {
             header('Location: /hf/' . $event . '?event=' . $event);
             return;
-        }
-
+        }    
+ 
         if (array_key_exists($id, $_SESSION['tickets'])) {
             $_SESSION['tickets'][$id] += 1;
         } else {
             $_SESSION['tickets'][$id] = 1;
         }
+        
+        header('Location: /hf/' . $event . '?event=' . $event, );
 
-        header('Location: /hf/' . $event . '?event=' . $event);
     }
-
+    public function confirmationMessage(){
+        echo "<script type='text/javascript'>alert('Succesvol toegevoegd!')</script>";
+    }
 
     // ## only add to cart when enough tickets are left
     private function checkTicketStock($id) {

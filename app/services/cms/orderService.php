@@ -34,4 +34,13 @@ class OrderService {
         return $this->repository->updatePaymentStatus();
     }
 
+    public function UpdateOrderUuid($id, $uuid){
+        return $this->repository->UpdateOrderUuid($id, $uuid);
+    }
+
+    public function GetOrderByUuid($uuid){
+        return $this->repository->GetOrderByUuid($uuid);
+    }
+    
+
 }
